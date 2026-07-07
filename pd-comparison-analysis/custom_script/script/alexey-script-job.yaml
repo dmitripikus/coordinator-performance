@@ -1,0 +1,121 @@
+---
+# ConfigMap: embeds the Go source so no PVC is needed.
+# To update the source, edit the data section and re-apply.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reqsend-src
+data:
+  go.mod: |
+    module reqsend
+
+    go 1.21
+  main.go: |
+    // Command reqsend sends sequential OpenAI completion requests to a host and
+    // reports per-request timing. Optionally reuses a single TCP connection.
+    //
+    // Standalone: stdlib only, no external modules. Build with:
+    //   go build -o reqsend main.go
+    package main
+
+    import (
+    	"bytes"
+    	"crypto/rand"
+    	"encoding/json"
+    	"flag"
+    	"fmt"
+    	"io"
+    	"net/http"
+    	"os"
+    	"time"
+    )
+
+    // requestID returns a random hex string for the x-request-id header.
+    func requestID() string {
+    	var b [16]byte
+    	rand.Read(b[:])
+    	return fmt.Sprintf("%x", b)
+    }
+
+    func main() {
+    	host := flag.String("host", "localhost", "destination host")
+    	port := flag.Int("port", 8000, "destination port")
+    	n := flag.Int("n", 1, "number of requests")
+    	reuse := flag.Bool("reuse", true, "reuse a single TCP connection")
+    	model := flag.String("model", "default", "model name")
+    	path := flag.String("path", "/v1/completions", "request path")
+    	flag.Parse()
+
+    	url := fmt.Sprintf("http://%s:%d%s", *host, *port, *path)
+    	body, _ := json.Marshal(map[string]any{
+    		"model":      *model,
+    		"prompt":     "Hi",
+    		"max_tokens": 16,
+    	})
+
+    	// reuse=false forces a fresh TCP connection per request.
+    	client := &http.Client{Transport: &http.Transport{DisableKeepAlives: !*reuse}}
+
+    	for i := 0; i < *n; i++ {
+    		id := requestID()
+    		req, err := http.NewRequest(http.MethodPost, url, bytes.NewReader(body))
+    		if err != nil {
+    			fmt.Fprintf(os.Stderr, "build request: %v\n", err)
+    			os.Exit(1)
+    		}
+    		req.Header.Set("Content-Type", "application/json")
+    		req.Header.Set("x-request-id", id)
+
+    		start := time.Now()
+    		resp, err := client.Do(req)
+    		if err != nil {
+    			fmt.Fprintf(os.Stderr, "%s request failed: %v\n", id, err)
+    			continue
+    		}
+    		io.Copy(io.Discard, resp.Body) // drain so the connection can be reused
+    		resp.Body.Close()
+    		end := time.Now()
+
+    		fmt.Printf("x-request-id=%s start=%s end=%s duration=%s status=%d\n",
+    			id, start.Format(time.RFC3339Nano), end.Format(time.RFC3339Nano), end.Sub(start), resp.StatusCode)
+    	}
+    }
+---
+# Deployment: keeps a single "reqsend" pod alive so you can exec into it.
+# The ConfigMap is mounted at /work; exec in and build+run from there.
+#
+# Example:
+# kubectl exec -it deployment/reqsend -- bash -c \
+#   'cp /work/go.mod /tmp/ && cp /work/main.go /tmp/ && cd /tmp && go build -o reqsend main.go && \
+#    ./reqsend -host llm-d-inference-gateway-istio -port 80 -n 10 -model openai/gpt-oss-120b' \
+#   > with-coord-times.txt
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reqsend
+  labels:
+    app: reqsend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reqsend
+  template:
+    metadata:
+      labels:
+        app: reqsend
+    spec:
+      # Keep the pod alive; the container does nothing but sleep.
+      containers:
+      - name: reqsend
+        image: golang:1.24
+        command: ["sleep", "infinity"]
+        workingDir: /work
+        volumeMounts:
+        - name: src
+          mountPath: /work
+      volumes:
+      - name: src
+        configMap:
+          name: reqsend-src

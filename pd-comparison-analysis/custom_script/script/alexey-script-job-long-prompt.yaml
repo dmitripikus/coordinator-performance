@@ -1,0 +1,281 @@
+---
+# ConfigMap: embeds the Go source so no PVC is needed.
+# Variant: long-prompt (~5000 tokens) for prefill-heavy benchmarking.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reqsend-long-src
+data:
+  go.mod: |
+    module reqsend
+
+    go 1.21
+  main.go: |
+    package main
+
+    import (
+    	"bytes"
+    	"crypto/rand"
+    	"encoding/json"
+    	"flag"
+    	"fmt"
+    	"io"
+    	"net/http"
+    	"os"
+    	"time"
+    )
+
+    // ~5000-token prompt: dense technical text to stress the prefill stage.
+    const longPrompt = `Large language models (LLMs) are neural networks trained on vast corpora of text
+    to predict the next token in a sequence. The architecture most commonly used today
+    is the Transformer, introduced by Vaswani et al. in 2017. A Transformer consists
+    of stacked encoder and decoder blocks, each containing multi-head self-attention
+    layers and feed-forward sublayers with residual connections and layer normalization.
+    During inference the model receives an input sequence of tokens, embeds each token
+    into a high-dimensional vector, applies positional encodings to preserve order
+    information, and passes the resulting tensor through the attention stack to produce
+    a probability distribution over the vocabulary for the next token.
+
+    Attention is computed as: Attention(Q,K,V) = softmax(QK^T / sqrt(d_k)) V, where
+    Q, K, and V are the query, key, and value matrices respectively, and d_k is the
+    key dimension used for scaling. Multi-head attention projects the inputs into h
+    different subspaces, computes attention in each head independently, and concatenates
+    the results before a final linear projection. This allows the model to jointly
+    attend to information from different representational subspaces at different positions.
+
+    Modern LLM serving systems face two distinct computational phases: prefill and decode.
+    During prefill the full prompt is processed in a single forward pass, generating the
+    KV cache for all input tokens. This phase is compute-bound and benefits from large
+    batch sizes and tensor parallelism. During decode the model generates one token per
+    step, attending over the growing KV cache. This phase is memory-bandwidth-bound
+    because the KV cache must be loaded from GPU HBM on every step even when the
+    arithmetic intensity is low.
+
+    KV cache management is a central challenge in LLM serving. Early systems allocated
+    a static contiguous buffer per sequence, wasting memory when sequences were shorter
+    than the maximum length. PagedAttention, introduced with vLLM, manages the KV cache
+    in fixed-size pages analogous to virtual memory paging, dramatically improving
+    memory utilization and enabling larger effective batch sizes. Continuous batching
+    further improves GPU utilization by allowing new requests to join a running batch as
+    soon as a slot frees up, rather than waiting for the entire batch to finish.
+
+    Disaggregated prefill-decode (PD) serving separates the prefill and decode phases
+    onto different hardware pools. A prefill instance ingests the prompt, fills the KV
+    cache, and transfers the cache to a decode instance that handles token generation.
+    This separation allows each pool to be independently scaled and optimized: prefill
+    nodes can run with high arithmetic intensity workloads while decode nodes can be
+    chosen for memory bandwidth. The KV cache transfer between nodes is a bottleneck
+    that motivates high-bandwidth interconnects such as RoCE, InfiniBand, or NVLink
+    fabrics. The NIXL library provides a common abstraction over these transports.
+
+    Speculative decoding accelerates generation by having a small draft model propose
+    multiple tokens at once, which the large target model then verifies in a single
+    forward pass. If all proposed tokens are accepted the effective throughput is
+    multiplied by the speculation depth. Token acceptance rates depend heavily on the
+    similarity between the draft and target model distributions and on the input
+    distribution. Techniques such as Medusa, EAGLE, and Hydra train multiple draft heads
+    directly on the target model to improve acceptance rates without a separate model.
+
+    Quantization reduces the memory footprint and increases arithmetic throughput of LLMs
+    by representing weights and activations in lower-precision formats. INT8 weight-only
+    quantization halves the weight memory relative to FP16 with minimal accuracy loss on
+    most benchmarks. INT4 quantization using GPTQ, AWQ, or SqueezeLLM can achieve 4x
+    compression with acceptable quality on many tasks. FP8 training and inference is
+    now natively supported on Hopper (H100) GPUs and provides near-FP16 accuracy at
+    roughly twice the arithmetic throughput. Activation quantization is harder because
+    outlier channels in transformer hidden states resist low-bit representation; methods
+    like SmoothQuant migrate the quantization difficulty from activations to weights.
+
+    Mixture-of-Experts (MoE) models replace the dense feed-forward sublayer with a set
+    of expert FFN networks and a learned routing function that selects a small subset of
+    experts per token. This decouples model capacity from per-token compute: a model
+    with 128 experts and top-2 routing activates only 2/128 of its parameters per token,
+    allowing very large parameter counts at manageable FLOPs. MoE models introduce load
+    balancing challenges: if the router consistently favors the same experts, other
+    experts become underutilized. Auxiliary load-balancing losses, expert-choice routing,
+    and token dropping strategies address this. Serving MoE models efficiently requires
+    expert parallelism across devices with all-to-all communication patterns.
+
+    Tensor parallelism (TP) splits individual weight matrices across devices so that each
+    device holds a shard and contributes a partial result that is summed via an all-reduce
+    collective. Pipeline parallelism (PP) assigns different layers to different devices
+    and passes activations between pipeline stages, introducing bubbles at startup and
+    teardown that reduce efficiency. Sequence parallelism reduces the memory required for
+    attention by partitioning the sequence dimension across devices. Context parallelism
+    extends this to enable very long context windows by distributing both the KV cache
+    and the attention computation. Ring attention implements context parallelism with
+    a ring-based communication pattern that overlaps communication with computation.
+
+    Throughput and latency are the two primary performance metrics in LLM serving.
+    Throughput is measured in tokens per second (TPS) or requests per second (RPS) and
+    reflects the system capacity. Latency is measured as time-to-first-token (TTFT) and
+    inter-token latency (ITL), or equivalently time-per-output-token (TPOT). TTFT is
+    dominated by prefill time and grows with prompt length. ITL is dominated by the
+    memory bandwidth cost of loading the KV cache and model weights per decode step.
+    Service-level objectives (SLOs) typically specify P50, P95, and P99 latency targets
+    alongside minimum throughput requirements.
+
+    Inference frameworks such as vLLM, TensorRT-LLM, DeepSpeed-FastGen, SGLang, and
+    MegaCore each expose different trade-offs between ease of deployment, hardware
+    support, and peak performance. vLLM is widely used for its PagedAttention
+    implementation and OpenAI-compatible API. TensorRT-LLM provides highly optimized
+    CUDA kernels with in-flight batching for NVIDIA hardware. SGLang introduces
+    RadixAttention for KV cache sharing across requests with common prefixes, reducing
+    redundant prefill computation. Prefix caching exploits the observation that many
+    requests share a long system prompt; by caching its KV representation once and
+    reusing it across requests the prefill cost collapses to only the unique per-request
+    portion.
+
+    Routing and load balancing in LLM serving clusters determines which backend instance
+    receives each request. Simple round-robin routing ignores load state and can cause
+    head-of-line blocking when requests have variable prompt and output lengths.
+    Least-outstanding-requests routing sends new requests to the instance with the fewest
+    active requests, which is better but still ignores token counts. Token-weighted
+    routing accounts for the number of tokens queued or being processed per instance.
+    Prefix-aware routing sends requests with common prefixes to instances whose KV caches
+    already contain those prefixes, maximizing cache hit rates. In disaggregated PD
+    deployments the routing problem extends to selecting both a prefill instance and a
+    decode instance and arranging the KV transfer between them.
+
+    Retrieval-augmented generation (RAG) augments LLM generation with passages retrieved
+    from an external corpus using dense or sparse retrieval. The retrieved passages are
+    concatenated to the query before submission, increasing prompt length significantly.
+    Long-context models with 128k or 1M token context windows reduce the need for
+    retrieval truncation but increase KV cache memory proportionally. Flash Attention
+    reduces the attention computation from O(n^2) memory to O(n) using tiling and kernel
+    fusion, making long-context inference tractable on current GPU hardware.
+
+    Fine-tuning adapts a pre-trained base model to a specific domain or task. Full
+    fine-tuning updates all model parameters and is expensive in both compute and storage.
+    Parameter-efficient fine-tuning (PEFT) methods such as LoRA, QLoRA, prefix tuning,
+    and adapter layers update a small number of parameters while keeping base weights
+    frozen. LoRA decomposes the weight update into a low-rank product delta_W = A*B
+    where A and B have rank r << min(d_in, d_out), reducing trainable parameters by
+    orders of magnitude. Multiple LoRA adapters can be merged at inference time using
+    adapter multiplexing, allowing a single serving instance to handle requests targeting
+    different fine-tuned variants of the same base model without reloading weights.
+
+    Safety and alignment techniques constrain LLM outputs to be helpful, harmless, and
+    honest. Reinforcement learning from human feedback (RLHF) trains a reward model on
+    human preference data and uses PPO or similar policy gradient methods to fine-tune
+    the LLM toward high-reward outputs. Direct preference optimization (DPO) eliminates
+    the explicit reward model by reframing the RLHF objective as a supervised learning
+    problem over preference pairs. Constitutional AI and RLAIF replace human labelers
+    with AI feedback to scale the alignment pipeline. Guardrail systems add classifier-
+    based or rule-based input and output filters to prevent harmful content at serving
+    time without modifying model weights.
+
+    Evaluation of LLM performance spans multiple dimensions: language modeling perplexity
+    on held-out text, accuracy on academic benchmarks such as MMLU, HellaSwag, ARC, and
+    GSM8K, code generation benchmarks such as HumanEval and MBPP, reasoning benchmarks
+    such as BBH and MATH, and human preference evaluations such as Chatbot Arena. No
+    single benchmark captures all relevant capabilities; practitioners typically report
+    results across a suite of benchmarks. Contamination of training data with evaluation
+    benchmarks inflates scores and is a significant concern as public benchmarks become
+    widely known. Held-out private evaluations and dynamic benchmark generation mitigate
+    this risk. Calibration, factuality, and hallucination rates are increasingly important
+    metrics as LLMs are deployed in high-stakes domains such as medicine and law.
+
+    Hardware for LLM training and inference is dominated by NVIDIA GPUs: the A100 80GB
+    and H100 80GB SXM for training, and the H100 and H200 for inference. AMD MI300X
+    provides competitive memory capacity (192GB HBM3) making it attractive for inference
+    of very large models. Google TPUs offer high throughput for serving on Google Cloud.
+    Groq LPUs provide extremely low latency at the cost of limited memory. Cerebras
+    Wafer-Scale Engine eliminates inter-chip communication for models that fit in its
+    on-chip memory. Custom ASICs from companies such as Tenstorrent, SambaNova, and
+    Graphcore occupy niches in the inference market. The memory wall — the disparity
+    between compute throughput growth and memory bandwidth growth — remains the
+    fundamental constraint shaping LLM hardware and serving system design.
+
+    Based on everything described above, summarize the key trade-offs between disaggregated
+    prefill-decode serving and traditional monolithic serving in two to three paragraphs,
+    focusing on latency, throughput, memory efficiency, and operational complexity.`
+
+    func requestID() string {
+    	var b [16]byte
+    	rand.Read(b[:])
+    	return fmt.Sprintf("%x", b)
+    }
+
+    func main() {
+    	host := flag.String("host", "localhost", "destination host")
+    	port := flag.Int("port", 8000, "destination port")
+    	n := flag.Int("n", 1, "number of requests")
+    	reuse := flag.Bool("reuse", true, "reuse a single TCP connection")
+    	model := flag.String("model", "default", "model name")
+    	path := flag.String("path", "/v1/completions", "request path")
+    	flag.Parse()
+
+    	url := fmt.Sprintf("http://%s:%d%s", *host, *port, *path)
+    	body, _ := json.Marshal(map[string]any{
+    		"model":      *model,
+    		"prompt":     longPrompt,
+    		"max_tokens": 256,
+    	})
+
+    	client := &http.Client{Transport: &http.Transport{DisableKeepAlives: !*reuse}}
+
+    	for i := 0; i < *n; i++ {
+    		id := requestID()
+    		req, err := http.NewRequest(http.MethodPost, url, bytes.NewReader(body))
+    		if err != nil {
+    			fmt.Fprintf(os.Stderr, "build request: %v\n", err)
+    			os.Exit(1)
+    		}
+    		req.Header.Set("Content-Type", "application/json")
+    		req.Header.Set("x-request-id", id)
+
+    		start := time.Now()
+    		resp, err := client.Do(req)
+    		if err != nil {
+    			fmt.Fprintf(os.Stderr, "%s request failed: %v\n", id, err)
+    			continue
+    		}
+    		io.Copy(io.Discard, resp.Body)
+    		resp.Body.Close()
+    		end := time.Now()
+
+    		fmt.Printf("x-request-id=%s start=%s end=%s duration=%s status=%d\n",
+    			id, start.Format(time.RFC3339Nano), end.Format(time.RFC3339Nano), end.Sub(start), resp.StatusCode)
+    	}
+    }
+---
+# Deployment: keeps a "reqsend-long" pod alive for long-prompt benchmarking.
+#
+# Apply:
+#   kubectl apply -f alexey-script-job-long-prompt.yaml
+#
+# Run:
+#   kubectl exec -it deployment/reqsend-long -- bash -c \
+#     'cp /work/go.mod /tmp/ && cp /work/main.go /tmp/ && cd /tmp && \
+#      go build -o reqsend main.go && \
+#      ./reqsend -host llm-d-inference-gateway-istio -port 80 -n 10 -model openai/gpt-oss-120b' \
+#     > with-coord-long-prompt-times.txt
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reqsend-long
+  labels:
+    app: reqsend-long
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reqsend-long
+  template:
+    metadata:
+      labels:
+        app: reqsend-long
+    spec:
+      containers:
+      - name: reqsend
+        image: golang:1.24
+        command: ["sleep", "infinity"]
+        workingDir: /work
+        volumeMounts:
+        - name: src
+          mountPath: /work
+      volumes:
+      - name: src
+        configMap:
+          name: reqsend-long-src
