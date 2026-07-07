@@ -1,0 +1,57 @@
+Name:             reqsend-7d6f5b4dc8-lgdfx
+Namespace:        dpikus-epd
+Priority:         0
+Service Account:  default
+Node:             g801c7a/10.202.212.51
+Start Time:       Mon, 06 Jul 2026 18:18:39 +0300
+Labels:           app=reqsend
+                  pod-template-hash=7d6f5b4dc8
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=185
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-07-06T18:18:39+03:00
+Status:           Running
+IP:               10.0.12.75
+IPs:
+  IP:           10.0.12.75
+Controlled By:  ReplicaSet/reqsend-7d6f5b4dc8
+Containers:
+  reqsend:
+    Container ID:  containerd://c661bb63efe5c6cf4c0b6bcc10d849e74695fcde18d98aa04918166cec412c99
+    Image:         golang:1.24
+    Image ID:      docker.io/library/golang@sha256:d2d2bc1c84f7e60d7d2438a3836ae7d0c847f4888464e7ec9ba3a1339a1ee804
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sleep
+      infinity
+    State:          Running
+      Started:      Mon, 06 Jul 2026 18:18:40 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-mxx6h (ro)
+      /work from src (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  src:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      reqsend-src
+    Optional:  false
+  kube-api-access-mxx6h:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

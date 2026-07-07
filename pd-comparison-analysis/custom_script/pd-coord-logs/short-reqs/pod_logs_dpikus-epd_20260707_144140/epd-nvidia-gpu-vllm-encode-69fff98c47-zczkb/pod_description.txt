@@ -1,0 +1,114 @@
+Name:             epd-nvidia-gpu-vllm-encode-69fff98c47-zczkb
+Namespace:        dpikus-epd
+Priority:         0
+Service Account:  epd-nvidia-gpu-vllm-sa
+Node:             g12987a/10.202.208.181
+Start Time:       Mon, 06 Jul 2026 15:50:12 +0300
+Labels:           llm-d.ai/accelerator-variant=gpu
+                  llm-d.ai/accelerator-vendor=nvidia
+                  llm-d.ai/guide=epd
+                  llm-d.ai/model=Qwen3-VL-2B-Instruct
+                  llm-d.ai/role=encode
+                  pod-template-hash=69fff98c47
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=217
+Annotations:      k8s.v1.cni.cncf.io/networks:
+                    [
+                      {
+                        "name": "multi-nic-compute",
+                        "namespace": "openshift-sriov-network-operator"
+                      }
+                    ]
+Status:           Running
+IP:               10.0.10.113
+IPs:
+  IP:           10.0.10.113
+Controlled By:  ReplicaSet/epd-nvidia-gpu-vllm-encode-69fff98c47
+Containers:
+  modelserver:
+    Container ID:  containerd://44b781bbad7a4f729fdf935da20d458dcbc3d8d5ee3d48f5676d54c6435e763d
+    Image:         ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer4
+    Image ID:      ghcr.io/revit13/vllm-openai@sha256:ac60d4876f3eb8d888903b97bcc55bbbfd4a77d45f73155606f404358cccecab
+    Port:          8000/TCP (modelserver)
+    Host Port:     0/TCP (modelserver)
+    Command:
+      vllm
+      serve
+    Args:
+      --model
+      Qwen/Qwen3-VL-2B-Instruct
+      --port
+      8000
+      --disable-access-log-for-endpoints
+      /health,/metrics,/v1/models
+      --enforce-eager
+      --mm-encoder-only
+      --no-enable-prefix-caching
+      --ec-transfer-config
+      {"ec_connector": "ECCPUConnector", "ec_role": "ec_producer"}
+    State:          Running
+      Started:      Mon, 06 Jul 2026 15:50:16 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:             4
+      memory:          64Gi
+      nvidia.com/gpu:  1
+      rdma/ib:         1
+    Requests:
+      cpu:             4
+      memory:          64Gi
+      nvidia.com/gpu:  1
+      rdma/ib:         1
+    Liveness:          http-get http://:modelserver/health delay=0s timeout=5s period=10s #success=1 #failure=3
+    Readiness:         http-get http://:modelserver/v1/models delay=0s timeout=2s period=5s #success=1 #failure=3
+    Startup:           http-get http://:modelserver/v1/models delay=15s timeout=5s period=30s #success=1 #failure=120
+    Environment:
+      PORT:                       8000
+      VLLM_LOGGING_LEVEL:         DEBUG
+      VLLM_EC_SIDE_CHANNEL_HOST:   (v1:status.podIP)
+      VLLM_EC_SIDE_CHANNEL_PORT:  5610
+      HF_TOKEN:                   <set to the key 'HF_TOKEN' in secret 'llm-d-hf-token'>  Optional: true
+      TRITON_CACHE_DIR:           /.triton
+      DP_SIZE:                    1
+      DP_SIZE_LOCAL:              1
+      HF_HOME:                    /model-cache
+    Mounts:
+      /.cache from torch-compile-cache (rw)
+      /.config from vllm-config (rw)
+      /.triton from triton-cache (rw)
+      /dev/shm from shm (rw)
+      /model-cache from model-cache (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  shm:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  20Gi
+  torch-compile-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  triton-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  vllm-config:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  model-cache:
+    Type:        PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:   llm-d-model-cache
+    ReadOnly:    false
+QoS Class:       Guaranteed
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:          <none>
