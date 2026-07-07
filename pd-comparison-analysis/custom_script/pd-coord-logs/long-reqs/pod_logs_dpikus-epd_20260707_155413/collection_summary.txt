@@ -1,0 +1,20 @@
+Log Collection Summary
+======================
+Namespace: dpikus-epd
+Time Period: Last 30 minutes
+Collection Time: Tue Jul  7 15:54:56 IDT 2026
+Total Pods: 10
+
+Collected Logs:
+---------------
+  reqsend-7d6f5b4dc8-lgdfx/reqsend.log: 0 lines,   0B
+  epd-nvidia-gpu-vllm-encode-69fff98c47-zczkb/modelserver.log: 360 lines,  60K
+  reqsend-long-b85d68496-5d8tm/reqsend.log: 0 lines,   0B
+  llm-d-inference-gateway-istio-5999d76794-k66r9/istio-proxy.log: 1 lines, 4.0K
+  epd-prefill-epp-6ccd8c4f74-nt2m6/epp.log: 92 lines,  40K
+  epd-encode-epp-5c6ff89f89-tj85t/epp.log: 9 lines, 4.0K
+  epd-nvidia-gpu-vllm-decode-6bcf88957c-zt9xw/modelserver.log: 950 lines, 192K
+  llm-d-coordinator-84d7dc5ff8-mx8wc/vllm-render.log: 79 lines, 8.0K
+  llm-d-coordinator-84d7dc5ff8-mx8wc/coordinator.log: 55 lines,  12K
+  epd-decode-epp-5b875f6589-5zkc4/epp.log: 76 lines,  20K
+  epd-nvidia-gpu-vllm-prefill-5bd6bfdd9-vww9j/modelserver.log: 37142 lines, 3.4M
