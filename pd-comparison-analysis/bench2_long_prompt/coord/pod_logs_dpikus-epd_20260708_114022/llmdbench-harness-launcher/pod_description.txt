@@ -1,0 +1,85 @@
+Name:             llmdbench-harness-launcher
+Namespace:        dpikus-epd
+Priority:         0
+Service Account:  llmdbench-harness-sa
+Node:             g801c7a/10.202.212.51
+Start Time:       Wed, 08 Jul 2026 11:31:26 +0300
+Labels:           app=llmdbench-harness-launcher
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=185
+Annotations:      <none>
+Status:           Running
+IP:               10.0.12.97
+IPs:
+  IP:  10.0.12.97
+Containers:
+  harness:
+    Container ID:  containerd://50516b3707f622152c27b22421d42aef77b1df490d3421dcc697ff77c2408ede
+    Image:         ghcr.io/llm-d/llm-d-benchmark:v0.5.2
+    Image ID:      ghcr.io/llm-d/llm-d-benchmark@sha256:2940ffd2104c9af5676552336ab36f23d62ce6a226dfeb3613d24faeab3e657c
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sh
+      -c
+    Args:
+      sleep 1000000
+    State:          Running
+      Started:      Wed, 08 Jul 2026 11:31:34 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     16
+      memory:  32Gi
+    Requests:
+      cpu:     16
+      memory:  32Gi
+    Environment:
+      RAYON_NUM_THREADS:                            4
+      HF_TOKEN:                                     <set to the key 'HF_TOKEN' in secret 'llm-d-hf-token'>  Optional: false
+      LLMDBENCH_RUN_WORKSPACE_DIR:                  /workspace
+      LLMDBENCH_MAGIC_ENVAR:                        harness_pod
+      LLMDBENCH_HARNESS_NAME:                       inference-perf
+      LLMDBENCH_RUN_EXPERIMENT_RESULTS_DIR_PREFIX:  /requests
+      LLMDBENCH_RUN_DATASET_DIR:                    /workspace
+      LLMDBENCH_HARNESS_STACK_NAME:                 pd-gpt-oss-120b
+      LLMDBENCH_DESCRIPTION_TEXT:                   
+      LLMDBENCH_DESCRIPTION_KEYWORDS:               
+    Mounts:
+      /requests from results (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-gzr5l (ro)
+      /workspace/profiles/inference-perf from inference-perf-profiles (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  results:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  workload-pvc
+    ReadOnly:   false
+  inference-perf-profiles:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      inference-perf-profiles
+    Optional:  false
+  kube-api-access-gzr5l:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Guaranteed
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  9m31s  default-scheduler  Successfully assigned dpikus-epd/llmdbench-harness-launcher to g801c7a
+  Normal  Pulling    9m24s  kubelet            Pulling image "ghcr.io/llm-d/llm-d-benchmark:v0.5.2"
+  Normal  Pulled     9m23s  kubelet            Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:v0.5.2" in 98ms (98ms including waiting). Image size: 2177277956 bytes.
+  Normal  Created    9m23s  kubelet            Container created
+  Normal  Started    9m23s  kubelet            Container started
