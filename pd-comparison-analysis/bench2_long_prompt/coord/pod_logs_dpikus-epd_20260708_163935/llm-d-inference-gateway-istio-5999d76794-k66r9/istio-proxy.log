@@ -1,0 +1,2 @@
+2026-07-08T13:16:41.946781Z	info	cache	generated new workload certificate	resourceName=default latency=50.877892ms ttl=23h59m59.053220253s
+2026-07-08T13:32:20.737984Z	info	xdsproxy	connected to delta upstream XDS server: istiod.istio-system.svc:15012	id=98
