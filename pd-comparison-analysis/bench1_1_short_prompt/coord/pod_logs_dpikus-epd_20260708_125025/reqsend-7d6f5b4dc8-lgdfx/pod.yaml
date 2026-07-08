@@ -1,0 +1,149 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/restartedAt: "2026-07-06T18:18:39+03:00"
+  creationTimestamp: "2026-07-06T15:18:39Z"
+  generateName: reqsend-7d6f5b4dc8-
+  generation: 1
+  labels:
+    app: reqsend
+    pod-template-hash: 7d6f5b4dc8
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "185"
+  name: reqsend-7d6f5b4dc8-lgdfx
+  namespace: dpikus-epd
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: reqsend-7d6f5b4dc8
+    uid: bd1f3f7c-3dfc-4a2c-a43f-43c706a40741
+  resourceVersion: "20261367"
+  uid: 389dd52d-6862-4a62-b77b-69692fb08806
+spec:
+  containers:
+  - command:
+    - sleep
+    - infinity
+    image: golang:1.24
+    imagePullPolicy: IfNotPresent
+    name: reqsend
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /work
+      name: src
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-mxx6h
+      readOnly: true
+    workingDir: /work
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: g801c7a
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: reqsend-src
+    name: src
+  - name: kube-api-access-mxx6h
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-06T15:18:40Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-06T15:18:39Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-06T15:18:40Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-06T15:18:40Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-06T15:18:39Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://c661bb63efe5c6cf4c0b6bcc10d849e74695fcde18d98aa04918166cec412c99
+    image: docker.io/library/golang:1.24
+    imageID: docker.io/library/golang@sha256:d2d2bc1c84f7e60d7d2438a3836ae7d0c847f4888464e7ec9ba3a1339a1ee804
+    lastState: {}
+    name: reqsend
+    ready: true
+    resources: {}
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-06T15:18:40Z"
+    user:
+      linux:
+        gid: 0
+        supplementalGroups:
+        - 0
+        uid: 0
+    volumeMounts:
+    - mountPath: /work
+      name: src
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-mxx6h
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 10.202.212.51
+  hostIPs:
+  - ip: 10.202.212.51
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.12.75
+  podIPs:
+  - ip: 10.0.12.75
+  qosClass: BestEffort
+  resources: {}
+  startTime: "2026-07-06T15:18:39Z"
