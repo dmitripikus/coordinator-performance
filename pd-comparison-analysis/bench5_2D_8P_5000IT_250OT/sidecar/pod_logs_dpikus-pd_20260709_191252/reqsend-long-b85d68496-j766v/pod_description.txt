@@ -1,0 +1,57 @@
+Name:             reqsend-long-b85d68496-j766v
+Namespace:        dpikus-pd
+Priority:         0
+Service Account:  default
+Node:             g49fc0a/10.202.221.55
+Start Time:       Tue, 07 Jul 2026 11:32:17 +0300
+Labels:           app=reqsend-long
+                  pod-template-hash=b85d68496
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=214
+Annotations:      <none>
+Status:           Running
+IP:               10.0.12.253
+IPs:
+  IP:           10.0.12.253
+Controlled By:  ReplicaSet/reqsend-long-b85d68496
+Containers:
+  reqsend:
+    Container ID:  containerd://bc45698752b5837bad7a82b2efafeb1c467d52f4cd79d6f7fd222ac4bc78ac8f
+    Image:         golang:1.24
+    Image ID:      docker.io/library/golang@sha256:d2d2bc1c84f7e60d7d2438a3836ae7d0c847f4888464e7ec9ba3a1339a1ee804
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sleep
+      infinity
+    State:          Running
+      Started:      Tue, 07 Jul 2026 11:32:22 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-jthrs (ro)
+      /work from src (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  src:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      reqsend-long-src
+    Optional:  false
+  kube-api-access-jthrs:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

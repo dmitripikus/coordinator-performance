@@ -1,0 +1,26 @@
+Log Collection Summary
+======================
+Namespace: dpikus-pd
+Time Period: Last 30 minutes
+Collection Time: Thu Jul  9 19:14:27 IDT 2026
+Total Pods: 15
+
+Collected Logs:
+---------------
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-mwbb2/modelserver.log: 864 lines, 152K
+  pd-disaggregation-epp-7ff9d486db-5l2vd/epp.log: 17665 lines, 4.1M
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-g9w7s/modelserver.log: 878 lines, 104K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-f5zhj/modelserver.log: 866 lines, 104K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-ct5zp/modelserver.log: 884 lines, 132K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-rn9j8/modelserver.log: 850 lines, 160K
+  reqsend-long-b85d68496-j766v/reqsend.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-5jd9v/modelserver.log: 3255 lines, 324K
+  pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-5jd9v/routing-proxy.log: 2931 lines, 772K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-4xp8w/modelserver.log: 998 lines, 132K
+  pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-dpd76/modelserver.log: 3247 lines, 332K
+  pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-dpd76/routing-proxy.log: 2928 lines, 772K
+  llm-d-inference-gateway-istio-88698f47c-7z4px/istio-proxy.log: 1 lines, 4.0K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-rn2lm/modelserver.log: 918 lines, 164K
+  llmdbench-harness-launcher/harness.log: 140 lines,  20K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-k9s5j/modelserver.log: 866 lines, 104K
+  reqsend-7587759cd4-gw8pd/reqsend.log: 0 lines,   0B
