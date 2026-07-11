@@ -13,21 +13,24 @@ ns `dpikus-epd`. Requests traced by `x-request-id`:
 
 ## Request flow through the gateway (confirmed from the log)
 
-Each client `/v1/completions` is routed to the coordinator, which drives P/D as
-**two separate legs back through the gateway** (same x-request-id, tagged
+Each client `/v1/completions` is forwarded to the coordinator, which then drives
+P/D as **two separate legs back through the gateway** (same x-request-id, tagged
 `epp-phase`). Each leg triggers **two** ext_proc (EPP) calls:
 
 1. Client request arrives at gateway.
-2. **prefill leg** — request-headers ext_proc → EPP **chooses prefill node** (sets `x-gateway-destination-endpoint`).
-3. Gateway forwards to the chosen prefill pod.
-4. Prefill model responds.
-5. Response-headers ext_proc → EPP does almost nothing (sets `x-went-into-resp-headers: true`).
-6. Gateway returns prefill response to the coordinator.
-7. **decode leg** — coordinator sends decode request to gateway.
-8. Request-headers ext_proc → EPP **chooses decode node**.
-9. Gateway forwards to the chosen decode pod.
-10. Response-headers ext_proc → EPP noop again.
-11. Gateway streams decode response to the coordinator.
+2. Gateway forwards it to the **coordinator**.
+3. **prefill leg** — coordinator initializes prefill by forwarding the user request back to the gateway.
+4. Request-headers ext_proc → EPP **chooses prefill node** (sets `x-gateway-destination-endpoint`).
+5. Gateway forwards to the chosen prefill pod.
+6. Prefill model responds to the gateway.
+7. Response-headers ext_proc → EPP does almost nothing (sets `x-went-into-resp-headers: true`).
+8. Gateway returns the prefill response to the coordinator.
+9. **decode leg** — coordinator sends the decode request to the gateway.
+10. Request-headers ext_proc → EPP **chooses decode node**.
+11. Gateway forwards to the chosen decode pod.
+12. Response-headers ext_proc → EPP noop again.
+13. Gateway streams the decode response back to the coordinator.
+14. Coordinator returns the result to the client via the gateway.
 
 Evidence: `x-gateway-destination-endpoint` set **6×** (prefill+decode node choice
 × 3 requests); `x-went-into-resp-headers` set **6×** (the noop response calls).
