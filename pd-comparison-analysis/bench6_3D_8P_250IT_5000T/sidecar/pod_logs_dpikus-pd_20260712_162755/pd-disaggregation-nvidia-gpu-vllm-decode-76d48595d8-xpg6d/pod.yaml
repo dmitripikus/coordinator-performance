@@ -1,0 +1,312 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2026-07-12T13:10:04Z"
+  generateName: pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-
+  generation: 1
+  labels:
+    inference.networking.k8s.io/engine-type: vllm
+    llm-d.ai/accelerator-variant: gpu
+    llm-d.ai/accelerator-vendor: nvidia
+    llm-d.ai/guide: pd-disaggregation
+    llm-d.ai/model: gpt-oss-120b
+    llm-d.ai/role: decode
+    pod-template-hash: 76d48595d8
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "215"
+  name: pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-xpg6d
+  namespace: dpikus-pd
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8
+    uid: 3de122d7-2ef4-4cff-b3bb-099b83ad625b
+  resourceVersion: "26126323"
+  uid: c8c6a1aa-aaec-4166-b6c1-00d1f7e50ebe
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: llm-d.ai/guide
+            operator: In
+            values:
+            - pd-disaggregation
+          - key: llm-d.ai/model
+            operator: In
+            values:
+            - gpt-oss-120b
+          - key: llm-d.ai/role
+            operator: In
+            values:
+            - prefill
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - args:
+    - openai/gpt-oss-120b
+    - --disable-access-log-for-endpoints=/metrics,/health,/ping,/v1/models
+    - --tensor-parallel-size=4
+    - --block-size=128
+    - --kv-transfer-config
+    - '{"kv_connector":"NixlConnector", "kv_role":"kv_both"}'
+    - --no-disable-hybrid-kv-cache-manager
+    - --port=8200
+    command:
+    - vllm
+    - serve
+    env:
+    - name: VLLM_NIXL_SIDE_CHANNEL_HOST
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    - name: HF_HOME
+      value: /models
+    image: ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer3
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /health
+        port: modelserver
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    name: modelserver
+    ports:
+    - containerPort: 8200
+      name: modelserver
+      protocol: TCP
+    - containerPort: 5600
+      name: nixl
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /v1/models
+        port: modelserver
+        scheme: HTTP
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 2
+    resources:
+      limits:
+        cpu: "16"
+        memory: 64Gi
+        nvidia.com/gpu: "4"
+        rdma/ib: "1"
+      requests:
+        cpu: "16"
+        memory: 64Gi
+        nvidia.com/gpu: "4"
+        rdma/ib: "1"
+    startupProbe:
+      failureThreshold: 120
+      httpGet:
+        path: /v1/models
+        port: modelserver
+        scheme: HTTP
+      initialDelaySeconds: 15
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 5
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.config
+      name: vllm-config
+    - mountPath: /.triton
+      name: triton-cache
+    - mountPath: /models
+      name: model-cache
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  initContainers:
+  - args:
+    - --port=8000
+    - --vllm-port=8200
+    - --connector=nixlv2
+    - --zap-log-level=1
+    - --secure-proxy=false
+    image: ghcr.io/roytman/llm-d-inference-scheduler/llm-d-router-disagg-sidecar:dev
+    imagePullPolicy: Always
+    name: routing-proxy
+    ports:
+    - containerPort: 8000
+      name: sidecar
+      protocol: TCP
+    resources: {}
+    restartPolicy: Always
+    securityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+  nodeName: gd95d02
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: pd-disaggregation-nvidia-gpu-vllm-sa
+  serviceAccountName: pd-disaggregation-nvidia-gpu-vllm-sa
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir:
+      medium: Memory
+      sizeLimit: 20Gi
+    name: shm
+  - emptyDir: {}
+    name: torch-compile-cache
+  - emptyDir: {}
+    name: vllm-config
+  - emptyDir: {}
+    name: triton-cache
+  - name: model-cache
+    persistentVolumeClaim:
+      claimName: pd-disaggregation-nvidia-gpu-vllm-model-cache
+status:
+  allocatedResources:
+    cpu: "16"
+    memory: 64Gi
+    nvidia.com/gpu: "4"
+    rdma/ib: "1"
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T13:10:09Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T13:10:09Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T13:14:08Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T13:14:08Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T13:10:04Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - allocatedResources:
+      cpu: "16"
+      memory: 64Gi
+      nvidia.com/gpu: "4"
+      rdma/ib: "1"
+    allocatedResourcesStatus:
+    - name: nvidia.com/gpu
+      resources:
+      - health: Healthy
+        resourceID: GPU-fb77201e-bfd7-3818-fb69-e26bd9cf89ef
+      - health: Healthy
+        resourceID: GPU-478aacf9-3578-7e9d-c2cf-8c7515f64b54
+      - health: Healthy
+        resourceID: GPU-51e17065-72a1-af9a-7141-a422d7e12eea
+      - health: Healthy
+        resourceID: GPU-50b09506-951e-d156-cf2c-26d03f0a9355
+    - name: rdma/ib
+      resources:
+      - health: Healthy
+        resourceID: "52"
+    containerID: containerd://72735c9fbcec575625ed080f5f939f1fe381bd9363f4971ad1cf566cbc965a27
+    image: ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer3
+    imageID: ghcr.io/revit13/vllm-openai@sha256:fcb6ed6629e251d8388fc0e6a827fa31e4dd52db3d053ce1a2e2ad8d4fc4be34
+    lastState: {}
+    name: modelserver
+    ready: true
+    resources:
+      limits:
+        cpu: "16"
+        memory: 64Gi
+        nvidia.com/gpu: "4"
+        rdma/ib: "1"
+      requests:
+        cpu: "16"
+        memory: 64Gi
+        nvidia.com/gpu: "4"
+        rdma/ib: "1"
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-12T13:10:10Z"
+    user:
+      linux:
+        gid: 0
+        supplementalGroups:
+        - 0
+        uid: 0
+    volumeMounts:
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.config
+      name: vllm-config
+    - mountPath: /.triton
+      name: triton-cache
+    - mountPath: /models
+      name: model-cache
+  hostIP: 10.202.208.175
+  hostIPs:
+  - ip: 10.202.208.175
+  initContainerStatuses:
+  - containerID: containerd://d35aad8525ab8e882f0eee7c87e71ba4fe02be8522b736a17222e9cd7cfc1f86
+    image: ghcr.io/roytman/llm-d-inference-scheduler/llm-d-router-disagg-sidecar:dev
+    imageID: ghcr.io/roytman/llm-d-inference-scheduler/llm-d-router-disagg-sidecar@sha256:022d523b6039f0830fc1a2d90e93eacbbda4a8be50116c3b84fcc18795d9104e
+    lastState: {}
+    name: routing-proxy
+    ready: true
+    resources: {}
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-12T13:10:09Z"
+    user:
+      linux:
+        gid: 65532
+        supplementalGroups:
+        - 65532
+        uid: 65532
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.14.245
+  podIPs:
+  - ip: 10.0.14.245
+  qosClass: Burstable
+  resources:
+    limits:
+      cpu: "16"
+      memory: 64Gi
+    requests:
+      cpu: 15978m
+      memory: 64Gi
+  startTime: "2026-07-12T13:10:04Z"

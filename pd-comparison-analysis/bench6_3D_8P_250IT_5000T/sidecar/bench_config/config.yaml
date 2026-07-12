@@ -30,7 +30,7 @@ workload:                         # yaml configuration for harness workload(s)
     load:
       type: constant
       stages:
-      - rate: 22.5
+      - rate: 10.
         duration: 120
         num_requests: null
         concurrency_level: null
@@ -54,9 +54,9 @@ workload:                         # yaml configuration for harness workload(s)
         mean: 250
         std_dev: 0
       output_distribution:
-        min: 5000
-        max: 5000
-        mean: 5000
+        min: 4000
+        max: 4000
+        mean: 4000
         std_dev: 0
     report:
       request_lifecycle:

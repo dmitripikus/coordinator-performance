@@ -1,0 +1,131 @@
+Name:             pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-xpg6d
+Namespace:        dpikus-pd
+Priority:         0
+Service Account:  pd-disaggregation-nvidia-gpu-vllm-sa
+Node:             gd95d02/10.202.208.175
+Start Time:       Sun, 12 Jul 2026 16:10:04 +0300
+Labels:           inference.networking.k8s.io/engine-type=vllm
+                  llm-d.ai/accelerator-variant=gpu
+                  llm-d.ai/accelerator-vendor=nvidia
+                  llm-d.ai/guide=pd-disaggregation
+                  llm-d.ai/model=gpt-oss-120b
+                  llm-d.ai/role=decode
+                  pod-template-hash=76d48595d8
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=215
+Annotations:      <none>
+Status:           Running
+IP:               10.0.14.245
+IPs:
+  IP:           10.0.14.245
+Controlled By:  ReplicaSet/pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8
+Init Containers:
+  routing-proxy:
+    Container ID:  containerd://d35aad8525ab8e882f0eee7c87e71ba4fe02be8522b736a17222e9cd7cfc1f86
+    Image:         ghcr.io/roytman/llm-d-inference-scheduler/llm-d-router-disagg-sidecar:dev
+    Image ID:      ghcr.io/roytman/llm-d-inference-scheduler/llm-d-router-disagg-sidecar@sha256:022d523b6039f0830fc1a2d90e93eacbbda4a8be50116c3b84fcc18795d9104e
+    Port:          8000/TCP (sidecar)
+    Host Port:     0/TCP (sidecar)
+    Args:
+      --port=8000
+      --vllm-port=8200
+      --connector=nixlv2
+      --zap-log-level=1
+      --secure-proxy=false
+    State:          Running
+      Started:      Sun, 12 Jul 2026 16:10:09 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:         <none>
+Containers:
+  modelserver:
+    Container ID:  containerd://72735c9fbcec575625ed080f5f939f1fe381bd9363f4971ad1cf566cbc965a27
+    Image:         ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer3
+    Image ID:      ghcr.io/revit13/vllm-openai@sha256:fcb6ed6629e251d8388fc0e6a827fa31e4dd52db3d053ce1a2e2ad8d4fc4be34
+    Ports:         8200/TCP (modelserver), 5600/TCP (nixl)
+    Host Ports:    0/TCP (modelserver), 0/TCP (nixl)
+    Command:
+      vllm
+      serve
+    Args:
+      openai/gpt-oss-120b
+      --disable-access-log-for-endpoints=/metrics,/health,/ping,/v1/models
+      --tensor-parallel-size=4
+      --block-size=128
+      --kv-transfer-config
+      {"kv_connector":"NixlConnector", "kv_role":"kv_both"}
+      --no-disable-hybrid-kv-cache-manager
+      --port=8200
+    State:          Running
+      Started:      Sun, 12 Jul 2026 16:10:10 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:             16
+      memory:          64Gi
+      nvidia.com/gpu:  4
+      rdma/ib:         1
+    Requests:
+      cpu:             16
+      memory:          64Gi
+      nvidia.com/gpu:  4
+      rdma/ib:         1
+    Liveness:          http-get http://:modelserver/health delay=0s timeout=5s period=10s #success=1 #failure=3
+    Readiness:         http-get http://:modelserver/v1/models delay=0s timeout=2s period=5s #success=1 #failure=3
+    Startup:           http-get http://:modelserver/v1/models delay=15s timeout=5s period=30s #success=1 #failure=120
+    Environment:
+      VLLM_NIXL_SIDE_CHANNEL_HOST:   (v1:status.podIP)
+      HF_HOME:                      /models
+    Mounts:
+      /.cache from torch-compile-cache (rw)
+      /.config from vllm-config (rw)
+      /.triton from triton-cache (rw)
+      /dev/shm from shm (rw)
+      /models from model-cache (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  shm:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  20Gi
+  torch-compile-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  vllm-config:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  triton-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  model-cache:
+    Type:        PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:   pd-disaggregation-nvidia-gpu-vllm-model-cache
+    ReadOnly:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                From                     Message
+  ----     ------                  ----               ----                     -------
+  Normal   Scheduled               18m                default-scheduler        Successfully assigned dpikus-pd/pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-xpg6d to gd95d02
+  Normal   SuccessfulAttachVolume  18m                attachdetach-controller  AttachVolume.Attach succeeded for volume "pvc-b7579e77-1168-4a01-ba42-e89b830c9d11"
+  Normal   Pulling                 18m                kubelet                  Pulling image "ghcr.io/roytman/llm-d-inference-scheduler/llm-d-router-disagg-sidecar:dev"
+  Normal   Pulled                  18m                kubelet                  Successfully pulled image "ghcr.io/roytman/llm-d-inference-scheduler/llm-d-router-disagg-sidecar:dev" in 236ms (236ms including waiting). Image size: 15201955 bytes.
+  Normal   Created                 18m                kubelet                  Container created
+  Normal   Started                 18m                kubelet                  Container started
+  Normal   Pulling                 18m                kubelet                  Pulling image "ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer3"
+  Normal   Pulled                  18m                kubelet                  Successfully pulled image "ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer3" in 541ms (541ms including waiting). Image size: 9088454428 bytes.
+  Normal   Created                 18m                kubelet                  Container created
+  Normal   Started                 18m                kubelet                  Container started
+  Warning  Unhealthy               14m (x7 over 17m)  kubelet                  Startup probe failed: Get "http://10.0.14.245:8200/v1/models": dial tcp 10.0.14.245:8200: connect: connection refused
