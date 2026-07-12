@@ -1,0 +1,221 @@
+INFO 07-12 12:36:37 [utils.py:306] 
+INFO 07-12 12:36:37 [utils.py:306]        █     █     █▄   ▄█
+INFO 07-12 12:36:37 [utils.py:306]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.21.0
+INFO 07-12 12:36:37 [utils.py:306]   █▄█▀ █     █     █     █  model   openai/gpt-oss-120b
+INFO 07-12 12:36:37 [utils.py:306]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+INFO 07-12 12:36:37 [utils.py:306] 
+INFO 07-12 12:36:37 [utils.py:240] non-default args: {'model': 'openai/gpt-oss-120b'}
+INFO 07-12 12:36:43 [importing.py:45] Triton is installed but 0 active driver(s) found (expected 1). Disabling Triton to prevent runtime errors.
+INFO 07-12 12:36:43 [importing.py:69] Triton not installed or not compatible; certain GPU-related functions will not be available.
+INFO 07-12 12:36:44 [model.py:568] Resolved architecture: GptOssForCausalLM
+Parse safetensors files:   0%|          | 0/15 [00:00<?, ?it/s]Parse safetensors files: 100%|██████████| 15/15 [00:00<00:00, 252.14it/s]
+INFO 07-12 12:36:44 [model.py:1697] Using max model len 131072
+INFO 07-12 12:36:44 [config.py:170] Overriding max cuda graph capture size to 1024 for performance.
+INFO 07-12 12:36:44 [vllm.py:886] Asynchronous scheduling is enabled.
+INFO 07-12 12:36:44 [kernel.py:212] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+INFO 07-12 12:36:47 [api_server.py:662] Starting vLLM server on http://0.0.0.0:8000
+INFO 07-12 12:36:47 [launcher.py:37] Available routes are:
+INFO 07-12 12:36:47 [launcher.py:46] Route: /openapi.json, Methods: HEAD, GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /docs, Methods: HEAD, GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /docs/oauth2-redirect, Methods: HEAD, GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /redoc, Methods: HEAD, GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /tokenize, Methods: POST
+INFO 07-12 12:36:47 [launcher.py:46] Route: /detokenize, Methods: POST
+INFO 07-12 12:36:47 [launcher.py:46] Route: /load, Methods: GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /version, Methods: GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /health, Methods: GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /metrics, Methods: GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /v1/models, Methods: GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /ping, Methods: GET
+INFO 07-12 12:36:47 [launcher.py:46] Route: /ping, Methods: POST
+INFO 07-12 12:36:47 [launcher.py:46] Route: /invocations, Methods: POST
+INFO 07-12 12:36:47 [launcher.py:46] Route: /v1/chat/completions/render, Methods: POST
+INFO 07-12 12:36:47 [launcher.py:46] Route: /v1/completions/render, Methods: POST
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     10.202.212.51:59236 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:59252 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:59258 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:25882 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:25894 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:25904 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:13898 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:13900 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:13906 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39536 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39538 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39544 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17808 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17822 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17828 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39536 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39540 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39546 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:58748 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:58756 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:58762 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39542 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39548 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39550 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:45578 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:45584 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:45588 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:11648 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:11658 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:11674 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:19712 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:19718 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:19726 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:49996 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:50008 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:50014 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:40268 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:40280 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:40294 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:48460 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:48462 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:48464 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:16678 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:16684 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:16700 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29692 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29702 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29706 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39536 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39538 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39554 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:55048 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:55058 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:55068 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39538 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39540 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39546 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:41074 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:41076 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:41092 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:23326 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:23330 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:23332 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:58230 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:58244 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:58252 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39542 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39544 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39548 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:22622 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:22632 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:22638 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:19686 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:19688 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:19692 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:21988 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:22004 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:22016 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39536 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39538 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39550 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:25816 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:25826 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:25834 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39540 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39546 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39554 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39542 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39544 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39552 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:24056 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:24068 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:24084 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17016 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17032 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17044 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:42114 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:42116 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:42126 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:52852 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:52862 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:52864 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:49462 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:49464 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:49470 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:59514 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:59526 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:59534 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:20874 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:20876 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:20892 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:16578 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:16586 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:16600 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:61218 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:61222 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:61232 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:57840 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:57856 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:57860 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39970 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39980 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39990 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39536 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39538 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39546 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39540 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39542 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39548 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:27974 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:27980 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:27984 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:51090 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:51094 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:51096 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:44900 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:44916 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:44932 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:23108 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:23120 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:23130 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:14510 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:14514 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:14520 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:56734 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:56738 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:56748 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:57750 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:57764 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:57774 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17414 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17416 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17420 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:12720 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:12722 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:12738 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17126 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17132 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:17140 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39536 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39538 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39548 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39540 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39542 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:39552 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:48228 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:48238 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:48252 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29950 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29956 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29968 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:21142 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:21158 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:21162 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:44908 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:44916 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:44924 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:21010 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:21022 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:21036 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29748 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29756 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:29768 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:60460 - "GET /health HTTP/1.1" 200 OK
+INFO:     10.202.212.51:60464 - "GET /health HTTP/1.1" 200 OK

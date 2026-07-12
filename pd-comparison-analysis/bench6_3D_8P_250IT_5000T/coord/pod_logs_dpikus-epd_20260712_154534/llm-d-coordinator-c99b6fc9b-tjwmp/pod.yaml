@@ -1,0 +1,322 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/restartedAt: "2026-07-07T12:40:41+03:00"
+  creationTimestamp: "2026-07-12T12:36:19Z"
+  generateName: llm-d-coordinator-c99b6fc9b-
+  generation: 1
+  labels:
+    app: llm-d-coordinator
+    pod-template-hash: c99b6fc9b
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "214"
+  name: llm-d-coordinator-c99b6fc9b-tjwmp
+  namespace: dpikus-epd
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: llm-d-coordinator-c99b6fc9b
+    uid: 0753a9fb-c4eb-4d5a-b985-bf6f67b4e992
+  resourceVersion: "26091632"
+  uid: 9609991a-b3d1-44d6-8bf4-ac36165d6ddd
+spec:
+  containers:
+  - args:
+    - --config
+    - /etc/coordinator/coordinator.yaml
+    env:
+    - name: HTTP_PROXY
+      value: http://multimedia-downloader:80
+    - name: HTTPS_PROXY
+      value: http://multimedia-downloader:80
+    - name: NO_PROXY
+      value: localhost,127.0.0.1,.svc,.cluster.local
+    - name: GOMAXPROCS
+      value: "4"
+    - name: GOMEMLIMIT
+      value: 7200MiB
+    image: ghcr.io/roytman/coordinator:dev
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: coordinator
+    ports:
+    - containerPort: 8080
+      name: http
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: "4"
+        memory: 8Gi
+      requests:
+        cpu: "4"
+        memory: 8Gi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/coordinator
+      name: config
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wk5hb
+      readOnly: true
+  - args:
+    - --model=openai/gpt-oss-120b
+    - --port=8000
+    command:
+    - vllm
+    - launch
+    - render
+    env:
+    - name: HF_HOME
+      value: /model-cache
+    - name: HF_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: HF_TOKEN
+          name: llm-d-hf-token
+          optional: true
+    image: vllm/vllm-openai-cpu:v0.21.0
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 5
+      httpGet:
+        path: /health
+        port: 8000
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: vllm-render
+    ports:
+    - containerPort: 8000
+      name: render-http
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 1
+      httpGet:
+        path: /health
+        port: 8000
+        scheme: HTTP
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: "4"
+        memory: 16Gi
+      requests:
+        cpu: "2"
+        memory: 8Gi
+    startupProbe:
+      failureThreshold: 600
+      httpGet:
+        path: /health
+        port: 8000
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 1
+      successThreshold: 1
+      timeoutSeconds: 1
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /model-cache
+      name: model-cache
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.config
+      name: vllm-config
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wk5hb
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: g49fc0a
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: llm-d-coordinator-config
+    name: config
+  - name: model-cache
+    persistentVolumeClaim:
+      claimName: llm-d-model-cache
+  - emptyDir: {}
+    name: torch-compile-cache
+  - emptyDir: {}
+    name: vllm-config
+  - name: kube-api-access-wk5hb
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  allocatedResources:
+    cpu: "6"
+    memory: 16Gi
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T12:36:24Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T12:36:19Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T12:36:45Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T12:36:45Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T12:36:19Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - allocatedResources:
+      cpu: "4"
+      memory: 8Gi
+    containerID: containerd://811bcecf345e7ceaf94f020aafdb2394f7b7a57a9404e2299ef6909a264812f4
+    image: ghcr.io/roytman/coordinator:dev
+    imageID: ghcr.io/roytman/coordinator@sha256:e3c34efb5f901258b0377fec646229948822866526cf131069a3d650bf3edc2a
+    lastState: {}
+    name: coordinator
+    ready: true
+    resources:
+      limits:
+        cpu: "4"
+        memory: 8Gi
+      requests:
+        cpu: "4"
+        memory: 8Gi
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-12T12:36:24Z"
+    user:
+      linux:
+        gid: 65532
+        supplementalGroups:
+        - 65532
+        uid: 65532
+    volumeMounts:
+    - mountPath: /etc/coordinator
+      name: config
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wk5hb
+      readOnly: true
+      recursiveReadOnly: Disabled
+  - allocatedResources:
+      cpu: "2"
+      memory: 8Gi
+    containerID: containerd://fdeec4e8849af88ece61e972c75c79b53f63e46f144c95e6277295fc62cdbb41
+    image: docker.io/vllm/vllm-openai-cpu:v0.21.0
+    imageID: docker.io/vllm/vllm-openai-cpu@sha256:fc78b363009faa519a0adb5f1a287a533a922970f4463e73c00053a4aa2136e8
+    lastState: {}
+    name: vllm-render
+    ready: true
+    resources:
+      limits:
+        cpu: "4"
+        memory: 16Gi
+      requests:
+        cpu: "2"
+        memory: 8Gi
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-12T12:36:24Z"
+    user:
+      linux:
+        gid: 0
+        supplementalGroups:
+        - 0
+        uid: 0
+    volumeMounts:
+    - mountPath: /model-cache
+      name: model-cache
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.config
+      name: vllm-config
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wk5hb
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 10.202.221.55
+  hostIPs:
+  - ip: 10.202.221.55
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.12.181
+  podIPs:
+  - ip: 10.0.12.181
+  qosClass: Burstable
+  resources:
+    limits:
+      cpu: "8"
+      memory: 24Gi
+    requests:
+      cpu: 5993m
+      memory: 16Gi
+  startTime: "2026-07-12T12:36:19Z"
