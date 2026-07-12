@@ -1,0 +1,5 @@
+{"level":"info","ts":1783841848.1028433,"logger":"coordinator","caller":"coordinator/main.go:71","msg":"log level set","level":2}
+{"level":"info","ts":1783841848.102887,"logger":"coordinator","caller":"coordinator/main.go:72","msg":"pipeline connectors","kv_connector":"kv-nixl","ec_connector":"ec-nixl"}
+{"level":"info","ts":1783841848.1028943,"logger":"coordinator","caller":"coordinator/main.go:78","msg":"proxy environment","http_proxy_set":true,"https_proxy_set":true,"NO_PROXY":"localhost,127.0.0.1,.svc,.cluster.local"}
+{"level":"info","ts":1783841848.1029127,"logger":"coordinator","caller":"coordinator/main.go:98","msg":"starting coordinator","addr":":8080"}
+{"level":"info","ts":1783841848.1029172,"logger":"coordinator","caller":"coordinator/main.go:99","msg":"graceful shutdown enabled","timeout":25}

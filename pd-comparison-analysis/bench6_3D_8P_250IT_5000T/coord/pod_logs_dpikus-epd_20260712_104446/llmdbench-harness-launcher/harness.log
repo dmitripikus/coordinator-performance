@@ -1,0 +1,24 @@
+2026-07-12 07:37:33,985 - inference_perf.reportgen.base - WARNING - Prometheus Metrics Client is not configured or not of type PrometheusMetricsClient
+2026-07-12 07:37:33,992 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b/summary_lifecycle_metrics.json
+2026-07-12 07:37:33,996 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b/stage_0_lifecycle_metrics.json
+2026-07-12 07:37:34,000 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b/config.yaml
+Harness completed successfully.
+Harness completed: /usr/local/bin/inference-perf-llm-d-benchmark.sh
+Running analysis: /usr/local/bin/inference-perf-analyze_results.sh
+Converting stage_0_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_0_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Results data conversion completed successfully.
+2026-07-12 07:38:37,892 - inference_perf.analysis.analyze - INFO - Analyzing reports in /requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b
+2026-07-12 07:38:37,971 - matplotlib.font_manager - INFO - generated new fontManager
+2026-07-12 07:38:38,074 - inference_perf.analysis.analyze - WARNING - No data available to generate chart: latency_vs_concurrency.png
+2026-07-12 07:38:38,074 - inference_perf.analysis.analyze - WARNING - No data available to generate chart: throughput_vs_concurrency.png
+2026-07-12 07:38:38,253 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b/latency_vs_qps.png
+2026-07-12 07:38:38,600 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b/throughput_vs_qps.png
+2026-07-12 07:38:38,767 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b/throughput_vs_latency.png
+Done. Data is available at "/requests/inference-perf_1783841515_random_1_20_isl_osl_epd-gpt-oss-120b"
