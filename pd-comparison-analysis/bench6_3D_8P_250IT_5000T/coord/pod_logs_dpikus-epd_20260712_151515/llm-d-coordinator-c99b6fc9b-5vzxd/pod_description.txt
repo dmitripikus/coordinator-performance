@@ -1,0 +1,127 @@
+Name:             llm-d-coordinator-c99b6fc9b-5vzxd
+Namespace:        dpikus-epd
+Priority:         0
+Service Account:  default
+Node:             g801c7a/10.202.212.51
+Start Time:       Sun, 12 Jul 2026 14:46:30 +0300
+Labels:           app=llm-d-coordinator
+                  pod-template-hash=c99b6fc9b
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=185
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-07-07T12:40:41+03:00
+Status:           Running
+IP:               10.0.12.113
+IPs:
+  IP:           10.0.12.113
+Controlled By:  ReplicaSet/llm-d-coordinator-c99b6fc9b
+Containers:
+  coordinator:
+    Container ID:  containerd://097bca2dc207a9c002bae829c8df81ca5834a120ea484f1b6f0e287405c202a0
+    Image:         ghcr.io/roytman/coordinator:dev
+    Image ID:      ghcr.io/roytman/coordinator@sha256:e3c34efb5f901258b0377fec646229948822866526cf131069a3d650bf3edc2a
+    Port:          8080/TCP (http)
+    Host Port:     0/TCP (http)
+    Args:
+      --config
+      /etc/coordinator/coordinator.yaml
+    State:          Running
+      Started:      Sun, 12 Jul 2026 14:46:35 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     4
+      memory:  8Gi
+    Requests:
+      cpu:      4
+      memory:   8Gi
+    Liveness:   http-get http://:8080/healthz delay=5s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8080/readyz delay=5s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      HTTP_PROXY:   http://multimedia-downloader:80
+      HTTPS_PROXY:  http://multimedia-downloader:80
+      NO_PROXY:     localhost,127.0.0.1,.svc,.cluster.local
+      GOMAXPROCS:   4
+      GOMEMLIMIT:   7200MiB
+    Mounts:
+      /etc/coordinator from config (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8sqn2 (ro)
+  vllm-render:
+    Container ID:  containerd://1f4cb858d232cb558a2a146dc26aad2e1cdb0c62784aea3d28bc3003c139909a
+    Image:         vllm/vllm-openai-cpu:v0.21.0
+    Image ID:      docker.io/vllm/vllm-openai-cpu@sha256:fc78b363009faa519a0adb5f1a287a533a922970f4463e73c00053a4aa2136e8
+    Port:          8000/TCP (render-http)
+    Host Port:     0/TCP (render-http)
+    Command:
+      vllm
+      launch
+      render
+    Args:
+      --model=openai/gpt-oss-120b
+      --port=8000
+    State:          Running
+      Started:      Sun, 12 Jul 2026 14:46:35 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     4
+      memory:  16Gi
+    Requests:
+      cpu:      2
+      memory:   8Gi
+    Liveness:   http-get http://:8000/health delay=0s timeout=1s period=10s #success=1 #failure=5
+    Readiness:  http-get http://:8000/health delay=0s timeout=1s period=5s #success=1 #failure=1
+    Startup:    http-get http://:8000/health delay=2s timeout=1s period=1s #success=1 #failure=600
+    Environment:
+      HF_HOME:   /model-cache
+      HF_TOKEN:  <set to the key 'HF_TOKEN' in secret 'llm-d-hf-token'>  Optional: true
+    Mounts:
+      /.cache from torch-compile-cache (rw)
+      /.config from vllm-config (rw)
+      /model-cache from model-cache (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8sqn2 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      llm-d-coordinator-config
+    Optional:  false
+  model-cache:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  llm-d-model-cache
+    ReadOnly:   false
+  torch-compile-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  vllm-config:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-8sqn2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                 From                     Message
+  ----     ------                  ----                ----                     -------
+  Normal   Scheduled               29m                 default-scheduler        Successfully assigned dpikus-epd/llm-d-coordinator-c99b6fc9b-5vzxd to g801c7a
+  Normal   SuccessfulAttachVolume  29m                 attachdetach-controller  AttachVolume.Attach succeeded for volume "pvc-4ea25eda-73b9-40bf-80ec-141d81a5511f"
+  Normal   Pulled                  29m                 kubelet                  Container image "ghcr.io/roytman/coordinator:dev" already present on machine and can be accessed by the pod
+  Normal   Created                 29m                 kubelet                  Container created
+  Normal   Started                 29m                 kubelet                  Container started
+  Normal   Pulled                  29m                 kubelet                  Container image "vllm/vllm-openai-cpu:v0.21.0" already present on machine and can be accessed by the pod
+  Normal   Created                 29m                 kubelet                  Container created
+  Normal   Started                 29m                 kubelet                  Container started
+  Warning  Unhealthy               29m (x19 over 29m)  kubelet                  Startup probe failed: Get "http://10.0.12.113:8000/health": dial tcp 10.0.12.113:8000: connect: connection refused
