@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: preserve-request-id
+spec:
+  workloadSelector:
+    labels:
+      gateway.networking.k8s.io/gateway-name: llm-d-inference-gateway
+  configPatches:
+    - applyTo: NETWORK_FILTER
+      match:
+        context: GATEWAY
+        listener:
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+      patch:
+        operation: MERGE
+        value:
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+            preserve_external_request_id: true
+            always_set_request_id_in_response: true
