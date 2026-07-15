@@ -1,0 +1,23 @@
+Log Collection Summary
+======================
+Namespace: dpikus-epd-sglang-bench
+Time Period: Last 30 minutes
+Collection Time: Wed Jul 15 12:32:30 IDT 2026
+Total Pods: 13
+
+Collected Logs:
+---------------
+  epd-nvidia-gpu-vllm-decode-787587f6bd-gs842/modelserver.log: 501 lines,  96K
+  epd-nvidia-gpu-vllm-decode-787587f6bd-45hmc/modelserver.log: 498 lines,  96K
+  epd-nvidia-gpu-vllm-prefill-f95bb5688-9whgp/modelserver.log: 30425 lines, 3.0M
+  coordinator-epd-prefill-epp-595bc577b4-r44jz/epp.log: 742 lines, 164K
+  llm-d-coordinator-5b5fbcb487-q4tpf/vllm-render.log: 540 lines,  36K
+  llm-d-coordinator-5b5fbcb487-q4tpf/coordinator.log: 1130 lines, 244K
+  sglang-bench-dmbhn/bench.log: 283 lines,  36K
+  coordinator-epd-decode-epp-59cf4cf9c8-kcmj4/epp.log: 741 lines, 164K
+  epd-nvidia-gpu-vllm-decode-787587f6bd-6jd8g/modelserver.log: 485 lines,  92K
+  llmdbench-harness-launcher/harness.log: 140 lines,  16K
+  llm-d-inference-gateway-istio-7c9657dd88-cmjls/istio-proxy.log: 1 lines, 4.0K
+  epd-nvidia-gpu-vllm-prefill-f95bb5688-lng4g/modelserver.log: 30699 lines, 3.0M
+  epd-nvidia-gpu-vllm-prefill-f95bb5688-468vq/modelserver.log: 29822 lines, 3.2M
+  coordinator-epd-encode-epp-6749b4946-7szls/epp.log: 0 lines,   0B

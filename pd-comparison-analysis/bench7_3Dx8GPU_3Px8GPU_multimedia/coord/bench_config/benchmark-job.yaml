@@ -16,7 +16,7 @@ data:
     IMAGE_COUNT=3
     IMAGE_RESOLUTION=1080p
     RANDOM_INPUT_LEN=300
-    RANDOM_OUTPUT_LEN=6000
+    RANDOM_OUTPUT_LEN=2000
 
     # echo "[$(date)] Waiting for http://${HOST}:${PORT}/v1/models ..."
     # for i in $(seq 1 40); do
