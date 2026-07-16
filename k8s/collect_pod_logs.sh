@@ -153,6 +153,23 @@ for POD in $PODS; do
     echo ""
 done
 
+# Collect ConfigMaps with name suffix "-epp"
+print_section "Collecting ConfigMaps with suffix '-epp'"
+EPP_CONFIGMAPS=$(kubectl get configmaps -n "$NAMESPACE" -o jsonpath='{.items[*].metadata.name}' | tr ' ' '\n' | grep -- '-epp$' || true)
+
+if [ -z "$EPP_CONFIGMAPS" ]; then
+    print_warning "No ConfigMaps with suffix '-epp' found in namespace '$NAMESPACE'"
+else
+    CM_DIR="$OUTPUT_DIR/epp-configs"
+    mkdir -p "$CM_DIR"
+    for CM in $EPP_CONFIGMAPS; do
+        print_info "  Collecting ConfigMap: $CM"
+        kubectl get configmap "$CM" -n "$NAMESPACE" -o yaml > "$CM_DIR/${CM}.yaml" 2>/dev/null || \
+            print_warning "    ✗ Failed to get ConfigMap '$CM'"
+    done
+fi
+echo ""
+
 # Create summary file
 SUMMARY_FILE="$OUTPUT_DIR/collection_summary.txt"
 {
