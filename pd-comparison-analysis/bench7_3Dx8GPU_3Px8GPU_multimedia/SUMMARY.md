@@ -95,13 +95,13 @@ rate 30: 14:17:40-14:19:40, rate 40: 14:19:40-14:21:55):
 
 | Wall clock | prefill-ntwck | prefill-v24mx | prefill-wr5cf |
 |---|---:|---:|---:|
-| 14:15:26 (rate 10) | , | , | Running=1 |
-| 14:16:41 (rate 20) | Running=1 | , | , |
-| 14:18:04 (rate 30) | , | Running=1 | , |
-| 14:18:11 (rate 30) | Running=2, Waiting=1 | , | , |
-| 14:18:14 (rate 30) | , | Running=1 | , |
-| 14:20:14 (rate 40) | , | Running=3 | , |
-| 14:20:24 (rate 40) | , | Running=1 | , |
+| 14:15:26 (rate 10) | - | - | Running=1 |
+| 14:16:41 (rate 20) | Running=1 | - | - |
+| 14:18:04 (rate 30) | - | Running=1 | - |
+| 14:18:11 (rate 30) | Running=2, Waiting=1 | - | - |
+| 14:18:14 (rate 30) | - | Running=1 | - |
+| 14:20:14 (rate 40) | - | Running=3 | - |
+| 14:20:24 (rate 40) | - | Running=1 | - |
 
 (all other sampled timestamps for all 3 pods read `Running=0, Waiting=0`, omitted for
 brevity.) Two things stand out against the coordinator's table above:
