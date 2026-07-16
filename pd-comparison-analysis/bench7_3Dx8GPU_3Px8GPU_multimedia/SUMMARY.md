@@ -24,6 +24,33 @@ one GPU at once; the sidecar's routing-proxy keeps every prefill pod under 3 con
 requests throughout. The coordinator's own dispatch logic is not the delay, it hands off
 to vLLM in under a millisecond every time.
 
+**The prefill vLLM pods themselves are also apples-to-apples**, confirmed by diffing
+`pod_description.txt` for a representative prefill pod on each side (both are
+ReplicaSet-templated, so this represents all 3 replicas per arm). Identical: container
+image (same digest, `ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer4`),
+resources (`cpu: 8`, `memory: 256Gi`, `nvidia.com/gpu: 8`, `rdma/ib: 1`, requests=limits,
+`QoS: Guaranteed`), and the core vLLM args (`--tensor-parallel-size=8`, `--block-size=128`,
+`--kv-transfer-config {"kv_connector":"NixlConnector","kv_role":"kv_both"}`,
+`--no-disable-hybrid-kv-cache-manager`, `--gpu-memory-utilization=0.9`,
+`--load-format=runai_streamer`, model `Qwen/Qwen3-VL-235B-A22B-Instruct`). Two differences
+found, neither performance-relevant:
+- Coordinator's prefill additionally passes
+  `--ec-transfer-config {"ec_connector": "ECCPUConnector", "ec_role": "ec_consumer"}`
+  (encoder-cache transfer wiring). No encode-only vLLM pod exists in either pod list, and
+  we already confirmed `coordinator-epd-encode-epp`'s log is empty and the coordinator's own
+  pipeline never logs an encode step, so this looks like dormant chart wiring, not something
+  actually exercised.
+- Sidecar's prefill additionally passes
+  `--disable-access-log-for-endpoints=/health,/metrics,/v1/models`; coordinator's doesn't.
+  This is a pure logging-verbosity setting, and it fully explains why coordinator's prefill
+  `modelserver.log` ran ~30,000 lines (almost entirely repeated `GET /metrics` access-log
+  entries) versus sidecar's ~350-390 lines.
+- Both prefill pods also carry a stale `llm-d.ai/model` label left over from whatever model
+  the Helm chart was originally templated for (`Qwen3-VL-2B-Instruct` on coordinator's side,
+  `gpt-oss-120b` on sidecar's), disagreeing with the actual served model. The real `--model`
+  argument passed to `vllm serve` agrees on both sides, this is metadata drift, not an actual
+  model mismatch.
+
 ## 1. Serving results by request rate (n=10/20/30/40, 0 failures each)
 
 | Req rate | Metric | Coordinator (EPD) | Sidecar (PD) | Sidecar advantage |
