@@ -1,0 +1,12 @@
+2026-07-16T20:23:17.571026Z	info	monitoring	The default Prometheus naming translation strategy is planned to be changed from otlptranslator.NoUTF8EscapingWithSuffixes to otlptranslator.UnderscoreEscapingWithSuffixes in a future release. Add prometheus.WithTranslationStrategy(otlptranslator.NoUTF8EscapingWithSuffixes) to preserve the existing behavior, or prometheus.WithTranslationStrategy(otlptranslator.UnderscoreEscapingWithSuffixes) to opt into the future default behavior.
+2026-07-16T20:23:17.571786Z	info	xdsproxy	Initializing with upstream address "istiod.istio-system.svc:15012" and cluster "Kubernetes"
+2026-07-16T20:23:17.571790Z	info	sds	Starting SDS grpc server
+2026-07-16T20:23:17.571822Z	info	sds	Starting SDS server for workload certificates, will listen on "var/run/secrets/workload-spiffe-uds/socket"
+2026-07-16T20:23:17.598642Z	info	cache	generated new workload certificate	resourceName=default latency=26.844609ms ttl=23h59m59.401360009s
+2026-07-16T20:23:17.598804Z	info	cache	Root cert has changed, start rotating root cert
+2026-07-16T20:23:17.598827Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.401172732s
+2026-07-16T20:23:17.622940Z	info	xdsproxy	connected to delta upstream XDS server: istiod.istio-system.svc:15012	id=1
+2026-07-16T20:23:17.660051Z	info	ads	ADS: new connection for node:1
+2026-07-16T20:23:17.660121Z	info	cache	returned workload certificate from cache	ttl=23h59m59.33988183s
+2026-07-16T20:23:17.660204Z	info	ads	ADS: new connection for node:2
+2026-07-16T20:23:17.660282Z	info	cache	returned workload trust anchor from cache	ttl=23h59m59.339719333s
