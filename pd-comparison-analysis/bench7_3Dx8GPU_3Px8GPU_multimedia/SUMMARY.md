@@ -88,14 +88,41 @@ never receive a single request for the entire sweep*. This is not a subtle imbal
 one-pod-at-a-time routing, and which pod gets picked changes between sweeps (not a fixed
 "always pod X" bug either).
 
-By contrast, the sidecar's `routing-proxy` keeps **all 3** prefill pods lightly active in
-overlapping windows throughout the run (peaks of 1, 3, and 2 concurrent requests
-respectively, occurring at the same wall-clock times), it genuinely spreads each sweep's
-concurrent requests across all replicas instead of concentrating them.
+By contrast, the sidecar's routing keeps **all 3** prefill pods lightly active, and never
+lets any one of them accumulate a backlog. The full `Running`/`Waiting` timeline for all 3
+sidecar prefill pods (sweeps: rate 10: 14:15:01-14:16:10, rate 20: 14:16:10-14:17:40,
+rate 30: 14:17:40-14:19:40, rate 40: 14:19:40-14:21:55):
 
-**Step 3, confirmed root cause from the EPP's own scorer config and source.** The prefill
-EPP's ConfigMap (`epd-prefill-epp`, key `epd-plugins.yaml`, the file actually referenced by
-`--config-file` in the pod spec) wires up 3 scorers:
+| Wall clock | prefill-ntwck | prefill-v24mx | prefill-wr5cf |
+|---|---:|---:|---:|
+| 14:15:26 (rate 10) | , | , | Running=1 |
+| 14:16:41 (rate 20) | Running=1 | , | , |
+| 14:18:04 (rate 30) | , | Running=1 | , |
+| 14:18:11 (rate 30) | Running=2, Waiting=1 | , | , |
+| 14:18:14 (rate 30) | , | Running=1 | , |
+| 14:20:14 (rate 40) | , | Running=3 | , |
+| 14:20:24 (rate 40) | , | Running=1 | , |
+
+(all other sampled timestamps for all 3 pods read `Running=0, Waiting=0`, omitted for
+brevity.) Two things stand out against the coordinator's table above:
+
+- **No pod ever exceeds `Running=3`.** The busiest single moment across the entire run,
+  anywhere, on any pod, is 3 concurrent requests, versus the coordinator's 39.
+- **Different pods are active within the *same* sweep, at overlapping times.** During rate
+  30 specifically, prefill-v24mx shows `Running=1` at 14:18:04 and 14:18:14 while
+  prefill-ntwck shows `Running=2` at 14:18:11, i.e. two different GPUs are handling separate
+  concurrent requests from the same sweep within the same 10-second window. That's the
+  opposite of the coordinator's pattern, where the two "other" pods sat at `Running=0` for
+  the entire duration of every sweep.
+
+Because concurrency never builds past single digits on the sidecar side, this data is
+inherently sparse (vLLM's own periodic logger has little to report when there's nothing
+running), unlike the coordinator's dense, continuously-climbing 0→39 ramps. That sparsity is
+itself part of the finding: there's no backlog on any one pod for the logger to describe.
+
+**Step 3, a plausible but not fully confirmed mechanism from the EPP's own scorer config
+and source.** The prefill EPP's ConfigMap (`epd-prefill-epp`, key `epd-plugins.yaml`, the
+file actually referenced by `--config-file` in the pod spec) wires up 3 scorers:
 
 ```yaml
 schedulingProfiles:
@@ -125,27 +152,44 @@ Per the plugin implementations in [llm-d/llm-d-router](https://github.com/llm-d/
 - **`prefix-cache-scorer`**, weighted **2x** the other two, scores purely on cached-prefix
   match ratio/length against a pod's previously-served prompts, with **no load-awareness
   whatsoever** by design (its own README documents no queue-depth or active-request input).
-  Any pod that already holds a matching cached prefix scores near 1.0 for this component
-  regardless of how many requests it is currently running.
+  This is where the analysis gets uncertain: the benchmark's images are randomly generated
+  per request and vision tokens dominate the sequence (~4700 of ~4900 tokens), so if
+  prefix-block matching works the usual way (longest matching prefix of fixed-size token
+  blocks from the start of the sequence), only the ~17-20 token shared chat-template
+  boilerplate could ever match, a tiny fraction of total blocks. At that magnitude, even at
+  weight 2, this scorer's contribution to the total score would be close to negligible, not
+  the near-1.0, dominant signal I first described. I don't have visibility into whether the
+  "approximate prefix cache" data producer behind this scorer does something coarser than
+  strict per-block hashing that would change this, so I can't rule the mechanism in or out
+  with confidence from the config and repo docs alone.
 
-Combined, this means the two "spread the load" scorers are effectively blind under this
-workload (one is mathematically tied, the other moves only slightly), while the one scorer
-that actually varies, prefix-cache affinity, carries double weight and rewards *whichever
-pod already served similar content*, irrespective of its current load. The benchmark
-issues each sweep with a fixed `seed=42` and a shared chat-template/system-prompt overhead
-across all requests, so once one pod wins the initial (tied, randomly broken per the EPP's
-own selection rule) pick for a sweep, every subsequent request in that sweep matches its
-cached prefix best, keeps scoring it highest, and keeps getting routed there, even as its
-`Running` count climbs to 30-39. That's a positive feedback loop: prefix affinity keeps
-picking the same "warm" pod harder than the (blind) load scorers can push back, which is
-exactly the one-pod-per-sweep concentration in the table above. The pod "wins" a different
-random draw each sweep because the tracked prefix-cache entries age out during the ~1-3
-minute gaps between sweeps, resetting the tie for the next sweep's first request.
+**Step 4, ruling out a simpler explanation, and why the sticky-pod pattern still needs an
+affinity-type driver.** Before trusting a scoring explanation at all, I checked whether the
+coordinator's prefill EPP simply lost visibility into 2 of the 3 pods during a sweep, a much
+more mundane bug than scorer-weight interactions. It didn't: the prefill EPP's own
+pod-reconciler log shows all 3 prefill pods being continuously re-registered every ~30-90s
+for the *entire* run, including during every sweep, with no pod ever dropping from the
+candidate list. So the coordinator always had all 3 replicas available, it just kept
+choosing one. Separately, `kv-cache-utilization-scorer` cannot be the source of the
+stickiness either: its formula (`1 - kvUsage`) means a pod's score *drops* as it gets
+busier, so on its own it's self-correcting, it should push traffic away from an
+increasingly loaded pod, not toward it. Something that specifically rewards a pod *because*
+it was already chosen is needed to produce a feedback loop, and prefix/affinity-style
+scoring is the only plugin type in this config with that shape, whether or not its actual
+magnitude here is as large as originally described above.
 
-vLLM's prefill step is compute-bound on the vision encoder pass over images, so funneling
-20-39 concurrent multimodal requests onto one GPU (while 2 identical GPUs sit unused)
-directly produces the 34.5s mean / 139.5s max prefill time measured above. No OOMs,
-restarts, or errors in either run, this is a scoring-weight interaction, not a crash.
+**Net assessment:** I can point to a config-level candidate mechanism (prefix-cache-scorer
+being the only signal capable of producing sticky, load-blind selection) and a confirmed
+ratio difference between the two configs, but I cannot confirm from static YAML and coarse
+(~10s) vLLM metrics alone that this fully explains the observed magnitude of the gap, given
+the random-image-content concern above. Getting a definitive answer would need the EPP's
+own per-request debug-level score breakdown, which neither run captured at `--v=2`.
+
+vLLM's prefill step is compute-bound on the vision encoder pass over images regardless of
+what's driving the pod selection, so funneling 20-39 concurrent multimodal requests onto one
+GPU (while 2 identical GPUs sit unused) directly produces the 34.5s mean / 139.5s max
+prefill time measured above. No OOMs, restarts, or errors in either run, whatever is
+driving the pileup, it is a routing/scoring effect, not a crash.
 
 ## 3. Bottom line
 
@@ -161,15 +205,18 @@ multi-second-to-two-minute prefill waits that dominate TTFT. TPOT is correspondi
 better on the coordinator, but it's a minor decode-side effect next to this prefill-side
 concentration.
 
-**Confirmed cause (§2, step 3):** the prefill EPP's `epd-plugins.yaml` scoring profile
-weights `prefix-cache-scorer` at 2x `queue-scorer` and `kv-cache-utilization-scorer`
-combined. Under this workload, the two load-aware scorers are effectively blind
-(`queue-scorer` ties at a neutral 1.0 because vLLM's `Waiting` never moves off 0;
-`kv-cache-utilization-scorer` barely moves because prefill KV usage stays under 12%), while
-`prefix-cache-scorer` has no load-awareness by design and keeps rewarding whichever pod
-already cached a similar prompt from earlier in the same sweep. That combination is what
-funnels an entire sweep onto one GPU: a plugin-weighting choice, not a coordinator
-control-plane bug or a vLLM/GPU issue.
+**Most likely cause, not fully confirmed (§2, steps 3-4):** the prefill EPP's
+`epd-plugins.yaml` scoring profile weights `prefix-cache-scorer` at 2x `queue-scorer` and
+`kv-cache-utilization-scorer` combined. Under this workload, the two load-aware scorers are
+effectively blind (`queue-scorer` ties at a neutral 1.0 because vLLM's `Waiting` never moves
+off 0; `kv-cache-utilization-scorer` barely moves because prefill KV usage stays under 12%
+and is self-correcting, not self-reinforcing, in any case). `prefix-cache-scorer` is the only
+plugin in this config with the right shape to produce sticky, load-blind selection, and a
+pod-registration check ruled out a simpler "EPP lost visibility into 2 of 3 pods" bug. But
+because this benchmark's images are random per request, prefix-cache-scorer's real
+match-ratio magnitude here is genuinely unclear from config and coarse metrics alone, so this
+is the best-supported hypothesis rather than a confirmed root cause. Either way, it's a
+routing/scoring effect, not a coordinator control-plane bug or a vLLM/GPU issue.
 
 **Recommended fix** (not implemented/tested here): for this pool, drop `queue-scorer` and
 `prefix-cache-scorer` entirely rather than just re-weighting them, and make
