@@ -40,8 +40,8 @@ kubectl exec -n $NS $POD -c istio-proxy -- \
   pilot-agent request POST 'logging?http=info'
 
 # Routing decisions
-kubectl exec -n $NS $POD -c istio-proxy -- \
-  pilot-agent request POST 'logging?router=debug'
+#kubectl exec -n $NS $POD -c istio-proxy -- \
+#  pilot-agent request POST 'logging?router=debug'
 
 # ext-proc / EPP path
 kubectl exec -n $NS $POD -c istio-proxy -- \
@@ -49,6 +49,42 @@ kubectl exec -n $NS $POD -c istio-proxy -- \
 ```
 
 Handy components: `http`, `router`, `ext_proc`, `connection`, `upstream`, `filter`.
+
+### Recommended recipe — per-request tracing without the firehose
+
+`level=debug`/`trace` on every component is what generated ~35k lines in
+under 4 minutes during a 120-request benchmark capture — high enough
+volume that the log rotates past the real traffic within about a minute,
+even when collection runs just a few minutes later. Everything actually
+useful for reconstructing per-request timing (`new stream`, `Sending a
+body chunk` SSE token timestamps, `Codec completed encoding stream`,
+routing-decision detail) comes from the `http` and `ext_proc` components at
+`debug` — never needed `trace`. Set just those two, leave the rest at
+`warn`:
+
+```bash
+kubectl exec -n $NS $POD -c istio-proxy -- \
+  pilot-agent request POST 'logging?http=debug&ext_proc=debug&connection=warn&http2=warn&pool=warn&upstream=warn&router=warn&main=warn'
+```
+
+or with `istioctl`:
+
+```bash
+istioctl proxy-config log $POD.$NS \
+  --level http:debug,ext_proc:debug,connection:warn,http2:warn,pool:warn,upstream:warn,router:warn,main:warn
+```
+
+| component | what it logs | level |
+|---|---|---|
+| `http` | `new stream`, `request headers complete`, `Codec completed encoding stream` | `debug` |
+| `ext_proc` | SSE chunk timestamps, routing decision + destination endpoint | `debug` |
+| `connection` | TCP connect/close churn, health-probe noise | `warn` |
+| `http2` | frame-level chatter | `warn` |
+| `pool`, `upstream`, `router`, `main` | internal bookkeeping, not request-scoped | `warn` |
+
+This cuts volume by roughly an order of magnitude versus blanket `debug`,
+while keeping enough to compute TTFT and per-hop timing from the raw log
+after the fact.
 
 ### Restore
 
