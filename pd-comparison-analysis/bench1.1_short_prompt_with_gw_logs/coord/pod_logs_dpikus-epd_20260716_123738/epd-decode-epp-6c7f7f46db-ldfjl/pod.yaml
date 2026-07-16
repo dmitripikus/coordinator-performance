@@ -1,0 +1,221 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2026-07-12T11:22:58Z"
+  generateName: epd-decode-epp-6c7f7f46db-
+  generation: 1
+  labels:
+    llm-d-router-gateway: epd-decode-epp
+    llm-d.ai/igw-mode: llm-d-router-gateway
+    pod-template-hash: 6c7f7f46db
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "214"
+  name: epd-decode-epp-6c7f7f46db-ldfjl
+  namespace: dpikus-epd
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: epd-decode-epp-6c7f7f46db
+    uid: cb935d87-e91b-4bf2-8e6d-84af98a3106c
+  resourceVersion: "26040966"
+  uid: 60a6c72a-f877-4fcb-89f2-1907a396fec5
+spec:
+  containers:
+  - args:
+    - --pool-name
+    - epd-decode
+    - --pool-namespace
+    - dpikus-epd
+    - --pool-group
+    - inference.networking.k8s.io
+    - --zap-encoder
+    - json
+    - --config-file
+    - /config/epd-plugins.yaml
+    - --grpc-health-port
+    - "9003"
+    - --v=2
+    - --tracing=false
+    env:
+    - name: NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    image: ghcr.io/roytman/llm-d-router-endpoint-picker:dev1
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      grpc:
+        port: 9003
+        service: inference-extension
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: epp
+    ports:
+    - containerPort: 9002
+      name: grpc
+      protocol: TCP
+    - containerPort: 9003
+      name: grpc-health
+      protocol: TCP
+    - containerPort: 9090
+      name: metrics
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      grpc:
+        port: 9003
+        service: inference-extension
+      periodSeconds: 2
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: "4"
+        memory: 16Gi
+      requests:
+        cpu: "4"
+        memory: 16Gi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config
+      name: plugins-config-volume
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-gtfjp
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: g49fc0a
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: epd-decode-epp
+  serviceAccountName: epd-decode-epp
+  terminationGracePeriodSeconds: 130
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: epd-decode-epp
+    name: plugins-config-volume
+  - name: kube-api-access-gtfjp
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  allocatedResources:
+    cpu: "4"
+    memory: 16Gi
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T11:22:59Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T11:22:58Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T11:23:00Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T11:23:00Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-12T11:22:58Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - allocatedResources:
+      cpu: "4"
+      memory: 16Gi
+    containerID: containerd://ccbc900c6929a2eb42a2f5891ecfac95307f83363ae7ccda6b5a6290896c3866
+    image: ghcr.io/roytman/llm-d-router-endpoint-picker:dev1
+    imageID: ghcr.io/roytman/llm-d-router-endpoint-picker@sha256:88e7a80ac2de650529686bdfcc619ef30e9df400c30f9805a95c1e741d63c74c
+    lastState: {}
+    name: epp
+    ready: true
+    resources:
+      limits:
+        cpu: "4"
+        memory: 16Gi
+      requests:
+        cpu: "4"
+        memory: 16Gi
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-12T11:22:59Z"
+    user:
+      linux:
+        gid: 65532
+        supplementalGroups:
+        - 65532
+        uid: 65532
+    volumeMounts:
+    - mountPath: /config
+      name: plugins-config-volume
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-gtfjp
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 10.202.221.55
+  hostIPs:
+  - ip: 10.202.221.55
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.12.205
+  podIPs:
+  - ip: 10.0.12.205
+  qosClass: Guaranteed
+  resources:
+    limits:
+      cpu: "4"
+      memory: 16Gi
+    requests:
+      cpu: 3996m
+      memory: 16Gi
+  startTime: "2026-07-12T11:22:58Z"

@@ -1,0 +1,1236 @@
+2026-07-16T09:30:23.988416Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:781	[Tags: "ConnectionId":"646"] remote close	thread=33
+2026-07-16T09:30:23.988443Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"646"] closing socket: 0	thread=33
+2026-07-16T09:30:23.988524Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"646"] Not closing conn, socket is not open	thread=33
+2026-07-16T09:30:24.106453Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:781	[Tags: "ConnectionId":"647"] remote close	thread=33
+2026-07-16T09:30:24.106460Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"647"] closing socket: 0	thread=33
+2026-07-16T09:30:24.106504Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"647"] Not closing conn, socket is not open	thread=33
+2026-07-16T09:30:34.801756Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"653"] new stream	thread=32
+2026-07-16T09:30:34.801836Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"653","StreamId":"16947025874358439356"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=32
+2026-07-16T09:30:34.801845Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"653","StreamId":"16947025874358439356"] request end stream timestamp recorded	thread=32
+2026-07-16T09:30:34.801866Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"653"] current connecting state: false	thread=32
+2026-07-16T09:30:34.802175Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"653","StreamId":"16947025874358439356"] closing connection due to connection close header	thread=32
+2026-07-16T09:30:34.802180Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"653","StreamId":"16947025874358439356"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:30:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=32
+2026-07-16T09:30:34.802187Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"653","StreamId":"16947025874358439356"] Codec completed encoding stream.	thread=32
+2026-07-16T09:30:34.802196Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"653"] closing data_to_write=143 type=0	thread=32
+2026-07-16T09:30:34.802200Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"653"] setting delayed close timer with timeout 1000 ms	thread=32
+2026-07-16T09:30:34.802249Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"653"] write flush complete	thread=32
+2026-07-16T09:30:34.802252Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"653"] closing socket: 1	thread=32
+2026-07-16T09:30:34.802272Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"653"] Not closing conn, socket is not open	thread=32
+2026-07-16T09:30:49.107862Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:781	[Tags: "ConnectionId":"639"] remote close	thread=27
+2026-07-16T09:30:49.107886Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"639"] closing socket: 0	thread=27
+2026-07-16T09:30:49.107990Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"639"] Not closing conn, socket is not open	thread=27
+2026-07-16T09:30:49.801373Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"654"] new stream	thread=36
+2026-07-16T09:30:49.801448Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"654","StreamId":"18356002879856548277"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=36
+2026-07-16T09:30:49.801457Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"654","StreamId":"18356002879856548277"] request end stream timestamp recorded	thread=36
+2026-07-16T09:30:49.801480Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"654"] current connecting state: false	thread=36
+2026-07-16T09:30:49.801800Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"654","StreamId":"18356002879856548277"] closing connection due to connection close header	thread=36
+2026-07-16T09:30:49.801807Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"654","StreamId":"18356002879856548277"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:30:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=36
+2026-07-16T09:30:49.801813Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"654","StreamId":"18356002879856548277"] Codec completed encoding stream.	thread=36
+2026-07-16T09:30:49.801823Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"654"] closing data_to_write=143 type=0	thread=36
+2026-07-16T09:30:49.801827Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"654"] setting delayed close timer with timeout 1000 ms	thread=36
+2026-07-16T09:30:49.801874Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"654"] write flush complete	thread=36
+2026-07-16T09:30:49.801876Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"654"] closing socket: 1	thread=36
+2026-07-16T09:30:49.801897Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"654"] Not closing conn, socket is not open	thread=36
+2026-07-16T09:31:04.801949Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"655"] new stream	thread=38
+2026-07-16T09:31:04.802030Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"655","StreamId":"8714253731155361044"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:31:04.802039Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"655","StreamId":"8714253731155361044"] request end stream timestamp recorded	thread=38
+2026-07-16T09:31:04.802059Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"655"] current connecting state: false	thread=38
+2026-07-16T09:31:04.802372Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"655","StreamId":"8714253731155361044"] closing connection due to connection close header	thread=38
+2026-07-16T09:31:04.802377Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"655","StreamId":"8714253731155361044"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:31:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:31:04.802383Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"655","StreamId":"8714253731155361044"] Codec completed encoding stream.	thread=38
+2026-07-16T09:31:04.802394Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"655"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:31:04.802397Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"655"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:31:04.802445Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"655"] write flush complete	thread=38
+2026-07-16T09:31:04.802448Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"655"] closing socket: 1	thread=38
+2026-07-16T09:31:04.802467Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"655"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:31:11.941452Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:31:11.941533Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"954482766147693575"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:31:11.941540Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"954482766147693575"] request end stream timestamp recorded	thread=36
+2026-07-16T09:31:11.941562Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:31:11.941742Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:31:11.941789Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"10855786131841120548"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', '530ce5b1-81f3-4553-81b0-c20a3194cf18'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:31:11.941794Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"10855786131841120548"] request end stream timestamp recorded	thread=20
+2026-07-16T09:31:11.941809Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:31:11.942547Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"10855786131841120548"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:31:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:31:11.942564Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"10855786131841120548"] Codec completed encoding stream.	thread=20
+2026-07-16T09:31:11.942693Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"954482766147693575"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:31:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '0'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:31:11.943477Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"954482766147693575"] Codec completed encoding stream.	thread=36
+2026-07-16T09:31:19.801704Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"656"] new stream	thread=30
+2026-07-16T09:31:19.801770Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"656","StreamId":"2934293633383374908"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=30
+2026-07-16T09:31:19.801799Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"656","StreamId":"2934293633383374908"] request end stream timestamp recorded	thread=30
+2026-07-16T09:31:19.801824Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"656"] current connecting state: false	thread=30
+2026-07-16T09:31:19.802137Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"656","StreamId":"2934293633383374908"] closing connection due to connection close header	thread=30
+2026-07-16T09:31:19.802142Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"656","StreamId":"2934293633383374908"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:31:19 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=30
+2026-07-16T09:31:19.802148Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"656","StreamId":"2934293633383374908"] Codec completed encoding stream.	thread=30
+2026-07-16T09:31:19.802158Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"656"] closing data_to_write=143 type=0	thread=30
+2026-07-16T09:31:19.802162Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"656"] setting delayed close timer with timeout 1000 ms	thread=30
+2026-07-16T09:31:19.802243Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"656"] write flush complete	thread=30
+2026-07-16T09:31:19.802247Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"656"] closing socket: 1	thread=30
+2026-07-16T09:31:19.802270Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"656"] Not closing conn, socket is not open	thread=30
+2026-07-16T09:31:34.801273Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"657"] new stream	thread=26
+2026-07-16T09:31:34.801340Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"657","StreamId":"8717017458158205193"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=26
+2026-07-16T09:31:34.801348Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"657","StreamId":"8717017458158205193"] request end stream timestamp recorded	thread=26
+2026-07-16T09:31:34.801369Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"657"] current connecting state: false	thread=26
+2026-07-16T09:31:34.802045Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"657","StreamId":"8717017458158205193"] closing connection due to connection close header	thread=26
+2026-07-16T09:31:34.802052Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"657","StreamId":"8717017458158205193"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:31:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=26
+2026-07-16T09:31:34.802058Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"657","StreamId":"8717017458158205193"] Codec completed encoding stream.	thread=26
+2026-07-16T09:31:34.802067Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"657"] closing data_to_write=143 type=0	thread=26
+2026-07-16T09:31:34.802070Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"657"] setting delayed close timer with timeout 1000 ms	thread=26
+2026-07-16T09:31:34.802114Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"657"] write flush complete	thread=26
+2026-07-16T09:31:34.802117Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"657"] closing socket: 1	thread=26
+2026-07-16T09:31:34.802136Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"657"] Not closing conn, socket is not open	thread=26
+2026-07-16T09:31:49.107689Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:781	[Tags: "ConnectionId":"624"] remote close	thread=33
+2026-07-16T09:31:49.107712Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"624"] closing socket: 0	thread=33
+2026-07-16T09:31:49.107789Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"624"] Not closing conn, socket is not open	thread=33
+2026-07-16T09:31:49.801355Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"658"] new stream	thread=26
+2026-07-16T09:31:49.801423Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"658","StreamId":"5654931435048272626"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=26
+2026-07-16T09:31:49.801433Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"658","StreamId":"5654931435048272626"] request end stream timestamp recorded	thread=26
+2026-07-16T09:31:49.801455Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"658"] current connecting state: false	thread=26
+2026-07-16T09:31:49.801762Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"658","StreamId":"5654931435048272626"] closing connection due to connection close header	thread=26
+2026-07-16T09:31:49.801767Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"658","StreamId":"5654931435048272626"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:31:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=26
+2026-07-16T09:31:49.801790Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"658","StreamId":"5654931435048272626"] Codec completed encoding stream.	thread=26
+2026-07-16T09:31:49.801800Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"658"] closing data_to_write=143 type=0	thread=26
+2026-07-16T09:31:49.801803Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"658"] setting delayed close timer with timeout 1000 ms	thread=26
+2026-07-16T09:31:49.801929Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"658"] write flush complete	thread=26
+2026-07-16T09:31:49.801958Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"658"] closing socket: 1	thread=26
+2026-07-16T09:31:49.802057Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"658"] Not closing conn, socket is not open	thread=26
+2026-07-16T09:32:04.802012Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"659"] new stream	thread=36
+2026-07-16T09:32:04.802078Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"659","StreamId":"8372101256054961412"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=36
+2026-07-16T09:32:04.802085Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"659","StreamId":"8372101256054961412"] request end stream timestamp recorded	thread=36
+2026-07-16T09:32:04.802107Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"659"] current connecting state: false	thread=36
+2026-07-16T09:32:04.802433Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"659","StreamId":"8372101256054961412"] closing connection due to connection close header	thread=36
+2026-07-16T09:32:04.802438Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"659","StreamId":"8372101256054961412"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:32:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=36
+2026-07-16T09:32:04.802444Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"659","StreamId":"8372101256054961412"] Codec completed encoding stream.	thread=36
+2026-07-16T09:32:04.802454Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"659"] closing data_to_write=143 type=0	thread=36
+2026-07-16T09:32:04.802457Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"659"] setting delayed close timer with timeout 1000 ms	thread=36
+2026-07-16T09:32:04.802505Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"659"] write flush complete	thread=36
+2026-07-16T09:32:04.802508Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"659"] closing socket: 1	thread=36
+2026-07-16T09:32:04.802528Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"659"] Not closing conn, socket is not open	thread=36
+2026-07-16T09:32:11.940959Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:32:11.941039Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"3583452001833234059"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:32:11.941046Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"3583452001833234059"] request end stream timestamp recorded	thread=36
+2026-07-16T09:32:11.941069Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:32:11.941252Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:32:11.941287Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"4715008545699604871"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', '4ef9880a-c849-46fb-8964-9b2c7c83b53c'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:32:11.941292Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"4715008545699604871"] request end stream timestamp recorded	thread=20
+2026-07-16T09:32:11.941307Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:32:11.942061Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"4715008545699604871"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:32:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:32:11.942078Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"4715008545699604871"] Codec completed encoding stream.	thread=20
+2026-07-16T09:32:11.942210Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"3583452001833234059"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:32:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '0'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:32:11.943008Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"3583452001833234059"] Codec completed encoding stream.	thread=36
+2026-07-16T09:32:19.801865Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"660"] new stream	thread=38
+2026-07-16T09:32:19.801931Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"660","StreamId":"2488847861410415616"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:32:19.801939Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"660","StreamId":"2488847861410415616"] request end stream timestamp recorded	thread=38
+2026-07-16T09:32:19.801961Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"660"] current connecting state: false	thread=38
+2026-07-16T09:32:19.802288Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"660","StreamId":"2488847861410415616"] closing connection due to connection close header	thread=38
+2026-07-16T09:32:19.802300Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"660","StreamId":"2488847861410415616"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:32:19 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:32:19.802308Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"660","StreamId":"2488847861410415616"] Codec completed encoding stream.	thread=38
+2026-07-16T09:32:19.802317Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"660"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:32:19.802321Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"660"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:32:19.802404Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"660"] write flush complete	thread=38
+2026-07-16T09:32:19.802407Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"660"] closing socket: 1	thread=38
+2026-07-16T09:32:19.802429Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"660"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:32:34.801487Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"661"] new stream	thread=29
+2026-07-16T09:32:34.801558Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"661","StreamId":"9946221226904050151"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=29
+2026-07-16T09:32:34.801568Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"661","StreamId":"9946221226904050151"] request end stream timestamp recorded	thread=29
+2026-07-16T09:32:34.801590Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"661"] current connecting state: false	thread=29
+2026-07-16T09:32:34.801915Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"661","StreamId":"9946221226904050151"] closing connection due to connection close header	thread=29
+2026-07-16T09:32:34.801921Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"661","StreamId":"9946221226904050151"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:32:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=29
+2026-07-16T09:32:34.801928Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"661","StreamId":"9946221226904050151"] Codec completed encoding stream.	thread=29
+2026-07-16T09:32:34.801939Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"661"] closing data_to_write=143 type=0	thread=29
+2026-07-16T09:32:34.801944Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"661"] setting delayed close timer with timeout 1000 ms	thread=29
+2026-07-16T09:32:34.802001Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"661"] write flush complete	thread=29
+2026-07-16T09:32:34.802005Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"661"] closing socket: 1	thread=29
+2026-07-16T09:32:34.802029Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"661"] Not closing conn, socket is not open	thread=29
+2026-07-16T09:32:49.801885Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"662"] new stream	thread=38
+2026-07-16T09:32:49.801952Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"662","StreamId":"1278748470003837848"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:32:49.801960Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"662","StreamId":"1278748470003837848"] request end stream timestamp recorded	thread=38
+2026-07-16T09:32:49.801980Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"662"] current connecting state: false	thread=38
+2026-07-16T09:32:49.802303Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"662","StreamId":"1278748470003837848"] closing connection due to connection close header	thread=38
+2026-07-16T09:32:49.802309Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"662","StreamId":"1278748470003837848"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:32:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:32:49.802315Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"662","StreamId":"1278748470003837848"] Codec completed encoding stream.	thread=38
+2026-07-16T09:32:49.802324Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"662"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:32:49.802327Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"662"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:32:49.802393Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"662"] write flush complete	thread=38
+2026-07-16T09:32:49.802397Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"662"] closing socket: 1	thread=38
+2026-07-16T09:32:49.802418Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"662"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:33:04.801501Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"663"] new stream	thread=38
+2026-07-16T09:33:04.801568Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"663","StreamId":"5358569407158888631"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:33:04.801576Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"663","StreamId":"5358569407158888631"] request end stream timestamp recorded	thread=38
+2026-07-16T09:33:04.801596Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"663"] current connecting state: false	thread=38
+2026-07-16T09:33:04.801902Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"663","StreamId":"5358569407158888631"] closing connection due to connection close header	thread=38
+2026-07-16T09:33:04.801907Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"663","StreamId":"5358569407158888631"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:33:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:33:04.801913Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"663","StreamId":"5358569407158888631"] Codec completed encoding stream.	thread=38
+2026-07-16T09:33:04.801923Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"663"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:33:04.801926Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"663"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:33:04.801972Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"663"] write flush complete	thread=38
+2026-07-16T09:33:04.801975Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"663"] closing socket: 1	thread=38
+2026-07-16T09:33:04.801992Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"663"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:33:11.941820Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:33:11.941901Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"14457090903014294804"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:33:11.941908Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"14457090903014294804"] request end stream timestamp recorded	thread=36
+2026-07-16T09:33:11.941932Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:33:11.942100Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:33:11.942123Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"3975431474023878723"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', '5d06aba4-fa02-4de6-89ef-a07ee5c726ab'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:33:11.942126Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"3975431474023878723"] request end stream timestamp recorded	thread=20
+2026-07-16T09:33:11.942138Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:33:11.942870Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"3975431474023878723"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:33:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:33:11.942886Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"3975431474023878723"] Codec completed encoding stream.	thread=20
+2026-07-16T09:33:11.943027Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"14457090903014294804"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:33:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '0'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:33:11.943825Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"14457090903014294804"] Codec completed encoding stream.	thread=36
+2026-07-16T09:33:19.801487Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"664"] new stream	thread=26
+2026-07-16T09:33:19.801554Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"664","StreamId":"4065426638642378715"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=26
+2026-07-16T09:33:19.801562Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"664","StreamId":"4065426638642378715"] request end stream timestamp recorded	thread=26
+2026-07-16T09:33:19.801584Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"664"] current connecting state: false	thread=26
+2026-07-16T09:33:19.801894Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"664","StreamId":"4065426638642378715"] closing connection due to connection close header	thread=26
+2026-07-16T09:33:19.801899Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"664","StreamId":"4065426638642378715"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:33:19 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=26
+2026-07-16T09:33:19.801905Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"664","StreamId":"4065426638642378715"] Codec completed encoding stream.	thread=26
+2026-07-16T09:33:19.801915Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"664"] closing data_to_write=143 type=0	thread=26
+2026-07-16T09:33:19.801918Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"664"] setting delayed close timer with timeout 1000 ms	thread=26
+2026-07-16T09:33:19.801973Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"664"] write flush complete	thread=26
+2026-07-16T09:33:19.801976Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"664"] closing socket: 1	thread=26
+2026-07-16T09:33:19.801997Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"664"] Not closing conn, socket is not open	thread=26
+2026-07-16T09:33:34.801264Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"665"] new stream	thread=36
+2026-07-16T09:33:34.801331Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"665","StreamId":"14861180313624151829"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=36
+2026-07-16T09:33:34.801339Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"665","StreamId":"14861180313624151829"] request end stream timestamp recorded	thread=36
+2026-07-16T09:33:34.801360Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"665"] current connecting state: false	thread=36
+2026-07-16T09:33:34.801673Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"665","StreamId":"14861180313624151829"] closing connection due to connection close header	thread=36
+2026-07-16T09:33:34.801678Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"665","StreamId":"14861180313624151829"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:33:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=36
+2026-07-16T09:33:34.801684Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"665","StreamId":"14861180313624151829"] Codec completed encoding stream.	thread=36
+2026-07-16T09:33:34.801694Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"665"] closing data_to_write=143 type=0	thread=36
+2026-07-16T09:33:34.801697Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"665"] setting delayed close timer with timeout 1000 ms	thread=36
+2026-07-16T09:33:34.801744Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"665"] write flush complete	thread=36
+2026-07-16T09:33:34.801746Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"665"] closing socket: 1	thread=36
+2026-07-16T09:33:34.801767Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"665"] Not closing conn, socket is not open	thread=36
+2026-07-16T09:33:49.801735Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"666"] new stream	thread=38
+2026-07-16T09:33:49.801814Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"666","StreamId":"13542629669031052057"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:33:49.801822Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"666","StreamId":"13542629669031052057"] request end stream timestamp recorded	thread=38
+2026-07-16T09:33:49.801842Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"666"] current connecting state: false	thread=38
+2026-07-16T09:33:49.802162Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"666","StreamId":"13542629669031052057"] closing connection due to connection close header	thread=38
+2026-07-16T09:33:49.802168Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"666","StreamId":"13542629669031052057"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:33:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:33:49.802174Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"666","StreamId":"13542629669031052057"] Codec completed encoding stream.	thread=38
+2026-07-16T09:33:49.802184Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"666"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:33:49.802187Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"666"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:33:49.802249Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"666"] write flush complete	thread=38
+2026-07-16T09:33:49.802252Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"666"] closing socket: 1	thread=38
+2026-07-16T09:33:49.802269Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"666"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:34:04.801743Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"667"] new stream	thread=33
+2026-07-16T09:34:04.801826Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"667","StreamId":"11576874943909982398"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=33
+2026-07-16T09:34:04.801835Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"667","StreamId":"11576874943909982398"] request end stream timestamp recorded	thread=33
+2026-07-16T09:34:04.801858Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"667"] current connecting state: false	thread=33
+2026-07-16T09:34:04.802170Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"667","StreamId":"11576874943909982398"] closing connection due to connection close header	thread=33
+2026-07-16T09:34:04.802176Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"667","StreamId":"11576874943909982398"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:34:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=33
+2026-07-16T09:34:04.802182Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"667","StreamId":"11576874943909982398"] Codec completed encoding stream.	thread=33
+2026-07-16T09:34:04.802191Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"667"] closing data_to_write=143 type=0	thread=33
+2026-07-16T09:34:04.802195Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"667"] setting delayed close timer with timeout 1000 ms	thread=33
+2026-07-16T09:34:04.802238Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"667"] write flush complete	thread=33
+2026-07-16T09:34:04.802241Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"667"] closing socket: 1	thread=33
+2026-07-16T09:34:04.802263Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"667"] Not closing conn, socket is not open	thread=33
+2026-07-16T09:34:11.942128Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:34:11.942207Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"6237310674013228802"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:34:11.942214Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"6237310674013228802"] request end stream timestamp recorded	thread=36
+2026-07-16T09:34:11.942236Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:34:11.942407Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:34:11.942442Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"1344812846357433593"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', 'dc1dae74-f62a-40f0-a32a-a680eaa9e9b8'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:34:11.942447Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"1344812846357433593"] request end stream timestamp recorded	thread=20
+2026-07-16T09:34:11.942462Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:34:11.943217Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"1344812846357433593"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:34:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:34:11.943234Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"1344812846357433593"] Codec completed encoding stream.	thread=20
+2026-07-16T09:34:11.943366Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"6237310674013228802"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:34:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '0'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:34:11.944156Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"6237310674013228802"] Codec completed encoding stream.	thread=36
+2026-07-16T09:34:19.801216Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"668"] new stream	thread=38
+2026-07-16T09:34:19.801284Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"668","StreamId":"8429362204597156246"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:34:19.801292Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"668","StreamId":"8429362204597156246"] request end stream timestamp recorded	thread=38
+2026-07-16T09:34:19.801313Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"668"] current connecting state: false	thread=38
+2026-07-16T09:34:19.801628Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"668","StreamId":"8429362204597156246"] closing connection due to connection close header	thread=38
+2026-07-16T09:34:19.801633Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"668","StreamId":"8429362204597156246"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:34:19 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:34:19.801640Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"668","StreamId":"8429362204597156246"] Codec completed encoding stream.	thread=38
+2026-07-16T09:34:19.801649Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"668"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:34:19.801652Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"668"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:34:19.801710Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"668"] write flush complete	thread=38
+2026-07-16T09:34:19.801714Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"668"] closing socket: 1	thread=38
+2026-07-16T09:34:19.801734Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"668"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:34:34.802018Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"669"] new stream	thread=29
+2026-07-16T09:34:34.802086Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"669","StreamId":"2774648262335619759"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=29
+2026-07-16T09:34:34.802094Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"669","StreamId":"2774648262335619759"] request end stream timestamp recorded	thread=29
+2026-07-16T09:34:34.802116Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"669"] current connecting state: false	thread=29
+2026-07-16T09:34:34.802419Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"669","StreamId":"2774648262335619759"] closing connection due to connection close header	thread=29
+2026-07-16T09:34:34.802425Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"669","StreamId":"2774648262335619759"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:34:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=29
+2026-07-16T09:34:34.802431Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"669","StreamId":"2774648262335619759"] Codec completed encoding stream.	thread=29
+2026-07-16T09:34:34.802441Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"669"] closing data_to_write=143 type=0	thread=29
+2026-07-16T09:34:34.802444Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"669"] setting delayed close timer with timeout 1000 ms	thread=29
+2026-07-16T09:34:34.802489Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"669"] write flush complete	thread=29
+2026-07-16T09:34:34.802491Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"669"] closing socket: 1	thread=29
+2026-07-16T09:34:34.802511Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"669"] Not closing conn, socket is not open	thread=29
+2026-07-16T09:34:49.801619Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"670"] new stream	thread=30
+2026-07-16T09:34:49.801686Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"670","StreamId":"16461010114931862994"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=30
+2026-07-16T09:34:49.801694Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"670","StreamId":"16461010114931862994"] request end stream timestamp recorded	thread=30
+2026-07-16T09:34:49.801714Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"670"] current connecting state: false	thread=30
+2026-07-16T09:34:49.802028Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"670","StreamId":"16461010114931862994"] closing connection due to connection close header	thread=30
+2026-07-16T09:34:49.802034Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"670","StreamId":"16461010114931862994"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:34:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=30
+2026-07-16T09:34:49.802040Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"670","StreamId":"16461010114931862994"] Codec completed encoding stream.	thread=30
+2026-07-16T09:34:49.802050Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"670"] closing data_to_write=143 type=0	thread=30
+2026-07-16T09:34:49.802053Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"670"] setting delayed close timer with timeout 1000 ms	thread=30
+2026-07-16T09:34:49.802135Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"670"] write flush complete	thread=30
+2026-07-16T09:34:49.802138Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"670"] closing socket: 1	thread=30
+2026-07-16T09:34:49.802160Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"670"] Not closing conn, socket is not open	thread=30
+2026-07-16T09:35:04.801534Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"671"] new stream	thread=38
+2026-07-16T09:35:04.801602Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"671","StreamId":"16226236507911516711"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:35:04.801609Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"671","StreamId":"16226236507911516711"] request end stream timestamp recorded	thread=38
+2026-07-16T09:35:04.801630Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"671"] current connecting state: false	thread=38
+2026-07-16T09:35:04.801962Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"671","StreamId":"16226236507911516711"] closing connection due to connection close header	thread=38
+2026-07-16T09:35:04.801974Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"671","StreamId":"16226236507911516711"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:35:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:35:04.801982Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"671","StreamId":"16226236507911516711"] Codec completed encoding stream.	thread=38
+2026-07-16T09:35:04.801993Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"671"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:35:04.801997Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"671"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:35:04.802055Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"671"] write flush complete	thread=38
+2026-07-16T09:35:04.802058Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"671"] closing socket: 1	thread=38
+2026-07-16T09:35:04.802077Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"671"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:35:09.499410Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"672"] new stream	thread=20
+2026-07-16T09:35:09.499478Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"672","StreamId":"9880603636957429356"] request headers complete (end_stream=true):
+':authority', 'localhost:15000'
+':path', '/logging'
+':method', 'POST'
+'user-agent', 'Go-http-client/1.1'
+'content-length', '0'
+'accept-encoding', 'gzip'
+	thread=20
+2026-07-16T09:35:09.499486Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"672","StreamId":"9880603636957429356"] request end stream timestamp recorded	thread=20
+2026-07-16T09:35:09.499510Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"672"] current connecting state: false	thread=20
+2026-07-16T09:35:09.499553Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"672","StreamId":"9880603636957429356"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:35:09 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:35:09.499568Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"672","StreamId":"9880603636957429356"] Codec completed encoding stream.	thread=20
+2026-07-16T09:35:09.500495Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:781	[Tags: "ConnectionId":"672"] remote close	thread=20
+2026-07-16T09:35:09.500500Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"672"] closing socket: 0	thread=20
+2026-07-16T09:35:09.500537Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"672"] Not closing conn, socket is not open	thread=20
+2026-07-16T09:35:11.941196Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:35:11.941276Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"11963450719824923574"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:35:11.941282Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"11963450719824923574"] request end stream timestamp recorded	thread=36
+2026-07-16T09:35:11.941304Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:35:11.941482Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:35:11.941517Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"5102504499963097550"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', 'a7dd6139-5373-4d52-930a-375a03621dfb'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:35:11.941521Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"5102504499963097550"] request end stream timestamp recorded	thread=20
+2026-07-16T09:35:11.941537Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:35:11.942306Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"5102504499963097550"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:35:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:35:11.942324Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"5102504499963097550"] Codec completed encoding stream.	thread=20
+2026-07-16T09:35:11.942465Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"11963450719824923574"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:35:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '1'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:35:11.943254Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"11963450719824923574"] Codec completed encoding stream.	thread=36
+2026-07-16T09:35:19.801760Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"673"] new stream	thread=29
+2026-07-16T09:35:19.801842Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"673","StreamId":"3124079626469149809"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=29
+2026-07-16T09:35:19.801850Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"673","StreamId":"3124079626469149809"] request end stream timestamp recorded	thread=29
+2026-07-16T09:35:19.801871Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"673"] current connecting state: false	thread=29
+2026-07-16T09:35:19.802172Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"673","StreamId":"3124079626469149809"] closing connection due to connection close header	thread=29
+2026-07-16T09:35:19.802177Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"673","StreamId":"3124079626469149809"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:35:19 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=29
+2026-07-16T09:35:19.802183Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"673","StreamId":"3124079626469149809"] Codec completed encoding stream.	thread=29
+2026-07-16T09:35:19.802193Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"673"] closing data_to_write=143 type=0	thread=29
+2026-07-16T09:35:19.802196Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"673"] setting delayed close timer with timeout 1000 ms	thread=29
+2026-07-16T09:35:19.802257Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"673"] write flush complete	thread=29
+2026-07-16T09:35:19.802260Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"673"] closing socket: 1	thread=29
+2026-07-16T09:35:19.802281Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"673"] Not closing conn, socket is not open	thread=29
+2026-07-16T09:35:34.801892Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"674"] new stream	thread=38
+2026-07-16T09:35:34.801960Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"674","StreamId":"17790285477208869291"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:35:34.801968Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"674","StreamId":"17790285477208869291"] request end stream timestamp recorded	thread=38
+2026-07-16T09:35:34.801989Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"674"] current connecting state: false	thread=38
+2026-07-16T09:35:34.802284Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"674","StreamId":"17790285477208869291"] closing connection due to connection close header	thread=38
+2026-07-16T09:35:34.802291Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"674","StreamId":"17790285477208869291"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:35:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:35:34.802298Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"674","StreamId":"17790285477208869291"] Codec completed encoding stream.	thread=38
+2026-07-16T09:35:34.802308Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"674"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:35:34.802312Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"674"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:35:34.802360Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"674"] write flush complete	thread=38
+2026-07-16T09:35:34.802363Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"674"] closing socket: 1	thread=38
+2026-07-16T09:35:34.802385Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"674"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:35:49.801365Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"675"] new stream	thread=33
+2026-07-16T09:35:49.801431Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"675","StreamId":"408085503326018388"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=33
+2026-07-16T09:35:49.801440Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"675","StreamId":"408085503326018388"] request end stream timestamp recorded	thread=33
+2026-07-16T09:35:49.801462Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"675"] current connecting state: false	thread=33
+2026-07-16T09:35:49.801768Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"675","StreamId":"408085503326018388"] closing connection due to connection close header	thread=33
+2026-07-16T09:35:49.801785Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"675","StreamId":"408085503326018388"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:35:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=33
+2026-07-16T09:35:49.801791Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"675","StreamId":"408085503326018388"] Codec completed encoding stream.	thread=33
+2026-07-16T09:35:49.801800Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"675"] closing data_to_write=143 type=0	thread=33
+2026-07-16T09:35:49.801803Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"675"] setting delayed close timer with timeout 1000 ms	thread=33
+2026-07-16T09:35:49.801848Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"675"] write flush complete	thread=33
+2026-07-16T09:35:49.801851Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"675"] closing socket: 1	thread=33
+2026-07-16T09:35:49.801873Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"675"] Not closing conn, socket is not open	thread=33
+2026-07-16T09:36:04.801383Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"676"] new stream	thread=38
+2026-07-16T09:36:04.801452Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"676","StreamId":"15237226792643735613"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:36:04.801460Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"676","StreamId":"15237226792643735613"] request end stream timestamp recorded	thread=38
+2026-07-16T09:36:04.801480Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"676"] current connecting state: false	thread=38
+2026-07-16T09:36:04.801791Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"676","StreamId":"15237226792643735613"] closing connection due to connection close header	thread=38
+2026-07-16T09:36:04.801797Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"676","StreamId":"15237226792643735613"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:36:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:36:04.801803Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"676","StreamId":"15237226792643735613"] Codec completed encoding stream.	thread=38
+2026-07-16T09:36:04.801812Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"676"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:36:04.801816Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"676"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:36:04.801860Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"676"] write flush complete	thread=38
+2026-07-16T09:36:04.801863Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"676"] closing socket: 1	thread=38
+2026-07-16T09:36:04.801882Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"676"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:36:11.941840Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:36:11.941919Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"3121730910926026986"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:36:11.941926Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"3121730910926026986"] request end stream timestamp recorded	thread=36
+2026-07-16T09:36:11.941948Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:36:11.942121Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:36:11.942154Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"4797324502958756025"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', '135b45e3-0444-4d63-a885-384dfb8e7c83'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:36:11.942159Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"4797324502958756025"] request end stream timestamp recorded	thread=20
+2026-07-16T09:36:11.942173Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:36:11.942904Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"4797324502958756025"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:36:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:36:11.942922Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"4797324502958756025"] Codec completed encoding stream.	thread=20
+2026-07-16T09:36:11.943049Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"3121730910926026986"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:36:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '0'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:36:11.943835Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"3121730910926026986"] Codec completed encoding stream.	thread=36
+2026-07-16T09:36:19.801421Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"677"] new stream	thread=38
+2026-07-16T09:36:19.801488Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"677","StreamId":"6561896994491169194"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:36:19.801496Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"677","StreamId":"6561896994491169194"] request end stream timestamp recorded	thread=38
+2026-07-16T09:36:19.801517Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"677"] current connecting state: false	thread=38
+2026-07-16T09:36:19.801834Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"677","StreamId":"6561896994491169194"] closing connection due to connection close header	thread=38
+2026-07-16T09:36:19.801840Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"677","StreamId":"6561896994491169194"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:36:19 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:36:19.801846Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"677","StreamId":"6561896994491169194"] Codec completed encoding stream.	thread=38
+2026-07-16T09:36:19.801857Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"677"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:36:19.801860Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"677"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:36:19.801906Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"677"] write flush complete	thread=38
+2026-07-16T09:36:19.801910Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"677"] closing socket: 1	thread=38
+2026-07-16T09:36:19.801929Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"677"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:36:34.801892Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"678"] new stream	thread=38
+2026-07-16T09:36:34.801961Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"678","StreamId":"16006487890000380534"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:36:34.801970Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"678","StreamId":"16006487890000380534"] request end stream timestamp recorded	thread=38
+2026-07-16T09:36:34.801991Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"678"] current connecting state: false	thread=38
+2026-07-16T09:36:34.802293Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"678","StreamId":"16006487890000380534"] closing connection due to connection close header	thread=38
+2026-07-16T09:36:34.802298Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"678","StreamId":"16006487890000380534"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:36:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:36:34.802304Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"678","StreamId":"16006487890000380534"] Codec completed encoding stream.	thread=38
+2026-07-16T09:36:34.802313Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"678"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:36:34.802316Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"678"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:36:34.802361Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"678"] write flush complete	thread=38
+2026-07-16T09:36:34.802364Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"678"] closing socket: 1	thread=38
+2026-07-16T09:36:34.802382Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"678"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:36:49.802029Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"679"] new stream	thread=32
+2026-07-16T09:36:49.802096Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"679","StreamId":"7555495130552708904"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=32
+2026-07-16T09:36:49.802103Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"679","StreamId":"7555495130552708904"] request end stream timestamp recorded	thread=32
+2026-07-16T09:36:49.802124Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"679"] current connecting state: false	thread=32
+2026-07-16T09:36:49.802421Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"679","StreamId":"7555495130552708904"] closing connection due to connection close header	thread=32
+2026-07-16T09:36:49.802427Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"679","StreamId":"7555495130552708904"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:36:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=32
+2026-07-16T09:36:49.802433Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"679","StreamId":"7555495130552708904"] Codec completed encoding stream.	thread=32
+2026-07-16T09:36:49.802442Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"679"] closing data_to_write=143 type=0	thread=32
+2026-07-16T09:36:49.802445Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"679"] setting delayed close timer with timeout 1000 ms	thread=32
+2026-07-16T09:36:49.802489Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"679"] write flush complete	thread=32
+2026-07-16T09:36:49.802492Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"679"] closing socket: 1	thread=32
+2026-07-16T09:36:49.802510Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"679"] Not closing conn, socket is not open	thread=32
+2026-07-16T09:37:01.348521Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 1463, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:01.349013Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 1886, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:01.349356Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 2494, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:01.349622Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 3283, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:04.802023Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"680"] new stream	thread=33
+2026-07-16T09:37:04.802095Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"680","StreamId":"8935305610214339765"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=33
+2026-07-16T09:37:04.802105Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"680","StreamId":"8935305610214339765"] request end stream timestamp recorded	thread=33
+2026-07-16T09:37:04.802129Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"680"] current connecting state: false	thread=33
+2026-07-16T09:37:04.802454Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"680","StreamId":"8935305610214339765"] closing connection due to connection close header	thread=33
+2026-07-16T09:37:04.802462Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"680","StreamId":"8935305610214339765"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:37:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=33
+2026-07-16T09:37:04.802469Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"680","StreamId":"8935305610214339765"] Codec completed encoding stream.	thread=33
+2026-07-16T09:37:04.802480Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"680"] closing data_to_write=143 type=0	thread=33
+2026-07-16T09:37:04.802484Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"680"] setting delayed close timer with timeout 1000 ms	thread=33
+2026-07-16T09:37:04.802533Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"680"] write flush complete	thread=33
+2026-07-16T09:37:04.802537Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"680"] closing socket: 1	thread=33
+2026-07-16T09:37:04.802560Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"680"] Not closing conn, socket is not open	thread=33
+2026-07-16T09:37:11.941220Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:37:11.941301Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"16280509700126491585"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:37:11.941309Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"16280509700126491585"] request end stream timestamp recorded	thread=36
+2026-07-16T09:37:11.941334Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:37:11.941521Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:37:11.941554Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"3966032397735974012"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', 'c6adb156-eb2a-4d79-ac40-69b13c2d83ea'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:37:11.941559Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"3966032397735974012"] request end stream timestamp recorded	thread=20
+2026-07-16T09:37:11.941573Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:37:11.942322Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"3966032397735974012"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:37:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:37:11.942340Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"3966032397735974012"] Codec completed encoding stream.	thread=20
+2026-07-16T09:37:11.942473Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"16280509700126491585"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:37:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '0'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:37:11.943266Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"16280509700126491585"] Codec completed encoding stream.	thread=36
+2026-07-16T09:37:19.801538Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"681"] new stream	thread=38
+2026-07-16T09:37:19.801604Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"681","StreamId":"14986121393746150628"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:37:19.801612Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"681","StreamId":"14986121393746150628"] request end stream timestamp recorded	thread=38
+2026-07-16T09:37:19.801633Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"681"] current connecting state: false	thread=38
+2026-07-16T09:37:19.801958Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"681","StreamId":"14986121393746150628"] closing connection due to connection close header	thread=38
+2026-07-16T09:37:19.801965Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"681","StreamId":"14986121393746150628"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:37:19 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:37:19.801972Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"681","StreamId":"14986121393746150628"] Codec completed encoding stream.	thread=38
+2026-07-16T09:37:19.801981Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"681"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:37:19.801985Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"681"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:37:19.802032Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"681"] write flush complete	thread=38
+2026-07-16T09:37:19.802034Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"681"] closing socket: 1	thread=38
+2026-07-16T09:37:19.802055Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"681"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:37:33.634095Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 1463, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:33.634803Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 1886, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:33.635398Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 2494, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:33.635704Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 3283, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:34.801796Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"682"] new stream	thread=26
+2026-07-16T09:37:34.801863Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"682","StreamId":"17934626268412709364"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=26
+2026-07-16T09:37:34.801871Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"682","StreamId":"17934626268412709364"] request end stream timestamp recorded	thread=26
+2026-07-16T09:37:34.801891Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"682"] current connecting state: false	thread=26
+2026-07-16T09:37:34.802215Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"682","StreamId":"17934626268412709364"] closing connection due to connection close header	thread=26
+2026-07-16T09:37:34.802220Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"682","StreamId":"17934626268412709364"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:37:34 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=26
+2026-07-16T09:37:34.802226Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"682","StreamId":"17934626268412709364"] Codec completed encoding stream.	thread=26
+2026-07-16T09:37:34.802236Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"682"] closing data_to_write=143 type=0	thread=26
+2026-07-16T09:37:34.802239Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"682"] setting delayed close timer with timeout 1000 ms	thread=26
+2026-07-16T09:37:34.802279Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"682"] write flush complete	thread=26
+2026-07-16T09:37:34.802282Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"682"] closing socket: 1	thread=26
+2026-07-16T09:37:34.802300Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"682"] Not closing conn, socket is not open	thread=26
+2026-07-16T09:37:36.253609Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 271, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:36.254147Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 2494, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:36.254473Z	debug	envoy http2 external/envoy/source/common/http/http2/codec_impl.cc:1965	[Tags: "ConnectionId":"610"] Http2Visitor: remaining data payload: 3283, stream_id: 1, end_stream: false	thread=20
+2026-07-16T09:37:49.801336Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"683"] new stream	thread=38
+2026-07-16T09:37:49.801399Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"683","StreamId":"12581675685563598043"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=38
+2026-07-16T09:37:49.801407Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"683","StreamId":"12581675685563598043"] request end stream timestamp recorded	thread=38
+2026-07-16T09:37:49.801429Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"683"] current connecting state: false	thread=38
+2026-07-16T09:37:49.801731Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"683","StreamId":"12581675685563598043"] closing connection due to connection close header	thread=38
+2026-07-16T09:37:49.801736Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"683","StreamId":"12581675685563598043"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:37:49 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=38
+2026-07-16T09:37:49.801743Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"683","StreamId":"12581675685563598043"] Codec completed encoding stream.	thread=38
+2026-07-16T09:37:49.801753Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"683"] closing data_to_write=143 type=0	thread=38
+2026-07-16T09:37:49.801756Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"683"] setting delayed close timer with timeout 1000 ms	thread=38
+2026-07-16T09:37:49.801827Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"683"] write flush complete	thread=38
+2026-07-16T09:37:49.801831Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"683"] closing socket: 1	thread=38
+2026-07-16T09:37:49.801851Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"683"] Not closing conn, socket is not open	thread=38
+2026-07-16T09:38:04.801703Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"684"] new stream	thread=32
+2026-07-16T09:38:04.801772Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"684","StreamId":"12921767138056396758"] request headers complete (end_stream=true):
+':authority', '10.0.12.193:15021'
+':path', '/healthz/ready'
+':method', 'GET'
+'user-agent', 'kube-probe/1.36'
+'accept', '*/*'
+'connection', 'close'
+	thread=32
+2026-07-16T09:38:04.801795Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"684","StreamId":"12921767138056396758"] request end stream timestamp recorded	thread=32
+2026-07-16T09:38:04.801816Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"684"] current connecting state: false	thread=32
+2026-07-16T09:38:04.802108Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1963	[Tags: "ConnectionId":"684","StreamId":"12921767138056396758"] closing connection due to connection close header	thread=32
+2026-07-16T09:38:04.802114Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"684","StreamId":"12921767138056396758"] encoding headers via codec (end_stream=true):
+':status', '200'
+'date', 'Thu, 16 Jul 2026 09:38:04 GMT'
+'content-length', '0'
+'x-envoy-upstream-service-time', '0'
+'server', 'envoy'
+'connection', 'close'
+	thread=32
+2026-07-16T09:38:04.802120Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"684","StreamId":"12921767138056396758"] Codec completed encoding stream.	thread=32
+2026-07-16T09:38:04.802130Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:181	[Tags: "ConnectionId":"684"] closing data_to_write=143 type=0	thread=32
+2026-07-16T09:38:04.802133Z	debug	envoy connection external/envoy/source/common/network/connection_impl_base.cc:51	[Tags: "ConnectionId":"684"] setting delayed close timer with timeout 1000 ms	thread=32
+2026-07-16T09:38:04.802181Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:859	[Tags: "ConnectionId":"684"] write flush complete	thread=32
+2026-07-16T09:38:04.802184Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:313	[Tags: "ConnectionId":"684"] closing socket: 1	thread=32
+2026-07-16T09:38:04.802203Z	debug	envoy connection external/envoy/source/common/network/connection_impl.cc:148	[Tags: "ConnectionId":"684"] Not closing conn, socket is not open	thread=32
+2026-07-16T09:38:11.942015Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"458"] new stream	thread=36
+2026-07-16T09:38:11.942097Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"458","StreamId":"14754304505743985861"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+	thread=36
+2026-07-16T09:38:11.942105Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"458","StreamId":"14754304505743985861"] request end stream timestamp recorded	thread=36
+2026-07-16T09:38:11.942127Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"458"] current connecting state: false	thread=36
+2026-07-16T09:38:11.942318Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:417	[Tags: "ConnectionId":"460"] new stream	thread=20
+2026-07-16T09:38:11.942352Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1334	[Tags: "ConnectionId":"460","StreamId":"4213475180615493056"] request headers complete (end_stream=true):
+':authority', 'localhost:15090'
+':path', '/stats/prometheus'
+':method', 'GET'
+'user-agent', 'Prometheus/3.12.0'
+'accept', 'application/openmetrics-text;version=1.0.0;escaping=allow-utf-8;q=0.6,application/openmetrics-text;version=0.0.1;q=0.5,text/plain;version=1.0.0;escaping=allow-utf-8;q=0.4,text/plain;version=0.0.4;q=0.3,*/*;q=0.2'
+'x-prometheus-scrape-timeout-seconds', '10'
+'accept-encoding', 'gzip'
+'x-forwarded-proto', 'http'
+'x-request-id', 'dfeebc20-4bfb-4813-a05b-8be8231c325f'
+'x-envoy-expected-rq-timeout-ms', '15000'
+	thread=20
+2026-07-16T09:38:11.942357Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:1317	[Tags: "ConnectionId":"460","StreamId":"4213475180615493056"] request end stream timestamp recorded	thread=20
+2026-07-16T09:38:11.942372Z	debug	envoy connection external/envoy/source/common/network/connection_impl.h:101	[Tags: "ConnectionId":"460"] current connecting state: false	thread=20
+2026-07-16T09:38:11.943126Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"460","StreamId":"4213475180615493056"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:38:11 GMT'
+'server', 'envoy'
+	thread=20
+2026-07-16T09:38:11.943143Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"460","StreamId":"4213475180615493056"] Codec completed encoding stream.	thread=20
+2026-07-16T09:38:11.943276Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2019	[Tags: "ConnectionId":"458","StreamId":"14754304505743985861"] encoding headers via codec (end_stream=false):
+':status', '200'
+'content-type', 'text/plain; charset=UTF-8'
+'cache-control', 'no-cache, max-age=0'
+'x-content-type-options', 'nosniff'
+'date', 'Thu, 16 Jul 2026 09:38:11 GMT'
+'server', 'envoy'
+'x-envoy-upstream-service-time', '0'
+'content-encoding', 'gzip'
+'vary', 'Accept-Encoding'
+	thread=36
+2026-07-16T09:38:11.944067Z	debug	envoy http external/envoy/source/common/http/conn_manager_impl.cc:2135	[Tags: "ConnectionId":"458","StreamId":"14754304505743985861"] Codec completed encoding stream.	thread=36
