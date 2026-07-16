@@ -89,9 +89,23 @@ one-pod-at-a-time routing, and which pod gets picked changes between sweeps (not
 "always pod X" bug either).
 
 By contrast, the sidecar's routing keeps **all 3** prefill pods lightly active, and never
-lets any one of them accumulate a backlog. The full `Running`/`Waiting` timeline for all 3
-sidecar prefill pods (sweeps: rate 10: 14:15:01-14:16:10, rate 20: 14:16:10-14:17:40,
-rate 30: 14:17:40-14:19:40, rate 40: 14:19:40-14:21:55):
+lets any one of them accumulate a backlog. Same format as the coordinator's table above,
+peak `Running` per pod within each sweep window (rate 10: 14:15:01-14:16:10, rate 20:
+14:16:10-14:17:40, rate 30: 14:17:40-14:19:40, rate 40: 14:19:40-14:21:55):
+
+| Sweep (target rate) | prefill-ntwck peak `Running` | prefill-v24mx peak `Running` | prefill-wr5cf peak `Running` |
+|---|---:|---:|---:|
+| 10 | 0 | 0 | **1** |
+| 20 | **1** | 0 | 0 |
+| 30 | **2** | **1** | 0 |
+| 40 | 0 | **3** | 0 |
+
+Contrast this directly with the coordinator's table: coordinator peaks are 8, 20, 30, 39
+(all on a single pod per sweep), sidecar peaks are 1, 1, 2, 3 (spread, and at rate 30, two
+different pods concurrently). No sidecar pod ever approaches even coordinator's *smallest*
+sweep peak (8).
+
+Full per-timestamp `Running`/`Waiting` detail behind this table:
 
 | Wall clock | prefill-ntwck | prefill-v24mx | prefill-wr5cf |
 |---|---:|---:|---:|
