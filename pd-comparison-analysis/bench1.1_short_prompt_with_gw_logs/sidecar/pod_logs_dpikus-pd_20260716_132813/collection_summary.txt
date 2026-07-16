@@ -1,0 +1,17 @@
+Log Collection Summary
+======================
+Namespace: dpikus-pd
+Time Period: Last 30 minutes
+Collection Time: Thu Jul 16 13:28:56 IDT 2026
+Total Pods: 7
+
+Collected Logs:
+---------------
+  pd-disaggregation-epp-685c4897fd-p9trz/epp.log: 378 lines,  80K
+  reqsend-long-b85d68496-j766v/reqsend.log: 0 lines,   0B
+  llm-d-inference-gateway-istio-88698f47c-54kcc/istio-proxy.log: 35076 lines, 4.1M
+  llmdbench-harness-launcher/harness.log: 140 lines,  16K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-t9x9n/modelserver.log: 140 lines,  40K
+  reqsend-7587759cd4-gw8pd/reqsend.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-kslx5/modelserver.log: 371 lines,  68K
+  pd-disaggregation-nvidia-gpu-vllm-decode-76d48595d8-kslx5/routing-proxy.log: 5 lines, 4.0K
