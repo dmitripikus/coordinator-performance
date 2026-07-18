@@ -1,0 +1,740 @@
+{"level":"info","ts":1784395558.435409,"caller":"controller/pod_reconciler.go:99","msg":"Pod already exists","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"4c22d26e-b5f5-4f2a-ae3b-e6f95dcd4ed2"}
+{"level":"info","ts":1784395595.4775274,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"550e8400-e29b-41d4-a716-446655440001"}
+{"level":"info","ts":1784395595.4777715,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"550e8400-e29b-41d4-a716-446655440001","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395595.7793515,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"550e8400-e29b-41d4-a716-446655440001"}
+{"level":"info","ts":1784395677.4555054,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"550e8400-e29b-41d4-a716-446655440001"}
+{"level":"info","ts":1784395677.4557464,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"550e8400-e29b-41d4-a716-446655440001","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395677.4867277,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"550e8400-e29b-41d4-a716-446655440001"}
+{"level":"info","ts":1784395703.2620273,"caller":"controller/pod_reconciler.go:97","msg":"Pod added","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"665b1195-077b-40fe-b6b1-5cef20014aa9"}
+{"level":"info","ts":1784395724.1588006,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"2af1e78f-36ed-4edd-b976-521d3bd3e902"}
+{"level":"info","ts":1784395724.1590145,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"2af1e78f-36ed-4edd-b976-521d3bd3e902","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395724.4255176,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"2af1e78f-36ed-4edd-b976-521d3bd3e902"}
+{"level":"info","ts":1784395773.263063,"caller":"controller/pod_reconciler.go:97","msg":"Pod added","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"e33bf1ba-916e-4429-915c-cc53ac4556b7"}
+{"level":"info","ts":1784395774.2271926,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"08519c8e-0455-40d4-8df6-983c60aa071d"}
+{"level":"info","ts":1784395774.227433,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"08519c8e-0455-40d4-8df6-983c60aa071d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395774.2681372,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"08519c8e-0455-40d4-8df6-983c60aa071d"}
+{"level":"info","ts":1784395775.021121,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"080e1447-adb4-416c-899b-758d60dc8288"}
+{"level":"info","ts":1784395775.0230033,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"080e1447-adb4-416c-899b-758d60dc8288","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395775.0626493,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"080e1447-adb4-416c-899b-758d60dc8288"}
+{"level":"info","ts":1784395775.8112214,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"fa538b21-f5f5-46bf-9a10-018ae3125174"}
+{"level":"info","ts":1784395775.8114183,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"fa538b21-f5f5-46bf-9a10-018ae3125174","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395775.8474684,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"fa538b21-f5f5-46bf-9a10-018ae3125174"}
+{"level":"info","ts":1784395776.6003623,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"b8710e47-6bdc-467b-87af-57419d1c6b14"}
+{"level":"info","ts":1784395776.6005962,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"b8710e47-6bdc-467b-87af-57419d1c6b14","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395776.6430912,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"b8710e47-6bdc-467b-87af-57419d1c6b14"}
+{"level":"info","ts":1784395777.3917046,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5f3ee0bf-4f4d-47a9-855d-c68e39bc6005"}
+{"level":"info","ts":1784395777.3919377,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5f3ee0bf-4f4d-47a9-855d-c68e39bc6005","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395777.4308484,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5f3ee0bf-4f4d-47a9-855d-c68e39bc6005"}
+{"level":"info","ts":1784395778.179787,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"216c8b9c-3847-4245-b184-1f87458e0cbf"}
+{"level":"info","ts":1784395778.1800098,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"216c8b9c-3847-4245-b184-1f87458e0cbf","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395778.219249,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"216c8b9c-3847-4245-b184-1f87458e0cbf"}
+{"level":"info","ts":1784395780.926572,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1e884f9c-9331-4a51-9baa-b34225394b36"}
+{"level":"info","ts":1784395780.926827,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1e884f9c-9331-4a51-9baa-b34225394b36","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395780.9659104,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1e884f9c-9331-4a51-9baa-b34225394b36"}
+{"level":"info","ts":1784395781.8171709,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"dcdb8e60-a7db-4b55-b736-3ec8257fc475"}
+{"level":"info","ts":1784395781.8173695,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"dcdb8e60-a7db-4b55-b736-3ec8257fc475","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395781.856658,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"dcdb8e60-a7db-4b55-b736-3ec8257fc475"}
+{"level":"info","ts":1784395782.9022448,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"50937990-cdc0-4813-b6fb-0f64a4e2be19"}
+{"level":"info","ts":1784395782.9024594,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"50937990-cdc0-4813-b6fb-0f64a4e2be19","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395782.9409719,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"50937990-cdc0-4813-b6fb-0f64a4e2be19"}
+{"level":"info","ts":1784395783.7596104,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"d3413afc-465f-4dba-8941-5bdac3f6dad7"}
+{"level":"info","ts":1784395783.759856,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"d3413afc-465f-4dba-8941-5bdac3f6dad7","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395783.7960062,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"d3413afc-465f-4dba-8941-5bdac3f6dad7"}
+{"level":"info","ts":1784395785.4262228,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6ab35d21-bc44-48cb-939c-a75a41866cf2"}
+{"level":"info","ts":1784395785.426474,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6ab35d21-bc44-48cb-939c-a75a41866cf2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395785.4655788,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6ab35d21-bc44-48cb-939c-a75a41866cf2"}
+{"level":"info","ts":1784395786.214298,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"d327af11-c8fb-4839-bcdd-0afd97e87c37"}
+{"level":"info","ts":1784395786.2145064,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"d327af11-c8fb-4839-bcdd-0afd97e87c37","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395786.2537072,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"d327af11-c8fb-4839-bcdd-0afd97e87c37"}
+{"level":"info","ts":1784395787.0000708,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e1301b3c-d908-4e34-b0e5-08438d130a3f"}
+{"level":"info","ts":1784395787.000318,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e1301b3c-d908-4e34-b0e5-08438d130a3f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395787.0426419,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e1301b3c-d908-4e34-b0e5-08438d130a3f"}
+{"level":"info","ts":1784395787.7911925,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3d134153-0e7d-4f81-8b22-be5f2c5f4ad4"}
+{"level":"info","ts":1784395787.79145,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3d134153-0e7d-4f81-8b22-be5f2c5f4ad4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395787.8325346,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3d134153-0e7d-4f81-8b22-be5f2c5f4ad4"}
+{"level":"info","ts":1784395788.581039,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a7063c62-b99c-48eb-9a44-4749d707a5a5"}
+{"level":"info","ts":1784395788.581244,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a7063c62-b99c-48eb-9a44-4749d707a5a5","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395788.6210868,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a7063c62-b99c-48eb-9a44-4749d707a5a5"}
+{"level":"info","ts":1784395790.5678947,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"57971a71-13af-4308-8f8d-12944a41ae35"}
+{"level":"info","ts":1784395790.5681353,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"57971a71-13af-4308-8f8d-12944a41ae35","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395790.610346,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"57971a71-13af-4308-8f8d-12944a41ae35"}
+{"level":"info","ts":1784395791.3585544,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3bad0416-409b-40e5-953c-3394fca48611"}
+{"level":"info","ts":1784395791.358836,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3bad0416-409b-40e5-953c-3394fca48611","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395791.4057014,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3bad0416-409b-40e5-953c-3394fca48611"}
+{"level":"info","ts":1784395792.1527352,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f64df19c-ede6-40f0-a8b1-b4752413a129"}
+{"level":"info","ts":1784395792.152953,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f64df19c-ede6-40f0-a8b1-b4752413a129","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395792.1945448,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f64df19c-ede6-40f0-a8b1-b4752413a129"}
+{"level":"info","ts":1784395793.472453,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"ab4c5a8c-8ea9-4448-ba71-dd7a72b4c751"}
+{"level":"info","ts":1784395793.4726517,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"ab4c5a8c-8ea9-4448-ba71-dd7a72b4c751","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395793.5137475,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"ab4c5a8c-8ea9-4448-ba71-dd7a72b4c751"}
+{"level":"info","ts":1784395794.2631946,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c6dd8212-600e-42f0-b854-6ea087435d79"}
+{"level":"info","ts":1784395794.2634397,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c6dd8212-600e-42f0-b854-6ea087435d79","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395794.3053377,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c6dd8212-600e-42f0-b854-6ea087435d79"}
+{"level":"info","ts":1784395796.9517403,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"2faa0dc5-a6d0-417e-9874-bed36ee6347d"}
+{"level":"info","ts":1784395796.9519916,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"2faa0dc5-a6d0-417e-9874-bed36ee6347d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395797.0787187,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"2faa0dc5-a6d0-417e-9874-bed36ee6347d"}
+{"level":"info","ts":1784395797.827349,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"77e89ae4-603e-4a8b-b4f4-fb23d1c608b9"}
+{"level":"info","ts":1784395797.82757,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"77e89ae4-603e-4a8b-b4f4-fb23d1c608b9","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395797.8651872,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"77e89ae4-603e-4a8b-b4f4-fb23d1c608b9"}
+{"level":"info","ts":1784395798.6131973,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5659ac82-ba98-43c5-8c1e-1d58f7184ad4"}
+{"level":"info","ts":1784395798.6134365,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5659ac82-ba98-43c5-8c1e-1d58f7184ad4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395798.650587,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5659ac82-ba98-43c5-8c1e-1d58f7184ad4"}
+{"level":"info","ts":1784395799.398946,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"8fc8a2d1-9aa4-45b0-bfca-44df7bed9b37"}
+{"level":"info","ts":1784395799.3991728,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"8fc8a2d1-9aa4-45b0-bfca-44df7bed9b37","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395799.4346476,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"8fc8a2d1-9aa4-45b0-bfca-44df7bed9b37"}
+{"level":"info","ts":1784395800.1827962,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6bf933e7-15d9-4b51-82da-972edee7a119"}
+{"level":"info","ts":1784395800.1830337,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6bf933e7-15d9-4b51-82da-972edee7a119","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395800.223147,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6bf933e7-15d9-4b51-82da-972edee7a119"}
+{"level":"info","ts":1784395800.9708152,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c7c2ad88-d037-4995-b1d5-494ea35aff94"}
+{"level":"info","ts":1784395800.9710164,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c7c2ad88-d037-4995-b1d5-494ea35aff94","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395801.0071437,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c7c2ad88-d037-4995-b1d5-494ea35aff94"}
+{"level":"info","ts":1784395801.7535956,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"7583dfb8-bc93-4b37-bf29-2cbc56e93b36"}
+{"level":"info","ts":1784395801.7538567,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"7583dfb8-bc93-4b37-bf29-2cbc56e93b36","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395801.7924628,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"7583dfb8-bc93-4b37-bf29-2cbc56e93b36"}
+{"level":"info","ts":1784395802.5400312,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f06fcb92-c818-4c38-a81d-7a2e9614d053"}
+{"level":"info","ts":1784395802.5402765,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f06fcb92-c818-4c38-a81d-7a2e9614d053","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395802.57598,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f06fcb92-c818-4c38-a81d-7a2e9614d053"}
+{"level":"info","ts":1784395803.3225954,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5d7a5961-ebff-45ae-902f-57502510c2b6"}
+{"level":"info","ts":1784395803.3228214,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5d7a5961-ebff-45ae-902f-57502510c2b6","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395803.3612688,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5d7a5961-ebff-45ae-902f-57502510c2b6"}
+{"level":"info","ts":1784395804.1946697,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"bd3aa318-4b01-406c-967a-7764fb7629b4"}
+{"level":"info","ts":1784395804.1952233,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"bd3aa318-4b01-406c-967a-7764fb7629b4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395804.2303312,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"bd3aa318-4b01-406c-967a-7764fb7629b4"}
+{"level":"info","ts":1784395804.9780178,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5c064c59-3e32-4d67-99a4-f40c00968dd4"}
+{"level":"info","ts":1784395804.9782567,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5c064c59-3e32-4d67-99a4-f40c00968dd4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395805.016855,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5c064c59-3e32-4d67-99a4-f40c00968dd4"}
+{"level":"info","ts":1784395805.7648416,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f3386b26-5daf-4686-9c56-275aedb3e422"}
+{"level":"info","ts":1784395805.7650754,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f3386b26-5daf-4686-9c56-275aedb3e422","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395805.8035924,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f3386b26-5daf-4686-9c56-275aedb3e422"}
+{"level":"info","ts":1784395806.5506663,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"7c26e20a-7ba6-442d-863a-25fdf6753969"}
+{"level":"info","ts":1784395806.5509017,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"7c26e20a-7ba6-442d-863a-25fdf6753969","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395806.5858135,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"7c26e20a-7ba6-442d-863a-25fdf6753969"}
+{"level":"info","ts":1784395807.3324397,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"b9d1ebca-6ab4-4d92-93df-c77e9e5258cb"}
+{"level":"info","ts":1784395807.33269,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"b9d1ebca-6ab4-4d92-93df-c77e9e5258cb","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395807.3746974,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"b9d1ebca-6ab4-4d92-93df-c77e9e5258cb"}
+{"level":"info","ts":1784395808.1215851,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"db6576be-ca65-42aa-af0f-83acd85b57b2"}
+{"level":"info","ts":1784395808.1218338,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"db6576be-ca65-42aa-af0f-83acd85b57b2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395808.1599708,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"db6576be-ca65-42aa-af0f-83acd85b57b2"}
+{"level":"info","ts":1784395808.9076939,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e9bb5b0b-112e-43af-8a74-7f58cc809b76"}
+{"level":"info","ts":1784395808.9079454,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e9bb5b0b-112e-43af-8a74-7f58cc809b76","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395808.9451363,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e9bb5b0b-112e-43af-8a74-7f58cc809b76"}
+{"level":"info","ts":1784395809.6928568,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"58fd3003-5e2b-4baa-9543-a9e9e899d532"}
+{"level":"info","ts":1784395809.6930718,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"58fd3003-5e2b-4baa-9543-a9e9e899d532","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395809.7279782,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"58fd3003-5e2b-4baa-9543-a9e9e899d532"}
+{"level":"info","ts":1784395810.4753711,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"33eae08b-31c2-40f2-aaf4-be549450d9e2"}
+{"level":"info","ts":1784395810.475631,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"33eae08b-31c2-40f2-aaf4-be549450d9e2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395810.5137382,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"33eae08b-31c2-40f2-aaf4-be549450d9e2"}
+{"level":"info","ts":1784395811.3232563,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3bde4c24-478e-4793-838a-2524ed2ac8ff"}
+{"level":"info","ts":1784395811.3234637,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3bde4c24-478e-4793-838a-2524ed2ac8ff","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395811.3587239,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3bde4c24-478e-4793-838a-2524ed2ac8ff"}
+{"level":"info","ts":1784395812.6087482,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5a7806c1-2d11-4332-968e-2a38e1eea0b2"}
+{"level":"info","ts":1784395812.6090078,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5a7806c1-2d11-4332-968e-2a38e1eea0b2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395812.6467617,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5a7806c1-2d11-4332-968e-2a38e1eea0b2"}
+{"level":"info","ts":1784395813.5599205,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"9aef861e-42ee-4c74-b143-7709491aaa33"}
+{"level":"info","ts":1784395813.5601475,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"9aef861e-42ee-4c74-b143-7709491aaa33","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395813.5978432,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"9aef861e-42ee-4c74-b143-7709491aaa33"}
+{"level":"info","ts":1784395814.3487694,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"7175e836-becb-425f-adc2-56505ddaf879"}
+{"level":"info","ts":1784395814.3489902,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"7175e836-becb-425f-adc2-56505ddaf879","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395814.3875895,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"7175e836-becb-425f-adc2-56505ddaf879"}
+{"level":"info","ts":1784395815.138593,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"7d0ecfb5-c787-4344-b9ca-fea02cee68cc"}
+{"level":"info","ts":1784395815.1388223,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"7d0ecfb5-c787-4344-b9ca-fea02cee68cc","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395815.178408,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"7d0ecfb5-c787-4344-b9ca-fea02cee68cc"}
+{"level":"info","ts":1784395815.9246135,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"cea86984-feef-427c-8af6-a3d23a8f36ef"}
+{"level":"info","ts":1784395815.9248362,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"cea86984-feef-427c-8af6-a3d23a8f36ef","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395815.9601514,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"cea86984-feef-427c-8af6-a3d23a8f36ef"}
+{"level":"info","ts":1784395816.7064106,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"7e6d65f8-adcc-46ff-b1b7-a974c6b39b6d"}
+{"level":"info","ts":1784395816.7066965,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"7e6d65f8-adcc-46ff-b1b7-a974c6b39b6d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395816.7445502,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"7e6d65f8-adcc-46ff-b1b7-a974c6b39b6d"}
+{"level":"info","ts":1784395820.2723494,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6a4b595e-7571-4d1f-8e17-e641415e4e8a"}
+{"level":"info","ts":1784395820.2726605,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6a4b595e-7571-4d1f-8e17-e641415e4e8a","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395820.3108017,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6a4b595e-7571-4d1f-8e17-e641415e4e8a"}
+{"level":"info","ts":1784395821.0596,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0fdf4f60-2305-44a7-a56c-d5b168d245f4"}
+{"level":"info","ts":1784395821.0598297,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0fdf4f60-2305-44a7-a56c-d5b168d245f4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395821.095084,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0fdf4f60-2305-44a7-a56c-d5b168d245f4"}
+{"level":"info","ts":1784395821.8876336,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0b91ecf3-1368-4db9-a22d-49c29d5cb6f4"}
+{"level":"info","ts":1784395821.8878999,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0b91ecf3-1368-4db9-a22d-49c29d5cb6f4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395821.9258845,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0b91ecf3-1368-4db9-a22d-49c29d5cb6f4"}
+{"level":"info","ts":1784395822.673162,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c9215081-3079-4911-9ef6-37369f4b833a"}
+{"level":"info","ts":1784395822.6734173,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c9215081-3079-4911-9ef6-37369f4b833a","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395822.711086,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c9215081-3079-4911-9ef6-37369f4b833a"}
+{"level":"info","ts":1784395824.984899,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5037e3ba-1f9e-96c5-844a-d9af7571865b"}
+{"level":"info","ts":1784395824.9851313,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5037e3ba-1f9e-96c5-844a-d9af7571865b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395825.026013,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5037e3ba-1f9e-96c5-844a-d9af7571865b"}
+{"level":"info","ts":1784395825.7745113,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"34bd2f6b-0709-4d2a-b19a-0b2ff05b9efb"}
+{"level":"info","ts":1784395825.7747664,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"34bd2f6b-0709-4d2a-b19a-0b2ff05b9efb","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395825.8095431,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"34bd2f6b-0709-4d2a-b19a-0b2ff05b9efb"}
+{"level":"info","ts":1784395826.556552,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"58f9bee0-c325-4237-a413-15438764f9b4"}
+{"level":"info","ts":1784395826.5567887,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"58f9bee0-c325-4237-a413-15438764f9b4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395826.5922215,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"58f9bee0-c325-4237-a413-15438764f9b4"}
+{"level":"info","ts":1784395828.0264292,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"738ee39c-53bc-443a-81da-75d151bf1e06"}
+{"level":"info","ts":1784395828.026695,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"738ee39c-53bc-443a-81da-75d151bf1e06","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395828.0617044,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"738ee39c-53bc-443a-81da-75d151bf1e06"}
+{"level":"info","ts":1784395828.8105521,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"9d53f21b-f6b6-4e2a-87f8-f8d58dafc52a"}
+{"level":"info","ts":1784395828.810758,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"9d53f21b-f6b6-4e2a-87f8-f8d58dafc52a","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395828.8460612,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"9d53f21b-f6b6-4e2a-87f8-f8d58dafc52a"}
+{"level":"info","ts":1784395829.5930562,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"35afe1a4-6b2f-48b4-8cd7-abec8f1d23d1"}
+{"level":"info","ts":1784395829.5932958,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"35afe1a4-6b2f-48b4-8cd7-abec8f1d23d1","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395829.6281264,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"35afe1a4-6b2f-48b4-8cd7-abec8f1d23d1"}
+{"level":"info","ts":1784395830.375391,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"98282f4d-400b-4369-8020-865da202f44e"}
+{"level":"info","ts":1784395830.3756425,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"98282f4d-400b-4369-8020-865da202f44e","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395830.4135618,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"98282f4d-400b-4369-8020-865da202f44e"}
+{"level":"info","ts":1784395831.1611087,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a63c415c-d663-4919-bdf9-1ae1cf3404ab"}
+{"level":"info","ts":1784395831.1613228,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a63c415c-d663-4919-bdf9-1ae1cf3404ab","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395831.1967623,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a63c415c-d663-4919-bdf9-1ae1cf3404ab"}
+{"level":"info","ts":1784395831.94912,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c6a0470d-595b-4f59-b0a7-28586c9fd88c"}
+{"level":"info","ts":1784395831.9493766,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c6a0470d-595b-4f59-b0a7-28586c9fd88c","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395831.9850137,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c6a0470d-595b-4f59-b0a7-28586c9fd88c"}
+{"level":"info","ts":1784395832.732945,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e2d5b850-7e6f-49ad-9576-8816651b567a"}
+{"level":"info","ts":1784395832.7331827,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e2d5b850-7e6f-49ad-9576-8816651b567a","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395832.775363,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e2d5b850-7e6f-49ad-9576-8816651b567a"}
+{"level":"info","ts":1784395833.5223293,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"abeb349c-ddbd-4ee2-b62f-7f1b4e8107d4"}
+{"level":"info","ts":1784395833.522583,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"abeb349c-ddbd-4ee2-b62f-7f1b4e8107d4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395833.5612214,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"abeb349c-ddbd-4ee2-b62f-7f1b4e8107d4"}
+{"level":"info","ts":1784395834.3080862,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c4c4a5ad-075a-4709-9522-f854cb0462b9"}
+{"level":"info","ts":1784395834.3083081,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c4c4a5ad-075a-4709-9522-f854cb0462b9","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395834.343489,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c4c4a5ad-075a-4709-9522-f854cb0462b9"}
+{"level":"info","ts":1784395835.0911193,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"26eade8e-c004-4b48-ac28-4cae09de768c"}
+{"level":"info","ts":1784395835.0913072,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"26eade8e-c004-4b48-ac28-4cae09de768c","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395835.1262095,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"26eade8e-c004-4b48-ac28-4cae09de768c"}
+{"level":"info","ts":1784395835.8723319,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3b07e0ce-61d0-4ba3-a698-211f99e0997c"}
+{"level":"info","ts":1784395835.8725684,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3b07e0ce-61d0-4ba3-a698-211f99e0997c","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395835.9109416,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3b07e0ce-61d0-4ba3-a698-211f99e0997c"}
+{"level":"info","ts":1784395836.658563,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a3a13997-c31b-4c20-8ccf-69d7f6729a8d"}
+{"level":"info","ts":1784395836.6588118,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a3a13997-c31b-4c20-8ccf-69d7f6729a8d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395836.6943185,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a3a13997-c31b-4c20-8ccf-69d7f6729a8d"}
+{"level":"info","ts":1784395837.4411557,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5a6672e7-a07f-4b23-a5bd-8eb1a1280079"}
+{"level":"info","ts":1784395837.4413323,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5a6672e7-a07f-4b23-a5bd-8eb1a1280079","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395837.4789135,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5a6672e7-a07f-4b23-a5bd-8eb1a1280079"}
+{"level":"info","ts":1784395838.2267094,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6c898326-a112-42bc-917d-63c32e5f6823"}
+{"level":"info","ts":1784395838.2269251,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6c898326-a112-42bc-917d-63c32e5f6823","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395838.2645342,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6c898326-a112-42bc-917d-63c32e5f6823"}
+{"level":"info","ts":1784395839.0124557,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6bb47a14-fb86-40aa-a976-c6d47badcc86"}
+{"level":"info","ts":1784395839.012648,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6bb47a14-fb86-40aa-a976-c6d47badcc86","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395839.0497422,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6bb47a14-fb86-40aa-a976-c6d47badcc86"}
+{"level":"info","ts":1784395839.7978811,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"2176a1a9-2033-41e3-9ac5-cdce199470cd"}
+{"level":"info","ts":1784395839.7981272,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"2176a1a9-2033-41e3-9ac5-cdce199470cd","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395839.8331158,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"2176a1a9-2033-41e3-9ac5-cdce199470cd"}
+{"level":"info","ts":1784395840.5805821,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c738b10a-cce5-4699-8678-ab4b2b1cc21b"}
+{"level":"info","ts":1784395840.5808256,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c738b10a-cce5-4699-8678-ab4b2b1cc21b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395840.6184955,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c738b10a-cce5-4699-8678-ab4b2b1cc21b"}
+{"level":"info","ts":1784395841.365903,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"d5884254-ae12-4f03-b72f-5516203022c7"}
+{"level":"info","ts":1784395841.3661437,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"d5884254-ae12-4f03-b72f-5516203022c7","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395841.4016128,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"d5884254-ae12-4f03-b72f-5516203022c7"}
+{"level":"info","ts":1784395842.1491442,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"71bf8300-1652-4360-9202-6c4a3a7fbfec"}
+{"level":"info","ts":1784395842.1493895,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"71bf8300-1652-4360-9202-6c4a3a7fbfec","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395842.1841986,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"71bf8300-1652-4360-9202-6c4a3a7fbfec"}
+{"level":"info","ts":1784395844.8061702,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"46f6abf5-3af4-4c93-af85-ca3acf87dc4c"}
+{"level":"info","ts":1784395844.8064163,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"46f6abf5-3af4-4c93-af85-ca3acf87dc4c","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395844.8425074,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"46f6abf5-3af4-4c93-af85-ca3acf87dc4c"}
+{"level":"info","ts":1784395848.0123646,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e7aa576e-6bb3-4de0-9a8e-331b288bf04a"}
+{"level":"info","ts":1784395848.0126092,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e7aa576e-6bb3-4de0-9a8e-331b288bf04a","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395848.050083,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e7aa576e-6bb3-4de0-9a8e-331b288bf04a"}
+{"level":"info","ts":1784395849.1431267,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"b3cfa28e-c670-4132-9af7-44973c66eac5"}
+{"level":"info","ts":1784395849.143382,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"b3cfa28e-c670-4132-9af7-44973c66eac5","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395849.1786437,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"b3cfa28e-c670-4132-9af7-44973c66eac5"}
+{"level":"info","ts":1784395850.3138278,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"48307e20-51ea-41c8-bec7-2a5bd766371f"}
+{"level":"info","ts":1784395850.3140383,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"48307e20-51ea-41c8-bec7-2a5bd766371f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395850.3518436,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"48307e20-51ea-41c8-bec7-2a5bd766371f"}
+{"level":"info","ts":1784395851.1000714,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"81ff5f83-d7d3-449d-8108-4e19d179f98c"}
+{"level":"info","ts":1784395851.1003006,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"81ff5f83-d7d3-449d-8108-4e19d179f98c","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395851.1425838,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"81ff5f83-d7d3-449d-8108-4e19d179f98c"}
+{"level":"info","ts":1784395851.8902369,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"49d811dd-840a-4b82-9974-fbec36066235"}
+{"level":"info","ts":1784395851.8904195,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"49d811dd-840a-4b82-9974-fbec36066235","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395851.9250746,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"49d811dd-840a-4b82-9974-fbec36066235"}
+{"level":"info","ts":1784395853.20073,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"93d61397-d9cf-402b-8bc3-fe19783cb272"}
+{"level":"info","ts":1784395853.2010229,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"93d61397-d9cf-402b-8bc3-fe19783cb272","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395853.2435713,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"93d61397-d9cf-402b-8bc3-fe19783cb272"}
+{"level":"info","ts":1784395853.9923387,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3faa5ce6-bf9a-491a-8c04-d6e9eb5ac672"}
+{"level":"info","ts":1784395853.9925818,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3faa5ce6-bf9a-491a-8c04-d6e9eb5ac672","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395854.0303757,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3faa5ce6-bf9a-491a-8c04-d6e9eb5ac672"}
+{"level":"info","ts":1784395854.7773483,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5f73928e-463d-476c-8ebc-7134713d0c23"}
+{"level":"info","ts":1784395854.7776587,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5f73928e-463d-476c-8ebc-7134713d0c23","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395854.815281,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5f73928e-463d-476c-8ebc-7134713d0c23"}
+{"level":"info","ts":1784395856.4898753,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1d4ea6aa-7531-4644-93f5-68b1f2861733"}
+{"level":"info","ts":1784395856.4901302,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1d4ea6aa-7531-4644-93f5-68b1f2861733","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395856.5262396,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1d4ea6aa-7531-4644-93f5-68b1f2861733"}
+{"level":"info","ts":1784395858.034119,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"ed195a7b-bc40-430e-bf7a-a5e47420afea"}
+{"level":"info","ts":1784395858.034356,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"ed195a7b-bc40-430e-bf7a-a5e47420afea","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395858.075309,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"ed195a7b-bc40-430e-bf7a-a5e47420afea"}
+{"level":"info","ts":1784395858.8232284,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"552597f5-fbb1-447b-9c89-aecbdc8558e2"}
+{"level":"info","ts":1784395858.8234742,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"552597f5-fbb1-447b-9c89-aecbdc8558e2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395858.8583508,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"552597f5-fbb1-447b-9c89-aecbdc8558e2"}
+{"level":"info","ts":1784395859.6052177,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"2ee7505e-244e-4bf8-9b23-8910ee57f9db"}
+{"level":"info","ts":1784395859.6054296,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"2ee7505e-244e-4bf8-9b23-8910ee57f9db","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395859.6429267,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"2ee7505e-244e-4bf8-9b23-8910ee57f9db"}
+{"level":"info","ts":1784395860.390731,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"162aa4b8-a5f0-4576-a801-a0ac341c4ae6"}
+{"level":"info","ts":1784395860.3909903,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"162aa4b8-a5f0-4576-a801-a0ac341c4ae6","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395860.4282382,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"162aa4b8-a5f0-4576-a801-a0ac341c4ae6"}
+{"level":"info","ts":1784395861.6733704,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5a4c67a5-1c9a-4efd-8705-497a60702ffd"}
+{"level":"info","ts":1784395861.6735814,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5a4c67a5-1c9a-4efd-8705-497a60702ffd","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395861.7114882,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5a4c67a5-1c9a-4efd-8705-497a60702ffd"}
+{"level":"info","ts":1784395862.4585905,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0d14fb7b-bfc6-478f-99a4-89d48969b5d7"}
+{"level":"info","ts":1784395862.4588206,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0d14fb7b-bfc6-478f-99a4-89d48969b5d7","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395862.4969635,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0d14fb7b-bfc6-478f-99a4-89d48969b5d7"}
+{"level":"info","ts":1784395863.243326,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"27a48449-4db0-408d-9153-d42960b9b2bd"}
+{"level":"info","ts":1784395863.2435122,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"27a48449-4db0-408d-9153-d42960b9b2bd","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395863.281103,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"27a48449-4db0-408d-9153-d42960b9b2bd"}
+{"level":"info","ts":1784395864.0273106,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1e7ec350-e6c1-4869-ad64-993e9a104238"}
+{"level":"info","ts":1784395864.0275133,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1e7ec350-e6c1-4869-ad64-993e9a104238","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395864.065647,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1e7ec350-e6c1-4869-ad64-993e9a104238"}
+{"level":"info","ts":1784395864.8123193,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3f2959e0-2217-4258-b2c3-528b94906829"}
+{"level":"info","ts":1784395864.812562,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3f2959e0-2217-4258-b2c3-528b94906829","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395864.8504474,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3f2959e0-2217-4258-b2c3-528b94906829"}
+{"level":"info","ts":1784395865.598449,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"78ac6012-f3e1-491b-9b68-9eb26b322461"}
+{"level":"info","ts":1784395865.5986552,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"78ac6012-f3e1-491b-9b68-9eb26b322461","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395865.6371286,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"78ac6012-f3e1-491b-9b68-9eb26b322461"}
+{"level":"info","ts":1784395866.3887138,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0e3207bb-248a-44ba-865b-d92fd6e929ad"}
+{"level":"info","ts":1784395866.3889806,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0e3207bb-248a-44ba-865b-d92fd6e929ad","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395866.4286082,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0e3207bb-248a-44ba-865b-d92fd6e929ad"}
+{"level":"info","ts":1784395867.176094,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"fd133fd7-3881-402e-af57-8da7c8f33e36"}
+{"level":"info","ts":1784395867.1763108,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"fd133fd7-3881-402e-af57-8da7c8f33e36","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395867.2135394,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"fd133fd7-3881-402e-af57-8da7c8f33e36"}
+{"level":"info","ts":1784395867.960577,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"b48653c3-63a4-4100-a84f-83202c8f680d"}
+{"level":"info","ts":1784395867.9608514,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"b48653c3-63a4-4100-a84f-83202c8f680d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395867.996692,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"b48653c3-63a4-4100-a84f-83202c8f680d"}
+{"level":"info","ts":1784395868.74656,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"77d7ad45-405f-4c6d-9a9a-0f79659a89fe"}
+{"level":"info","ts":1784395868.7468138,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"77d7ad45-405f-4c6d-9a9a-0f79659a89fe","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395868.7816157,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"77d7ad45-405f-4c6d-9a9a-0f79659a89fe"}
+{"level":"info","ts":1784395869.528466,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"7a65e56c-ca66-4de8-b31e-c64bec1bfd71"}
+{"level":"info","ts":1784395869.528659,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"7a65e56c-ca66-4de8-b31e-c64bec1bfd71","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395869.565981,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"7a65e56c-ca66-4de8-b31e-c64bec1bfd71"}
+{"level":"info","ts":1784395870.3136482,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5d5108bd-58c1-4011-9744-b0f4a98a7de8"}
+{"level":"info","ts":1784395870.3139052,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5d5108bd-58c1-4011-9744-b0f4a98a7de8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395870.3512452,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5d5108bd-58c1-4011-9744-b0f4a98a7de8"}
+{"level":"info","ts":1784395871.0991125,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"dcbdc8f8-6eb3-4b64-baa8-6c87408fdf70"}
+{"level":"info","ts":1784395871.099309,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"dcbdc8f8-6eb3-4b64-baa8-6c87408fdf70","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395871.1369324,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"dcbdc8f8-6eb3-4b64-baa8-6c87408fdf70"}
+{"level":"info","ts":1784395871.8883991,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e2ac93b1-693c-4f39-85b5-69ff91fd1843"}
+{"level":"info","ts":1784395871.8886456,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e2ac93b1-693c-4f39-85b5-69ff91fd1843","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395871.9288726,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e2ac93b1-693c-4f39-85b5-69ff91fd1843"}
+{"level":"info","ts":1784395872.6760156,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"d861a011-3cb1-4714-994f-3611bcce961f"}
+{"level":"info","ts":1784395872.6762154,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"d861a011-3cb1-4714-994f-3611bcce961f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395872.7114222,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"d861a011-3cb1-4714-994f-3611bcce961f"}
+{"level":"info","ts":1784395873.4582074,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5173101a-77da-4271-b04c-aee9480444fe"}
+{"level":"info","ts":1784395873.4583876,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5173101a-77da-4271-b04c-aee9480444fe","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395873.4941988,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5173101a-77da-4271-b04c-aee9480444fe"}
+{"level":"info","ts":1784395874.2415323,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3bc0a3cf-1b7f-4c66-a391-3aa81ebc17a0"}
+{"level":"info","ts":1784395874.2418096,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3bc0a3cf-1b7f-4c66-a391-3aa81ebc17a0","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395874.27948,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3bc0a3cf-1b7f-4c66-a391-3aa81ebc17a0"}
+{"level":"info","ts":1784395875.0263839,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1fce7510-7aa4-47d8-9c98-f036e10e637f"}
+{"level":"info","ts":1784395875.0265958,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1fce7510-7aa4-47d8-9c98-f036e10e637f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395875.0642772,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1fce7510-7aa4-47d8-9c98-f036e10e637f"}
+{"level":"info","ts":1784395876.25522,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1d6ad8c8-9af6-4072-85f2-dffc446fde4d"}
+{"level":"info","ts":1784395876.2554328,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1d6ad8c8-9af6-4072-85f2-dffc446fde4d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395876.2929938,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1d6ad8c8-9af6-4072-85f2-dffc446fde4d"}
+{"level":"info","ts":1784395877.041379,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c9e8eb88-7dfa-4f6c-8ad8-f332506893a1"}
+{"level":"info","ts":1784395877.0416276,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c9e8eb88-7dfa-4f6c-8ad8-f332506893a1","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395877.0761678,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c9e8eb88-7dfa-4f6c-8ad8-f332506893a1"}
+{"level":"info","ts":1784395877.8234928,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"607a2e36-91c6-4afb-b5c0-f3c6d69c5f4c"}
+{"level":"info","ts":1784395877.8236883,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"607a2e36-91c6-4afb-b5c0-f3c6d69c5f4c","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395877.8585181,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"607a2e36-91c6-4afb-b5c0-f3c6d69c5f4c"}
+{"level":"info","ts":1784395878.605291,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f2590905-eb88-4cf2-91df-9eb7036256f2"}
+{"level":"info","ts":1784395878.605516,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f2590905-eb88-4cf2-91df-9eb7036256f2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395878.6431546,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f2590905-eb88-4cf2-91df-9eb7036256f2"}
+{"level":"info","ts":1784395879.390051,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3119f846-eafe-4cde-815d-02ff6243e7e0"}
+{"level":"info","ts":1784395879.3902957,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3119f846-eafe-4cde-815d-02ff6243e7e0","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395879.4253042,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3119f846-eafe-4cde-815d-02ff6243e7e0"}
+{"level":"info","ts":1784395880.2542224,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"bb1efb32-92b2-4418-b837-c54a6dc68ef9"}
+{"level":"info","ts":1784395880.2544308,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"bb1efb32-92b2-4418-b837-c54a6dc68ef9","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395880.29189,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"bb1efb32-92b2-4418-b837-c54a6dc68ef9"}
+{"level":"info","ts":1784395881.0379143,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"29ed94dc-03a3-441b-91b4-a0d74077cce7"}
+{"level":"info","ts":1784395881.0381367,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"29ed94dc-03a3-441b-91b4-a0d74077cce7","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395881.0761817,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"29ed94dc-03a3-441b-91b4-a0d74077cce7"}
+{"level":"info","ts":1784395881.822083,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"b2802f25-480f-4a87-801b-ffec6a233775"}
+{"level":"info","ts":1784395881.8223078,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"b2802f25-480f-4a87-801b-ffec6a233775","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395881.860058,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"b2802f25-480f-4a87-801b-ffec6a233775"}
+{"level":"info","ts":1784395882.606699,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"52cac068-df8a-47fc-a33d-1c3bb6950293"}
+{"level":"info","ts":1784395882.6069179,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"52cac068-df8a-47fc-a33d-1c3bb6950293","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395882.644728,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"52cac068-df8a-47fc-a33d-1c3bb6950293"}
+{"level":"info","ts":1784395884.2131727,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"4ee1688f-0b96-4384-9b45-66abe6b15e50"}
+{"level":"info","ts":1784395884.2134266,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"4ee1688f-0b96-4384-9b45-66abe6b15e50","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395884.2513776,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"4ee1688f-0b96-4384-9b45-66abe6b15e50"}
+{"level":"info","ts":1784395884.9996767,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a4317802-8111-4bd9-9197-02ac5f96b3d3"}
+{"level":"info","ts":1784395884.9998868,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a4317802-8111-4bd9-9197-02ac5f96b3d3","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395885.0421872,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a4317802-8111-4bd9-9197-02ac5f96b3d3"}
+{"level":"info","ts":1784395888.373288,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"7a4bd997-b89f-4a09-9f6d-a30e6ba06fe0"}
+{"level":"info","ts":1784395888.3735487,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"7a4bd997-b89f-4a09-9f6d-a30e6ba06fe0","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395888.4088078,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"7a4bd997-b89f-4a09-9f6d-a30e6ba06fe0"}
+{"level":"info","ts":1784395889.1569588,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"caf78bff-7d21-4a61-be5a-a86f14094726"}
+{"level":"info","ts":1784395889.157202,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"caf78bff-7d21-4a61-be5a-a86f14094726","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395889.1926656,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"caf78bff-7d21-4a61-be5a-a86f14094726"}
+{"level":"info","ts":1784395889.9400787,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0849b99b-58fe-4be3-96f4-df3ceb89ab67"}
+{"level":"info","ts":1784395889.9402869,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0849b99b-58fe-4be3-96f4-df3ceb89ab67","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395889.979012,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0849b99b-58fe-4be3-96f4-df3ceb89ab67"}
+{"level":"info","ts":1784395891.080715,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"87de2b24-0598-4689-8278-813f00ddae02"}
+{"level":"info","ts":1784395891.0809743,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"87de2b24-0598-4689-8278-813f00ddae02","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395891.1186993,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"87de2b24-0598-4689-8278-813f00ddae02"}
+{"level":"info","ts":1784395892.599848,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3171977b-9a6b-4215-b5fa-0fe156f2127b"}
+{"level":"info","ts":1784395892.600078,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3171977b-9a6b-4215-b5fa-0fe156f2127b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395892.6424549,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3171977b-9a6b-4215-b5fa-0fe156f2127b"}
+{"level":"info","ts":1784395893.3914835,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1248d62c-c914-4b26-ad44-c727ffbbf68f"}
+{"level":"info","ts":1784395893.3917131,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1248d62c-c914-4b26-ad44-c727ffbbf68f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784395893.4265726,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1248d62c-c914-4b26-ad44-c727ffbbf68f"}
+{"level":"info","ts":1784395986.2619798,"caller":"controller/pod_reconciler.go:97","msg":"Pod added","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"13437e9c-4526-4f92-b556-c3a9e62a328f"}
+{"level":"info","ts":1784396133.262672,"caller":"controller/pod_reconciler.go:97","msg":"Pod added","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"d61ae494-b626-4c4d-b536-2d0002d19871"}
+{"level":"info","ts":1784396219.8701978,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"38d86284-d6c3-4293-8309-ae12d30a7792"}
+{"level":"info","ts":1784396219.870402,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"38d86284-d6c3-4293-8309-ae12d30a7792","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396219.8868248,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"38d86284-d6c3-4293-8309-ae12d30a7792"}
+{"level":"info","ts":1784396274.8667715,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c84426ef-9dda-4d70-b370-f70d9891df7b"}
+{"level":"info","ts":1784396274.8670387,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c84426ef-9dda-4d70-b370-f70d9891df7b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396274.9062452,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c84426ef-9dda-4d70-b370-f70d9891df7b"}
+{"level":"info","ts":1784396278.5886528,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"2977bc35-a8bb-474e-b0b2-a6940d148113"}
+{"level":"info","ts":1784396278.5888846,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"2977bc35-a8bb-474e-b0b2-a6940d148113","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396278.627216,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"2977bc35-a8bb-474e-b0b2-a6940d148113"}
+{"level":"info","ts":1784396282.3066554,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"702e8b55-f1ed-4ded-8cf6-a8d4968e0c2e"}
+{"level":"info","ts":1784396282.3069265,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"702e8b55-f1ed-4ded-8cf6-a8d4968e0c2e","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396282.3426714,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"702e8b55-f1ed-4ded-8cf6-a8d4968e0c2e"}
+{"level":"info","ts":1784396286.0211282,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"88122527-e33c-4c4f-a26c-d65ad15288b2"}
+{"level":"info","ts":1784396286.0213544,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"88122527-e33c-4c4f-a26c-d65ad15288b2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396286.0570343,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"88122527-e33c-4c4f-a26c-d65ad15288b2"}
+{"level":"info","ts":1784396289.7365456,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"ae04fb2f-f2db-47ca-89e1-984502c2c071"}
+{"level":"info","ts":1784396289.7367644,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"ae04fb2f-f2db-47ca-89e1-984502c2c071","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396289.7767348,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"ae04fb2f-f2db-47ca-89e1-984502c2c071"}
+{"level":"info","ts":1784396293.4545074,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6d35fdfb-f81a-4be4-b33f-f9c259e38f48"}
+{"level":"info","ts":1784396293.4547522,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6d35fdfb-f81a-4be4-b33f-f9c259e38f48","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396293.4928708,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6d35fdfb-f81a-4be4-b33f-f9c259e38f48"}
+{"level":"info","ts":1784396297.1716642,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1d7d0220-963e-44fa-94e7-51a860e5250f"}
+{"level":"info","ts":1784396297.1719263,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1d7d0220-963e-44fa-94e7-51a860e5250f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396297.2095325,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1d7d0220-963e-44fa-94e7-51a860e5250f"}
+{"level":"info","ts":1784396300.887982,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"85aa3214-776e-42a4-8ed7-3f1d5cd329f4"}
+{"level":"info","ts":1784396300.8881967,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"85aa3214-776e-42a4-8ed7-3f1d5cd329f4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396300.924139,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"85aa3214-776e-42a4-8ed7-3f1d5cd329f4"}
+{"level":"info","ts":1784396304.6027408,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"ab2760d5-e975-4715-b5ea-984073a93317"}
+{"level":"info","ts":1784396304.603054,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"ab2760d5-e975-4715-b5ea-984073a93317","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396304.6405318,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"ab2760d5-e975-4715-b5ea-984073a93317"}
+{"level":"info","ts":1784396308.3234348,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3ee5be8e-7e13-4038-aac8-3729d7351a5a"}
+{"level":"info","ts":1784396308.3236928,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3ee5be8e-7e13-4038-aac8-3729d7351a5a","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396308.3619223,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3ee5be8e-7e13-4038-aac8-3729d7351a5a"}
+{"level":"info","ts":1784396312.0400796,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"520ec66b-c120-9c3d-b138-0d844526b97e"}
+{"level":"info","ts":1784396312.0403526,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"520ec66b-c120-9c3d-b138-0d844526b97e","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396312.0783095,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"520ec66b-c120-9c3d-b138-0d844526b97e"}
+{"level":"info","ts":1784396315.7567253,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1bd17e37-1bfd-4780-b430-965a0bd3f185"}
+{"level":"info","ts":1784396315.7569525,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1bd17e37-1bfd-4780-b430-965a0bd3f185","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396315.795129,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1bd17e37-1bfd-4780-b430-965a0bd3f185"}
+{"level":"info","ts":1784396319.4736745,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6d2dae0f-748d-40da-b06b-8f8c01bae589"}
+{"level":"info","ts":1784396319.473904,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6d2dae0f-748d-40da-b06b-8f8c01bae589","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396319.5087185,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6d2dae0f-748d-40da-b06b-8f8c01bae589"}
+{"level":"info","ts":1784396323.18606,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6fce648f-d136-425a-b10b-ca9fcaf72b26"}
+{"level":"info","ts":1784396323.186311,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6fce648f-d136-425a-b10b-ca9fcaf72b26","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396323.2243838,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6fce648f-d136-425a-b10b-ca9fcaf72b26"}
+{"level":"info","ts":1784396326.903424,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1b8bc16a-4787-48f8-ae6d-a0d64d0b3d16"}
+{"level":"info","ts":1784396326.9036288,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1b8bc16a-4787-48f8-ae6d-a0d64d0b3d16","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396326.9400504,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1b8bc16a-4787-48f8-ae6d-a0d64d0b3d16"}
+{"level":"info","ts":1784396330.6207433,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0fa39190-4f02-4c2c-9a02-dea5affec60f"}
+{"level":"info","ts":1784396330.6209996,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0fa39190-4f02-4c2c-9a02-dea5affec60f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396330.6565344,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0fa39190-4f02-4c2c-9a02-dea5affec60f"}
+{"level":"info","ts":1784396334.3364034,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"df0dbb6a-20e4-4534-8bcf-6aab526e7059"}
+{"level":"info","ts":1784396334.3366628,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"df0dbb6a-20e4-4534-8bcf-6aab526e7059","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396334.3745193,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"df0dbb6a-20e4-4534-8bcf-6aab526e7059"}
+{"level":"info","ts":1784396338.0536551,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"ab4cdc08-b0c7-418f-b06b-d6b442456402"}
+{"level":"info","ts":1784396338.0538833,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"ab4cdc08-b0c7-418f-b06b-d6b442456402","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396338.092483,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"ab4cdc08-b0c7-418f-b06b-d6b442456402"}
+{"level":"info","ts":1784396341.7710114,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a995d4b1-17cc-4b2f-8fa8-02a13b21fdef"}
+{"level":"info","ts":1784396341.7731073,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a995d4b1-17cc-4b2f-8fa8-02a13b21fdef","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396341.808331,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a995d4b1-17cc-4b2f-8fa8-02a13b21fdef"}
+{"level":"info","ts":1784396345.4872136,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e1c58cdd-0400-4f59-b54d-c62a8a8faae8"}
+{"level":"info","ts":1784396345.4874234,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e1c58cdd-0400-4f59-b54d-c62a8a8faae8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396345.523946,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e1c58cdd-0400-4f59-b54d-c62a8a8faae8"}
+{"level":"info","ts":1784396349.2028604,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"80bd319b-e4fa-484d-8f6f-a280bb010111"}
+{"level":"info","ts":1784396349.2030854,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"80bd319b-e4fa-484d-8f6f-a280bb010111","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396349.24105,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"80bd319b-e4fa-484d-8f6f-a280bb010111"}
+{"level":"info","ts":1784396352.9224112,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e11b31e3-dace-4e2b-a105-37af8c3a7bfc"}
+{"level":"info","ts":1784396352.922632,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e11b31e3-dace-4e2b-a105-37af8c3a7bfc","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396352.9621031,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e11b31e3-dace-4e2b-a105-37af8c3a7bfc"}
+{"level":"info","ts":1784396356.6394343,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"38f90b2b-0baa-4a06-8871-69053d292ad8"}
+{"level":"info","ts":1784396356.6396806,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"38f90b2b-0baa-4a06-8871-69053d292ad8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396356.675004,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"38f90b2b-0baa-4a06-8871-69053d292ad8"}
+{"level":"info","ts":1784396360.3537104,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"94052c07-cc1d-454b-87eb-aaec4fcbb289"}
+{"level":"info","ts":1784396360.3539474,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"94052c07-cc1d-454b-87eb-aaec4fcbb289","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396360.3914816,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"94052c07-cc1d-454b-87eb-aaec4fcbb289"}
+{"level":"info","ts":1784396364.0709186,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5a47d8e5-de48-4013-b263-9429984d40c4"}
+{"level":"info","ts":1784396364.071167,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5a47d8e5-de48-4013-b263-9429984d40c4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396364.109104,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5a47d8e5-de48-4013-b263-9429984d40c4"}
+{"level":"info","ts":1784396365.2633495,"caller":"controller/pod_reconciler.go:97","msg":"Pod added","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"a202d4af-e2c0-4453-861d-4070ff9aef67"}
+{"level":"info","ts":1784396367.7887738,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"02d6f5ec-7110-43a8-86df-bff1a8433301"}
+{"level":"info","ts":1784396367.7890062,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"02d6f5ec-7110-43a8-86df-bff1a8433301","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396367.8270054,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"02d6f5ec-7110-43a8-86df-bff1a8433301"}
+{"level":"info","ts":1784396371.5067856,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"40aada9b-fc1e-4cc6-be66-b69be76e3794"}
+{"level":"info","ts":1784396371.5069988,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"40aada9b-fc1e-4cc6-be66-b69be76e3794","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396371.5448565,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"40aada9b-fc1e-4cc6-be66-b69be76e3794"}
+{"level":"info","ts":1784396375.2235637,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e0066da6-9fde-48a4-bd88-72407d76afb2"}
+{"level":"info","ts":1784396375.2237947,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e0066da6-9fde-48a4-bd88-72407d76afb2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396375.2612343,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e0066da6-9fde-48a4-bd88-72407d76afb2"}
+{"level":"info","ts":1784396378.9412482,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6fe77ec9-e157-43d3-be60-a0ee4007e7e8"}
+{"level":"info","ts":1784396378.9414778,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6fe77ec9-e157-43d3-be60-a0ee4007e7e8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396378.979163,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6fe77ec9-e157-43d3-be60-a0ee4007e7e8"}
+{"level":"info","ts":1784396382.6568866,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"fdd48011-6567-4ec2-ba08-4b3173b8f994"}
+{"level":"info","ts":1784396382.6570892,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"fdd48011-6567-4ec2-ba08-4b3173b8f994","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396382.6947641,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"fdd48011-6567-4ec2-ba08-4b3173b8f994"}
+{"level":"info","ts":1784396386.373389,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"113e5fd0-f827-4d15-97c7-d94e262dd376"}
+{"level":"info","ts":1784396386.3736622,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"113e5fd0-f827-4d15-97c7-d94e262dd376","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396386.4117465,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"113e5fd0-f827-4d15-97c7-d94e262dd376"}
+{"level":"info","ts":1784396390.0889158,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e00c74c8-2d28-49c3-bc4a-e7d4d6733ee4"}
+{"level":"info","ts":1784396390.0891876,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e00c74c8-2d28-49c3-bc4a-e7d4d6733ee4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396390.1243799,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e00c74c8-2d28-49c3-bc4a-e7d4d6733ee4"}
+{"level":"info","ts":1784396393.802908,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"99814026-708d-400c-aa87-a92ae67762b3"}
+{"level":"info","ts":1784396393.8031328,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"99814026-708d-400c-aa87-a92ae67762b3","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396393.8406312,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"99814026-708d-400c-aa87-a92ae67762b3"}
+{"level":"info","ts":1784396397.5200772,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f85e2875-a98b-4323-85a3-c498ef418bd2"}
+{"level":"info","ts":1784396397.5202901,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f85e2875-a98b-4323-85a3-c498ef418bd2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396397.5588405,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f85e2875-a98b-4323-85a3-c498ef418bd2"}
+{"level":"info","ts":1784396401.2360244,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3ddfa429-531a-4760-b899-5d2021bb6ef1"}
+{"level":"info","ts":1784396401.236233,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3ddfa429-531a-4760-b899-5d2021bb6ef1","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396401.274259,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3ddfa429-531a-4760-b899-5d2021bb6ef1"}
+{"level":"info","ts":1784396404.952194,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"8d09cae6-3846-43f8-be9d-cdb97c5bc5a6"}
+{"level":"info","ts":1784396404.952501,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"8d09cae6-3846-43f8-be9d-cdb97c5bc5a6","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396404.9908447,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"8d09cae6-3846-43f8-be9d-cdb97c5bc5a6"}
+{"level":"info","ts":1784396408.6708155,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"bb5fe682-f366-4ba3-8c7e-2ef0942c5a31"}
+{"level":"info","ts":1784396408.6710262,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"bb5fe682-f366-4ba3-8c7e-2ef0942c5a31","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396408.7092984,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"bb5fe682-f366-4ba3-8c7e-2ef0942c5a31"}
+{"level":"info","ts":1784396412.3870463,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"bb494bc1-87de-41db-8e9f-7710ff004ef7"}
+{"level":"info","ts":1784396412.3872697,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"bb494bc1-87de-41db-8e9f-7710ff004ef7","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396412.4241416,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"bb494bc1-87de-41db-8e9f-7710ff004ef7"}
+{"level":"info","ts":1784396416.1028042,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"fed3859a-fbff-4a05-82db-9a7cb8d60acb"}
+{"level":"info","ts":1784396416.103026,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"fed3859a-fbff-4a05-82db-9a7cb8d60acb","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396416.1405694,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"fed3859a-fbff-4a05-82db-9a7cb8d60acb"}
+{"level":"info","ts":1784396419.8194225,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"b8cb758d-2a92-408e-8d13-a516b29c255e"}
+{"level":"info","ts":1784396419.8196528,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"b8cb758d-2a92-408e-8d13-a516b29c255e","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396419.857004,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"b8cb758d-2a92-408e-8d13-a516b29c255e"}
+{"level":"info","ts":1784396423.5352387,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"107b1c10-73e5-4c0d-bd43-403e15e75636"}
+{"level":"info","ts":1784396423.5354698,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"107b1c10-73e5-4c0d-bd43-403e15e75636","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396423.5739307,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"107b1c10-73e5-4c0d-bd43-403e15e75636"}
+{"level":"info","ts":1784396427.252052,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"206ecc26-f111-46e0-aac1-4d161b77a291"}
+{"level":"info","ts":1784396427.2522788,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"206ecc26-f111-46e0-aac1-4d161b77a291","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396427.2908995,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"206ecc26-f111-46e0-aac1-4d161b77a291"}
+{"level":"info","ts":1784396430.973214,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"baf33b6c-5b2c-4683-9e20-594b83207287"}
+{"level":"info","ts":1784396430.9734626,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"baf33b6c-5b2c-4683-9e20-594b83207287","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396431.011103,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"baf33b6c-5b2c-4683-9e20-594b83207287"}
+{"level":"info","ts":1784396434.6919007,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1af6e188-4ee9-4a8f-b6a1-cb932b707ed9"}
+{"level":"info","ts":1784396434.692123,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1af6e188-4ee9-4a8f-b6a1-cb932b707ed9","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396434.7295415,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1af6e188-4ee9-4a8f-b6a1-cb932b707ed9"}
+{"level":"info","ts":1784396438.406744,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6d4208fb-4f45-4e93-942d-451dd0ca6d6d"}
+{"level":"info","ts":1784396438.406973,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6d4208fb-4f45-4e93-942d-451dd0ca6d6d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396438.4447262,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6d4208fb-4f45-4e93-942d-451dd0ca6d6d"}
+{"level":"info","ts":1784396442.1238961,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"8a31d685-2bf0-4f83-94e3-07585e81b569"}
+{"level":"info","ts":1784396442.124116,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"8a31d685-2bf0-4f83-94e3-07585e81b569","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396442.161881,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"8a31d685-2bf0-4f83-94e3-07585e81b569"}
+{"level":"info","ts":1784396445.8397286,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a3236c63-ece3-4802-94c3-35ae6b3bbf44"}
+{"level":"info","ts":1784396445.8399944,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a3236c63-ece3-4802-94c3-35ae6b3bbf44","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396445.8750992,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a3236c63-ece3-4802-94c3-35ae6b3bbf44"}
+{"level":"info","ts":1784396447.2624216,"caller":"controller/pod_reconciler.go:97","msg":"Pod added","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"8c22eceb-9fa0-4381-8a47-c66936d70512"}
+{"level":"info","ts":1784396449.5525959,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"45bd133e-9af0-4631-a27d-048621224193"}
+{"level":"info","ts":1784396449.5528483,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"45bd133e-9af0-4631-a27d-048621224193","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396449.590497,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"45bd133e-9af0-4631-a27d-048621224193"}
+{"level":"info","ts":1784396453.271863,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"09f8d9bd-8bfc-43b6-9e3f-a561fe8f3c16"}
+{"level":"info","ts":1784396453.272112,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"09f8d9bd-8bfc-43b6-9e3f-a561fe8f3c16","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396453.3102653,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"09f8d9bd-8bfc-43b6-9e3f-a561fe8f3c16"}
+{"level":"info","ts":1784396456.9879467,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"831dc1c7-03da-45e1-abf5-8cda4c387403"}
+{"level":"info","ts":1784396456.9881642,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"831dc1c7-03da-45e1-abf5-8cda4c387403","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396457.0259173,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"831dc1c7-03da-45e1-abf5-8cda4c387403"}
+{"level":"info","ts":1784396460.7030325,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f79541c1-b743-4548-a34b-b3a3dcf0e712"}
+{"level":"info","ts":1784396460.703269,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f79541c1-b743-4548-a34b-b3a3dcf0e712","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396460.740758,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f79541c1-b743-4548-a34b-b3a3dcf0e712"}
+{"level":"info","ts":1784396464.4201846,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c9d3825d-0ec6-4a6f-a2f1-ae872dbc6aa3"}
+{"level":"info","ts":1784396464.4204373,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c9d3825d-0ec6-4a6f-a2f1-ae872dbc6aa3","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396464.455251,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c9d3825d-0ec6-4a6f-a2f1-ae872dbc6aa3"}
+{"level":"info","ts":1784396468.1339858,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"8cff0f8f-a0af-4d24-bd32-44f5e3f88639"}
+{"level":"info","ts":1784396468.134255,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"8cff0f8f-a0af-4d24-bd32-44f5e3f88639","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396468.1735578,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"8cff0f8f-a0af-4d24-bd32-44f5e3f88639"}
+{"level":"info","ts":1784396471.8514802,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"9fa2b0c6-646f-4993-9638-621c5e9868d6"}
+{"level":"info","ts":1784396471.8517437,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"9fa2b0c6-646f-4993-9638-621c5e9868d6","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396471.8900137,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"9fa2b0c6-646f-4993-9638-621c5e9868d6"}
+{"level":"info","ts":1784396475.5720034,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"43913d99-b767-431b-beb4-08d6508a1287"}
+{"level":"info","ts":1784396475.572219,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"43913d99-b767-431b-beb4-08d6508a1287","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396475.6100779,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"43913d99-b767-431b-beb4-08d6508a1287"}
+{"level":"info","ts":1784396479.28822,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"036197b5-b91d-4a1f-8574-e13b6b39e422"}
+{"level":"info","ts":1784396479.2884827,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"036197b5-b91d-4a1f-8574-e13b6b39e422","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396479.326306,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"036197b5-b91d-4a1f-8574-e13b6b39e422"}
+{"level":"info","ts":1784396483.0045505,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"68870f76-722a-4eb5-a379-ec9872acb3e5"}
+{"level":"info","ts":1784396483.0047998,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"68870f76-722a-4eb5-a379-ec9872acb3e5","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396483.0426524,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"68870f76-722a-4eb5-a379-ec9872acb3e5"}
+{"level":"info","ts":1784396486.7214959,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e728ad60-99fe-4752-bfb7-9cfa923981f9"}
+{"level":"info","ts":1784396486.7217607,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e728ad60-99fe-4752-bfb7-9cfa923981f9","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396486.7567725,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e728ad60-99fe-4752-bfb7-9cfa923981f9"}
+{"level":"info","ts":1784396490.4353359,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"180bb402-e276-45db-9a96-8eb724b1ee01"}
+{"level":"info","ts":1784396490.4355733,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"180bb402-e276-45db-9a96-8eb724b1ee01","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396490.4713206,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"180bb402-e276-45db-9a96-8eb724b1ee01"}
+{"level":"info","ts":1784396494.150005,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c67417e6-3c85-4674-a67c-d9404fe9e7cf"}
+{"level":"info","ts":1784396494.1502118,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c67417e6-3c85-4674-a67c-d9404fe9e7cf","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396494.1852527,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c67417e6-3c85-4674-a67c-d9404fe9e7cf"}
+{"level":"info","ts":1784396497.8665895,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"936f2cc8-52a8-45c5-b9dc-0f5119a6de70"}
+{"level":"info","ts":1784396497.8668227,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"936f2cc8-52a8-45c5-b9dc-0f5119a6de70","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396497.9018106,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"936f2cc8-52a8-45c5-b9dc-0f5119a6de70"}
+{"level":"info","ts":1784396501.5777037,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"156430b1-d2e1-45f0-aa43-f374eed2790b"}
+{"level":"info","ts":1784396501.577929,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"156430b1-d2e1-45f0-aa43-f374eed2790b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396501.6156878,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"156430b1-d2e1-45f0-aa43-f374eed2790b"}
+{"level":"info","ts":1784396505.292084,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"37f9a718-ec0c-4492-81a6-9e63ad96f85b"}
+{"level":"info","ts":1784396505.2923307,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"37f9a718-ec0c-4492-81a6-9e63ad96f85b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396505.3282137,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"37f9a718-ec0c-4492-81a6-9e63ad96f85b"}
+{"level":"info","ts":1784396509.0067146,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1cadd339-1a4a-44ac-bdc4-4f6f44772669"}
+{"level":"info","ts":1784396509.0069425,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1cadd339-1a4a-44ac-bdc4-4f6f44772669","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396509.0448315,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1cadd339-1a4a-44ac-bdc4-4f6f44772669"}
+{"level":"info","ts":1784396512.721826,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f0eafcbb-d501-4567-9f10-80318cd16f03"}
+{"level":"info","ts":1784396512.7220335,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f0eafcbb-d501-4567-9f10-80318cd16f03","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396512.757725,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f0eafcbb-d501-4567-9f10-80318cd16f03"}
+{"level":"info","ts":1784396516.4351387,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5c945cb2-9ae2-492b-b2fb-3f0410d957a8"}
+{"level":"info","ts":1784396516.435355,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5c945cb2-9ae2-492b-b2fb-3f0410d957a8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396516.4742007,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5c945cb2-9ae2-492b-b2fb-3f0410d957a8"}
+{"level":"info","ts":1784396520.1507087,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"24dab6a0-05e3-4a6c-97d4-21a9a990aae8"}
+{"level":"info","ts":1784396520.1509326,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"24dab6a0-05e3-4a6c-97d4-21a9a990aae8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396520.1860368,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"24dab6a0-05e3-4a6c-97d4-21a9a990aae8"}
+{"level":"info","ts":1784396523.8657436,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"8a9dd03c-ba8f-41aa-b756-3124a7bf9906"}
+{"level":"info","ts":1784396523.8659708,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"8a9dd03c-ba8f-41aa-b756-3124a7bf9906","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396523.9036715,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"8a9dd03c-ba8f-41aa-b756-3124a7bf9906"}
+{"level":"info","ts":1784396527.580539,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5d0322e3-9565-49c8-85ab-939f29f62bb8"}
+{"level":"info","ts":1784396527.5807788,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5d0322e3-9565-49c8-85ab-939f29f62bb8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396527.6181595,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5d0322e3-9565-49c8-85ab-939f29f62bb8"}
+{"level":"info","ts":1784396531.2998874,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"d4ab651c-158c-4ade-ac2b-fb267bc87ab4"}
+{"level":"info","ts":1784396531.300137,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"d4ab651c-158c-4ade-ac2b-fb267bc87ab4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396531.3357303,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"d4ab651c-158c-4ade-ac2b-fb267bc87ab4"}
+{"level":"info","ts":1784396535.0150921,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"43d3c8c6-9118-4c16-b5b1-874a76125b02"}
+{"level":"info","ts":1784396535.0153491,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"43d3c8c6-9118-4c16-b5b1-874a76125b02","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396535.0529306,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"43d3c8c6-9118-4c16-b5b1-874a76125b02"}
+{"level":"info","ts":1784396538.7295585,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"c6cadada-5277-483b-9d2d-ca3cebc8f082"}
+{"level":"info","ts":1784396538.7297893,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"c6cadada-5277-483b-9d2d-ca3cebc8f082","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396538.767421,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"c6cadada-5277-483b-9d2d-ca3cebc8f082"}
+{"level":"info","ts":1784396542.443279,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a0b571ef-a3e6-49f3-9ae9-67719afa594e"}
+{"level":"info","ts":1784396542.4435067,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a0b571ef-a3e6-49f3-9ae9-67719afa594e","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396542.4772003,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a0b571ef-a3e6-49f3-9ae9-67719afa594e"}
+{"level":"info","ts":1784396546.1536407,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1d15a7a7-219b-4c28-adef-0c552d4d4bdb"}
+{"level":"info","ts":1784396546.1539211,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1d15a7a7-219b-4c28-adef-0c552d4d4bdb","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396546.1914496,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1d15a7a7-219b-4c28-adef-0c552d4d4bdb"}
+{"level":"info","ts":1784396549.868279,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e1112214-2d89-4fc2-95e8-4b5ac1320283"}
+{"level":"info","ts":1784396549.8685393,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e1112214-2d89-4fc2-95e8-4b5ac1320283","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396549.9030526,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e1112214-2d89-4fc2-95e8-4b5ac1320283"}
+{"level":"info","ts":1784396553.5793364,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"59612614-1a64-41be-885c-f3cea597817f"}
+{"level":"info","ts":1784396553.5795474,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"59612614-1a64-41be-885c-f3cea597817f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396553.6173213,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"59612614-1a64-41be-885c-f3cea597817f"}
+{"level":"info","ts":1784396557.2991657,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"cca693e6-6bf3-42ae-9dad-cfa69497c4c4"}
+{"level":"info","ts":1784396557.2993715,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"cca693e6-6bf3-42ae-9dad-cfa69497c4c4","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396557.3343804,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"cca693e6-6bf3-42ae-9dad-cfa69497c4c4"}
+{"level":"info","ts":1784396561.0148823,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"115d9034-f853-46ed-8730-d7df6a3c2435"}
+{"level":"info","ts":1784396561.0151265,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"115d9034-f853-46ed-8730-d7df6a3c2435","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396561.0501733,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"115d9034-f853-46ed-8730-d7df6a3c2435"}
+{"level":"info","ts":1784396564.7263434,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"9e2c703c-92bd-449c-9f41-6dbeecf440e6"}
+{"level":"info","ts":1784396564.7265935,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"9e2c703c-92bd-449c-9f41-6dbeecf440e6","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396564.7650604,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"9e2c703c-92bd-449c-9f41-6dbeecf440e6"}
+{"level":"info","ts":1784396568.4435718,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"1d0c07cc-97ed-4166-8f71-90cca5bb0c8f"}
+{"level":"info","ts":1784396568.443816,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"1d0c07cc-97ed-4166-8f71-90cca5bb0c8f","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396568.4813862,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"1d0c07cc-97ed-4166-8f71-90cca5bb0c8f"}
+{"level":"info","ts":1784396572.1587574,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"81a0d266-2948-4e20-b83c-05b99107b71d"}
+{"level":"info","ts":1784396572.158963,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"81a0d266-2948-4e20-b83c-05b99107b71d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396572.1968937,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"81a0d266-2948-4e20-b83c-05b99107b71d"}
+{"level":"info","ts":1784396575.8729796,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"27716497-3180-4e22-a153-a48fe300de39"}
+{"level":"info","ts":1784396575.873215,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"27716497-3180-4e22-a153-a48fe300de39","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396575.9091227,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"27716497-3180-4e22-a153-a48fe300de39"}
+{"level":"info","ts":1784396579.586185,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"bb71388e-f9c3-4057-9827-4496e327ef0e"}
+{"level":"info","ts":1784396579.5863857,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"bb71388e-f9c3-4057-9827-4496e327ef0e","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396579.6241353,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"bb71388e-f9c3-4057-9827-4496e327ef0e"}
+{"level":"info","ts":1784396583.3013093,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"22a8bc47-cd73-4edf-950b-b5b26d00e193"}
+{"level":"info","ts":1784396583.3015742,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"22a8bc47-cd73-4edf-950b-b5b26d00e193","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396583.3411727,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"22a8bc47-cd73-4edf-950b-b5b26d00e193"}
+{"level":"info","ts":1784396587.0185723,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"95e9fb62-0697-4cf7-bdb4-7b69477d3bfe"}
+{"level":"info","ts":1784396587.0187936,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"95e9fb62-0697-4cf7-bdb4-7b69477d3bfe","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396587.0545168,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"95e9fb62-0697-4cf7-bdb4-7b69477d3bfe"}
+{"level":"info","ts":1784396590.7318342,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"dcaaf448-4b12-4ecf-bcdc-b41b5d8b87f5"}
+{"level":"info","ts":1784396590.732054,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"dcaaf448-4b12-4ecf-bcdc-b41b5d8b87f5","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396590.7669375,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"dcaaf448-4b12-4ecf-bcdc-b41b5d8b87f5"}
+{"level":"info","ts":1784396594.4439456,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"71ac0da8-3da5-4781-9351-8bead3b142e3"}
+{"level":"info","ts":1784396594.4441874,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"71ac0da8-3da5-4781-9351-8bead3b142e3","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396594.4821837,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"71ac0da8-3da5-4781-9351-8bead3b142e3"}
+{"level":"info","ts":1784396598.1584215,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"976a4434-0e2d-4eb2-ae73-446399fcf982"}
+{"level":"info","ts":1784396598.1586435,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"976a4434-0e2d-4eb2-ae73-446399fcf982","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396598.19636,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"976a4434-0e2d-4eb2-ae73-446399fcf982"}
+{"level":"info","ts":1784396601.8738158,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"fd1d7af9-9144-4881-845c-1cf2f443eb98"}
+{"level":"info","ts":1784396601.8740547,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"fd1d7af9-9144-4881-845c-1cf2f443eb98","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396601.911378,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"fd1d7af9-9144-4881-845c-1cf2f443eb98"}
+{"level":"info","ts":1784396605.5888944,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a820592e-1c55-486b-8b10-da93ab069990"}
+{"level":"info","ts":1784396605.5891016,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a820592e-1c55-486b-8b10-da93ab069990","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396605.627689,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a820592e-1c55-486b-8b10-da93ab069990"}
+{"level":"info","ts":1784396609.3053699,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"a38edd49-aeac-44ff-8965-9d9eb39f354b"}
+{"level":"info","ts":1784396609.3056333,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"a38edd49-aeac-44ff-8965-9d9eb39f354b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396609.3434367,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"a38edd49-aeac-44ff-8965-9d9eb39f354b"}
+{"level":"info","ts":1784396613.0228674,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"38fd0da7-d2bb-4b73-a321-c330fffc672b"}
+{"level":"info","ts":1784396613.0231192,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"38fd0da7-d2bb-4b73-a321-c330fffc672b","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396613.0608823,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"38fd0da7-d2bb-4b73-a321-c330fffc672b"}
+{"level":"info","ts":1784396616.7377224,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6e48ed87-67db-4115-8144-698a64e3a6a9"}
+{"level":"info","ts":1784396616.737952,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6e48ed87-67db-4115-8144-698a64e3a6a9","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396616.7768385,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6e48ed87-67db-4115-8144-698a64e3a6a9"}
+{"level":"info","ts":1784396620.4545522,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e30c3236-d240-4aec-b5dd-abb793aec6cc"}
+{"level":"info","ts":1784396620.4548047,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e30c3236-d240-4aec-b5dd-abb793aec6cc","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396620.4935243,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e30c3236-d240-4aec-b5dd-abb793aec6cc"}
+{"level":"info","ts":1784396624.1710687,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"d178d712-6239-4eb0-b668-9188eca7c1ab"}
+{"level":"info","ts":1784396624.1713269,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"d178d712-6239-4eb0-b668-9188eca7c1ab","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396624.2095916,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"d178d712-6239-4eb0-b668-9188eca7c1ab"}
+{"level":"info","ts":1784396627.8864553,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"33c59154-b30a-4cab-b7c5-eb1460ac5575"}
+{"level":"info","ts":1784396627.8867068,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"33c59154-b30a-4cab-b7c5-eb1460ac5575","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396627.9261508,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"33c59154-b30a-4cab-b7c5-eb1460ac5575"}
+{"level":"info","ts":1784396631.6023371,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"4e9360a3-f43e-4672-8402-be0a1e729858"}
+{"level":"info","ts":1784396631.6025789,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"4e9360a3-f43e-4672-8402-be0a1e729858","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396631.6409774,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"4e9360a3-f43e-4672-8402-be0a1e729858"}
+{"level":"info","ts":1784396635.3213973,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"3cbf7eca-8c67-4da4-92d1-50fa7a2cbdf8"}
+{"level":"info","ts":1784396635.3216045,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"3cbf7eca-8c67-4da4-92d1-50fa7a2cbdf8","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396635.359093,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"3cbf7eca-8c67-4da4-92d1-50fa7a2cbdf8"}
+{"level":"info","ts":1784396639.0371687,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"9193f976-840d-42c0-b091-2d0d6480d693"}
+{"level":"info","ts":1784396639.0373933,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"9193f976-840d-42c0-b091-2d0d6480d693","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396639.076878,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"9193f976-840d-42c0-b091-2d0d6480d693"}
+{"level":"info","ts":1784396642.7547436,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"309f7481-95de-4abc-9ff0-1fd803cfbef3"}
+{"level":"info","ts":1784396642.7549741,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"309f7481-95de-4abc-9ff0-1fd803cfbef3","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396642.793,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"309f7481-95de-4abc-9ff0-1fd803cfbef3"}
+{"level":"info","ts":1784396646.4703565,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"acce622e-f73a-4c5b-af89-d3feb1ebcd81"}
+{"level":"info","ts":1784396646.4706156,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"acce622e-f73a-4c5b-af89-d3feb1ebcd81","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396646.5061264,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"acce622e-f73a-4c5b-af89-d3feb1ebcd81"}
+{"level":"info","ts":1784396650.1839657,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"5af142d3-494d-4540-bf64-ef8b2cbf1575"}
+{"level":"info","ts":1784396650.1841962,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"5af142d3-494d-4540-bf64-ef8b2cbf1575","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396650.221406,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"5af142d3-494d-4540-bf64-ef8b2cbf1575"}
+{"level":"info","ts":1784396653.8999448,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"f7a3a306-3177-47ff-994e-736355f9af76"}
+{"level":"info","ts":1784396653.9002235,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"f7a3a306-3177-47ff-994e-736355f9af76","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396653.940842,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"f7a3a306-3177-47ff-994e-736355f9af76"}
+{"level":"info","ts":1784396657.6221125,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"17f08981-a449-46f0-9fe4-ad3f6cfec06d"}
+{"level":"info","ts":1784396657.622343,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"17f08981-a449-46f0-9fe4-ad3f6cfec06d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396657.6601017,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"17f08981-a449-46f0-9fe4-ad3f6cfec06d"}
+{"level":"info","ts":1784396661.338075,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"70f6f486-ceb5-452c-8137-6b2bcbf35048"}
+{"level":"info","ts":1784396661.3382766,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"70f6f486-ceb5-452c-8137-6b2bcbf35048","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396661.3775365,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"70f6f486-ceb5-452c-8137-6b2bcbf35048"}
+{"level":"info","ts":1784396665.0552046,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0efe0021-32ec-4432-ac5d-aa2f7a0fb45a"}
+{"level":"info","ts":1784396665.0554183,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0efe0021-32ec-4432-ac5d-aa2f7a0fb45a","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396665.0910292,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0efe0021-32ec-4432-ac5d-aa2f7a0fb45a"}
+{"level":"info","ts":1784396668.7723806,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"4f597b68-b223-4d71-bf5f-085684de2ef2"}
+{"level":"info","ts":1784396668.7726016,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"4f597b68-b223-4d71-bf5f-085684de2ef2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396668.8076794,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"4f597b68-b223-4d71-bf5f-085684de2ef2"}
+{"level":"info","ts":1784396672.4846034,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"978884a3-9470-4eee-93e0-c8d6efa78a38"}
+{"level":"info","ts":1784396672.4848397,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"978884a3-9470-4eee-93e0-c8d6efa78a38","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396672.5234585,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"978884a3-9470-4eee-93e0-c8d6efa78a38"}
+{"level":"info","ts":1784396676.202761,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"6d11cc7b-13ff-45bf-8265-77a05d5a136d"}
+{"level":"info","ts":1784396676.203037,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"6d11cc7b-13ff-45bf-8265-77a05d5a136d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396676.240611,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"6d11cc7b-13ff-45bf-8265-77a05d5a136d"}
+{"level":"info","ts":1784396679.918349,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"beca1545-411b-45bf-bac0-9b092f5705e6"}
+{"level":"info","ts":1784396679.918591,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"beca1545-411b-45bf-bac0-9b092f5705e6","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396679.956227,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"beca1545-411b-45bf-bac0-9b092f5705e6"}
+{"level":"info","ts":1784396683.6338851,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"2353c949-c61a-4610-b0f7-5bad7de2041d"}
+{"level":"info","ts":1784396683.6341033,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"2353c949-c61a-4610-b0f7-5bad7de2041d","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396683.670585,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"2353c949-c61a-4610-b0f7-5bad7de2041d"}
+{"level":"info","ts":1784396687.3485808,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"e4b1f381-c94c-4953-b96c-bf1563fc43ee"}
+{"level":"info","ts":1784396687.3488462,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"e4b1f381-c94c-4953-b96c-bf1563fc43ee","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396687.386977,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"e4b1f381-c94c-4953-b96c-bf1563fc43ee"}
+{"level":"info","ts":1784396691.069217,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"9415c43a-b299-49b5-a55c-17807711e707"}
+{"level":"info","ts":1784396691.0694532,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"9415c43a-b299-49b5-a55c-17807711e707","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396691.1070595,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"9415c43a-b299-49b5-a55c-17807711e707"}
+{"level":"info","ts":1784396694.7838402,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"0a0071af-e41d-4f6f-a528-d4ae69b44d78"}
+{"level":"info","ts":1784396694.7841105,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"0a0071af-e41d-4f6f-a528-d4ae69b44d78","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396694.824264,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"0a0071af-e41d-4f6f-a528-d4ae69b44d78"}
+{"level":"info","ts":1784396698.5016632,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"06295398-e18d-4464-a1fd-05aa039bc263"}
+{"level":"info","ts":1784396698.5019143,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"06295398-e18d-4464-a1fd-05aa039bc263","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396698.537194,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"06295398-e18d-4464-a1fd-05aa039bc263"}
+{"level":"info","ts":1784396702.215407,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"907c788f-0699-49fd-8ab2-70d7b27984c9"}
+{"level":"info","ts":1784396702.2156274,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"907c788f-0699-49fd-8ab2-70d7b27984c9","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396702.2509456,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"907c788f-0699-49fd-8ab2-70d7b27984c9"}
+{"level":"info","ts":1784396705.9276936,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"47e82045-6ef4-459b-9b6b-4b241ab09ef5"}
+{"level":"info","ts":1784396705.927938,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"47e82045-6ef4-459b-9b6b-4b241ab09ef5","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396705.965025,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"47e82045-6ef4-459b-9b6b-4b241ab09ef5"}
+{"level":"info","ts":1784396709.6417074,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"bb28a24f-cbf8-4e70-912e-3585ef4664df"}
+{"level":"info","ts":1784396709.641971,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"bb28a24f-cbf8-4e70-912e-3585ef4664df","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396709.6772172,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"bb28a24f-cbf8-4e70-912e-3585ef4664df"}
+{"level":"info","ts":1784396713.355736,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"8d8cb9ce-d598-95c3-ab8e-bd5d17ec3d71"}
+{"level":"info","ts":1784396713.3559847,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"8d8cb9ce-d598-95c3-ab8e-bd5d17ec3d71","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396713.3939354,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"8d8cb9ce-d598-95c3-ab8e-bd5d17ec3d71"}
+{"level":"info","ts":1784396717.0719714,"caller":"handlers/server.go:401","msg":"EPP received request","x-request-id":"4c7b96f0-8838-42c3-a380-06b2538d61c2"}
+{"level":"info","ts":1784396717.0721705,"caller":"handlers/server.go:662","msg":"EPP sent request body response(s) to proxy","x-request-id":"4c7b96f0-8838-42c3-a380-06b2538d61c2","modelName":"openai/gpt-oss-120b","targetModelName":"openai/gpt-oss-120b"}
+{"level":"info","ts":1784396717.10981,"caller":"handlers/server.go:691","msg":"EPP sent response body back to proxy","x-request-id":"4c7b96f0-8838-42c3-a380-06b2538d61c2"}
+{"level":"info","ts":1784396744.2644196,"caller":"controller/pod_reconciler.go:97","msg":"Pod added","controller":"pod","controllerGroup":"","controllerKind":"Pod","Pod":{"name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","namespace":"dpikus-epd"},"namespace":"dpikus-epd","name":"epd-nvidia-gpu-vllm-prefill-5678f54fb4-mdpcq","reconcileID":"91a3dea2-a08f-4ec3-b51c-a4aa09b33b2e"}

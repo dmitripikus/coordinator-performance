@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/usr/local/bin/inference-perf", line 8, in <module>
+    sys.exit(main_cli())
+             ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/inference_perf/main.py", line 119, in main_cli
+    config = read_config(args.config_file)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/inference_perf/config.py", line 322, in read_config
+    with open(config_file, "r") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/requests/inference-perf_1784385481_random_250_100_isl_osl_pd-gpt-oss-120b/random_250_100_isl_osl.yaml'

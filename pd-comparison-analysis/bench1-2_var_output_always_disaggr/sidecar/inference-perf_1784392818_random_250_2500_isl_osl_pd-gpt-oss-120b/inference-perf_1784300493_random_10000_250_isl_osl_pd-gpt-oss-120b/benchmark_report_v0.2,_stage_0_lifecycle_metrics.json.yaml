@@ -1,0 +1,33 @@
+results:
+  request_performance:
+    aggregate:
+      requests:
+        failures: 120
+        total: 120
+run:
+  cid: 0f7bdcb3-c80c-5809-8b0f-1d5ff4605706
+  eid: 1b4db7eb-4057-5ddf-91e0-36dec72071f5
+  time: {}
+  uid: 98b6f73b-4a53-44b3-8f95-5489a48cc4c6
+  user: namespace=dpikus-pd
+scenario:
+  load:
+    metadata:
+      cfg_id: 74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b
+      schema_version: 0.0.1
+    native:
+      args: {}
+    standardized:
+      input_seq_len:
+        distribution: gaussian
+        value: 10304.45
+      output_seq_len:
+        distribution: gaussian
+        value: 0
+      parallelism: 1
+      rate_qps: 0.1
+      source: unknown
+      stage: 0
+      tool: inference-perf
+      tool_version: ''
+version: '0.2'

@@ -1,0 +1,698 @@
+(APIServer pid=1) INFO 07-18 06:51:07 [utils.py:306] 
+(APIServer pid=1) INFO 07-18 06:51:07 [utils.py:306]        █     █     █▄   ▄█
+(APIServer pid=1) INFO 07-18 06:51:07 [utils.py:306]  ▄▄ ▄█ █     █     █ ▀▄▀ █  version 0.21.1rc1.dev46+gb50646e5e
+(APIServer pid=1) INFO 07-18 06:51:07 [utils.py:306]   █▄█▀ █     █     █     █  model   openai/gpt-oss-120b
+(APIServer pid=1) INFO 07-18 06:51:07 [utils.py:306]    ▀▀  ▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀
+(APIServer pid=1) INFO 07-18 06:51:07 [utils.py:306] 
+(APIServer pid=1) INFO 07-18 06:51:07 [utils.py:240] non-default args: {'model_tag': 'openai/gpt-oss-120b', 'disable_access_log_for_endpoints': '/metrics,/health,/ping,/v1/models', 'model': 'openai/gpt-oss-120b', 'block_size': 128, 'gpu_memory_utilization': 0.9, 'disable_hybrid_kv_cache_manager': False, 'kv_transfer_config': KVTransferConfig(kv_connector='NixlConnector', engine_id='6b28ff59-6ad9-4b17-a5db-79067bae92ae', kv_buffer_device='cuda', kv_buffer_size=1000000000.0, kv_role='kv_both', kv_rank=None, kv_parallel_size=1, kv_ip='127.0.0.1', kv_port=14579, kv_connector_extra_config={}, kv_connector_module_path=None, enable_permute_local_kv=False, kv_load_failure_policy='fail')}
+(APIServer pid=1) WARNING 07-18 06:51:07 [envs.py:1907] Unknown vLLM environment variable detected: VLLM_BUILD_COMMIT
+(APIServer pid=1) WARNING 07-18 06:51:07 [envs.py:1907] Unknown vLLM environment variable detected: VLLM_BUILD_PIPELINE
+(APIServer pid=1) WARNING 07-18 06:51:07 [envs.py:1907] Unknown vLLM environment variable detected: VLLM_BUILD_URL
+(APIServer pid=1) WARNING 07-18 06:51:07 [envs.py:1907] Unknown vLLM environment variable detected: VLLM_IMAGE_TAG
+(APIServer pid=1) Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+(APIServer pid=1) INFO 07-18 06:51:16 [model.py:574] Resolved architecture: GptOssForCausalLM
+(APIServer pid=1) Parse safetensors files:   0%|          | 0/15 [00:00<?, ?it/s]Parse safetensors files:   7%|▋         | 1/15 [00:00<00:02,  5.38it/s]Parse safetensors files: 100%|██████████| 15/15 [00:00<00:00, 80.59it/s]
+(APIServer pid=1) INFO 07-18 06:51:16 [model.py:1705] Using max model len 131072
+(APIServer pid=1) INFO 07-18 06:51:17 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(APIServer pid=1) INFO 07-18 06:51:17 [config.py:170] Overriding max cuda graph capture size to 1024 for performance.
+(APIServer pid=1) INFO 07-18 06:51:17 [vllm.py:968] Asynchronous scheduling is enabled.
+(APIServer pid=1) INFO 07-18 06:51:17 [kernel.py:267] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(APIServer pid=1) INFO 07-18 06:51:17 [nixl_utils.py:32] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+(APIServer pid=1) INFO 07-18 06:51:17 [nixl_utils.py:68] NIXL is available
+(EngineCore pid=66) INFO 07-18 06:51:26 [core.py:109] Initializing a V1 LLM engine (v0.21.1rc1.dev46+gb50646e5e) with config: model='openai/gpt-oss-120b', speculative_config=None, tokenizer='openai/gpt-oss-120b', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=gpt_oss_mxfp4, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='openai_gptoss', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=openai/gpt-oss-120b, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512, 528, 544, 560, 576, 592, 608, 624, 640, 656, 672, 688, 704, 720, 736, 752, 768, 784, 800, 816, 832, 848, 864, 880, 896, 912, 928, 944, 960, 976, 992, 1008, 1024], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False}, 'max_cudagraph_capture_size': 1024, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=66) INFO 07-18 06:51:26 [parallel_state.py:1410] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.0.6.207:47091 backend=nccl
+(EngineCore pid=66) INFO 07-18 06:51:26 [parallel_state.py:1723] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+(EngineCore pid=66) INFO 07-18 06:51:27 [topk_topp_sampler.py:45] Using FlashInfer for top-p & top-k sampling.
+(EngineCore pid=66) INFO 07-18 06:51:27 [gpu_model_runner.py:4976] Starting to load model openai/gpt-oss-120b...
+(EngineCore pid=66) INFO 07-18 06:51:28 [cuda.py:372] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'TRITON_ATTN'].
+(EngineCore pid=66) INFO 07-18 06:51:28 [flash_attn.py:636] Using FlashAttention version 3
+(EngineCore pid=66) INFO 07-18 06:51:28 [mxfp4.py:530] Using 'TRITON' Mxfp4 MoE backend.
+(EngineCore pid=66) Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+(EngineCore pid=66) INFO 07-18 06:51:29 [weight_utils.py:922] Filesystem type for checkpoints: NFS. Checkpoint size: 60.77 GiB. Available RAM: 1829.62 GiB.
+(EngineCore pid=66) INFO 07-18 06:51:29 [weight_utils.py:884] Prefetching checkpoint files into page cache started (in background, num_threads=8, block_size=16777216 bytes)
+(EngineCore pid=66) Loading safetensors checkpoint shards:   0% Completed | 0/15 [00:00<?, ?it/s]
+(EngineCore pid=66) INFO 07-18 06:51:32 [weight_utils.py:856] Prefetching checkpoint files: 10% (2/15)
+(EngineCore pid=66) INFO 07-18 06:51:32 [weight_utils.py:856] Prefetching checkpoint files: 20% (3/15)
+(EngineCore pid=66) INFO 07-18 06:51:32 [weight_utils.py:856] Prefetching checkpoint files: 30% (5/15)
+(EngineCore pid=66) INFO 07-18 06:51:32 [weight_utils.py:856] Prefetching checkpoint files: 40% (6/15)
+(EngineCore pid=66) INFO 07-18 06:51:35 [weight_utils.py:856] Prefetching checkpoint files: 50% (8/15)
+(EngineCore pid=66) INFO 07-18 06:51:35 [weight_utils.py:856] Prefetching checkpoint files: 60% (9/15)
+(EngineCore pid=66) Loading safetensors checkpoint shards:   7% Completed | 1/15 [00:06<01:32,  6.59s/it]
+(EngineCore pid=66) INFO 07-18 06:51:36 [weight_utils.py:856] Prefetching checkpoint files: 70% (11/15)
+(EngineCore pid=66) INFO 07-18 06:51:36 [weight_utils.py:856] Prefetching checkpoint files: 80% (12/15)
+(EngineCore pid=66) INFO 07-18 06:51:36 [weight_utils.py:856] Prefetching checkpoint files: 90% (14/15)
+(EngineCore pid=66) INFO 07-18 06:51:36 [weight_utils.py:856] Prefetching checkpoint files: 100% (15/15)
+(EngineCore pid=66) INFO 07-18 06:51:36 [weight_utils.py:879] Prefetching checkpoint files into page cache finished in 7.34s
+(EngineCore pid=66) Loading safetensors checkpoint shards:  13% Completed | 2/15 [00:08<00:52,  4.01s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  20% Completed | 3/15 [00:11<00:38,  3.23s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  27% Completed | 4/15 [00:13<00:30,  2.76s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  33% Completed | 5/15 [00:15<00:26,  2.67s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  40% Completed | 6/15 [00:17<00:22,  2.48s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  47% Completed | 7/15 [00:20<00:19,  2.41s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  53% Completed | 8/15 [00:22<00:15,  2.28s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  60% Completed | 9/15 [00:24<00:13,  2.28s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  67% Completed | 10/15 [00:26<00:11,  2.21s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  73% Completed | 11/15 [00:28<00:08,  2.22s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  80% Completed | 12/15 [00:30<00:06,  2.16s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  87% Completed | 13/15 [00:32<00:04,  2.12s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards:  93% Completed | 14/15 [00:34<00:02,  2.16s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards: 100% Completed | 15/15 [00:36<00:00,  2.11s/it]
+(EngineCore pid=66) Loading safetensors checkpoint shards: 100% Completed | 15/15 [00:36<00:00,  2.46s/it]
+(EngineCore pid=66) 
+(EngineCore pid=66) INFO 07-18 06:52:06 [default_loader.py:397] Loading weights took 37.00 seconds
+(EngineCore pid=66) INFO 07-18 06:52:06 [mxfp4.py:1604] Using MoEPrepareAndFinalizeNoDPEPMonolithic
+(EngineCore pid=66) INFO 07-18 06:52:09 [gpu_model_runner.py:5091] Model loading took 65.79 GiB memory and 41.058653 seconds
+(EngineCore pid=66) INFO 07-18 06:52:14 [backends.py:1089] Using cache directory: /root/.cache/vllm/torch_compile_cache/9022f758fb/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=66) INFO 07-18 06:52:14 [backends.py:1148] Dynamo bytecode transform time: 4.78 s
+(EngineCore pid=66) INFO 07-18 06:52:17 [backends.py:378] Cache the graph of compile range (1, 8192) for later use
+(EngineCore pid=66) INFO 07-18 06:52:20 [backends.py:393] Compiling a graph for compile range (1, 8192) takes 5.55 s
+(EngineCore pid=66) INFO 07-18 06:52:23 [decorators.py:708] saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/e26b17bfe071659be58b0eca0ed28092853042cbf93b2194f6dc3acf0e7e0e7c/rank_0_0/model
+(EngineCore pid=66) INFO 07-18 06:52:23 [monitor.py:53] torch.compile took 13.14 s in total
+(EngineCore pid=66) INFO 07-18 06:52:29 [monitor.py:81] Initial profiling/warmup run took 5.98 s
+(EngineCore pid=66) INFO 07-18 06:52:34 [nixl_utils.py:68] NIXL is available
+(EngineCore pid=66) INFO 07-18 06:52:34 [connector.py:128] NixlConnector setting KV cache layout to HND for better xfer performance.
+(EngineCore pid=66) INFO 07-18 06:52:34 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=83 (largest=1024), FULL=83 (largest=1024)
+(EngineCore pid=66) INFO 07-18 06:52:37 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.14 GiB total
+(EngineCore pid=66) INFO 07-18 06:52:38 [gpu_worker.py:465] Available KV cache memory: 55.44 GiB
+(EngineCore pid=66) INFO 07-18 06:52:38 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8919 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9081. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=66) INFO 07-18 06:52:38 [kv_cache_utils.py:1733] GPU KV cache size: 1,517,068 tokens
+(EngineCore pid=66) INFO 07-18 06:52:38 [kv_cache_utils.py:1734] Maximum concurrency for 131,072 tokens per request: 11.57x
+(EngineCore pid=66) INFO 07-18 06:52:38 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: 6b28ff59-6ad9-4b17-a5db-79067bae92ae
+(EngineCore pid=66) WARNING 07-18 06:52:38 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(EngineCore pid=66) INFO 07-18 06:52:38 [worker.py:204] Initializing NIXL wrapper
+(EngineCore pid=66) INFO 07-18 06:52:38 [worker.py:205] Initializing NIXL worker 6b28ff59-6ad9-4b17-a5db-79067bae92ae
+(EngineCore pid=66) 2026-07-18 06:52:41 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(EngineCore pid=66) 2026-07-18 06:52:41 NIXL INFO    _api.py:247 Initialized NIXL agent: 90a712f2-ef46-47c5-ae0e-e2c55dcb2252
+(EngineCore pid=66) INFO 07-18 06:52:41 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(EngineCore pid=66) INFO 07-18 06:52:41 [worker.py:427] Detected kv cache layout HND
+(EngineCore pid=66) INFO 07-18 06:52:41 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(EngineCore pid=66) INFO 07-18 06:52:44 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(EngineCore pid=66) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/83 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   1%|          | 1/83 [00:00<00:09,  8.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   2%|▏         | 2/83 [00:00<00:09,  8.64it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▎         | 3/83 [00:01<00:40,  1.95it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   5%|▍         | 4/83 [00:01<00:28,  2.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 5/83 [00:02<00:43,  1.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   7%|▋         | 6/83 [00:02<00:32,  2.39it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 7/83 [00:03<00:43,  1.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|▉         | 8/83 [00:03<00:32,  2.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  11%|█         | 9/83 [00:04<00:54,  1.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 10/83 [00:04<00:40,  1.81it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  13%|█▎        | 11/83 [00:05<00:46,  1.53it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▍        | 12/83 [00:05<00:34,  2.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 13/83 [00:06<00:42,  1.63it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 14/83 [00:06<00:32,  2.15it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 15/83 [00:08<01:01,  1.11it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  19%|█▉        | 16/83 [00:09<00:44,  1.50it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|██        | 17/83 [00:09<00:48,  1.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 18/83 [00:10<00:35,  1.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  23%|██▎       | 19/83 [00:10<00:41,  1.55it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▍       | 20/83 [00:11<00:30,  2.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 21/83 [00:11<00:37,  1.64it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 22/83 [00:12<00:28,  2.16it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  28%|██▊       | 23/83 [00:12<00:35,  1.70it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▉       | 24/83 [00:13<00:26,  2.23it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  30%|███       | 25/83 [00:13<00:34,  1.68it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 26/83 [00:14<00:25,  2.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 27/83 [00:14<00:32,  1.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▎      | 28/83 [00:15<00:24,  2.25it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▍      | 29/83 [00:15<00:31,  1.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  36%|███▌      | 30/83 [00:16<00:23,  2.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 31/83 [00:16<00:29,  1.75it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▊      | 32/83 [00:17<00:34,  1.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  40%|███▉      | 33/83 [00:18<00:37,  1.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  41%|████      | 34/83 [00:18<00:27,  1.80it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  42%|████▏     | 35/83 [00:19<00:31,  1.53it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 36/83 [00:19<00:23,  2.03it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▍     | 37/83 [00:20<00:28,  1.63it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▌     | 38/83 [00:20<00:20,  2.15it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 39/83 [00:22<00:36,  1.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  48%|████▊     | 40/83 [00:22<00:26,  1.62it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 41/83 [00:23<00:29,  1.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 42/83 [00:23<00:21,  1.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  52%|█████▏    | 43/83 [00:24<00:25,  1.59it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  53%|█████▎    | 44/83 [00:24<00:18,  2.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  54%|█████▍    | 45/83 [00:25<00:22,  1.67it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▌    | 46/83 [00:25<00:16,  2.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 47/83 [00:26<00:21,  1.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  58%|█████▊    | 48/83 [00:27<00:23,  1.50it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 49/83 [00:28<00:24,  1.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  60%|██████    | 50/83 [00:30<00:38,  1.18s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████▏   | 51/83 [00:30<00:27,  1.16it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 52/83 [00:30<00:19,  1.57it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  64%|██████▍   | 53/83 [00:32<00:29,  1.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▌   | 54/83 [00:33<00:28,  1.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▋   | 55/83 [00:33<00:20,  1.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 56/83 [00:33<00:14,  1.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 57/83 [00:34<00:17,  1.50it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  70%|██████▉   | 58/83 [00:35<00:18,  1.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 59/83 [00:35<00:13,  1.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  72%|███████▏  | 60/83 [00:35<00:09,  2.32it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 61/83 [00:36<00:12,  1.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 62/83 [00:37<00:14,  1.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▌  | 63/83 [00:38<00:10,  1.90it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  77%|███████▋  | 64/83 [00:38<00:07,  2.47it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 65/83 [00:39<00:10,  1.77it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|███████▉  | 66/83 [00:40<00:11,  1.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  81%|████████  | 67/83 [00:40<00:08,  1.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 68/83 [00:40<00:05,  2.54it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  83%|████████▎ | 69/83 [00:41<00:07,  1.80it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▍ | 70/83 [00:42<00:08,  1.49it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▌ | 71/83 [00:42<00:06,  1.97it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  87%|████████▋ | 72/83 [00:42<00:04,  2.55it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 73/83 [00:43<00:05,  1.77it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  89%|████████▉ | 74/83 [00:44<00:06,  1.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 75/83 [00:44<00:04,  1.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  92%|█████████▏| 76/83 [00:44<00:02,  2.36it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  93%|█████████▎| 77/83 [00:45<00:03,  1.57it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 78/83 [00:46<00:03,  1.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  95%|█████████▌| 79/83 [00:46<00:02,  1.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▋| 80/83 [00:46<00:01,  2.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 81/83 [00:47<00:00,  3.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  99%|█████████▉| 82/83 [00:47<00:00,  2.58it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 83/83 [00:50<00:00,  1.19s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 83/83 [00:50<00:00,  1.64it/s]
+(EngineCore pid=66) Capturing CUDA graphs (decode, FULL):   0%|          | 0/83 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   1%|          | 1/83 [00:00<00:09,  8.49it/s]Capturing CUDA graphs (decode, FULL):   2%|▏         | 2/83 [00:00<00:09,  8.70it/s]Capturing CUDA graphs (decode, FULL):   4%|▎         | 3/83 [00:00<00:09,  8.68it/s]Capturing CUDA graphs (decode, FULL):   5%|▍         | 4/83 [00:00<00:09,  8.69it/s]Capturing CUDA graphs (decode, FULL):   6%|▌         | 5/83 [00:00<00:08,  8.74it/s]Capturing CUDA graphs (decode, FULL):   7%|▋         | 6/83 [00:00<00:08,  8.75it/s]Capturing CUDA graphs (decode, FULL):   8%|▊         | 7/83 [00:00<00:08,  8.70it/s]Capturing CUDA graphs (decode, FULL):  10%|▉         | 8/83 [00:00<00:09,  8.28it/s]Capturing CUDA graphs (decode, FULL):  11%|█         | 9/83 [00:01<00:08,  8.27it/s]Capturing CUDA graphs (decode, FULL):  12%|█▏        | 10/83 [00:01<00:08,  8.41it/s]Capturing CUDA graphs (decode, FULL):  13%|█▎        | 11/83 [00:01<00:08,  8.53it/s]Capturing CUDA graphs (decode, FULL):  14%|█▍        | 12/83 [00:01<00:08,  8.55it/s]Capturing CUDA graphs (decode, FULL):  16%|█▌        | 13/83 [00:01<00:08,  8.61it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 14/83 [00:01<00:07,  8.68it/s]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 15/83 [00:01<00:07,  8.67it/s]Capturing CUDA graphs (decode, FULL):  19%|█▉        | 16/83 [00:01<00:07,  8.71it/s]Capturing CUDA graphs (decode, FULL):  20%|██        | 17/83 [00:01<00:07,  8.73it/s]Capturing CUDA graphs (decode, FULL):  22%|██▏       | 18/83 [00:02<00:07,  8.69it/s]Capturing CUDA graphs (decode, FULL):  23%|██▎       | 19/83 [00:02<00:07,  8.57it/s]Capturing CUDA graphs (decode, FULL):  24%|██▍       | 20/83 [00:02<00:07,  8.52it/s]Capturing CUDA graphs (decode, FULL):  25%|██▌       | 21/83 [00:02<00:07,  8.55it/s]Capturing CUDA graphs (decode, FULL):  27%|██▋       | 22/83 [00:02<00:07,  8.47it/s]Capturing CUDA graphs (decode, FULL):  28%|██▊       | 23/83 [00:02<00:07,  8.42it/s]Capturing CUDA graphs (decode, FULL):  29%|██▉       | 24/83 [00:02<00:06,  8.49it/s]Capturing CUDA graphs (decode, FULL):  30%|███       | 25/83 [00:02<00:06,  8.38it/s]Capturing CUDA graphs (decode, FULL):  31%|███▏      | 26/83 [00:03<00:06,  8.52it/s]Capturing CUDA graphs (decode, FULL):  33%|███▎      | 27/83 [00:03<00:06,  8.57it/s]Capturing CUDA graphs (decode, FULL):  34%|███▎      | 28/83 [00:03<00:06,  8.65it/s]Capturing CUDA graphs (decode, FULL):  35%|███▍      | 29/83 [00:03<00:06,  8.71it/s]Capturing CUDA graphs (decode, FULL):  36%|███▌      | 30/83 [00:03<00:06,  8.71it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 31/83 [00:03<00:05,  8.75it/s]Capturing CUDA graphs (decode, FULL):  39%|███▊      | 32/83 [00:03<00:05,  8.78it/s]Capturing CUDA graphs (decode, FULL):  40%|███▉      | 33/83 [00:03<00:05,  8.76it/s]Capturing CUDA graphs (decode, FULL):  41%|████      | 34/83 [00:03<00:05,  8.80it/s]Capturing CUDA graphs (decode, FULL):  42%|████▏     | 35/83 [00:04<00:05,  8.83it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 36/83 [00:04<00:05,  8.79it/s]Capturing CUDA graphs (decode, FULL):  45%|████▍     | 37/83 [00:04<00:05,  8.80it/s]Capturing CUDA graphs (decode, FULL):  46%|████▌     | 38/83 [00:04<00:05,  8.77it/s]Capturing CUDA graphs (decode, FULL):  47%|████▋     | 39/83 [00:04<00:04,  8.80it/s]Capturing CUDA graphs (decode, FULL):  48%|████▊     | 40/83 [00:04<00:04,  8.82it/s]Capturing CUDA graphs (decode, FULL):  49%|████▉     | 41/83 [00:04<00:04,  8.78it/s]Capturing CUDA graphs (decode, FULL):  51%|█████     | 42/83 [00:04<00:04,  8.81it/s]Capturing CUDA graphs (decode, FULL):  52%|█████▏    | 43/83 [00:04<00:04,  8.82it/s]Capturing CUDA graphs (decode, FULL):  53%|█████▎    | 44/83 [00:05<00:04,  8.78it/s]Capturing CUDA graphs (decode, FULL):  54%|█████▍    | 45/83 [00:05<00:04,  8.82it/s]Capturing CUDA graphs (decode, FULL):  55%|█████▌    | 46/83 [00:05<00:04,  8.84it/s]Capturing CUDA graphs (decode, FULL):  57%|█████▋    | 47/83 [00:05<00:04,  8.80it/s]Capturing CUDA graphs (decode, FULL):  58%|█████▊    | 48/83 [00:05<00:03,  8.84it/s]Capturing CUDA graphs (decode, FULL):  59%|█████▉    | 49/83 [00:05<00:03,  8.86it/s]Capturing CUDA graphs (decode, FULL):  60%|██████    | 50/83 [00:05<00:03,  8.82it/s]Capturing CUDA graphs (decode, FULL):  61%|██████▏   | 51/83 [00:05<00:03,  8.85it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 52/83 [00:05<00:03,  8.87it/s]Capturing CUDA graphs (decode, FULL):  64%|██████▍   | 53/83 [00:06<00:03,  8.82it/s]Capturing CUDA graphs (decode, FULL):  65%|██████▌   | 54/83 [00:06<00:03,  8.85it/s]Capturing CUDA graphs (decode, FULL):  66%|██████▋   | 55/83 [00:06<00:03,  8.87it/s]Capturing CUDA graphs (decode, FULL):  67%|██████▋   | 56/83 [00:06<00:03,  8.84it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 57/83 [00:06<00:02,  8.86it/s]Capturing CUDA graphs (decode, FULL):  70%|██████▉   | 58/83 [00:06<00:02,  8.88it/s]Capturing CUDA graphs (decode, FULL):  71%|███████   | 59/83 [00:06<00:02,  8.80it/s]Capturing CUDA graphs (decode, FULL):  72%|███████▏  | 60/83 [00:06<00:02,  8.81it/s]Capturing CUDA graphs (decode, FULL):  73%|███████▎  | 61/83 [00:07<00:02,  8.82it/s]Capturing CUDA graphs (decode, FULL):  75%|███████▍  | 62/83 [00:07<00:02,  8.78it/s]Capturing CUDA graphs (decode, FULL):  76%|███████▌  | 63/83 [00:07<00:02,  8.80it/s]Capturing CUDA graphs (decode, FULL):  77%|███████▋  | 64/83 [00:07<00:02,  8.82it/s]Capturing CUDA graphs (decode, FULL):  78%|███████▊  | 65/83 [00:07<00:02,  8.77it/s]Capturing CUDA graphs (decode, FULL):  80%|███████▉  | 66/83 [00:07<00:01,  8.80it/s]Capturing CUDA graphs (decode, FULL):  81%|████████  | 67/83 [00:07<00:01,  8.76it/s]Capturing CUDA graphs (decode, FULL):  82%|████████▏ | 68/83 [00:07<00:01,  8.79it/s]Capturing CUDA graphs (decode, FULL):  83%|████████▎ | 69/83 [00:07<00:01,  8.83it/s]Capturing CUDA graphs (decode, FULL):  84%|████████▍ | 70/83 [00:08<00:01,  8.78it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▌ | 71/83 [00:08<00:01,  8.81it/s]Capturing CUDA graphs (decode, FULL):  87%|████████▋ | 72/83 [00:08<00:01,  8.84it/s]Capturing CUDA graphs (decode, FULL):  88%|████████▊ | 73/83 [00:08<00:01,  8.79it/s]Capturing CUDA graphs (decode, FULL):  89%|████████▉ | 74/83 [00:08<00:01,  8.83it/s]Capturing CUDA graphs (decode, FULL):  90%|█████████ | 75/83 [00:08<00:00,  8.86it/s]Capturing CUDA graphs (decode, FULL):  92%|█████████▏| 76/83 [00:08<00:00,  8.80it/s]Capturing CUDA graphs (decode, FULL):  93%|█████████▎| 77/83 [00:08<00:00,  8.85it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 78/83 [00:08<00:00,  8.56it/s]Capturing CUDA graphs (decode, FULL):  95%|█████████▌| 79/83 [00:09<00:00,  7.59it/s]Capturing CUDA graphs (decode, FULL):  96%|█████████▋| 80/83 [00:09<00:00,  7.54it/s]Capturing CUDA graphs (decode, FULL):  98%|█████████▊| 81/83 [00:09<00:00,  7.93it/s]Capturing CUDA graphs (decode, FULL):  99%|█████████▉| 82/83 [00:09<00:00,  8.18it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 83/83 [00:09<00:00,  8.43it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 83/83 [00:09<00:00,  8.66it/s]
+(EngineCore pid=66) INFO 07-18 06:53:45 [gpu_model_runner.py:6386] Graph capturing finished in 61 secs, took 1.69 GiB
+(EngineCore pid=66) INFO 07-18 06:53:45 [gpu_worker.py:624] CUDA graph pool memory: 1.69 GiB (actual), 1.14 GiB (estimated), difference: 0.55 GiB (32.4%).
+(EngineCore pid=66) INFO 07-18 06:53:45 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=66) INFO 07-18 06:53:45 [core.py:299] init engine (profile, create kv cache, warmup model) took 96.21 s (compilation: 13.14 s)
+(EngineCore pid=66) INFO 07-18 06:53:48 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: 6b28ff59-6ad9-4b17-a5db-79067bae92ae
+(EngineCore pid=66) WARNING 07-18 06:53:48 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(EngineCore pid=66) INFO 07-18 06:53:48 [scheduler.py:96] Initializing NIXL Scheduler 6b28ff59-6ad9-4b17-a5db-79067bae92ae
+(EngineCore pid=66) INFO 07-18 06:53:48 [vllm.py:968] Asynchronous scheduling is enabled.
+(EngineCore pid=66) INFO 07-18 06:53:48 [kernel.py:267] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(APIServer pid=1) INFO 07-18 06:53:48 [api_server.py:599] Supported tasks: ['generate']
+(APIServer pid=1) WARNING 07-18 06:53:48 [serving.py:220] For gpt-oss, we ignore --enable-auto-tool-choice and always enable tool use.
+(APIServer pid=1) INFO 07-18 06:53:51 [hf.py:488] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=1) INFO 07-18 06:53:51 [api_server.py:603] Starting vLLM server on http://0.0.0.0:8000
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:37] Available routes are:
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /openapi.json, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /docs, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /docs/oauth2-redirect, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /redoc, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /tokenize, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /detokenize, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /load, Methods: GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /version, Methods: GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /health, Methods: GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /metrics, Methods: GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/models, Methods: GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /ping, Methods: GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /ping, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /invocations, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/responses, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/completions, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/messages, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /generative_scoring, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=1) INFO 07-18 06:53:51 [launcher.py:46] Route: /v1/completions/render, Methods: POST
+(APIServer pid=1) INFO:     Started server process [1]
+(APIServer pid=1) INFO:     Waiting for application startup.
+(APIServer pid=1) INFO:     Application startup complete.
+(EngineCore pid=66) WARNING 07-18 06:54:57 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=1) INFO:     10.0.5.194:55994 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:55:02 [loggers.py:271] Engine 000: Avg prompt throughput: 54.7 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.1%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:55:12 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.1%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.5.194:49872 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:55:22 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.1%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:55:32 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.1%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(EngineCore pid=66) WARNING 07-18 06:56:09 [worker.py:1780] Releasing expired KV blocks for request cmpl-550e8400-e29b-41d4-a716-446655440001-0-9c9b36c0 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 06:56:09 [worker.py:1780] Releasing expired KV blocks for request cmpl-bf7a828d-7b1b-4dd2-8bca-0c068121cc4a-0-952e8af3 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:56:12 [loggers.py:271] Engine 000: Avg prompt throughput: 0.2 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:56:12 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:56:22 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.1%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:56:32 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.2%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:40 [worker.py:1780] Releasing expired KV blocks for request cmpl-aaa65207-5d25-43b8-97bf-eb1fbfa928ab-0-8195db7e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:56:42 [loggers.py:271] Engine 000: Avg prompt throughput: 0.5 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:56:42 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:56:42 [worker.py:1780] Releasing expired KV blocks for request cmpl-99a51d01-40d6-42c2-8ae9-6133fa0920e8-0-99835879 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:43 [worker.py:1780] Releasing expired KV blocks for request cmpl-1e630768-9402-40f4-9455-e12e7a7115bb-0-8dc889df which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:45 [worker.py:1780] Releasing expired KV blocks for request cmpl-6ae7ef1a-3081-4073-acfa-fb324cf4c02d-0-949c46cc which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:47 [worker.py:1780] Releasing expired KV blocks for request cmpl-b3a03ac3-e81e-4c52-90f2-6ba83eb5591c-0-8e54cce4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:48 [worker.py:1780] Releasing expired KV blocks for request cmpl-449f0c9a-0e31-419c-97d6-7b3719936d46-0-8d52b4b3 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:50 [worker.py:1780] Releasing expired KV blocks for request cmpl-3191b838-6d66-4e24-9fe2-b0591f910cce-0-8cc1a363 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:56:52 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:56:52 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:56:52 [worker.py:1780] Releasing expired KV blocks for request cmpl-72feb3a9-1f4a-43c3-9ee0-aff23e359f6b-0-8f3ee834 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:54 [worker.py:1780] Releasing expired KV blocks for request cmpl-1a21a88d-5cb5-4847-94fe-b39d0a669663-0-bd03ef0e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:55 [worker.py:1780] Releasing expired KV blocks for request cmpl-88382569-9167-4cce-987f-488cbe19b5d3-0-a7337f4f which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:57 [worker.py:1780] Releasing expired KV blocks for request cmpl-7e56aebd-ccd7-904a-b2ad-f3ecb4005760-0-a7e2687a which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:56:59 [worker.py:1780] Releasing expired KV blocks for request cmpl-9dd8b283-3d19-4cb4-92d3-938ea5bc113b-0-be6a7193 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:00 [worker.py:1780] Releasing expired KV blocks for request cmpl-34454d08-7a0c-4ebe-b8fa-f34bf53b1682-0-925f2717 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:57:02 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:57:02 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:57:02 [worker.py:1780] Releasing expired KV blocks for request cmpl-85dbd685-2605-4f6e-b1de-588fb2da9785-0-88c9556d which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:04 [worker.py:1780] Releasing expired KV blocks for request cmpl-a9e9f8ee-add4-42c7-9507-a0f33f58eb96-0-a5885c47 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:05 [worker.py:1780] Releasing expired KV blocks for request cmpl-08f3aeb4-eddf-4650-b185-3bf8f5673cc2-0-a8643dfd which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:07 [worker.py:1780] Releasing expired KV blocks for request cmpl-8b9fcc06-2ab2-4c79-a065-abcdf4bcc293-0-b07a6420 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:09 [worker.py:1780] Releasing expired KV blocks for request cmpl-2c6edd73-2499-4437-b1b0-0e1cf3fefc10-0-a6f503dd which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:11 [worker.py:1780] Releasing expired KV blocks for request cmpl-5cc5f75c-1aac-4ca7-b481-2bae268efdd7-0-b15513f1 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:57:12 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:57:12 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:57:12 [worker.py:1780] Releasing expired KV blocks for request cmpl-a85f9df8-62bf-4b54-a46a-69733260a2c2-0-93966c75 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:14 [worker.py:1780] Releasing expired KV blocks for request cmpl-96b21a57-36b2-4c91-96a7-4fc8ed166cda-0-8757a3ea which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:16 [worker.py:1780] Releasing expired KV blocks for request cmpl-0120b232-726f-4435-869e-969f6652df10-0-95271e19 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:17 [worker.py:1780] Releasing expired KV blocks for request cmpl-c97ba374-6596-4352-89f1-6ef010a45511-0-a87ded79 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:19 [worker.py:1780] Releasing expired KV blocks for request cmpl-d639c049-b5af-4159-8237-901a817443fa-0-8b155018 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:21 [worker.py:1780] Releasing expired KV blocks for request cmpl-fd9acf86-b7fc-4fc2-8e28-b32d45fab88a-0-b6cf9509 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:57:22 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:57:22 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:57:23 [worker.py:1780] Releasing expired KV blocks for request cmpl-ac60ddff-f2ed-4b11-b890-587592f253e4-0-87d53fb3 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:24 [worker.py:1780] Releasing expired KV blocks for request cmpl-0bc0f5f9-e968-4417-9a6e-10643f79ea1b-0-b194ba03 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:26 [worker.py:1780] Releasing expired KV blocks for request cmpl-5c69b853-8b62-4359-91da-35703545026e-0-8d2db1d0 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-bff2273a-919c-4727-8238-2dd53c0123a6-0-9e138788 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:29 [worker.py:1780] Releasing expired KV blocks for request cmpl-5eef3dc1-276c-4065-9ef4-effbb5d4306b-0-8b06f426 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:31 [worker.py:1780] Releasing expired KV blocks for request cmpl-92ffc952-8721-49de-abd9-24ee32644479-0-adfd41ed which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:57:32 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:57:32 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:57:33 [worker.py:1780] Releasing expired KV blocks for request cmpl-fc149c5c-1860-4ce7-a993-c1fc3d7c8e17-0-b5b851a4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:34 [worker.py:1780] Releasing expired KV blocks for request cmpl-a322fa0f-aa31-4eae-a1fa-01a3f8e51040-0-bf7f0939 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:36 [worker.py:1780] Releasing expired KV blocks for request cmpl-a01ef517-a419-4dca-9584-12ffb79063ed-0-ad4b3416 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:38 [worker.py:1780] Releasing expired KV blocks for request cmpl-aabb6e51-09b0-4363-adfe-c745935f0b3b-0-b8ea87bf which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:40 [worker.py:1780] Releasing expired KV blocks for request cmpl-0e207439-e0ac-4c5f-9e6b-adc2df0a784d-0-a1e0c66e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:41 [worker.py:1780] Releasing expired KV blocks for request cmpl-bb6c3925-c63e-4346-8afd-93eeccade842-0-82840800 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:57:42 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:57:42 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:57:43 [worker.py:1780] Releasing expired KV blocks for request cmpl-492d3973-4257-4ebf-bb79-c68d385fa318-0-b24a93f6 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:45 [worker.py:1780] Releasing expired KV blocks for request cmpl-da7a63ea-1c6d-4ae4-83ad-ed53ce729604-0-b1733ec2 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:46 [worker.py:1780] Releasing expired KV blocks for request cmpl-751167f3-0220-48b8-bdda-9f0613f75fba-0-b80dfdbe which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:48 [worker.py:1780] Releasing expired KV blocks for request cmpl-979f7fab-1d75-4da1-b8eb-13fc92578deb-0-ac59c88e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:50 [worker.py:1780] Releasing expired KV blocks for request cmpl-db20a6b6-9824-46e9-a126-017d2038a63a-0-b2e7519d which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:57:52 [loggers.py:271] Engine 000: Avg prompt throughput: 0.5 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:57:52 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:57:52 [worker.py:1780] Releasing expired KV blocks for request cmpl-81e6de27-77cf-416d-8235-1e8eddf22695-0-ad0027c7 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:53 [worker.py:1780] Releasing expired KV blocks for request cmpl-ca19bb60-7e82-484c-80a8-875934feb480-0-b16b1681 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:55 [worker.py:1780] Releasing expired KV blocks for request cmpl-f8abf329-100c-4a1c-9a16-86978c239af2-0-85b26e94 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:57 [worker.py:1780] Releasing expired KV blocks for request cmpl-ef2735fd-bd78-4fb4-ad9b-d960f2a413d4-0-b5e5d4a2 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:57:58 [worker.py:1780] Releasing expired KV blocks for request cmpl-15e35798-83ba-4cec-b1c7-b1d1df0446a8-0-8a872abb which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:00 [worker.py:1780] Releasing expired KV blocks for request cmpl-79e6daa5-ed07-49c3-aac8-e4a1d44dba88-0-94f72e64 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:58:02 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:58:02 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:58:02 [worker.py:1780] Releasing expired KV blocks for request cmpl-942e9e37-ca12-4cdb-9974-25aac4de045f-0-8892e386 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:04 [worker.py:1780] Releasing expired KV blocks for request cmpl-639d04ff-e680-4106-825e-35bd8c9d9894-0-a6d24d6c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:05 [worker.py:1780] Releasing expired KV blocks for request cmpl-717b9186-4f20-44d3-ae1f-da47e1d3a198-0-a57ba3fa which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:07 [worker.py:1780] Releasing expired KV blocks for request cmpl-2031ee65-a118-479a-be0f-eaaaaa3619f8-0-a2c43968 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:09 [worker.py:1780] Releasing expired KV blocks for request cmpl-285f68ce-5449-4f97-98d2-36fb883d2654-0-bf9642ce which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:10 [worker.py:1780] Releasing expired KV blocks for request cmpl-3a90aa7e-2aa1-41aa-94a4-6b4fd2fbe0ba-0-8d959bc6 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:58:12 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:58:12 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:58:12 [worker.py:1780] Releasing expired KV blocks for request cmpl-14993a99-4a73-4c0a-8ed5-ad4c19aab9e8-0-a5b87e2b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:14 [worker.py:1780] Releasing expired KV blocks for request cmpl-7656ba02-10d6-40bf-bb32-44672b2d4eb0-0-89a05e22 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:15 [worker.py:1780] Releasing expired KV blocks for request cmpl-722f23e0-fdce-4a40-aeec-8c8f7ef558bb-0-9c280ae9 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:17 [worker.py:1780] Releasing expired KV blocks for request cmpl-bd212d48-f0ce-4b2a-a516-219417bff2c8-0-b815c5ef which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:19 [worker.py:1780] Releasing expired KV blocks for request cmpl-2d1bc680-9774-4233-bd93-a77bb711feb8-0-9375d2ef which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:21 [worker.py:1780] Releasing expired KV blocks for request cmpl-9ed04a4b-9768-46c6-99e0-6be699f2d81f-0-a85d20db which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:58:22 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:58:22 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:58:22 [worker.py:1780] Releasing expired KV blocks for request cmpl-d0e3222c-99ed-444b-8580-0481cbc095b7-0-b2735346 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:24 [worker.py:1780] Releasing expired KV blocks for request cmpl-467cea7f-7bbb-4b0d-b878-daf50b027887-0-b3e4791c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:26 [worker.py:1780] Releasing expired KV blocks for request cmpl-410e36cb-95cd-4eef-b5a3-49ca6cca0d8a-0-a59651f8 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:27 [worker.py:1780] Releasing expired KV blocks for request cmpl-921fb187-be88-4cae-8364-6f800840b5ff-0-884eda3f which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:29 [worker.py:1780] Releasing expired KV blocks for request cmpl-b9cab50f-a591-4a00-bf40-64b1b3412f6e-0-b1746b2c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:31 [worker.py:1780] Releasing expired KV blocks for request cmpl-b782bae3-92fa-4f09-8f09-64509e3ba99a-0-9894ffeb which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:58:32 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:58:32 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:58:33 [worker.py:1780] Releasing expired KV blocks for request cmpl-a4a975d4-b671-48a3-9495-c1645347bea6-0-b1ea6d8b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:34 [worker.py:1780] Releasing expired KV blocks for request cmpl-b84cd83d-7fae-4a3b-aa43-ba24c2cf1489-0-837441fb which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:36 [worker.py:1780] Releasing expired KV blocks for request cmpl-fa13a24d-ba16-4907-889c-d38af6a4c71d-0-b0679677 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:38 [worker.py:1780] Releasing expired KV blocks for request cmpl-f3530598-4436-44f4-a851-8edb499914ef-0-8fb45915 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:39 [worker.py:1780] Releasing expired KV blocks for request cmpl-93fbefe5-27c5-48cd-8128-df6020b76bb5-0-b177a7a9 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:41 [worker.py:1780] Releasing expired KV blocks for request cmpl-6e60bd7b-f376-4293-9d8f-3d52f2c2bbad-0-8b75da81 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:58:42 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:58:42 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:58:43 [worker.py:1780] Releasing expired KV blocks for request cmpl-64baa28b-b653-471f-87ac-4ee199ea2339-0-a404c45f which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:44 [worker.py:1780] Releasing expired KV blocks for request cmpl-f65c236b-870d-4a18-a5a1-d926c63f4b89-0-8fed1927 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:46 [worker.py:1780] Releasing expired KV blocks for request cmpl-cd1b0f38-017d-41f8-ab09-c5c3ccb5cb53-0-b3fb3284 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:48 [worker.py:1780] Releasing expired KV blocks for request cmpl-304d52e0-226f-4c3a-96e0-815f78277d80-0-814703e5 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:50 [worker.py:1780] Releasing expired KV blocks for request cmpl-2c01d7ed-d913-4ded-a074-518052396472-0-93e17393 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:51 [worker.py:1780] Releasing expired KV blocks for request cmpl-e2d93c82-ba4e-443a-b01b-74838f55ddb8-0-80361d9b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:58:52 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:58:52 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:58:53 [worker.py:1780] Releasing expired KV blocks for request cmpl-47ea0bd7-435e-4ecd-86c8-9b955f533a60-0-8fc1d410 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:55 [worker.py:1780] Releasing expired KV blocks for request cmpl-79d66925-a5ab-4494-8b7d-9704b972c7aa-0-b2800be8 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:56 [worker.py:1780] Releasing expired KV blocks for request cmpl-4e37c28c-d800-4c21-bcd0-3f4646b059e3-0-9d04da63 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:58:58 [worker.py:1780] Releasing expired KV blocks for request cmpl-671ef0c0-1425-49ea-9f62-268edd06dddc-0-83080910 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:00 [worker.py:1780] Releasing expired KV blocks for request cmpl-503d5e48-293c-4371-a885-f41b8ca01967-0-883dc88c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:59:02 [loggers.py:271] Engine 000: Avg prompt throughput: 0.5 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:59:02 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:59:02 [worker.py:1780] Releasing expired KV blocks for request cmpl-e00cc6e7-0f34-4dd0-84be-d2e9d39b511f-0-bbf7fd73 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:03 [worker.py:1780] Releasing expired KV blocks for request cmpl-e687503c-4a6a-4155-8fe0-6d4fc8c9f3be-0-9068fd03 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:05 [worker.py:1780] Releasing expired KV blocks for request cmpl-f406b0dd-c945-4863-bb8c-867d5861743e-0-b1b89003 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:07 [worker.py:1780] Releasing expired KV blocks for request cmpl-89b5f24b-902a-459c-9f0e-b6e8ff48b772-0-983f4456 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:08 [worker.py:1780] Releasing expired KV blocks for request cmpl-412e9311-09c2-4cd4-801e-b40997c8e794-0-81eb6f65 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:10 [worker.py:1780] Releasing expired KV blocks for request cmpl-a5c8f1fc-05c4-494d-8f91-ffca14706ab3-0-92fbedda which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:59:12 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:59:12 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:59:12 [worker.py:1780] Releasing expired KV blocks for request cmpl-776a4440-3fe4-4eea-9ebb-85f7e93701ad-0-80fe88e2 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:13 [worker.py:1780] Releasing expired KV blocks for request cmpl-a8f04420-3d45-48c1-acef-d8a1a9c6ea14-0-9e088410 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:15 [worker.py:1780] Releasing expired KV blocks for request cmpl-eb0d3a66-acc9-494a-acb4-fb7b2d0e7c73-0-84a103e7 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:17 [worker.py:1780] Releasing expired KV blocks for request cmpl-d9f990d0-12d4-4827-99b4-f054fb0208ab-0-889541f9 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:19 [worker.py:1780] Releasing expired KV blocks for request cmpl-fbbbc38b-0145-4f74-84ca-0fd4505c28c2-0-b288f557 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:20 [worker.py:1780] Releasing expired KV blocks for request cmpl-11ae0e73-d3fe-43a9-a4d8-b2a1e56fc436-0-8c09a10b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:59:22 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:59:22 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:59:22 [worker.py:1780] Releasing expired KV blocks for request cmpl-de7db89b-6802-4779-bd2d-4a188d488cc2-0-9d73236a which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:24 [worker.py:1780] Releasing expired KV blocks for request cmpl-2c474bdd-46c7-41b9-9109-17dfd6481909-0-b88134be which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:25 [worker.py:1780] Releasing expired KV blocks for request cmpl-488d9630-b6eb-4d7c-9800-0e73e07cd21f-0-a6639e98 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:27 [worker.py:1780] Releasing expired KV blocks for request cmpl-230c49bc-af9b-43bb-9ee6-b30edd01566d-0-8d0ebd59 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:29 [worker.py:1780] Releasing expired KV blocks for request cmpl-09927ee9-f535-4c49-96dd-2fa15fdf68a3-0-b658abdd which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 06:59:31 [worker.py:1780] Releasing expired KV blocks for request cmpl-7bc480fd-3a34-4cd8-a992-207b915aeb11-0-a847fd2a which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:59:32 [loggers.py:271] Engine 000: Avg prompt throughput: 0.6 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:59:32 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 06:59:32 [worker.py:1780] Releasing expired KV blocks for request cmpl-95981f10-6c8a-47de-a823-9d0b45cdf499-0-99e3ae5e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:54726 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 06:59:42 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 06:59:42 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(APIServer pid=1) INFO 07-18 06:59:52 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-c9399a4d-722d-40f5-b1ef-6623ab6a50c6-0-b8142189 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-765380e3-2975-4a68-b8e8-d4aa75349c7b-0-a7b39649 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-4768fb9c-4c0f-42fd-b92c-bd8e37856cd3-0-a8b22ccb which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-65b7ed62-5d69-41d3-84f5-e1df5fb2fada-0-a2d6078e which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-9da6b62d-c502-4236-bc2d-fd76eaf86d3d-0-abb59d3d which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-8a703561-3111-4d8a-b26a-fe67f31ca0a2-0-a800e9a1 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-edfdfad6-32db-4a19-b8dd-6356c45964d4-0-86b8b53c which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-780c6581-7429-44c3-8312-a35f2f116f90-0-85b71f16 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-81f66854-c563-4866-b708-f31ab89724f4-0-9c93c2b5 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-aa369839-ad40-4b8b-998b-a77b4b3fc971-0-9901e075 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-f59eea18-caf1-42fa-b9d6-c30af1a6b693-0-9ad0c6cd which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-369e3ff4-aa45-44bf-947a-5b2a1139bdb7-0-83264f9f which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-536476e8-d1e6-49a7-bd6f-095fc160d68b-0-bdbc99bf which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-d9ef2d33-1208-45bc-be43-2d1b0a31b2a2-0-8e5511c6 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-e32447e9-1f57-4ceb-9181-ae27db44f47c-0-9dc07eaa which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-0376f62e-6937-40fc-b82d-4457365d18ee-0-afe16470 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-fe51a262-9669-4859-9c2a-ca23243d6431-0-b4ddc4e4 which were retrieved by 0 remote worker(s) before lease expired.
+(EngineCore pid=66) WARNING 07-18 07:03:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-0f5159ef-44cb-4219-91aa-83e2d2dddef4-0-b1460362 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:50732 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:03:32 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:03:32 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(APIServer pid=1) INFO 07-18 07:03:42 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(EngineCore pid=66) WARNING 07-18 07:04:19 [worker.py:1780] Releasing expired KV blocks for request cmpl-5917a3a5-06f7-4ffd-889f-dfb1f103c0df-0-a6fe3229 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:04:22 [loggers.py:271] Engine 000: Avg prompt throughput: 2.0 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:04:22 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:04:32 [loggers.py:271] Engine 000: Avg prompt throughput: 6.2 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.1%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:04:42 [loggers.py:271] Engine 000: Avg prompt throughput: 5.3 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.2%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:04:50 [worker.py:1780] Releasing expired KV blocks for request cmpl-45b17a97-93da-43a0-9029-838dc4f84160-0-a624a64d which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:04:52 [loggers.py:271] Engine 000: Avg prompt throughput: 6.1 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:04:52 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:04:52 [worker.py:1780] Releasing expired KV blocks for request cmpl-c48bc730-2fce-489d-9274-d89a19a024ec-0-8ba69bb4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:04:54 [worker.py:1780] Releasing expired KV blocks for request cmpl-791c2213-8c75-473e-ae98-7b829050ac3a-0-9626a9d5 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:04:55 [worker.py:1780] Releasing expired KV blocks for request cmpl-46fa399d-313a-41a1-b371-572027a7dff4-0-83e9b501 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:04:57 [worker.py:1780] Releasing expired KV blocks for request cmpl-ab9c14ec-e49c-4d74-905b-5c8a82772981-0-9f3ddb9d which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:04:59 [worker.py:1780] Releasing expired KV blocks for request cmpl-1e4b6815-fa2d-4ddf-a64f-fced74be5a5f-0-acdb5ac4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:01 [worker.py:1780] Releasing expired KV blocks for request cmpl-c0f52c99-70f8-4df5-824a-64100e95a811-0-b9db07f4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:05:02 [loggers.py:271] Engine 000: Avg prompt throughput: 6.0 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:05:02 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:05:02 [worker.py:1780] Releasing expired KV blocks for request cmpl-f3537abf-bf9d-4001-b0d3-c633de3364a2-0-8894b197 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:04 [worker.py:1780] Releasing expired KV blocks for request cmpl-8fd80588-e9a2-433a-9e00-19e7f34ba92e-0-8b0586ab which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:06 [worker.py:1780] Releasing expired KV blocks for request cmpl-d415e7d2-e82d-45cd-b5e6-465e8d3618c6-0-9d93f50b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:07 [worker.py:1780] Releasing expired KV blocks for request cmpl-8cfab92c-ae3d-4c07-9ff1-7c83a7c45a78-0-92a65d2f which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:09 [worker.py:1780] Releasing expired KV blocks for request cmpl-cb45ebf4-9c45-4b2b-b831-9750ed1f3b7a-0-8c3b2d5a which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:11 [worker.py:1780] Releasing expired KV blocks for request cmpl-2d19af05-90cd-49cf-817d-42c367836b37-0-bec5622e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:05:12 [loggers.py:271] Engine 000: Avg prompt throughput: 6.4 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:05:12 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:05:13 [worker.py:1780] Releasing expired KV blocks for request cmpl-557cedca-13ef-495d-8051-13b68076af58-0-82eedef0 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:14 [worker.py:1780] Releasing expired KV blocks for request cmpl-3be17e4d-7bd1-4a9d-9a5f-5b3354e47855-0-bbc26d67 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:16 [worker.py:1780] Releasing expired KV blocks for request cmpl-9e5a68b2-5a74-45cc-8400-aaca72999f9e-0-b8abf2c9 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:18 [worker.py:1780] Releasing expired KV blocks for request cmpl-31f244fe-58ab-487f-b02e-0ebb9eeb7361-0-b73b9dee which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:19 [worker.py:1780] Releasing expired KV blocks for request cmpl-e73ef2dd-8103-4714-b9a2-ff7bdad54aa7-0-85102c70 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:21 [worker.py:1780] Releasing expired KV blocks for request cmpl-1a14fe3e-94e5-4e4f-add8-36adf5ea33a5-0-91ae6f44 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:05:22 [loggers.py:271] Engine 000: Avg prompt throughput: 6.0 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:05:22 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:05:23 [worker.py:1780] Releasing expired KV blocks for request cmpl-46f349ce-8941-4b2e-9a1a-8b67b6bef58b-0-b97f0e38 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:25 [worker.py:1780] Releasing expired KV blocks for request cmpl-028dd8fc-7332-4f06-8441-73041bcfb71a-0-a1a61ec9 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:26 [worker.py:1780] Releasing expired KV blocks for request cmpl-7a8c358a-db8c-47cb-86e8-77c47416033d-0-b63b9e08 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-f17d7e60-45a9-434f-b312-9bd557389651-0-ac8506dc which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:30 [worker.py:1780] Releasing expired KV blocks for request cmpl-a0b3d633-b233-4c44-9a3a-d4e905764b4c-0-9b9f66e0 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:31 [worker.py:1780] Releasing expired KV blocks for request cmpl-9f37d5f0-c679-43a1-9eb3-447dae213e1e-0-9fe7ea20 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:05:32 [loggers.py:271] Engine 000: Avg prompt throughput: 6.1 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:05:32 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:05:33 [worker.py:1780] Releasing expired KV blocks for request cmpl-f066c53e-5630-43fe-9e8f-07dde82d22b9-0-a0b710fc which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:35 [worker.py:1780] Releasing expired KV blocks for request cmpl-0cd94051-8553-4dc6-94ab-e400e82fe449-0-bf6b9e85 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:37 [worker.py:1780] Releasing expired KV blocks for request cmpl-ab19c9c5-136a-4ea5-9c57-244547ec5f6e-0-91d156e6 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:38 [worker.py:1780] Releasing expired KV blocks for request cmpl-43eedad3-4615-47bc-bbdf-ddc1f2ae7e50-0-b41477e5 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:40 [worker.py:1780] Releasing expired KV blocks for request cmpl-1e6e87c7-6090-469a-b7f8-4dbcb20fcfa8-0-8b036bc1 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:05:42 [loggers.py:271] Engine 000: Avg prompt throughput: 5.0 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:05:42 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:05:42 [worker.py:1780] Releasing expired KV blocks for request cmpl-7ef20ae1-b9e1-4e77-8ab4-49ee3fd2178b-0-912a71b2 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:43 [worker.py:1780] Releasing expired KV blocks for request cmpl-194a9756-8f51-4bb0-b9a8-efdb4643f83c-0-979e5a31 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:45 [worker.py:1780] Releasing expired KV blocks for request cmpl-5db0fbd5-6c9f-4109-9a58-b775f4834f2f-0-97ee894d which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:47 [worker.py:1780] Releasing expired KV blocks for request cmpl-4d076804-15c1-41c6-9563-114cfc22191a-0-99ffefe5 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:49 [worker.py:1780] Releasing expired KV blocks for request cmpl-ea40e47e-930a-460f-bcee-a9fc69ef60ee-0-b80ada0e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:50 [worker.py:1780] Releasing expired KV blocks for request cmpl-bff6349b-9715-4843-af08-e61457113ae0-0-a38e4e34 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:05:52 [loggers.py:271] Engine 000: Avg prompt throughput: 6.3 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:05:52 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:05:52 [worker.py:1780] Releasing expired KV blocks for request cmpl-fb6c46aa-2489-48d6-85aa-75f9fb4e3e2a-0-a03890df which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:54 [worker.py:1780] Releasing expired KV blocks for request cmpl-cb565bf6-f73b-479d-a22e-08d7d96da6da-0-abe5ecc9 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:55 [worker.py:1780] Releasing expired KV blocks for request cmpl-ea6701a1-5653-409a-8ba6-0de01e1eee13-0-915bf66b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:57 [worker.py:1780] Releasing expired KV blocks for request cmpl-c808623e-2ce8-4ae5-97a1-38f68564cb59-0-8d79f7d4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:05:59 [worker.py:1780] Releasing expired KV blocks for request cmpl-afde34b5-baf1-4c47-a41e-75348b7c0838-0-82b607b3 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:01 [worker.py:1780] Releasing expired KV blocks for request cmpl-7b239ea3-b475-4d3d-a6ff-87d14b119b22-0-bf252b28 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:06:02 [loggers.py:271] Engine 000: Avg prompt throughput: 6.0 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:06:02 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:06:02 [worker.py:1780] Releasing expired KV blocks for request cmpl-1e4fea6b-57d7-403a-937d-6e422f399f1b-0-8d0b050b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:04 [worker.py:1780] Releasing expired KV blocks for request cmpl-fb925d17-61c4-4e5a-82bd-28c3974d03ad-0-81672585 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:06 [worker.py:1780] Releasing expired KV blocks for request cmpl-fb641bd7-7a7a-4d91-b205-f4d267d4d7d6-0-bdea63e6 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:07 [worker.py:1780] Releasing expired KV blocks for request cmpl-93fa2091-c546-43f1-8364-ebcb3a4d14c4-0-8c648895 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:09 [worker.py:1780] Releasing expired KV blocks for request cmpl-f2f0ac98-2b99-4cce-9b0d-a7d64d82d4c9-0-83d6e732 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:11 [worker.py:1780] Releasing expired KV blocks for request cmpl-74f2b13f-d41b-4419-81db-f7ffc2790070-0-8a4148e0 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:06:12 [loggers.py:271] Engine 000: Avg prompt throughput: 6.1 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:06:12 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:06:13 [worker.py:1780] Releasing expired KV blocks for request cmpl-2692b1dc-105e-4ae5-b44c-a21e7925992e-0-9bd9838b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:14 [worker.py:1780] Releasing expired KV blocks for request cmpl-69758b62-fd82-4d39-ba3a-da63808fb4cc-0-894e0377 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:16 [worker.py:1780] Releasing expired KV blocks for request cmpl-cd0ac005-e32e-4c2e-bfcf-79f496c6c850-0-a189b6bf which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:18 [worker.py:1780] Releasing expired KV blocks for request cmpl-b2a392b9-9ab9-4e90-9881-afd2e661f1a4-0-87df772a which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:19 [worker.py:1780] Releasing expired KV blocks for request cmpl-95ebb63b-e30e-4d10-8502-825458041bd8-0-bf4b84ab which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:21 [worker.py:1780] Releasing expired KV blocks for request cmpl-8f8eb21e-3239-4671-9734-e4295d3457ed-0-827e9700 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:06:22 [loggers.py:271] Engine 000: Avg prompt throughput: 6.0 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:06:22 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:06:23 [worker.py:1780] Releasing expired KV blocks for request cmpl-802d01c6-0112-452d-b43a-be8e70888045-0-b4c3928c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:25 [worker.py:1780] Releasing expired KV blocks for request cmpl-3097cf7b-b9db-4e73-8d6a-63dcb9a05923-0-95cf8b2c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:26 [worker.py:1780] Releasing expired KV blocks for request cmpl-fe9309b8-12ad-439c-84b8-c496ef1c639f-0-ac8357cd which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-6cf884ba-84b8-4f3d-b245-dd1e036403f3-0-99324795 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:30 [worker.py:1780] Releasing expired KV blocks for request cmpl-367b0cdf-1ef1-420d-989c-7eae78326b00-0-987ee388 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:31 [worker.py:1780] Releasing expired KV blocks for request cmpl-1b9383e4-517e-471e-8930-682be9d2e231-0-b3aebc40 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:06:32 [loggers.py:271] Engine 000: Avg prompt throughput: 6.1 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:06:32 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:06:33 [worker.py:1780] Releasing expired KV blocks for request cmpl-a7bdb126-8ab9-49e9-880f-c8263ecc7c6b-0-9546c24a which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:35 [worker.py:1780] Releasing expired KV blocks for request cmpl-72dcf3e7-f730-4101-b8ff-dc647b5caa70-0-a7ced57c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:37 [worker.py:1780] Releasing expired KV blocks for request cmpl-451db546-7178-4a5f-b7c1-4f3b7fc531a7-0-9af68b95 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:38 [worker.py:1780] Releasing expired KV blocks for request cmpl-052af391-ea41-414b-9573-468e351dc27f-0-88619265 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:40 [worker.py:1780] Releasing expired KV blocks for request cmpl-196e6945-71ce-4c90-8911-d2e5f0b8a1f3-0-b86cab06 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:06:42 [loggers.py:271] Engine 000: Avg prompt throughput: 5.4 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:06:42 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:06:42 [worker.py:1780] Releasing expired KV blocks for request cmpl-c1b73e93-00b1-42ec-a726-a0d66734ed86-0-b8da76d4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:43 [worker.py:1780] Releasing expired KV blocks for request cmpl-3a43671a-b957-410c-825d-d6a07ee138c0-0-8c4ed664 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:45 [worker.py:1780] Releasing expired KV blocks for request cmpl-ad3df55b-a703-419e-944b-82395a0326ba-0-b71710bf which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:47 [worker.py:1780] Releasing expired KV blocks for request cmpl-819fca6b-84c5-47fe-bf4c-f27f582218ef-0-9e19966e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:48 [worker.py:1780] Releasing expired KV blocks for request cmpl-66398594-67dc-4340-8b5c-c4feb279529b-0-8f8ad6f7 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:50 [worker.py:1780] Releasing expired KV blocks for request cmpl-9bd66238-a6a6-464d-86ab-cfcbb1b1662c-0-90d33ce7 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:06:52 [loggers.py:271] Engine 000: Avg prompt throughput: 6.1 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:06:52 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:06:52 [worker.py:1780] Releasing expired KV blocks for request cmpl-806b8743-ede2-48cf-a976-fcad595a7208-0-be957197 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:54 [worker.py:1780] Releasing expired KV blocks for request cmpl-dd23be4f-78d0-4954-8f16-c7f8829ff107-0-95018725 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:55 [worker.py:1780] Releasing expired KV blocks for request cmpl-49278a59-a94a-47fb-88cf-48e8c3859339-0-9eb417be which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:57 [worker.py:1780] Releasing expired KV blocks for request cmpl-55223f1a-deec-4620-8165-2b3641d1965d-0-85804b38 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:06:59 [worker.py:1780] Releasing expired KV blocks for request cmpl-03be05ae-7e01-4c0c-8902-dfcf8fc44e70-0-836a1b0e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:00 [worker.py:1780] Releasing expired KV blocks for request cmpl-d5567119-d828-487f-b288-e058d287f95d-0-b7b9ee8b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:07:02 [loggers.py:271] Engine 000: Avg prompt throughput: 6.1 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:07:02 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:07:02 [worker.py:1780] Releasing expired KV blocks for request cmpl-4eb36012-1212-4559-9fe4-a4059c33138e-0-bc971e0e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:04 [worker.py:1780] Releasing expired KV blocks for request cmpl-8040bce5-a3f1-4cd1-b591-2b99d3a98bf2-0-87d3d344 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:06 [worker.py:1780] Releasing expired KV blocks for request cmpl-6b0d24ad-ca9d-427a-b667-6783b18b3ef7-0-a984cf35 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:07 [worker.py:1780] Releasing expired KV blocks for request cmpl-62acd1a2-515b-408f-a5ea-373fdf11aee6-0-bd523acd which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:09 [worker.py:1780] Releasing expired KV blocks for request cmpl-1dee2dc3-0169-4d2e-910c-523241f535a0-0-a3453426 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:11 [worker.py:1780] Releasing expired KV blocks for request cmpl-2d6fe6c4-9821-407d-9246-8a1dde687eb4-0-ad86c8f4 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:07:12 [loggers.py:271] Engine 000: Avg prompt throughput: 6.4 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:07:12 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:07:12 [worker.py:1780] Releasing expired KV blocks for request cmpl-27deaa7e-e709-42f0-8a60-52b6ef9476ee-0-b5650e02 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:14 [worker.py:1780] Releasing expired KV blocks for request cmpl-21f162ae-0774-436a-81b0-56b587ed21c2-0-99f8712b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:16 [worker.py:1780] Releasing expired KV blocks for request cmpl-864c2a1c-4e30-4b8a-9aeb-c5662aad5a24-0-90b55f2c which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:18 [worker.py:1780] Releasing expired KV blocks for request cmpl-2e914aa6-649f-4fe3-b088-6431401f7590-0-8967f43e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:19 [worker.py:1780] Releasing expired KV blocks for request cmpl-60351c11-bd46-4152-b31a-c5dc326771a6-0-88ec10e9 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:21 [worker.py:1780] Releasing expired KV blocks for request cmpl-8ac39a07-56d9-4777-8c91-a79da63a54a3-0-900cdfe3 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:07:22 [loggers.py:271] Engine 000: Avg prompt throughput: 6.0 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:07:22 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:07:23 [worker.py:1780] Releasing expired KV blocks for request cmpl-3933e704-fb76-4987-841a-25e8e5211b38-0-ace34451 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:24 [worker.py:1780] Releasing expired KV blocks for request cmpl-4eb45125-2dcc-4ad2-9e07-0dc696d76799-0-891a9e0e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:26 [worker.py:1780] Releasing expired KV blocks for request cmpl-e90522c2-cdb4-48b4-a42a-8f46a033c273-0-9ff48623 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:28 [worker.py:1780] Releasing expired KV blocks for request cmpl-2a25a992-fb4a-49fb-8c76-f49f7666ae76-0-b5713493 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:30 [worker.py:1780] Releasing expired KV blocks for request cmpl-a0f2e315-7532-4882-8a33-1a324a8b728b-0-b17ead85 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:31 [worker.py:1780] Releasing expired KV blocks for request cmpl-f2b2e1ba-492d-4d77-885c-d9788ade32cb-0-80a0299f which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:07:32 [loggers.py:271] Engine 000: Avg prompt throughput: 6.1 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:07:32 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:07:33 [worker.py:1780] Releasing expired KV blocks for request cmpl-37297614-6cb4-4ba3-b59c-8f109944a68c-0-926a9800 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:35 [worker.py:1780] Releasing expired KV blocks for request cmpl-fb332d67-e541-44cb-a808-73bf2389b92b-0-9687bd9b which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:36 [worker.py:1780] Releasing expired KV blocks for request cmpl-e85f079a-837e-49c3-bc44-6e31f8f19041-0-9e69d060 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:38 [worker.py:1780] Releasing expired KV blocks for request cmpl-df5024c8-4cee-4568-ad4f-935e1cc723c7-0-aad99de2 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:40 [worker.py:1780] Releasing expired KV blocks for request cmpl-7d1b42a9-ecaa-476b-80b0-32488a27a1c9-0-a942485e which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:07:42 [loggers.py:271] Engine 000: Avg prompt throughput: 5.2 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:07:42 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(EngineCore pid=66) WARNING 07-18 07:07:42 [worker.py:1780] Releasing expired KV blocks for request cmpl-7ce0e9c0-252c-46d3-9513-e327e52020a6-0-b6d14149 which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(EngineCore pid=66) WARNING 07-18 07:07:43 [worker.py:1780] Releasing expired KV blocks for request cmpl-095aaab2-9438-4548-ab27-e29bf63e6606-0-b198d15d which were retrieved by 0 remote worker(s) before lease expired.
+(APIServer pid=1) INFO:     10.0.5.194:39210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-18 07:07:52 [loggers.py:271] Engine 000: Avg prompt throughput: 2.2 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-18 07:07:52 [metrics.py:103] KV Transfer metrics: Num successful transfers=0, Avg xfer time (ms)=0, P90 xfer time (ms)=0, Avg post time (ms)=0, P90 post time (ms)=0, Avg MB per transfer=0, Throughput (MB/s)=0, Avg number of descriptors=0
+(APIServer pid=1) INFO 07-18 07:08:02 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.3%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
