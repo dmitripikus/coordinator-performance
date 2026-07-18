@@ -123,4 +123,46 @@ fig.tight_layout()
 fig.savefig(f"{BASE}/analysis/success_rate.png", dpi=130)
 plt.close(fig)
 
+# sidecar 250->1000 output: same test, three attempts on three different
+# decode nodes (node variance investigation)
+NODE_RUNS = [
+    ("g11bab6\n(attempt 1)", f"{BASE}/sidecar/inference-perf_1784391367_random_250_1000_isl_osl_pd-gpt-oss-120b-old"),
+    ("gc37d06\n(attempt 2)", f"{BASE}/sidecar/inference-perf_1784400246_random_250_1000_isl_osl_pd-gpt-oss-120b-old2"),
+    ("gf2a19e\n(attempt 3,\npinned)", f"{BASE}/sidecar/inference-perf_1784404017_random_250_1000_isl_osl_pd-gpt-oss-120b"),
+]
+node_data = [(label, json.load(open(f"{d}/summary_lifecycle_metrics.json"))) for label, d in NODE_RUNS]
+
+fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
+colors = ["#c05621", "#c05621", "#2b7a4b"]  # highlight the pinned/matched attempt in green
+
+for ax, metric_path, scale, ylabel, title in [
+    (axes[0], ["inter_token_latency"], 1000, "ITL (ms)", "Inter-token latency by decode node"),
+    (axes[1], ["request_latency"], 1000, "request latency (ms)", "Request latency by decode node"),
+]:
+    labels, meds, p10s, p90s = [], [], [], []
+    for label, d in node_data:
+        node = d["successes"]["latency"]
+        for key in metric_path:
+            node = node[key]
+        labels.append(label)
+        meds.append(node["median"] * scale)
+        p10s.append(node["median"] * scale - node["p10"] * scale)
+        p90s.append(node["p90"] * scale - node["median"] * scale)
+    xpos = range(len(labels))
+    ax.bar(xpos, meds, color=colors, alpha=0.85)
+    ax.errorbar(xpos, meds, yerr=[p10s, p90s], fmt="none", ecolor="black", capsize=5, linewidth=1.5)
+    ax.set_xticks(list(xpos))
+    ax.set_xticklabels(labels, fontsize=8)
+    ax.set_ylabel(ylabel)
+    ax.set_title(title, fontsize=10)
+    ax.grid(True, axis="y", alpha=0.3)
+    for i, v in enumerate(meds):
+        ax.text(i, v, f"{v:.2f}" if scale == 1000 and metric_path == ["inter_token_latency"] else f"{v:.0f}",
+                ha="center", va="bottom", fontsize=8)
+
+fig.suptitle("Sidecar, 250-input/1,000-output: same test, three decode nodes\n(error bars = p10-p90)", fontsize=11)
+fig.tight_layout()
+fig.savefig(f"{BASE}/analysis/node_variance_1000output.png", dpi=130)
+plt.close(fig)
+
 print("done")

@@ -2,16 +2,16 @@ Log Collection Summary
 ======================
 Namespace: dpikus-pd
 Time Period: Last 30 minutes
-Collection Time: שבת יולי 18 2026 22:00:43 IDT
+Collection Time: שבת יולי 18 2026 23:14:14 IDT
 Total Pods: 7
 
 Collected Logs:
 ---------------
-  llm-d-inference-gateway-istio-88698f47c-mfsst/istio-proxy.log: 1 lines, 4.0K
+  llm-d-inference-gateway-istio-88698f47c-mfsst/istio-proxy.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-prefill-6448476cc6-rn79p/modelserver.log: 264 lines,  60K
   reqsend-long-b85d68496-j766v/reqsend.log: 0 lines,   0B
-  pd-disaggregation-nvidia-gpu-vllm-prefill-9fb48dc8f-gdjv4/modelserver.log: 347 lines,  72K
+  pd-disaggregation-nvidia-gpu-vllm-decode-b96dc6849-xdc8s/modelserver.log: 380 lines,  88K
+  pd-disaggregation-nvidia-gpu-vllm-decode-b96dc6849-xdc8s/routing-proxy.log: 136 lines,  28K
   llmdbench-harness-launcher/harness.log: 140 lines,  20K
-  pd-disaggregation-nvidia-gpu-vllm-decode-6c9c96c4d7-wvx5l/modelserver.log: 526 lines, 112K
-  pd-disaggregation-nvidia-gpu-vllm-decode-6c9c96c4d7-wvx5l/routing-proxy.log: 94 lines,  20K
-  pd-disaggregation-epp-685c4897fd-9wg9t/epp.log: 392 lines,  84K
+  pd-disaggregation-epp-685c4897fd-9wg9t/epp.log: 403 lines,  88K
   reqsend-7587759cd4-gw8pd/reqsend.log: 0 lines,   0B

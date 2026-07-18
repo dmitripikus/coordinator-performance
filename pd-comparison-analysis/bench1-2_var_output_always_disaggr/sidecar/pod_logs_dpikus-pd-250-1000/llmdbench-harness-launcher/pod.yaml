@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
       {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"app":"llmdbench-harness-launcher"},"name":"llmdbench-harness-launcher","namespace":"dpikus-pd"},"spec":{"containers":[{"args":["sleep 1000000"],"command":["sh","-c"],"env":[{"name":"RAYON_NUM_THREADS","value":"4"},{"name":"HF_TOKEN","valueFrom":{"secretKeyRef":{"key":"HF_TOKEN","name":"llm-d-hf-token"}}},{"name":"LLMDBENCH_RUN_WORKSPACE_DIR","value":"/workspace"},{"name":"LLMDBENCH_MAGIC_ENVAR","value":"harness_pod"},{"name":"LLMDBENCH_HARNESS_NAME","value":"inference-perf"},{"name":"LLMDBENCH_RUN_EXPERIMENT_RESULTS_DIR_PREFIX","value":"/requests"},{"name":"LLMDBENCH_RUN_DATASET_DIR","value":"/workspace"},{"name":"LLMDBENCH_HARNESS_STACK_NAME","value":"pd-gpt-oss-120b"},{"name":"LLMDBENCH_DESCRIPTION_TEXT","value":""},{"name":"LLMDBENCH_DESCRIPTION_KEYWORDS","value":""}],"image":"ghcr.io/llm-d/llm-d-benchmark:v0.5.2","imagePullPolicy":"Always","name":"harness","resources":{"limits":{"cpu":"16","memory":"32Gi"},"requests":{"cpu":"16","memory":"32Gi"}},"securityContext":{"runAsUser":0},"volumeMounts":[{"mountPath":"/requests","name":"results"},{"mountPath":"/workspace/profiles/inference-perf","name":"inference-perf-profiles"}]}],"restartPolicy":"Never","serviceAccountName":"llmdbench-harness-sa","volumes":[{"name":"results","persistentVolumeClaim":{"claimName":"workload-pvc"}},{"configMap":{"name":"inference-perf-profiles"},"name":"inference-perf-profiles"}]}}
-  creationTimestamp: "2026-07-18T18:44:46Z"
+  creationTimestamp: "2026-07-18T19:47:38Z"
   generation: 1
   labels:
     app: llmdbench-harness-launcher
@@ -12,8 +12,8 @@ metadata:
     topology.kubernetes.io/zone: "185"
   name: llmdbench-harness-launcher
   namespace: dpikus-pd
-  resourceVersion: "32396787"
-  uid: 66b93452-d749-4bf2-9c4e-ecad26d3789e
+  resourceVersion: "32443077"
+  uid: 4f22650c-fa58-4fb8-9452-c07d8e141108
 spec:
   containers:
   - args:
@@ -63,7 +63,7 @@ spec:
     - mountPath: /workspace/profiles/inference-perf
       name: inference-perf-profiles
     - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-      name: kube-api-access-f9xkh
+      name: kube-api-access-4d7k9
       readOnly: true
   dnsPolicy: ClusterFirst
   enableServiceLinks: true
@@ -93,7 +93,7 @@ spec:
       defaultMode: 420
       name: inference-perf-profiles
     name: inference-perf-profiles
-  - name: kube-api-access-f9xkh
+  - name: kube-api-access-4d7k9
     projected:
       defaultMode: 420
       sources:
@@ -117,27 +117,27 @@ status:
     memory: 32Gi
   conditions:
   - lastProbeTime: null
-    lastTransitionTime: "2026-07-18T18:44:54Z"
+    lastTransitionTime: "2026-07-18T19:47:49Z"
     observedGeneration: 1
     status: "True"
     type: PodReadyToStartContainers
   - lastProbeTime: null
-    lastTransitionTime: "2026-07-18T18:44:46Z"
+    lastTransitionTime: "2026-07-18T19:47:38Z"
     observedGeneration: 1
     status: "True"
     type: Initialized
   - lastProbeTime: null
-    lastTransitionTime: "2026-07-18T18:44:54Z"
+    lastTransitionTime: "2026-07-18T19:47:49Z"
     observedGeneration: 1
     status: "True"
     type: Ready
   - lastProbeTime: null
-    lastTransitionTime: "2026-07-18T18:44:54Z"
+    lastTransitionTime: "2026-07-18T19:47:49Z"
     observedGeneration: 1
     status: "True"
     type: ContainersReady
   - lastProbeTime: null
-    lastTransitionTime: "2026-07-18T18:44:46Z"
+    lastTransitionTime: "2026-07-18T19:47:38Z"
     observedGeneration: 1
     status: "True"
     type: PodScheduled
@@ -145,7 +145,7 @@ status:
   - allocatedResources:
       cpu: "16"
       memory: 32Gi
-    containerID: containerd://565ce1d3a2c5b7cb4bd89f20c23ae68c701e4fba6f5ba7aa60724f20b11bf4ee
+    containerID: containerd://32363d2d4660ea8faf10e7cd8f9547ac54373e5438c5462a447f23c2366d585a
     image: ghcr.io/llm-d/llm-d-benchmark:v0.5.2
     imageID: ghcr.io/llm-d/llm-d-benchmark@sha256:2940ffd2104c9af5676552336ab36f23d62ce6a226dfeb3613d24faeab3e657c
     lastState: {}
@@ -162,7 +162,7 @@ status:
     started: true
     state:
       running:
-        startedAt: "2026-07-18T18:44:54Z"
+        startedAt: "2026-07-18T19:47:49Z"
     user:
       linux:
         gid: 0
@@ -175,7 +175,7 @@ status:
     - mountPath: /workspace/profiles/inference-perf
       name: inference-perf-profiles
     - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-      name: kube-api-access-f9xkh
+      name: kube-api-access-4d7k9
       readOnly: true
       recursiveReadOnly: Disabled
   hostIP: 10.202.212.51
@@ -183,9 +183,9 @@ status:
   - ip: 10.202.212.51
   observedGeneration: 1
   phase: Running
-  podIP: 10.0.12.55
+  podIP: 10.0.12.29
   podIPs:
-  - ip: 10.0.12.55
+  - ip: 10.0.12.29
   qosClass: Guaranteed
   resources:
     limits:
@@ -194,4 +194,4 @@ status:
     requests:
       cpu: 15978m
       memory: 32Gi
-  startTime: "2026-07-18T18:44:46Z"
+  startTime: "2026-07-18T19:47:38Z"

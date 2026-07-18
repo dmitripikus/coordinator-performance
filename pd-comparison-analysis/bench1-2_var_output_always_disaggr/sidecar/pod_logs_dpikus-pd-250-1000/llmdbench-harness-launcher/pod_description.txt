@@ -3,18 +3,18 @@ Namespace:        dpikus-pd
 Priority:         0
 Service Account:  llmdbench-harness-sa
 Node:             g801c7a/10.202.212.51
-Start Time:       Sat, 18 Jul 2026 21:44:46 +0300
+Start Time:       Sat, 18 Jul 2026 22:47:38 +0300
 Labels:           app=llmdbench-harness-launcher
                   topology.kubernetes.io/region=US-EAST-01
                   topology.kubernetes.io/zone=185
 Annotations:      <none>
 Status:           Running
-IP:               10.0.12.55
+IP:               10.0.12.29
 IPs:
-  IP:  10.0.12.55
+  IP:  10.0.12.29
 Containers:
   harness:
-    Container ID:  containerd://565ce1d3a2c5b7cb4bd89f20c23ae68c701e4fba6f5ba7aa60724f20b11bf4ee
+    Container ID:  containerd://32363d2d4660ea8faf10e7cd8f9547ac54373e5438c5462a447f23c2366d585a
     Image:         ghcr.io/llm-d/llm-d-benchmark:v0.5.2
     Image ID:      ghcr.io/llm-d/llm-d-benchmark@sha256:2940ffd2104c9af5676552336ab36f23d62ce6a226dfeb3613d24faeab3e657c
     Port:          <none>
@@ -25,7 +25,7 @@ Containers:
     Args:
       sleep 1000000
     State:          Running
-      Started:      Sat, 18 Jul 2026 21:44:54 +0300
+      Started:      Sat, 18 Jul 2026 22:47:49 +0300
     Ready:          True
     Restart Count:  0
     Limits:
@@ -47,7 +47,7 @@ Containers:
       LLMDBENCH_DESCRIPTION_KEYWORDS:               
     Mounts:
       /requests from results (rw)
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-f9xkh (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-4d7k9 (ro)
       /workspace/profiles/inference-perf from inference-perf-profiles (rw)
 Conditions:
   Type                        Status
@@ -65,7 +65,7 @@ Volumes:
     Type:      ConfigMap (a volume populated by a ConfigMap)
     Name:      inference-perf-profiles
     Optional:  false
-  kube-api-access-f9xkh:
+  kube-api-access-4d7k9:
     Type:                    Projected (a volume that contains injected data from multiple sources)
     TokenExpirationSeconds:  3607
     ConfigMapName:           kube-root-ca.crt
@@ -78,8 +78,8 @@ Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists fo
 Events:
   Type    Reason     Age   From               Message
   ----    ------     ----  ----               -------
-  Normal  Scheduled  15m   default-scheduler  Successfully assigned dpikus-pd/llmdbench-harness-launcher to g801c7a
-  Normal  Pulling    15m   kubelet            spec.containers{harness}: Pulling image "ghcr.io/llm-d/llm-d-benchmark:v0.5.2"
-  Normal  Pulled     15m   kubelet            spec.containers{harness}: Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:v0.5.2" in 56ms (56ms including waiting). Image size: 2177277956 bytes.
-  Normal  Created    15m   kubelet            spec.containers{harness}: Container created
-  Normal  Started    15m   kubelet            spec.containers{harness}: Container started
+  Normal  Scheduled  26m   default-scheduler  Successfully assigned dpikus-pd/llmdbench-harness-launcher to g801c7a
+  Normal  Pulling    26m   kubelet            spec.containers{harness}: Pulling image "ghcr.io/llm-d/llm-d-benchmark:v0.5.2"
+  Normal  Pulled     26m   kubelet            spec.containers{harness}: Successfully pulled image "ghcr.io/llm-d/llm-d-benchmark:v0.5.2" in 115ms (115ms including waiting). Image size: 2177277956 bytes.
+  Normal  Created    26m   kubelet            spec.containers{harness}: Container created
+  Normal  Started    26m   kubelet            spec.containers{harness}: Container started
