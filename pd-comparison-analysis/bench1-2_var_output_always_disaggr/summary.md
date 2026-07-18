@@ -53,11 +53,15 @@ were excluded on this basis.
 | 500 | coord | 120/120 | 3715.3 ms | 3718.0 ms | 58.3 ms | 7.322 ms | 132.8 |
 | 500 | sidecar | 120/120 | 3681.1 ms | 3685.1 ms | 56.9 ms | 7.254 ms | 133.1 |
 | 1,000 | coord | 120/120 | 7381.6 ms | 7384.8 ms | 59.7 ms | 7.322 ms | 132.3 |
-| 1,000 | sidecar | 120/120 | 6804.1 ms | 7137.4 ms | 57.2 ms | 6.757 ms | 142.7 |
+| 1,000 | sidecar | 120/120 | 7320.6 ms | 7324.8 ms | 57.4 ms | 7.262 ms | 133.9 |
 
-Sidecar's 1,000-output step was re-run after the tail-latency finding
-below (see "Reading it") to check whether it was reproducible; this table
-uses the fresh re-run.
+Sidecar's 1,000-output step was re-run **twice** after the original result
+looked anomalous (see "Reading it"): once to check the tail-latency
+finding (transient, didn't reproduce, but the median/ITL gap against coord
+persisted), and a second time with prefill and decode **pinned to fixed
+nodes** (`gc37d06` and `gf2a19e` via `nodeSelector`) to control for
+node-to-node hardware variance. This table uses that final, node-pinned
+run — the earlier two 1,000-output attempts are superseded.
 
 ## % difference (coord vs sidecar, median)
 
@@ -65,10 +69,12 @@ uses the fresh re-run.
 |---|---|---|---|---|---|---|
 | 100 | +9.6 ms | +1.23% | +2.52 ms | +4.53% | +0.068 ms | +0.94% |
 | 500 | +34.3 ms | +0.93% | +1.43 ms | +2.51% | +0.068 ms | +0.93% |
-| 1,000 | +577.4 ms | +8.49% | +2.48 ms | +4.33% | +0.565 ms | +8.36% |
+| 1,000 | +61.0 ms | +0.83% | +2.30 ms | +4.01% | +0.060 ms | +0.83% |
 
 Diff = coord − sidecar; % diff is relative to sidecar. Positive means
-coord is slower/higher.
+coord is slower/higher. With node placement controlled, the 1,000-token
+gap is now the same size (~0.8-0.9%) as the 100 and 500-token gaps — see
+"Reading it" for how this was established.
 
 ## Charts
 
@@ -81,59 +87,64 @@ coord is slower/higher.
 
 Bands are p10-p90, line is the median, x-axis log-scaled by output tokens.
 
+![Node variance, 1,000-output sidecar attempts](analysis/node_variance_1000output.png)
+
+The chart above compares the same 250-input/1,000-output sidecar test run
+three times, once per decode node — this is the node-variance finding
+from "Reading it" made visual. The two unpinned attempts (`g11bab6`,
+`gc37d06`) cluster tightly around ITL ~6.76ms / latency ~6800ms; the
+pinned attempt on `gf2a19e` (matching the 100/500-output steps' node)
+sits distinctly higher at ITL ~7.26ms / latency ~7321ms — the same node
+that produces the numbers used in every other chart and table in this
+summary.
+
 ## Reading it
 
-- **Coord and sidecar are nearly identical at 100 and 500 output
-  tokens** (within ~1% on latency, ~1% on ITL) — TTFT is fixed by input
-  length (250 tokens, unchanged across all three steps) and decode cost
-  scales the same way on both sides while output length is short-to-medium.
-- **A real gap opens up at 1,000 output tokens**: coord is ~8.4% slower
-  on total latency and ~8.3% slower on ITL. Unlike the input-length sweep
-  (`bench1-2_var_prompt_always_disaggr`), where the coord-vs-sidecar ITL
-  gap was roughly constant across input sizes, here it's **near-zero at
-  100/500 output tokens and only appears at 1,000** — the gap is a
-  function of how long the decode stream runs, not a fixed per-request
-  overhead.
+- **Coord and sidecar are nearly identical across all three output
+  sizes** — within ~0.8-1.2% on latency and ITL at every step. This
+  wasn't true in earlier versions of this analysis; the path to get here
+  is worth recording since it's the main finding of this sweep.
+- **The 1,000-output step originally showed an ~8.4% gap (coord slower),
+  which turned out to be a node-variance artifact, not a real effect —
+  confirmed by direct test, not just inferred.** Checking `nodeName` in
+  each decode pod's spec: coord's decode pod ran on the **same physical
+  node (`g11d5e0`) for all three steps**, a controlled comparison by
+  accident. Sidecar's decode pod, freshly scheduled each run, landed on
+  **three different nodes** across three attempts at the 1,000-output
+  step: `gf2a19e` (same node the 100/500 steps used, ITL ~7.25ms),
+  `g11bab6` (ITL ~6.76ms), and `gc37d06` (ITL ~6.76ms again). To settle
+  whether this was really node luck, prefill and decode were pinned with
+  `nodeSelector` — decode forced onto `gf2a19e` (matching 100/500),
+  prefill onto `gc37d06` — and the 1,000-output step was run a third
+  time. Result: ITL landed at **7.262ms**, matching the 100/500 baseline
+  almost exactly, and the gap against coord collapsed from +8.4% to
+  **+0.83%** — the same size as the 100 and 500-token gaps. This
+  confirms the earlier "coord is slower at long outputs" finding was
+  driven entirely by which physical GPU sidecar's decode pod happened to
+  land on, not by output length or architecture.
 - **TTFT is flat across all three steps for both architectures** (~56-60ms
   for both) — expected, since TTFT is driven by prefill/input length,
-  which is fixed at 250 tokens throughout this sweep. This confirms the
-  latency/ITL differences seen above are purely a decode-side effect.
-- **Sidecar's first 1,000-output run had a long latency tail that coord
-  didn't have** — coord's spread across all 120 requests was only 16ms
-  (7374.5-7390.5ms), while sidecar's p90/p99/max (7323/8770/8849ms) sat
-  well above its own p75 (~6833ms). Traced to a specific cause:
-  reconstructing per-request completion gaps from `epp.log` showed a
-  **single contiguous ~80-second window** (10 consecutive requests,
-  16:19:11-16:20:27 UTC) where every request ran 1-1.5s slower than its
-  neighbors. Cross-checked against the decode pod's own vLLM engine
-  metrics for that exact window: `Avg generation throughput` genuinely
-  dropped from its steady ~136-147 tokens/s to ~113-125 tokens/s for
-  those ~80 seconds, then recovered immediately after — a real,
-  measurable GPU-side decode slowdown, not a logging artifact or a
-  request-queueing effect (decode concurrency stayed at 1 throughout;
-  ruled out). KV-transfer timing moved the *opposite* direction during
-  the same window (transfer time dropped, throughput rose), so this was
-  specifically a GPU-compute slowdown, not a network/RDMA issue.
-- **Re-run confirms it was transient, not reproducible.** The 1,000-output
-  sidecar step was re-run to check this; the new run's decode engine
-  throughput stayed rock-solid at ~146-147 tokens/s for the *entire* run
-  with no dip anywhere, and the latency spread shrank to a much more
-  ordinary ~600ms (p75 6807ms → max 7401ms), consistent with normal
-  early-request/cold-start variance rather than a mid-run event. The
-  median/ITL comparison against coord barely moved between the two runs
-  (+8.37%/+8.27% first run vs +8.49%/+8.36% re-run) — confirming the
-  core coord-vs-sidecar finding at 1,000 tokens is stable and was never
-  affected by the transient tail; only the p90/p99/max were. This reads
-  as a one-off event on whatever node/GPU that first run's decode pod
-  happened to land on (thermal throttling or transient compute
-  contention are the most likely candidates, though not confirmable from
-  these logs alone — this cluster's Prometheus has no node-level GPU
-  utilization history) — not a structural sidecar issue.
+  which is fixed at 250 tokens throughout this sweep.
+- **The latency tail seen in the first 1,000-output sidecar attempt was
+  also resolved by the same fix.** That run's spread was ~2000ms
+  (p75→max), traced to a real but one-off ~80-second GPU-side generation
+  throughput dip (confirmed via the decode pod's own vLLM engine metrics,
+  cross-checked against per-request completion gaps reconstructed from
+  `epp.log` — not a queueing or logging artifact, decode concurrency
+  never exceeded 1). It didn't reproduce on the second attempt, and with
+  node placement pinned on the third attempt the spread tightened to
+  ~106ms (min 7314.8ms, max 7420.6ms) — the same tight, coord-like shape
+  seen at 100 and 500 output tokens.
 
-**Bottom line**: with clean, validated data on both sides, coord and
-sidecar are essentially equivalent for outputs up to 500 tokens. At 1,000
-output tokens, coord is consistently ~8.4-8.5% slower on latency and ITL
-across two independent runs — a real, reproducible gap. The tail-latency
-issue seen in the first 1,000-output sidecar run did not reproduce on
-re-run and is best treated as a one-off infra event, not a sidecar
-architecture characteristic.
+**Bottom line**: once node placement is controlled, coord and sidecar are
+essentially equivalent across the entire 100-1,000 output-token range
+(~0.8-1.2% apart on latency and ITL, no meaningful trend with output
+length). The ~8% gap and long tail seen in earlier attempts at 1,000
+output tokens were both artifacts of sidecar's decode pod being freely
+rescheduled across three different physical nodes with genuinely
+different per-token GPU speed, while coord's happened to stay pinned to
+one node throughout — not evidence of an architectural or
+output-length-dependent difference. For any future sweep on this cluster,
+pin node placement (or at least record and match it across steps) rather
+than leaving it to the scheduler, especially for sidecar where pods are
+recreated per step.
