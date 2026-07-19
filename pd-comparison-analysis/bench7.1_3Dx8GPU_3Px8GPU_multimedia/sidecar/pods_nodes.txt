@@ -1,0 +1,10 @@
+NAME                                                         READY   STATUS      RESTARTS   AGE     IP            NODE      NOMINATED NODE   READINESS GATES
+llm-d-inference-gateway-istio-dd67fd8cc-qs748                1/1     Running     0          6d4h    10.0.12.218   g49fc0a   <none>           <none>
+pd-disaggregation-epp-d4cfcfb4b-2xnhk                        1/1     Running     0          44m     10.0.12.237   g49fc0a   <none>           <none>
+pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-5ghc5    2/2     Running     0          44m     10.0.2.187    g13bc90   <none>           <none>
+pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-dzbcw    2/2     Running     0          44m     10.0.6.147    gc37cba   <none>           <none>
+pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-pgl94    2/2     Running     0          44m     10.0.8.131    gf2a19e   <none>           <none>
+pd-disaggregation-nvidia-gpu-vllm-prefill-686b99f79b-q6csl   1/1     Running     0          44m     10.0.3.153    g124002   <none>           <none>
+pd-disaggregation-nvidia-gpu-vllm-prefill-686b99f79b-sb4r9   1/1     Running     0          44m     10.0.8.73     gf2ac9a   <none>           <none>
+pd-disaggregation-nvidia-gpu-vllm-prefill-686b99f79b-zsqkz   1/1     Running     0          44m     10.0.10.152   g1251ac   <none>           <none>
+sglang-bench-6nd2g                                           0/1     Completed   0          9m16s   10.0.12.31    g801c7a   <none>           <none>

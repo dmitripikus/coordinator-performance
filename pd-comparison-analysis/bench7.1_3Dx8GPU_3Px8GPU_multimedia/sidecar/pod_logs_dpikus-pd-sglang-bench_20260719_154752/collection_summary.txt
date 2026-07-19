@@ -1,0 +1,21 @@
+Log Collection Summary
+======================
+Namespace: dpikus-pd-sglang-bench
+Time Period: Last 30 minutes
+Collection Time: Sun Jul 19 15:51:03 IDT 2026
+Total Pods: 9
+
+Collected Logs:
+---------------
+  sglang-bench-6nd2g/bench.log: 283 lines,  36K
+  pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-pgl94/modelserver.log: 189 lines,  36K
+  pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-pgl94/routing-proxy.log: 143 lines,  32K
+  pd-disaggregation-epp-d4cfcfb4b-2xnhk/epp.log: 836 lines, 224K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-686b99f79b-sb4r9/modelserver.log: 342 lines,  56K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-686b99f79b-zsqkz/modelserver.log: 334 lines,  56K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-686b99f79b-q6csl/modelserver.log: 303 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-dzbcw/modelserver.log: 200 lines,  36K
+  pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-dzbcw/routing-proxy.log: 142 lines,  32K
+  pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-5ghc5/modelserver.log: 438 lines, 132K
+  pd-disaggregation-nvidia-gpu-vllm-decode-5f467446bd-5ghc5/routing-proxy.log: 125 lines,  28K
+  llm-d-inference-gateway-istio-dd67fd8cc-qs748/istio-proxy.log: 1 lines, 4.0K
