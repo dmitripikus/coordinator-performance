@@ -1,0 +1,80 @@
+Name:             epd-prefill-epp-7b777fc864-z9nzp
+Namespace:        dpikus-epd
+Priority:         0
+Service Account:  epd-prefill-epp
+Node:             g49fc0a/10.202.221.55
+Start Time:       Sun, 12 Jul 2026 14:24:11 +0300
+Labels:           llm-d-router-gateway=epd-prefill-epp
+                  llm-d.ai/igw-mode=llm-d-router-gateway
+                  pod-template-hash=7b777fc864
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=214
+Annotations:      <none>
+Status:           Running
+IP:               10.0.12.152
+IPs:
+  IP:           10.0.12.152
+Controlled By:  ReplicaSet/epd-prefill-epp-7b777fc864
+Containers:
+  epp:
+    Container ID:  containerd://bb15f19c811cf8f0f262ddc95c347aec166ccb9b3c0d0968501fd8da85674ded
+    Image:         ghcr.io/roytman/llm-d-router-endpoint-picker:dev1
+    Image ID:      ghcr.io/roytman/llm-d-router-endpoint-picker@sha256:88e7a80ac2de650529686bdfcc619ef30e9df400c30f9805a95c1e741d63c74c
+    Ports:         9002/TCP (grpc), 9003/TCP (grpc-health), 9090/TCP (metrics)
+    Host Ports:    0/TCP (grpc), 0/TCP (grpc-health), 0/TCP (metrics)
+    Args:
+      --pool-name
+      epd-prefill
+      --pool-namespace
+      dpikus-epd
+      --pool-group
+      inference.networking.k8s.io
+      --zap-encoder
+      json
+      --config-file
+      /config/epd-plugins.yaml
+      --grpc-health-port
+      9003
+      --v=2
+      --tracing=false
+    State:          Running
+      Started:      Sun, 12 Jul 2026 14:24:12 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     4
+      memory:  16Gi
+    Requests:
+      cpu:      4
+      memory:   16Gi
+    Liveness:   grpc <pod>:9003 inference-extension delay=5s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:9003 inference-extension delay=0s timeout=1s period=2s #success=1 #failure=3
+    Environment:
+      NAMESPACE:  dpikus-epd (v1:metadata.namespace)
+      POD_NAME:   epd-prefill-epp-7b777fc864-z9nzp (v1:metadata.name)
+    Mounts:
+      /config from plugins-config-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-qntk2 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  plugins-config-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      epd-prefill-epp
+    Optional:  false
+  kube-api-access-qntk2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Guaranteed
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
