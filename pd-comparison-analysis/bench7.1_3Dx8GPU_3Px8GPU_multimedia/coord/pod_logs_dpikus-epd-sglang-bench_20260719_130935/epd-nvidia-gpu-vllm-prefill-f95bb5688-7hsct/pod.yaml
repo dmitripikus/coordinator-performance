@@ -1,0 +1,306 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    k8s.v1.cni.cncf.io/networks: |
+      [
+        {
+          "name": "multi-nic-compute",
+          "namespace": "openshift-sriov-network-operator"
+        }
+      ]
+  creationTimestamp: "2026-07-19T09:31:47Z"
+  generateName: epd-nvidia-gpu-vllm-prefill-f95bb5688-
+  generation: 1
+  labels:
+    llm-d.ai/accelerator-variant: gpu
+    llm-d.ai/accelerator-vendor: nvidia
+    llm-d.ai/guide: epd
+    llm-d.ai/model: Qwen3-VL-2B-Instruct
+    llm-d.ai/role: prefill
+    pod-template-hash: f95bb5688
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "52"
+  name: epd-nvidia-gpu-vllm-prefill-f95bb5688-7hsct
+  namespace: dpikus-epd-sglang-bench
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: epd-nvidia-gpu-vllm-prefill-f95bb5688
+    uid: 7f2715fd-4b16-49b3-903d-37e033937d45
+  resourceVersion: "33103856"
+  uid: 7245f3e7-2680-4c07-a35f-ac613701cb56
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            llm-d.ai/guide: epd
+            llm-d.ai/role: decode
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - args:
+    - --model
+    - Qwen/Qwen3-VL-235B-A22B-Instruct
+    - --port
+    - "8000"
+    - --tensor-parallel-size
+    - "8"
+    - --block-size
+    - "128"
+    - --kv-transfer-config
+    - '{"kv_connector":"NixlConnector", "kv_role":"kv_both"}'
+    - --ec-transfer-config
+    - '{"ec_connector": "ECCPUConnector", "ec_role": "ec_consumer"}'
+    - --no-disable-hybrid-kv-cache-manager
+    - --gpu-memory-utilization=0.9
+    - --load-format=runai_streamer
+    command:
+    - vllm
+    - serve
+    env:
+    - name: HF_HUB_OFFLINE
+      value: "1"
+    - name: TRANSFORMERS_OFFLINE
+      value: "1"
+    - name: VLLM_LOGGING_LEVEL
+      value: INFO
+    - name: VLLM_NIXL_SIDE_CHANNEL_HOST
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    - name: DP_SIZE
+      value: "1"
+    - name: TP_SIZE
+      value: "8"
+    - name: DP_SIZE_LOCAL
+      value: "1"
+    - name: HF_HOME
+      value: /model-cache
+    - name: HF_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: HF_TOKEN
+          name: llm-d-hf-token
+          optional: true
+    - name: TRITON_CACHE_DIR
+      value: /.triton-cache
+    - name: RUNAI_STREAMER_MEMORY_LIMIT
+      value: "17179869184"
+    image: ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer4
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /health
+        port: modelserver
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    name: modelserver
+    ports:
+    - containerPort: 5600
+      name: nixl
+      protocol: TCP
+    - containerPort: 8000
+      name: modelserver
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /v1/models
+        port: modelserver
+        scheme: HTTP
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 2
+    resources:
+      limits:
+        cpu: "8"
+        memory: 256Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+      requests:
+        cpu: "8"
+        memory: 256Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+    startupProbe:
+      failureThreshold: 120
+      httpGet:
+        path: /v1/models
+        port: modelserver
+        scheme: HTTP
+      initialDelaySeconds: 15
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 5
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.triton-cache
+      name: triton-cache
+    - mountPath: /.config
+      name: vllm-config
+    - mountPath: /model-cache
+      name: model-cache
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: g11bab6
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: epd-nvidia-gpu-vllm-sa
+  serviceAccountName: epd-nvidia-gpu-vllm-sa
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir:
+      medium: Memory
+      sizeLimit: 20Gi
+    name: shm
+  - emptyDir: {}
+    name: torch-compile-cache
+  - emptyDir: {}
+    name: triton-cache
+  - emptyDir: {}
+    name: vllm-config
+  - name: model-cache
+    persistentVolumeClaim:
+      claimName: llm-d-model-cache
+status:
+  allocatedResources:
+    cpu: "8"
+    memory: 256Gi
+    nvidia.com/gpu: "8"
+    rdma/ib: "1"
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-19T09:34:33Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-19T09:34:30Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-19T09:46:02Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-19T09:46:02Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-19T09:34:30Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - allocatedResources:
+      cpu: "8"
+      memory: 256Gi
+      nvidia.com/gpu: "8"
+      rdma/ib: "1"
+    allocatedResourcesStatus:
+    - name: nvidia.com/gpu
+      resources:
+      - health: Healthy
+        resourceID: GPU-0e0066d1-fc7c-0e69-2bd9-ea028031d2dc
+      - health: Healthy
+        resourceID: GPU-9e6388af-9cb2-4246-9619-435bddc0ecba
+      - health: Healthy
+        resourceID: GPU-154c63db-1152-0900-62da-8b76c6bc7550
+      - health: Healthy
+        resourceID: GPU-d64ddf2a-89d5-f6e7-95d9-54ad3ac82443
+      - health: Healthy
+        resourceID: GPU-320fb6a8-7780-b14e-866b-57c80f8e0188
+      - health: Healthy
+        resourceID: GPU-eceeef37-2aa0-4086-3e02-4ca8d8e3448e
+      - health: Healthy
+        resourceID: GPU-7da68d6e-59f0-400b-7f7d-2d4a9ad453da
+      - health: Healthy
+        resourceID: GPU-d0e88723-5c62-d79e-404b-8eb308cac6d3
+    - name: rdma/ib
+      resources:
+      - health: Healthy
+        resourceID: "4"
+    containerID: containerd://57dda00d253617c177d6494c054a72c6d3f25b30ba02f824ee744c5f699022e7
+    image: ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer4
+    imageID: ghcr.io/revit13/vllm-openai@sha256:ac60d4876f3eb8d888903b97bcc55bbbfd4a77d45f73155606f404358cccecab
+    lastState: {}
+    name: modelserver
+    ready: true
+    resources:
+      limits:
+        cpu: "8"
+        memory: 256Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+      requests:
+        cpu: "8"
+        memory: 256Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-19T09:34:33Z"
+    user:
+      linux:
+        gid: 0
+        supplementalGroups:
+        - 0
+        uid: 0
+    volumeMounts:
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.triton-cache
+      name: triton-cache
+    - mountPath: /.config
+      name: vllm-config
+    - mountPath: /model-cache
+      name: model-cache
+  hostIP: 10.202.206.161
+  hostIPs:
+  - ip: 10.202.206.161
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.7.145
+  podIPs:
+  - ip: 10.0.7.145
+  qosClass: Guaranteed
+  resources:
+    limits:
+      cpu: "8"
+      memory: 256Gi
+    requests:
+      cpu: 7990m
+      memory: 256Gi
+  startTime: "2026-07-19T09:34:30Z"
