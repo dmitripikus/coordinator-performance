@@ -98,6 +98,22 @@ sits distinctly higher at ITL ~7.26ms / latency ~7321ms — the same node
 that produces the numbers used in every other chart and table in this
 summary.
 
+![Counterfactual: unpinned trend](analysis/counterfactual_unpinned_trend.png)
+
+This last chart demonstrates *why* the node-pinning investigation
+happened in the first place. The solid lines are the real,
+node-controlled trend used everywhere else in this summary — sidecar
+tracks coord closely at all three output sizes. The dashed line
+substitutes the unpinned, faster-node (`g11bab6`) sidecar result at
+1,000 tokens for the pinned one, keeping the 100/500-token points
+unchanged. With that swap, sidecar's ITL and latency appear to drop
+sharply right at 1,000 tokens instead of continuing the flat trend from
+100→500 — the exact "why does ITL drop sharply for sidecar at 1,000?"
+shape that motivated checking node placement to begin with. It's a
+visual, not a real result: the only thing that changed between the solid
+and dashed sidecar lines at 1,000 tokens is which physical node the
+decode pod happened to land on.
+
 ## Reading it
 
 - **Coord and sidecar are nearly identical across all three output

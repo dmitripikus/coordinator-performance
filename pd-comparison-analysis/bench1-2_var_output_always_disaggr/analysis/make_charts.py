@@ -165,4 +165,58 @@ fig.tight_layout()
 fig.savefig(f"{BASE}/analysis/node_variance_1000output.png", dpi=130)
 plt.close(fig)
 
+# Counterfactual: how would the main ITL/latency-vs-output-size trend have looked
+# if the unpinned (faster-node) sidecar attempt at 1,000 tokens had been used instead
+# of the pinned one that's actually in `data`? This recreates the misleading picture
+# that originally motivated the node-pinning investigation.
+UNPINNED_1000 = json.load(open(
+    f"{BASE}/sidecar/inference-perf_1784391367_random_250_1000_isl_osl_pd-gpt-oss-120b-old/summary_lifecycle_metrics.json"
+))
+
+fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
+for ax, metric_path, scale, ylabel, title in [
+    (axes[0], ["inter_token_latency"], 1000, "ITL (ms)", "Inter-token latency vs output size"),
+    (axes[1], ["request_latency"], 1000, "request latency (ms)", "Request latency vs output size"),
+]:
+    for arch, color in ARCHS.items():
+        meds = []
+        for size in SIZES:
+            node = data[arch][size]["successes"]["latency"]
+            for key in metric_path:
+                node = node[key]
+            meds.append(node["median"] * scale)
+        ax.plot(SIZES, meds, color=color, marker="o", linewidth=2, label=f"{arch} (actual, node-pinned)")
+
+    # sidecar counterfactual: same 100/500 points, unpinned (faster-node) value at 1,000
+    node = UNPINNED_1000["successes"]["latency"]
+    for key in metric_path:
+        node = node[key]
+    unpinned_1000_val = node["median"] * scale
+    sidecar_100_500 = []
+    for size in [100, 500]:
+        n = data["sidecar"][size]["successes"]["latency"]
+        for key in metric_path:
+            n = n[key]
+        sidecar_100_500.append(n["median"] * scale)
+    ax.plot([100, 500, 1000], sidecar_100_500 + [unpinned_1000_val], color=ARCHS["sidecar"],
+             marker="o", linewidth=2, linestyle="--", label="sidecar (unpinned, faster node, g11bab6)")
+
+    ax.set_xscale("log")
+    ax.set_xticks(SIZES)
+    ax.set_xticklabels([str(s) for s in SIZES])
+    ax.set_xlabel("output tokens")
+    ax.set_ylabel(ylabel)
+    ax.set_title(title, fontsize=10)
+    ax.grid(True, alpha=0.3)
+    ax.legend(fontsize=7)
+
+fig.suptitle(
+    "Counterfactual: how the trend would look if the unpinned (faster-node)\n"
+    "sidecar attempt had been used at 1,000 output tokens instead of the pinned one",
+    fontsize=10,
+)
+fig.tight_layout()
+fig.savefig(f"{BASE}/analysis/counterfactual_unpinned_trend.png", dpi=130)
+plt.close(fig)
+
 print("done")
