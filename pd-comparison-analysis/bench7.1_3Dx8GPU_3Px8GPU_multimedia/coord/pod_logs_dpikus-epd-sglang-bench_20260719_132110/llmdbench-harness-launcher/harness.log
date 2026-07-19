@@ -1,0 +1,25 @@
+2026-07-19 09:52:09,336 - inference_perf.reportgen.base - INFO - Generating Reports...
+2026-07-19 09:52:09,367 - inference_perf.reportgen.base - WARNING - Prometheus Metrics Client is not configured or not of type PrometheusMetricsClient
+2026-07-19 09:52:09,371 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL/summary_lifecycle_metrics.json
+2026-07-19 09:52:09,375 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL/stage_0_lifecycle_metrics.json
+2026-07-19 09:52:09,380 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL/config.yaml
+Harness completed successfully.
+Harness completed: /usr/local/bin/inference-perf-llm-d-benchmark.sh
+Running analysis: /usr/local/bin/inference-perf-analyze_results.sh
+Converting stage_0_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_0_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Results data conversion completed successfully.
+2026-07-19 09:53:13,352 - inference_perf.analysis.analyze - INFO - Analyzing reports in /requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL
+2026-07-19 09:53:13,434 - matplotlib.font_manager - INFO - generated new fontManager
+2026-07-19 09:53:13,535 - inference_perf.analysis.analyze - WARNING - No data available to generate chart: latency_vs_concurrency.png
+2026-07-19 09:53:13,535 - inference_perf.analysis.analyze - WARNING - No data available to generate chart: throughput_vs_concurrency.png
+2026-07-19 09:53:13,709 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL/latency_vs_qps.png
+2026-07-19 09:53:14,025 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL/throughput_vs_qps.png
+2026-07-19 09:53:14,179 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL/throughput_vs_latency.png
+Done. Data is available at "/requests/inference-perf_1784454539_random_warmup_epd-gpt-qwen3-VL"

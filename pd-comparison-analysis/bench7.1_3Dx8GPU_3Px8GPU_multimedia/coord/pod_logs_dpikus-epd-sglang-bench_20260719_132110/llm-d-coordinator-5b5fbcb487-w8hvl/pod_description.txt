@@ -1,0 +1,129 @@
+Name:             llm-d-coordinator-5b5fbcb487-w8hvl
+Namespace:        dpikus-epd-sglang-bench
+Priority:         0
+Service Account:  default
+Node:             g801c7a/10.202.212.51
+Start Time:       Sun, 19 Jul 2026 12:47:37 +0300
+Labels:           app=llm-d-coordinator
+                  pod-template-hash=5b5fbcb487
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=185
+Annotations:      <none>
+Status:           Running
+IP:               10.0.12.41
+IPs:
+  IP:           10.0.12.41
+Controlled By:  ReplicaSet/llm-d-coordinator-5b5fbcb487
+Containers:
+  coordinator:
+    Container ID:  containerd://564119df510de93ff59633bd68526e9690715114a005ac9e2073aa41d89717ea
+    Image:         ghcr.io/roytman/coordinator:dev
+    Image ID:      ghcr.io/roytman/coordinator@sha256:7565409373629824518b05593c27b237ba97b06668fa11e6a552a3951cb13238
+    Port:          8080/TCP (http)
+    Host Port:     0/TCP (http)
+    Args:
+      --config
+      /etc/coordinator/coordinator.yaml
+    State:          Running
+      Started:      Sun, 19 Jul 2026 12:47:42 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     4
+      memory:  8Gi
+    Requests:
+      cpu:      4
+      memory:   8Gi
+    Liveness:   http-get http://:8080/healthz delay=5s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8080/readyz delay=5s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      HTTP_PROXY:   http://multimedia-downloader:80
+      HTTPS_PROXY:  http://multimedia-downloader:80
+      NO_PROXY:     localhost,127.0.0.1,.svc,.cluster.local
+      GOMAXPROCS:   4
+      GOMEMLIMIT:   7200MiB
+    Mounts:
+      /etc/coordinator from config (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-fql8h (ro)
+  vllm-render:
+    Container ID:  containerd://3a8f754a601bc005def87ca7ec3576d10175adeb4d2046153c64c085364e601c
+    Image:         vllm/vllm-openai-cpu:v0.21.0
+    Image ID:      docker.io/vllm/vllm-openai-cpu@sha256:fc78b363009faa519a0adb5f1a287a533a922970f4463e73c00053a4aa2136e8
+    Port:          8000/TCP (render-http)
+    Host Port:     0/TCP (render-http)
+    Command:
+      vllm
+      launch
+      render
+    Args:
+      --model=Qwen/Qwen3-VL-2B-Instruct
+      --served-model-name=Qwen/Qwen3-VL-235B-A22B-Instruct
+      --port=8000
+    State:          Running
+      Started:      Sun, 19 Jul 2026 12:47:42 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     4
+      memory:  16Gi
+    Requests:
+      cpu:      2
+      memory:   8Gi
+    Liveness:   http-get http://:8000/health delay=0s timeout=1s period=10s #success=1 #failure=5
+    Readiness:  http-get http://:8000/health delay=0s timeout=1s period=5s #success=1 #failure=1
+    Startup:    http-get http://:8000/health delay=2s timeout=1s period=1s #success=1 #failure=600
+    Environment:
+      HF_HOME:   /model-cache
+      HF_TOKEN:  <set to the key 'HF_TOKEN' in secret 'llm-d-hf-token'>  Optional: true
+    Mounts:
+      /.cache from torch-compile-cache (rw)
+      /.config from vllm-config (rw)
+      /model-cache from model-cache (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-fql8h (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      llm-d-coordinator-config
+    Optional:  false
+  model-cache:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  llm-d-model-cache
+    ReadOnly:   false
+  torch-compile-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  vllm-config:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-fql8h:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                 From                     Message
+  ----     ------                  ----                ----                     -------
+  Normal   Scheduled               34m                 default-scheduler        Successfully assigned dpikus-epd-sglang-bench/llm-d-coordinator-5b5fbcb487-w8hvl to g801c7a
+  Normal   SuccessfulAttachVolume  34m                 attachdetach-controller  AttachVolume.Attach succeeded for volume "pvc-7c15c80a-f30a-4029-8d10-b97bc29e0a00"
+  Normal   Pulling                 34m                 kubelet                  Pulling image "ghcr.io/roytman/coordinator:dev"
+  Normal   Pulled                  34m                 kubelet                  Successfully pulled image "ghcr.io/roytman/coordinator:dev" in 1.358s (1.358s including waiting). Image size: 10418837 bytes.
+  Normal   Created                 34m                 kubelet                  Container created
+  Normal   Started                 34m                 kubelet                  Container started
+  Normal   Pulled                  34m                 kubelet                  Container image "vllm/vllm-openai-cpu:v0.21.0" already present on machine and can be accessed by the pod
+  Normal   Created                 34m                 kubelet                  Container created
+  Normal   Started                 34m                 kubelet                  Container started
+  Warning  Unhealthy               33m (x19 over 34m)  kubelet                  Startup probe failed: Get "http://10.0.12.41:8000/health": dial tcp 10.0.12.41:8000: connect: connection refused
