@@ -17,5 +17,8 @@
         }
       ]
     }
-  ]
+  ],
+  "max_completion_tokens": 170,
+  "temperature": 0.0,
+  "ignore_eos": true
 }
