@@ -1,0 +1,303 @@
+(Worker_TP0 pid=75) INFO 07-19 12:20:42 [decorators.py:708] saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/02a33af7f699fe579b82a19fb6a6730f9a24f9c92ba630863cad3d6b64856963/rank_0_0/model
+(Worker_TP0 pid=75) INFO 07-19 12:20:42 [monitor.py:53] torch.compile took 73.11 s in total
+(Worker_TP0 pid=75) INFO 07-19 12:20:43 [monitor.py:81] Initial profiling/warmup run took 0.92 s
+(Worker_TP6 pid=81) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP3 pid=78) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP7 pid=82) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP4 pid=79) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP5 pid=80) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP1 pid=76) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP2 pid=77) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP0 pid=75) INFO 07-19 12:20:52 [connector.py:128] NixlConnector setting KV cache layout to HND for better xfer performance.
+(Worker_TP0 pid=75) INFO 07-19 12:20:52 [gpu_model_runner.py:6209] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
+(Worker_TP4 pid=79) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP6 pid=81) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP5 pid=80) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP1 pid=76) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP0 pid=75) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP2 pid=77) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP7 pid=82) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP3 pid=78) INFO 07-19 12:20:54 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP5 pid=80) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP2 pid=77) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP0 pid=75) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP7 pid=82) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP6 pid=81) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP1 pid=76) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP4 pid=79) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP3 pid=78) INFO 07-19 12:20:56 [gpu_model_runner.py:6295] Estimated CUDA graph memory: 1.33 GiB total
+(Worker_TP5 pid=80) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP2 pid=77) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP7 pid=82) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP0 pid=75) INFO 07-19 12:20:56 [gpu_worker.py:465] Available KV cache memory: 65.14 GiB
+(Worker_TP0 pid=75) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP6 pid=81) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP4 pid=79) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP1 pid=76) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(Worker_TP3 pid=78) INFO 07-19 12:20:56 [gpu_worker.py:480] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.9000 is equivalent to --gpu-memory-utilization=0.8905 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.9095. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=52) INFO 07-19 12:20:56 [kv_cache_utils.py:1733] GPU KV cache size: 1,453,312 tokens
+(EngineCore pid=52) INFO 07-19 12:20:56 [kv_cache_utils.py:1734] Maximum concurrency for 262,144 tokens per request: 5.54x
+(Worker_TP5 pid=80) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP0 pid=75) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP5 pid=80) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP0 pid=75) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP7 pid=82) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP5 pid=80) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP0 pid=75) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP3 pid=78) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP7 pid=82) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP5 pid=80) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP0 pid=75) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP4 pid=79) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP6 pid=81) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP7 pid=82) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP3 pid=78) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP7 pid=82) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP4 pid=79) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP6 pid=81) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP3 pid=78) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP3 pid=78) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP4 pid=79) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP6 pid=81) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP4 pid=79) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP6 pid=81) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP1 pid=76) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP1 pid=76) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP1 pid=76) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP1 pid=76) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP2 pid=77) INFO 07-19 12:20:56 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP2 pid=77) WARNING 07-19 12:20:56 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(Worker_TP2 pid=77) INFO 07-19 12:20:56 [worker.py:204] Initializing NIXL wrapper
+(Worker_TP2 pid=77) INFO 07-19 12:20:56 [worker.py:205] Initializing NIXL worker ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(Worker_TP7 pid=82) 2026-07-19 12:21:07 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP7 pid=82) 2026-07-19 12:21:07 NIXL INFO    _api.py:247 Initialized NIXL agent: 5cafda87-d91b-4e5c-96b2-d4c9db621aff
+(Worker_TP7 pid=82) INFO 07-19 12:21:07 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP7 pid=82) INFO 07-19 12:21:07 [worker.py:427] Detected kv cache layout HND
+(Worker_TP7 pid=82) INFO 07-19 12:21:07 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP0 pid=75) 2026-07-19 12:21:09 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP0 pid=75) 2026-07-19 12:21:09 NIXL INFO    _api.py:247 Initialized NIXL agent: c4ebc0a5-7092-4a63-b60e-e61929f9979b
+(Worker_TP0 pid=75) INFO 07-19 12:21:09 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP0 pid=75) INFO 07-19 12:21:09 [worker.py:427] Detected kv cache layout HND
+(Worker_TP0 pid=75) INFO 07-19 12:21:09 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP2 pid=77) 2026-07-19 12:21:09 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP2 pid=77) 2026-07-19 12:21:09 NIXL INFO    _api.py:247 Initialized NIXL agent: 4b150a32-c8fc-4d86-a9e3-5d79fbc1f033
+(Worker_TP2 pid=77) INFO 07-19 12:21:09 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP2 pid=77) INFO 07-19 12:21:09 [worker.py:427] Detected kv cache layout HND
+(Worker_TP5 pid=80) 2026-07-19 12:21:09 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP5 pid=80) 2026-07-19 12:21:09 NIXL INFO    _api.py:247 Initialized NIXL agent: 37d58943-59ff-4686-825f-8cb8cb6a8c7c
+(Worker_TP5 pid=80) INFO 07-19 12:21:09 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP5 pid=80) INFO 07-19 12:21:09 [worker.py:427] Detected kv cache layout HND
+(Worker_TP6 pid=81) 2026-07-19 12:21:09 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP6 pid=81) 2026-07-19 12:21:09 NIXL INFO    _api.py:247 Initialized NIXL agent: 40dc30ad-63e9-475e-ae80-8c3b81156592
+(Worker_TP6 pid=81) INFO 07-19 12:21:09 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP6 pid=81) INFO 07-19 12:21:09 [worker.py:427] Detected kv cache layout HND
+(Worker_TP1 pid=76) 2026-07-19 12:21:09 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP1 pid=76) 2026-07-19 12:21:09 NIXL INFO    _api.py:247 Initialized NIXL agent: de6390ee-fba8-49a5-ab70-e8d660062b0d
+(Worker_TP1 pid=76) INFO 07-19 12:21:09 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP1 pid=76) INFO 07-19 12:21:09 [worker.py:427] Detected kv cache layout HND
+(Worker_TP3 pid=78) 2026-07-19 12:21:09 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP3 pid=78) 2026-07-19 12:21:09 NIXL INFO    _api.py:247 Initialized NIXL agent: 35dcc5f7-8c43-44a9-9b24-5a9c78df443e
+(Worker_TP3 pid=78) INFO 07-19 12:21:09 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP3 pid=78) INFO 07-19 12:21:09 [worker.py:427] Detected kv cache layout HND
+(Worker_TP4 pid=79) 2026-07-19 12:21:09 NIXL INFO    _api.py:369 Backend UCX was instantiated
+(Worker_TP4 pid=79) 2026-07-19 12:21:09 NIXL INFO    _api.py:247 Initialized NIXL agent: 00801fb7-4ab1-4096-a4f4-aa00b8cd06c2
+(Worker_TP4 pid=79) INFO 07-19 12:21:09 [worker.py:423] Detected attention backend(s) ['FLASH_ATTN']
+(Worker_TP4 pid=79) INFO 07-19 12:21:09 [worker.py:427] Detected kv cache layout HND
+(Worker_TP1 pid=76) INFO 07-19 12:21:09 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP2 pid=77) INFO 07-19 12:21:09 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP5 pid=80) INFO 07-19 12:21:09 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP3 pid=78) INFO 07-19 12:21:09 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP4 pid=79) INFO 07-19 12:21:09 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP6 pid=81) INFO 07-19 12:21:09 [worker.py:822] Registering KV_Caches. use_mla: False, kv_buffer_device: cuda, use_host_buffer: False
+(Worker_TP0 pid=75) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP3 pid=78) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP7 pid=82) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP5 pid=80) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP4 pid=79) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP2 pid=77) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP1 pid=76) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP6 pid=81) INFO 07-19 12:21:20 [kernel_warmup.py:44] Skipping FlashInfer autotune because it is disabled.
+(Worker_TP0 pid=75) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   2%|▏         | 1/51 [00:01<01:06,  1.34s/it]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:02<00:48,  1.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 3/51 [00:02<00:42,  1.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:03<00:39,  1.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|▉         | 5/51 [00:04<00:37,  1.23it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:05<00:35,  1.25it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▎        | 7/51 [00:05<00:34,  1.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:06<00:34,  1.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 9/51 [00:07<00:33,  1.25it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:08<00:30,  1.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 11/51 [00:08<00:30,  1.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:09<00:29,  1.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 13/51 [00:10<00:29,  1.30it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:11<00:28,  1.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▉       | 15/51 [00:12<00:28,  1.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 16/51 [00:12<00:26,  1.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 17/51 [00:13<00:23,  1.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:13<00:22,  1.45it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 19/51 [00:14<00:21,  1.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 20/51 [00:15<00:20,  1.51it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  41%|████      | 21/51 [00:16<00:20,  1.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 22/51 [00:16<00:21,  1.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 23/51 [00:17<00:20,  1.39it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 24/51 [00:18<00:19,  1.40it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 25/51 [00:19<00:19,  1.32it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 26/51 [00:19<00:19,  1.30it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  53%|█████▎    | 27/51 [00:20<00:18,  1.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 28/51 [00:21<00:18,  1.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 29/51 [00:22<00:17,  1.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 30/51 [00:23<00:16,  1.30it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 31/51 [00:23<00:15,  1.30it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 32/51 [00:24<00:14,  1.28it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 33/51 [00:25<00:14,  1.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 34/51 [00:26<00:13,  1.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 35/51 [00:26<00:12,  1.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 36/51 [00:27<00:11,  1.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 37/51 [00:28<00:10,  1.34it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 38/51 [00:29<00:09,  1.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▋  | 39/51 [00:29<00:09,  1.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 40/51 [00:30<00:08,  1.28it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 41/51 [00:32<00:09,  1.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 42/51 [00:32<00:08,  1.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▍ | 43/51 [00:33<00:07,  1.14it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▋ | 44/51 [00:34<00:05,  1.18it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 45/51 [00:35<00:04,  1.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 46/51 [00:36<00:04,  1.22it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  92%|█████████▏| 47/51 [00:36<00:03,  1.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 48/51 [00:37<00:02,  1.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 49/51 [00:38<00:01,  1.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 50/51 [00:39<00:00,  1.27it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:40<00:00,  1.28it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:40<00:00,  1.27it/s]
+(EngineCore pid=52) INFO 07-19 12:22:20 [shm_broadcast.py:698] No available shared memory broadcast block found in 60 seconds. This typically happens when some processes are hanging or doing some time-consuming work (e.g. compilation, weight/kv cache quantization).
+(Worker_TP6 pid=81) INFO 07-19 12:22:39 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP4 pid=79) INFO 07-19 12:22:40 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP5 pid=80) INFO 07-19 12:22:40 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP0 pid=75) Capturing CUDA graphs (decode, FULL):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   2%|▏         | 1/51 [00:00<00:37,  1.35it/s]Capturing CUDA graphs (decode, FULL):   4%|▍         | 2/51 [00:01<00:38,  1.26it/s]Capturing CUDA graphs (decode, FULL):   6%|▌         | 3/51 [00:02<00:38,  1.24it/s]Capturing CUDA graphs (decode, FULL):   8%|▊         | 4/51 [00:03<00:39,  1.19it/s]Capturing CUDA graphs (decode, FULL):  10%|▉         | 5/51 [00:04<00:37,  1.21it/s]Capturing CUDA graphs (decode, FULL):  12%|█▏        | 6/51 [00:04<00:35,  1.25it/s]Capturing CUDA graphs (decode, FULL):  14%|█▎        | 7/51 [00:05<00:37,  1.18it/s]Capturing CUDA graphs (decode, FULL):  16%|█▌        | 8/51 [00:06<00:35,  1.23it/s]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 9/51 [00:07<00:33,  1.25it/s]Capturing CUDA graphs (decode, FULL):  20%|█▉        | 10/51 [00:08<00:32,  1.26it/s]Capturing CUDA graphs (decode, FULL):  22%|██▏       | 11/51 [00:08<00:31,  1.28it/s]Capturing CUDA graphs (decode, FULL):  24%|██▎       | 12/51 [00:09<00:30,  1.30it/s]Capturing CUDA graphs (decode, FULL):  25%|██▌       | 13/51 [00:10<00:29,  1.29it/s]Capturing CUDA graphs (decode, FULL):  27%|██▋       | 14/51 [00:11<00:28,  1.28it/s]Capturing CUDA graphs (decode, FULL):  29%|██▉       | 15/51 [00:11<00:27,  1.30it/s]Capturing CUDA graphs (decode, FULL):  31%|███▏      | 16/51 [00:12<00:27,  1.29it/s]Capturing CUDA graphs (decode, FULL):  33%|███▎      | 17/51 [00:13<00:26,  1.29it/s]Capturing CUDA graphs (decode, FULL):  35%|███▌      | 18/51 [00:14<00:25,  1.31it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 19/51 [00:14<00:24,  1.31it/s]Capturing CUDA graphs (decode, FULL):  39%|███▉      | 20/51 [00:15<00:23,  1.33it/s]Capturing CUDA graphs (decode, FULL):  41%|████      | 21/51 [00:16<00:22,  1.32it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 22/51 [00:17<00:21,  1.33it/s]Capturing CUDA graphs (decode, FULL):  45%|████▌     | 23/51 [00:17<00:21,  1.33it/s]Capturing CUDA graphs (decode, FULL):  47%|████▋     | 24/51 [00:18<00:20,  1.34it/s]Capturing CUDA graphs (decode, FULL):  49%|████▉     | 25/51 [00:19<00:19,  1.33it/s]Capturing CUDA graphs (decode, FULL):  51%|█████     | 26/51 [00:20<00:18,  1.33it/s]Capturing CUDA graphs (decode, FULL):  53%|█████▎    | 27/51 [00:20<00:17,  1.35it/s]Capturing CUDA graphs (decode, FULL):  55%|█████▍    | 28/51 [00:21<00:17,  1.34it/s]Capturing CUDA graphs (decode, FULL):  57%|█████▋    | 29/51 [00:22<00:16,  1.34it/s]Capturing CUDA graphs (decode, FULL):  59%|█████▉    | 30/51 [00:23<00:15,  1.34it/s]Capturing CUDA graphs (decode, FULL):  61%|██████    | 31/51 [00:23<00:14,  1.35it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 32/51 [00:24<00:14,  1.34it/s]Capturing CUDA graphs (decode, FULL):  65%|██████▍   | 33/51 [00:25<00:13,  1.35it/s]Capturing CUDA graphs (decode, FULL):  67%|██████▋   | 34/51 [00:26<00:12,  1.34it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 35/51 [00:26<00:12,  1.33it/s]Capturing CUDA graphs (decode, FULL):  71%|███████   | 36/51 [00:27<00:11,  1.33it/s]Capturing CUDA graphs (decode, FULL):  73%|███████▎  | 37/51 [00:28<00:10,  1.33it/s]Capturing CUDA graphs (decode, FULL):  75%|███████▍  | 38/51 [00:29<00:09,  1.35it/s]Capturing CUDA graphs (decode, FULL):  76%|███████▋  | 39/51 [00:29<00:08,  1.34it/s]Capturing CUDA graphs (decode, FULL):  78%|███████▊  | 40/51 [00:30<00:08,  1.32it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 41/51 [00:31<00:07,  1.34it/s]Capturing CUDA graphs (decode, FULL):  82%|████████▏ | 42/51 [00:32<00:06,  1.36it/s]Capturing CUDA graphs (decode, FULL):  84%|████████▍ | 43/51 [00:32<00:05,  1.36it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▋ | 44/51 [00:33<00:05,  1.37it/s]Capturing CUDA graphs (decode, FULL):  88%|████████▊ | 45/51 [00:34<00:04,  1.38it/s]Capturing CUDA graphs (decode, FULL):  90%|█████████ | 46/51 [00:34<00:03,  1.39it/s]Capturing CUDA graphs (decode, FULL):  92%|█████████▏| 47/51 [00:35<00:02,  1.38it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 48/51 [00:36<00:02,  1.39it/s]Capturing CUDA graphs (decode, FULL):  96%|█████████▌| 49/51 [00:37<00:01,  1.39it/s]Capturing CUDA graphs (decode, FULL):  98%|█████████▊| 50/51 [00:37<00:00,  1.39it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 51/51 [00:38<00:00,  1.44it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 51/51 [00:38<00:00,  1.33it/s]
+(Worker_TP0 pid=75) INFO 07-19 12:22:40 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP1 pid=76) INFO 07-19 12:22:40 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP3 pid=78) INFO 07-19 12:22:40 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP2 pid=77) INFO 07-19 12:22:40 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP7 pid=82) INFO 07-19 12:22:40 [custom_all_reduce.py:215] Registering 0 cuda graph addresses
+(Worker_TP4 pid=79) INFO 07-19 12:22:41 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP6 pid=81) INFO 07-19 12:22:41 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP0 pid=75) INFO 07-19 12:22:41 [gpu_model_runner.py:6386] Graph capturing finished in 82 secs, took 1.23 GiB
+(Worker_TP0 pid=75) INFO 07-19 12:22:41 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP5 pid=80) INFO 07-19 12:22:41 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP1 pid=76) INFO 07-19 12:22:42 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP7 pid=82) INFO 07-19 12:22:42 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP3 pid=78) INFO 07-19 12:22:42 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP2 pid=77) INFO 07-19 12:22:42 [gpu_worker.py:624] CUDA graph pool memory: 1.23 GiB (actual), 1.33 GiB (estimated), difference: 0.09 GiB (7.6%).
+(Worker_TP6 pid=81) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(Worker_TP5 pid=80) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(Worker_TP4 pid=79) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(Worker_TP0 pid=75) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(Worker_TP1 pid=76) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(Worker_TP3 pid=78) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(Worker_TP7 pid=82) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(Worker_TP2 pid=77) INFO 07-19 12:22:43 [jit_monitor.py:54] Kernel JIT monitor activated — Triton JIT compilations during inference will be logged as warnings.
+(EngineCore pid=52) INFO 07-19 12:22:43 [core.py:299] init engine (profile, create kv cache, warmup model) took 197.33 s (compilation: 73.11 s)
+(EngineCore pid=52) INFO 07-19 12:22:46 [nixl_utils.py:68] NIXL is available
+(EngineCore pid=52) INFO 07-19 12:22:46 [factory.py:62] Creating v1 connector with name: NixlConnector and engine_id: ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(EngineCore pid=52) WARNING 07-19 12:22:46 [base.py:190] Initializing KVConnectorBase_V1. This API is experimental and subject to change in the future as we iterate the design.
+(EngineCore pid=52) INFO 07-19 12:22:46 [scheduler.py:96] Initializing NIXL Scheduler ab054ed4-d1e0-4031-b12f-35dfebb79ba6
+(EngineCore pid=52) [transformers] `Qwen2VLImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `Qwen2VLImageProcessor` instead.
+(EngineCore pid=52) [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+(EngineCore pid=52) INFO 07-19 12:22:52 [vllm.py:968] Asynchronous scheduling is enabled.
+(EngineCore pid=52) INFO 07-19 12:22:52 [kernel.py:267] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+(EngineCore pid=52) INFO 07-19 12:22:54 [compilation.py:312] Enabled custom fusions: allreduce_rms
+(APIServer pid=1) INFO 07-19 12:22:54 [api_server.py:599] Supported tasks: ['generate']
+(APIServer pid=1) WARNING 07-19 12:22:55 [model.py:1462] Default vLLM sampling parameters have been overridden by the model's `generation_config.json`: `{'repetition_penalty': 1.0, 'temperature': 0.7, 'top_k': 20, 'top_p': 0.8}`. If this is not intended, please relaunch vLLM instance with `--generation-config vllm`.
+(APIServer pid=1) INFO 07-19 12:22:55 [hf.py:488] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+(APIServer pid=1) INFO 07-19 12:23:12 [base.py:224] Multi-modal warmup completed in 16.369s
+(APIServer pid=1) INFO 07-19 12:23:13 [base.py:224] Readonly multi-modal warmup completed in 1.419s
+(APIServer pid=1) INFO 07-19 12:23:13 [api_server.py:603] Starting vLLM server on http://0.0.0.0:8000
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:37] Available routes are:
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /openapi.json, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /docs, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /docs/oauth2-redirect, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /redoc, Methods: HEAD, GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /tokenize, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /detokenize, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /load, Methods: GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /version, Methods: GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /health, Methods: GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /metrics, Methods: GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/models, Methods: GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /ping, Methods: GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /ping, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /invocations, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/chat/completions, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/chat/completions/batch, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/responses, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/responses/{response_id}, Methods: GET
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/responses/{response_id}/cancel, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/completions, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/messages, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/messages/count_tokens, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /inference/v1/generate, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /scale_elastic_ep, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /is_scaling_elastic_ep, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /generative_scoring, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/chat/completions/render, Methods: POST
+(APIServer pid=1) INFO 07-19 12:23:13 [launcher.py:46] Route: /v1/completions/render, Methods: POST
+(APIServer pid=1) INFO:     Started server process [1]
+(APIServer pid=1) INFO:     Waiting for application startup.
+(APIServer pid=1) INFO:     Application startup complete.
+(Worker_TP0 pid=75) WARNING 07-19 12:32:03 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _compute_slot_mapping_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=1) INFO:     10.0.2.187:56138 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:32:14 [loggers.py:271] Engine 000: Avg prompt throughput: 0.1 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-19 12:32:24 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:43950 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:48586 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:48586 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:53178 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:33:34 [loggers.py:271] Engine 000: Avg prompt throughput: 104.7 tokens/s, Avg generation throughput: 0.4 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.8.131:43458 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:38954 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:55422 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:33:44 [loggers.py:271] Engine 000: Avg prompt throughput: 79.9 tokens/s, Avg generation throughput: 0.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.8.131:59280 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:38712 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:38712 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:59280 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:33:54 [loggers.py:271] Engine 000: Avg prompt throughput: 103.0 tokens/s, Avg generation throughput: 0.4 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.8.131:53468 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:53468 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:39946 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:34:04 [loggers.py:271] Engine 000: Avg prompt throughput: 79.3 tokens/s, Avg generation throughput: 0.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:38210 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:34856 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:39958 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:34:14 [loggers.py:271] Engine 000: Avg prompt throughput: 78.8 tokens/s, Avg generation throughput: 0.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:51434 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:59172 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:34:24 [loggers.py:271] Engine 000: Avg prompt throughput: 53.6 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:45078 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:52692 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:52692 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:45048 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:45048 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:34:34 [loggers.py:271] Engine 000: Avg prompt throughput: 131.7 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:49992 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:39668 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:38964 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:34:44 [loggers.py:271] Engine 000: Avg prompt throughput: 78.9 tokens/s, Avg generation throughput: 0.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:60402 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:60402 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:32782 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:34:54 [loggers.py:271] Engine 000: Avg prompt throughput: 78.0 tokens/s, Avg generation throughput: 0.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:38392 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:38392 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:35:04 [loggers.py:271] Engine 000: Avg prompt throughput: 51.4 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.8.131:52194 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:60896 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:49264 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:41432 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:58644 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:35:14 [loggers.py:271] Engine 000: Avg prompt throughput: 132.6 tokens/s, Avg generation throughput: 0.5 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.2.187:34698 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:38972 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:35:24 [loggers.py:271] Engine 000: Avg prompt throughput: 51.0 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.8.131:52072 - "POST /v1/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:35:34 [loggers.py:271] Engine 000: Avg prompt throughput: 26.2 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-19 12:35:44 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%
+(Worker_TP0 pid=75) WARNING 07-19 12:37:59 [jit_monitor.py:103] Triton kernel JIT compilation during inference: _bilinear_pos_embed_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+(APIServer pid=1) INFO:     10.0.2.187:49018 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:49002 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:49026 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:38:04 [loggers.py:271] Engine 000: Avg prompt throughput: 1896.8 tokens/s, Avg generation throughput: 0.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.9%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-19 12:38:14 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.9%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.12.218:56750 - "GET /server_info HTTP/1.1" 404 Not Found
+(APIServer pid=1) INFO:     10.0.6.147:33040 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:33958 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:33040 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:33960 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:33046 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:33966 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:39:04 [loggers.py:271] Engine 000: Avg prompt throughput: 3353.9 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 2 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.6%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:33062 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:33072 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:39:14 [loggers.py:271] Engine 000: Avg prompt throughput: 833.8 tokens/s, Avg generation throughput: 0.2 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-19 12:39:24 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 1.0%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.12.218:37478 - "GET /server_info HTTP/1.1" 404 Not Found
+(APIServer pid=1) INFO:     10.0.6.147:54316 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:39608 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:48750 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:54330 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:40:34 [loggers.py:271] Engine 000: Avg prompt throughput: 2499.0 tokens/s, Avg generation throughput: 0.4 tokens/s, Running: 2 reqs, Waiting: 2 reqs, GPU KV cache usage: 1.4%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.2.187:33442 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:48766 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:33458 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:54336 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:54344 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:33474 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:40:44 [loggers.py:271] Engine 000: Avg prompt throughput: 2737.9 tokens/s, Avg generation throughput: 0.6 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.7%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-19 12:40:54 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.7%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.6.147:35500 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:42:34 [loggers.py:271] Engine 000: Avg prompt throughput: 626.8 tokens/s, Avg generation throughput: 0.1 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.4%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.8.131:51324 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:51336 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:51350 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:51356 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:35520 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:35510 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:35500 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:57622 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.2.187:57636 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:35528 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:51362 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.6.147:35524 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     10.0.8.131:51378 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+(APIServer pid=1) INFO 07-19 12:42:44 [loggers.py:271] Engine 000: Avg prompt throughput: 5730.5 tokens/s, Avg generation throughput: 1.3 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.9%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO 07-19 12:42:54 [loggers.py:271] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 0.0 tokens/s, Running: 0 reqs, Waiting: 0 reqs, GPU KV cache usage: 0.9%, Prefix cache hit rate: 0.0%, External prefix cache hit rate: 0.0%, MM cache hit rate: 0.0%
+(APIServer pid=1) INFO:     10.0.12.218:35596 - "GET /server_info HTTP/1.1" 404 Not Found

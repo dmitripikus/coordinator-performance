@@ -1,0 +1,79 @@
+Name:             coordinator-epd-decode-epp-59cf4cf9c8-vdn4b
+Namespace:        dpikus-epd-sglang-bench
+Priority:         0
+Service Account:  coordinator-epd-decode-epp
+Node:             g49fc0a/10.202.221.55
+Start Time:       Sun, 19 Jul 2026 11:39:29 +0300
+Labels:           llm-d-router-gateway=coordinator-epd-decode-epp
+                  llm-d.ai/igw-mode=llm-d-router-gateway
+                  pod-template-hash=59cf4cf9c8
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=214
+Annotations:      <none>
+Status:           Running
+IP:               10.0.12.184
+IPs:
+  IP:           10.0.12.184
+Controlled By:  ReplicaSet/coordinator-epd-decode-epp-59cf4cf9c8
+Containers:
+  epp:
+    Container ID:  containerd://6d214ccbe5e96b7d057f0802a226827dc0e8d271e3752f7f1051290475df1bd0
+    Image:         ghcr.io/revit13/llm-d-router-endpoint-picker:dev-451239f8c7c6498ae1f9723d5f1ee8058098de93
+    Image ID:      ghcr.io/revit13/llm-d-router-endpoint-picker@sha256:d6a9b06a2c82151c34d1cf4f868fdaaf9b85f042629991f311044438a0431ac5
+    Ports:         9002/TCP (grpc), 9003/TCP (grpc-health), 9090/TCP (metrics)
+    Host Ports:    0/TCP (grpc), 0/TCP (grpc-health), 0/TCP (metrics)
+    Args:
+      --pool-name
+      coordinator-epd-decode
+      --pool-namespace
+      dpikus-epd-sglang-bench
+      --pool-group
+      inference.networking.k8s.io
+      --zap-encoder
+      json
+      --config-file
+      /config/epd-plugins.yaml
+      --grpc-health-port
+      9003
+      --v=2
+      --tracing=false
+    State:          Running
+      Started:      Sun, 19 Jul 2026 11:39:30 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  16Gi
+    Requests:
+      cpu:      4
+      memory:   8Gi
+    Liveness:   grpc <pod>:9003 inference-extension delay=5s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:9003 inference-extension delay=0s timeout=1s period=2s #success=1 #failure=3
+    Environment:
+      NAMESPACE:  dpikus-epd-sglang-bench (v1:metadata.namespace)
+      POD_NAME:   coordinator-epd-decode-epp-59cf4cf9c8-vdn4b (v1:metadata.name)
+    Mounts:
+      /config from plugins-config-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-2xrt2 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  plugins-config-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      coordinator-epd-decode-epp
+    Optional:  false
+  kube-api-access-2xrt2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
