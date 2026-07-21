@@ -1,0 +1,2 @@
+2026-07-21T07:42:51.168693Z	info	xdsproxy	connected to delta upstream XDS server: istiod.istio-system.svc:15012	id=189
+2026-07-21T08:11:43.699979Z	info	xdsproxy	connected to delta upstream XDS server: istiod.istio-system.svc:15012	id=190

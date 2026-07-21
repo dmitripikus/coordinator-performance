@@ -1,0 +1,147 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2026-07-07T08:00:29Z"
+  generateName: reqsend-7587759cd4-
+  generation: 1
+  labels:
+    app: reqsend
+    pod-template-hash: 7587759cd4
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "185"
+  name: reqsend-7587759cd4-gw8pd
+  namespace: dpikus-pd
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: reqsend-7587759cd4
+    uid: a200bfd6-eb90-45d6-821b-a3904961d36a
+  resourceVersion: "20888257"
+  uid: 41b675d3-63aa-437a-b02d-ca47ffcbfcd5
+spec:
+  containers:
+  - command:
+    - sleep
+    - infinity
+    image: golang:1.24
+    imagePullPolicy: IfNotPresent
+    name: reqsend
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /work
+      name: src
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-fsm5r
+      readOnly: true
+    workingDir: /work
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: g801c7a
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: reqsend-src
+    name: src
+  - name: kube-api-access-fsm5r
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-07T08:00:30Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-07T08:00:29Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-07T08:00:30Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-07T08:00:30Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-07-07T08:00:29Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://7a2f26ae1aab651edf5e7c266678ee4d289573bd7b8d8d228041e829c168a49f
+    image: docker.io/library/golang:1.24
+    imageID: docker.io/library/golang@sha256:d2d2bc1c84f7e60d7d2438a3836ae7d0c847f4888464e7ec9ba3a1339a1ee804
+    lastState: {}
+    name: reqsend
+    ready: true
+    resources: {}
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-07-07T08:00:30Z"
+    user:
+      linux:
+        gid: 0
+        supplementalGroups:
+        - 0
+        uid: 0
+    volumeMounts:
+    - mountPath: /work
+      name: src
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-fsm5r
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 10.202.212.51
+  hostIPs:
+  - ip: 10.202.212.51
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.12.105
+  podIPs:
+  - ip: 10.0.12.105
+  qosClass: BestEffort
+  resources: {}
+  startTime: "2026-07-07T08:00:29Z"

@@ -1,0 +1,190 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "17"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2026-07-07T07:47:58Z","generation":6,"labels":{"inference.networking.k8s.io/engine-type":"vllm","llm-d.ai/accelerator-variant":"gpu","llm-d.ai/accelerator-vendor":"nvidia","llm-d.ai/guide":"pd-disaggregation","llm-d.ai/model":"gpt-oss-120b","llm-d.ai/role":"prefill"},"name":"pd-disaggregation-nvidia-gpu-vllm-prefill","namespace":"dpikus-pd","resourceVersion":"22973749","uid":"de9b33f7-0416-46f6-8228-855d6dfb302e"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"inference.networking.k8s.io/engine-type":"vllm","llm-d.ai/accelerator-variant":"gpu","llm-d.ai/accelerator-vendor":"nvidia","llm-d.ai/guide":"pd-disaggregation","llm-d.ai/model":"gpt-oss-120b","llm-d.ai/role":"prefill"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"inference.networking.k8s.io/engine-type":"vllm","llm-d.ai/accelerator-variant":"gpu","llm-d.ai/accelerator-vendor":"nvidia","llm-d.ai/guide":"pd-disaggregation","llm-d.ai/model":"gpt-oss-120b","llm-d.ai/role":"prefill"}},"spec":{"containers":[{"args":["openai/gpt-oss-120b","--disable-access-log-for-endpoints=/health,/metrics,/v1/models","--tensor-parallel-size=1","--block-size=128","--kv-transfer-config","{\"kv_connector\":\"NixlConnector\", \"kv_role\":\"kv_both\"}","--disable-access-log-for-endpoints /metrics,/health,/ping","--no-disable-hybrid-kv-cache-manager","--gpu-memory-utilization=0.9"],"command":["vllm","serve"],"env":[{"name":"VLLM_NIXL_SIDE_CHANNEL_HOST","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"status.podIP"}}},{"name":"HF_HOME","value":"/models"}],"image":"ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer3","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":"modelserver","scheme":"HTTP"},"periodSeconds":10,"successThreshold":1,"timeoutSeconds":5},"name":"modelserver","ports":[{"containerPort":8000,"name":"modelserver","protocol":"TCP"},{"containerPort":5600,"name":"nixl","protocol":"TCP"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/v1/models","port":"modelserver","scheme":"HTTP"},"periodSeconds":5,"successThreshold":1,"timeoutSeconds":2},"resources":{"limits":{"cpu":"8","memory":"16Gi","nvidia.com/gpu":"1","rdma/ib":"1"},"requests":{"cpu":"8","memory":"16Gi","nvidia.com/gpu":"1","rdma/ib":"1"}},"startupProbe":{"failureThreshold":120,"httpGet":{"path":"/v1/models","port":"modelserver","scheme":"HTTP"},"initialDelaySeconds":15,"periodSeconds":30,"successThreshold":1,"timeoutSeconds":5},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/dev/shm","name":"shm"},{"mountPath":"/.cache","name":"torch-compile-cache"},{"mountPath":"/.config","name":"vllm-config"},{"mountPath":"/.triton","name":"triton-cache"},{"mountPath":"/models","name":"model-cache"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"serviceAccount":"pd-disaggregation-nvidia-gpu-vllm-sa","serviceAccountName":"pd-disaggregation-nvidia-gpu-vllm-sa","terminationGracePeriodSeconds":30,"volumes":[{"emptyDir":{"medium":"Memory","sizeLimit":"20Gi"},"name":"shm"},{"emptyDir":{},"name":"torch-compile-cache"},{"emptyDir":{},"name":"vllm-config"},{"emptyDir":{},"name":"triton-cache"},{"name":"model-cache","persistentVolumeClaim":{"claimName":"pd-disaggregation-nvidia-gpu-vllm-model-cache"}}]}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2026-07-07T07:47:58Z","lastUpdateTime":"2026-07-07T07:52:12Z","message":"ReplicaSet \"pd-disaggregation-nvidia-gpu-vllm-prefill-7b5d7f8b78\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"},{"lastTransitionTime":"2026-07-09T09:00:08Z","lastUpdateTime":"2026-07-09T09:00:08Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"}],"observedGeneration":6,"readyReplicas":1,"replicas":1,"terminatingReplicas":0,"updatedReplicas":1}}
+  creationTimestamp: "2026-07-07T07:47:58Z"
+  generation: 110
+  labels:
+    inference.networking.k8s.io/engine-type: vllm
+    llm-d.ai/accelerator-variant: gpu
+    llm-d.ai/accelerator-vendor: nvidia
+    llm-d.ai/guide: pd-disaggregation
+    llm-d.ai/model: gpt-oss-120b
+    llm-d.ai/role: prefill
+  name: pd-disaggregation-nvidia-gpu-vllm-prefill
+  namespace: dpikus-pd
+  resourceVersion: "35016282"
+  uid: de9b33f7-0416-46f6-8228-855d6dfb302e
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 0
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      inference.networking.k8s.io/engine-type: vllm
+      llm-d.ai/accelerator-variant: gpu
+      llm-d.ai/accelerator-vendor: nvidia
+      llm-d.ai/guide: pd-disaggregation
+      llm-d.ai/model: gpt-oss-120b
+      llm-d.ai/role: prefill
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gpu-reaper.io/exclude: "True"
+      labels:
+        inference.networking.k8s.io/engine-type: vllm
+        llm-d.ai/accelerator-variant: gpu
+        llm-d.ai/accelerator-vendor: nvidia
+        llm-d.ai/guide: pd-disaggregation
+        llm-d.ai/model: gpt-oss-120b
+        llm-d.ai/role: prefill
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: llm-d.ai/guide
+                operator: In
+                values:
+                - pd-disaggregation
+              - key: llm-d.ai/model
+                operator: In
+                values:
+                - gpt-oss-120b
+              - key: llm-d.ai/role
+                operator: In
+                values:
+                - decode
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - args:
+        - openai/gpt-oss-120b
+        - --disable-access-log-for-endpoints=/metrics,/health,/ping,/v1/models
+        - --tensor-parallel-size=1
+        - --block-size=128
+        - --kv-transfer-config
+        - '{"kv_connector":"NixlConnector", "kv_role":"kv_both"}'
+        - --no-disable-hybrid-kv-cache-manager
+        - --gpu-memory-utilization=0.9
+        command:
+        - vllm
+        - serve
+        env:
+        - name: VLLM_NIXL_SIDE_CHANNEL_HOST
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: HF_HOME
+          value: /models
+        image: vllm/vllm-openai:v0.23.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: modelserver
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: modelserver
+        ports:
+        - containerPort: 8000
+          name: modelserver
+          protocol: TCP
+        - containerPort: 5600
+          name: nixl
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /v1/models
+            port: modelserver
+            scheme: HTTP
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 2
+        resources:
+          limits:
+            cpu: "8"
+            memory: 16Gi
+            nvidia.com/gpu: "1"
+            rdma/ib: "1"
+          requests:
+            cpu: "8"
+            memory: 16Gi
+            nvidia.com/gpu: "1"
+            rdma/ib: "1"
+        startupProbe:
+          failureThreshold: 120
+          httpGet:
+            path: /v1/models
+            port: modelserver
+            scheme: HTTP
+          initialDelaySeconds: 15
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 5
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /dev/shm
+          name: shm
+        - mountPath: /.cache
+          name: torch-compile-cache
+        - mountPath: /.config
+          name: vllm-config
+        - mountPath: /.triton
+          name: triton-cache
+        - mountPath: /models
+          name: model-cache
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/hostname: gc37d06
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: pd-disaggregation-nvidia-gpu-vllm-sa
+      serviceAccountName: pd-disaggregation-nvidia-gpu-vllm-sa
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir:
+          medium: Memory
+          sizeLimit: 20Gi
+        name: shm
+      - emptyDir: {}
+        name: torch-compile-cache
+      - emptyDir: {}
+        name: vllm-config
+      - emptyDir: {}
+        name: triton-cache
+      - name: model-cache
+        persistentVolumeClaim:
+          claimName: pd-disaggregation-nvidia-gpu-vllm-model-cache
+status:
+  conditions:
+  - lastTransitionTime: "2026-07-21T09:08:05Z"
+    lastUpdateTime: "2026-07-21T09:08:05Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-07-07T07:47:58Z"
+    lastUpdateTime: "2026-07-21T09:09:43Z"
+    message: ReplicaSet "pd-disaggregation-nvidia-gpu-vllm-prefill-84b5587fb9" has
+      successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 110
+  terminatingReplicas: 0
