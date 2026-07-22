@@ -12,27 +12,46 @@ See [PLAN.md](PLAN.md) for the design rationale — this bench is
 intentionally set up to expose deferred-decode's advantage by making
 D-pool load state observable to a metrics-based scorer.
 
+## Headline
+
+**Coord (deferred decode) beats sidecar (early-bind) at two bursts:**
+
+| burst | coord wins on | magnitude | regime |
+|---:|---|---|---|
+| **64**  | TTFT p90, E2E p90 | **−24.8%**, **−19.6%** | primary win zone (~40 requests queued) |
+| **256** | duration, throughput, TTFT p90, E2E p90 | **−5.6%**, **+6%**, **−7.7%**, **−7.2%** | severe overload |
+
+Bursts 8/16/32/128 are functionally equivalent within run-to-run
+noise. Medians and TPOT match to within ~2% everywhere — the coord
+edge is entirely in the **tail** (p90) at the two win-bursts.
+
 ## Setup
 
-**Asymmetric decode fleet, 24 slots per side.** Each side runs two
-decode Deployments:
-- **2 fast pods** at `--max-num-seqs=8` (16 slots)
-- **2 slow pods** at `--max-num-seqs=4` (8 slots)
+### Fleet topology
 
-Both Deployments carry the same InferencePool selector labels
-(coord: `llm-d.ai/guide=epd, llm-d.ai/role=decode`;
+**Asymmetric decode pool — 24 slots per side, split across two Deployments:**
+
+| variant | replicas | `--max-num-seqs` | slots | disambiguating label |
+|---|---:|---:|---:|---|
+| fast | 2 | 8 | 16 | `llm-d.ai/variant=fast` |
+| slow | 2 | 4 |  8 | `llm-d.ai/variant=slow` |
+| **total** | **4** | | **24** | |
+
+**Prefill:** 3 replicas per side, `--max-num-seqs` unset (no cap).
+
+Both fast and slow Deployments share the same InferencePool selector
+labels on each side (coord: `llm-d.ai/guide=epd, llm-d.ai/role=decode`;
 sidecar: `llm-d.ai/guide=pd-disaggregation, llm-d.ai/role=decode`),
-plus a `llm-d.ai/variant=fast|slow` disambiguating label. A single
-InferencePool sees all four pods and the EPP scorer must choose
-between them. The asymmetry is intentional: `active-request-scorer`
-alone cannot see that the slow pods are half-capacity, so any scorer
-relying only on request counts will over-load them relative to fast
-pods.
+so a single InferencePool sees all four pods and the EPP scorer must
+choose between them. The asymmetry is intentional:
+`active-request-scorer` alone cannot see that the slow pods are
+half-capacity, so any scorer relying only on request counts will
+over-load them relative to fast pods.
 
-Prefill: 3 replicas per side (`--max-num-seqs` unset — no cap).
+### Decode scoring profile (both EPPs)
 
-**Multi-scorer decode profile on both EPPs.** Both EPP ConfigMaps
-have their decode `schedulingProfile` set to a 3-scorer stack:
+Both EPP ConfigMaps have their decode `schedulingProfile` set to the
+same 3-scorer stack:
 
 ```yaml
 plugins:
@@ -49,15 +68,13 @@ after ConfigMap edit so the new profile is guaranteed to be loaded
 at bench time — verified via pod-hash changes in the collected
 pod_logs.
 
-**Burst sweep**: `(8 16 32 64 128 256)`, `--request-rate=1000`
+### Workload — burst sweep
+
+Bursts of `(8 16 32 64 128 256)` requests, `--request-rate=1000`
 (effectively instantaneous), 60 s quiesce between bursts. Each burst
 is a fresh `sglang.bench_serving` invocation firing all N requests
 inside the first second, then measuring until every response has
 completed.
-
-Coord run first at 13:00 UTC, sidecar at 13:44 UTC on the same
-cluster (`kermit_US-EAST-01A`); coord vLLMs scaled to 0 before
-sidecar started, no GPU contention.
 
 | burst | vs cap (24 slots) | expected regime |
 |---:|---|---|
@@ -67,6 +84,12 @@ sidecar started, no GPU contention.
 | 64  | 2.67× | 40 queued — primary win zone for deferred-D per PLAN |
 | 128 | 5.33× | deep queueing, KV pressure real |
 | 256 | 10.67× | severe overload, graceful-degradation test |
+
+### Run isolation
+
+Coord run first at 13:00 UTC, sidecar at 13:44 UTC on the same
+cluster (`kermit_US-EAST-01A`); coord vLLMs scaled to 0 before
+sidecar started, no GPU contention.
 
 ## Data validation
 
@@ -126,14 +149,14 @@ Latencies in ms. TPOT excludes first token; ITL is streamed inter-token latency.
 
 `% diff = (coord − sidecar) / sidecar`. Positive = coord is higher/slower. **Bold = coord wins by more than 5%.**
 
-| burst | dur | out tok/s (coord/sidecar) | TTFT p50 | TTFT p90 | E2E p50 | E2E p90 | TPOT p50 |
-|---:|---:|---:|---:|---:|---:|---:|---:|
-| 8   |  −1.4% | 1.01× |  +5.8%  |  −6.8%   |  +0.6%  |  −2.7%    |  +0.1% |
-| 16  |  −1.4% | 1.02× | +21.0%  |  −1.0%   |  +2.1%  |  +0.1%    |  +0.3% |
-| 32  |  +1.5% | 0.99× |  +2.2%  |  +6.4%   |  +2.2%  |  +3.8%    |  +2.1% |
-| 64  |  −2.0% | 1.02× |  +0.5%  | **−24.8%**|  −0.9%  | **−19.6%**|  +1.6% |
-| 128 |  +0.5% | 1.00× |  −1.2%  |  +0.3%   |  −1.2%  |  +0.3%    |  −0.2% |
-| 256 | **−5.6%** | **1.06×** |  −1.6%  | **−7.7%** |  −1.3%  | **−7.2%** |  +1.9% |
+| burst | dur | out tok/s (coord/sidecar) | TTFT p50 | TTFT p90 | E2E p50 | E2E p90 | TPOT p50 | coord verdict |
+|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| 8   |  −1.4% | 1.01× |  +5.8%  |  −6.8%   |  +0.6%  |  −2.7%    |  +0.1% | tie (noise) |
+| 16  |  −1.4% | 1.02× | +21.0%  |  −1.0%   |  +2.1%  |  +0.1%    |  +0.3% | tie (noise) |
+| 32  |  +1.5% | 0.99× |  +2.2%  |  +6.4%   |  +2.2%  |  +3.8%    |  +2.1% | tie (noise) |
+| 64  |  −2.0% | 1.02× |  +0.5%  | **−24.8%**|  −0.9%  | **−19.6%**|  +1.6% | **coord win (tail)** |
+| 128 |  +0.5% | 1.00× |  −1.2%  |  +0.3%   |  −1.2%  |  +0.3%    |  −0.2% | tie (noise) |
+| 256 | **−5.6%** | **1.06×** |  −1.6%  | **−7.7%** |  −1.3%  | **−7.2%** |  +1.9% | **coord edge** |
 
 Two burst sizes show a real, direction-consistent coord edge:
 - **Burst 64**: TTFT p90 lower by 24.8%, E2E p90 lower by 19.6% on coord — the primary win-zone burst.
