@@ -1,0 +1,23 @@
+Log Collection Summary
+======================
+Namespace: dpikus-pd-sglang-bench
+Time Period: Last 30 minutes
+Collection Time: Wed Jul 22 14:59:42 IDT 2026
+Total Pods: 10
+
+Collected Logs:
+---------------
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-httfx/modelserver.log: 369 lines,  56K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-c9s9l/modelserver.log: 367 lines,  56K
+  sglang-bench-79vt4/bench.log: 425 lines,  68K
+  pd-disaggregation-epp-d4cfcfb4b-2xnhk/epp.log: 1653 lines, 352K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-4n5bw/modelserver.log: 383 lines,  64K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-4n5bw/routing-proxy.log: 116 lines,  24K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-68qfn/modelserver.log: 362 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-zr628/modelserver.log: 386 lines,  64K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-zr628/routing-proxy.log: 118 lines,  24K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-w47cd/modelserver.log: 379 lines,  64K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-w47cd/routing-proxy.log: 121 lines,  28K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-6c5pl/modelserver.log: 380 lines,  64K
+  pd-disaggregation-nvidia-gpu-vllm-decode-86cfd9f67b-6c5pl/routing-proxy.log: 119 lines,  24K
+  llm-d-inference-gateway-istio-dd67fd8cc-qs748/istio-proxy.log: 1 lines, 4.0K
