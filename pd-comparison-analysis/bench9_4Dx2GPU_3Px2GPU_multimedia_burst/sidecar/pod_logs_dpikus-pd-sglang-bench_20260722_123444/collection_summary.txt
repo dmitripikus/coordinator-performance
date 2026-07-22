@@ -1,0 +1,23 @@
+Log Collection Summary
+======================
+Namespace: dpikus-pd-sglang-bench
+Time Period: Last 30 minutes
+Collection Time: Wed Jul 22 12:35:31 IDT 2026
+Total Pods: 10
+
+Collected Logs:
+---------------
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-mnzrm/modelserver.log: 294 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-mnzrm/routing-proxy.log: 111 lines,  24K
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-8nr7v/modelserver.log: 291 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-8nr7v/routing-proxy.log: 119 lines,  24K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-pswg8/modelserver.log: 282 lines,  44K
+  pd-disaggregation-epp-d4cfcfb4b-2xnhk/epp.log: 873 lines, 184K
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-gjhtm/modelserver.log: 289 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-gjhtm/routing-proxy.log: 119 lines,  24K
+  sglang-bench-vttzt/bench.log: 421 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-tpkf4/modelserver.log: 283 lines,  48K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-tfzvf/modelserver.log: 280 lines,  44K
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-72zsh/modelserver.log: 293 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-75bbdf7ff9-72zsh/routing-proxy.log: 123 lines,  28K
+  llm-d-inference-gateway-istio-dd67fd8cc-qs748/istio-proxy.log: 1 lines, 4.0K
