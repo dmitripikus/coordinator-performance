@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iperf3-client
+  namespace: dpikus-epd-sglang-bench
+  labels:
+    app: iperf3
+    role: client
+spec:
+  nodeName: g13d42a
+  tolerations:
+  - key: is_gpu
+    operator: Equal
+    value: "true"
+    effect: PreferNoSchedule
+  restartPolicy: Never
+  containers:
+  - name: iperf3
+    image: nicolaka/netshoot:latest
+    command: ["sleep", "infinity"]
+    resources:
+      requests:
+        cpu: "500m"
+        memory: "256Mi"
+      limits:
+        cpu: "2"
+        memory: "512Mi"
