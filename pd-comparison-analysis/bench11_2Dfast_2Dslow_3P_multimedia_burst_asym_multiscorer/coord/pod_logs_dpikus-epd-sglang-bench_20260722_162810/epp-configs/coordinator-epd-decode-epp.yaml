@@ -1,0 +1,93 @@
+apiVersion: v1
+data:
+  default-plugins.yaml: |
+    apiVersion: llm-d.ai/v1alpha1
+    kind: EndpointPickerConfig
+    plugins:
+    - type: queue-scorer
+    - type: kv-cache-utilization-scorer
+    - type: prefix-cache-scorer
+    - type: metrics-data-source
+      parameters:
+        scheme: "http"
+        path: "/metrics"
+        insecureSkipVerify: true
+    - type: core-metrics-extractor
+    schedulingProfiles:
+    - name: default
+      plugins:
+      - pluginRef: queue-scorer
+        weight: 2
+      - pluginRef: kv-cache-utilization-scorer
+        weight: 2
+      - pluginRef: prefix-cache-scorer
+        weight: 3
+  epd-plugins.yaml: |
+    # bench11: multi-scorer profile — kv-cache-utilization + queue-scorer + active-request
+    # so the D-endpoint pick reflects live vLLM /metrics state, not just an EPP counter.
+    apiVersion: llm-d.ai/v1alpha1
+    kind: EndpointPickerConfig
+    plugins:
+    - type: vllmhttp-parser
+    - type: queue-scorer
+    - type: active-request-scorer
+    - type: kv-cache-utilization-scorer
+    - type: prefix-cache-scorer
+    # bench11: added — required as data source for kv-cache-utilization / queue scorers
+    - type: metrics-data-source
+      parameters:
+        scheme: "http"
+        path: "/metrics"
+        insecureSkipVerify: true
+    - type: core-metrics-extractor
+    schedulingProfiles:
+    - name: default
+      plugins:
+      - pluginRef: kv-cache-utilization-scorer
+        weight: 3
+      - pluginRef: queue-scorer
+        weight: 2
+      - pluginRef: active-request-scorer
+        weight: 1
+    requestHandler:
+      parsers:
+        - pluginRef: vllmhttp-parser
+        - pluginRef: openai-parser
+  payload-agnostic.yaml: |
+    # Request-format agnostic routing. Use this when the request format is
+    # unknown or unsupported, so the EPP cannot rely on scorers that read the
+    # request body (e.g. the prefix-cache scorer). The passthrough parser does
+    # not parse the body, and routing falls back to backend-state scorers:
+    #   - active-request-scorer  : prefers the least busy endpoint
+    #   - session-affinity-scorer: keeps a session pinned to the same endpoint
+    # Select it by setting router.epp.pluginsConfigFile: payload-agnostic.yaml
+    apiVersion: llm-d.ai/v1alpha1
+    kind: EndpointPickerConfig
+    plugins:
+    - type: passthrough-parser
+    - type: active-request-scorer
+    - type: session-affinity-scorer
+    requestHandler:
+      parsers:
+      - pluginRef: passthrough-parser
+    schedulingProfiles:
+    - name: default
+      plugins:
+      - pluginRef: active-request-scorer
+        weight: 1
+      - pluginRef: session-affinity-scorer
+        weight: 1
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"default-plugins.yaml":"apiVersion: llm-d.ai/v1alpha1\nkind: EndpointPickerConfig\nplugins:\n- type: queue-scorer\n- type: kv-cache-utilization-scorer\n- type: prefix-cache-scorer\n- type: metrics-data-source\n  parameters:\n    scheme: \"http\"\n    path: \"/metrics\"\n    insecureSkipVerify: true\n- type: core-metrics-extractor\nschedulingProfiles:\n- name: default\n  plugins:\n  - pluginRef: queue-scorer\n    weight: 2\n  - pluginRef: kv-cache-utilization-scorer\n    weight: 2\n  - pluginRef: prefix-cache-scorer\n    weight: 3\n","epd-plugins.yaml":"# bench11: multi-scorer profile — kv-cache-utilization + queue-scorer + active-request\n# so the D-endpoint pick reflects live vLLM /metrics state, not just an EPP counter.\napiVersion: llm-d.ai/v1alpha1\nkind: EndpointPickerConfig\nplugins:\n- type: vllmhttp-parser\n- type: queue-scorer\n- type: active-request-scorer\n- type: kv-cache-utilization-scorer\n- type: prefix-cache-scorer\n# bench11: added — required as data source for kv-cache-utilization / queue scorers\n- type: metrics-data-source\n  parameters:\n    scheme: \"http\"\n    path: \"/metrics\"\n    insecureSkipVerify: true\n- type: core-metrics-extractor\nschedulingProfiles:\n- name: default\n  plugins:\n  - pluginRef: kv-cache-utilization-scorer\n    weight: 3\n  - pluginRef: queue-scorer\n    weight: 2\n  - pluginRef: active-request-scorer\n    weight: 1\nrequestHandler:\n  parsers:\n    - pluginRef: vllmhttp-parser\n    - pluginRef: openai-parser\n","payload-agnostic.yaml":"# Request-format agnostic routing. Use this when the request format is\n# unknown or unsupported, so the EPP cannot rely on scorers that read the\n# request body (e.g. the prefix-cache scorer). The passthrough parser does\n# not parse the body, and routing falls back to backend-state scorers:\n#   - active-request-scorer  : prefers the least busy endpoint\n#   - session-affinity-scorer: keeps a session pinned to the same endpoint\n# Select it by setting router.epp.pluginsConfigFile: payload-agnostic.yaml\napiVersion: llm-d.ai/v1alpha1\nkind: EndpointPickerConfig\nplugins:\n- type: passthrough-parser\n- type: active-request-scorer\n- type: session-affinity-scorer\nrequestHandler:\n  parsers:\n  - pluginRef: passthrough-parser\nschedulingProfiles:\n- name: default\n  plugins:\n  - pluginRef: active-request-scorer\n    weight: 1\n  - pluginRef: session-affinity-scorer\n    weight: 1\n"},"kind":"ConfigMap","metadata":{"annotations":{"meta.helm.sh/release-name":"coordinator-epd-decode","meta.helm.sh/release-namespace":"dpikus-epd-sglang-bench"},"labels":{"app.kubernetes.io/managed-by":"Helm"},"name":"coordinator-epd-decode-epp","namespace":"dpikus-epd-sglang-bench"}}
+    meta.helm.sh/release-name: coordinator-epd-decode
+    meta.helm.sh/release-namespace: dpikus-epd-sglang-bench
+  creationTimestamp: "2026-07-12T14:50:07Z"
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: coordinator-epd-decode-epp
+  namespace: dpikus-epd-sglang-bench
+  resourceVersion: "36126739"
+  uid: 044d2edb-ea53-490f-8bba-4e4c19ab7d99

@@ -1,0 +1,190 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"llm-d.ai/accelerator-variant":"gpu","llm-d.ai/accelerator-vendor":"nvidia","llm-d.ai/guide":"epd","llm-d.ai/model":"Qwen3-VL-2B-Instruct","llm-d.ai/role":"decode"},"name":"epd-nvidia-gpu-vllm-decode","namespace":"dpikus-epd-sglang-bench"},"spec":{"replicas":2,"selector":{"matchLabels":{"llm-d.ai/accelerator-variant":"gpu","llm-d.ai/accelerator-vendor":"nvidia","llm-d.ai/guide":"epd","llm-d.ai/model":"Qwen3-VL-2B-Instruct","llm-d.ai/role":"decode"}},"template":{"metadata":{"annotations":{"k8s.v1.cni.cncf.io/networks":"[\n  {\n    \"name\": \"multi-nic-compute\",\n    \"namespace\": \"openshift-sriov-network-operator\"\n  }\n]\n"},"labels":{"llm-d.ai/accelerator-variant":"gpu","llm-d.ai/accelerator-vendor":"nvidia","llm-d.ai/guide":"epd","llm-d.ai/model":"Qwen3-VL-2B-Instruct","llm-d.ai/role":"decode"}},"spec":{"containers":[{"args":["--model","openai/gpt-oss-120b","--port","8000","--tensor-parallel-size","4","--block-size","128","--kv-transfer-config","{\"kv_connector\":\"NixlConnector\", \"kv_role\":\"kv_both\"}","--disable-access-log-for-endpoints=/health,/metrics,/v1/models","--no-disable-hybrid-kv-cache-manager"],"command":["vllm","serve"],"env":[{"name":"VLLM_LOGGING_LEVEL","value":"INFO"},{"name":"VLLM_NIXL_SIDE_CHANNEL_HOST","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"status.podIP"}}},{"name":"DP_SIZE","value":"1"},{"name":"TP_SIZE","value":"4"},{"name":"DP_SIZE_LOCAL","value":"1"},{"name":"HF_HOME","value":"/model-cache"},{"name":"HF_TOKEN","valueFrom":{"secretKeyRef":{"key":"HF_TOKEN","name":"llm-d-hf-token","optional":true}}}],"image":"ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer4","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":"modelserver"},"periodSeconds":10,"timeoutSeconds":5},"name":"modelserver","ports":[{"containerPort":5600,"name":"nixl","protocol":"TCP"},{"containerPort":8000,"name":"modelserver","protocol":"TCP"}],"readinessProbe":{"failureThreshold":3,"httpGet":{"path":"/v1/models","port":"modelserver"},"periodSeconds":5,"timeoutSeconds":2},"resources":{"limits":{"cpu":"16","memory":"64Gi","nvidia.com/gpu":"4","rdma/ib":"1"},"requests":{"cpu":"16","memory":"64Gi","nvidia.com/gpu":"4","rdma/ib":"1"}},"startupProbe":{"failureThreshold":120,"httpGet":{"path":"/v1/models","port":"modelserver"},"initialDelaySeconds":15,"periodSeconds":30,"timeoutSeconds":5},"volumeMounts":[{"mountPath":"/dev/shm","name":"shm"},{"mountPath":"/.cache","name":"torch-compile-cache"},{"mountPath":"/.triton","name":"triton-cache"},{"mountPath":"/.config","name":"vllm-config"},{"mountPath":"/model-cache","name":"model-cache"}]}],"serviceAccountName":"epd-nvidia-gpu-vllm-sa","volumes":[{"emptyDir":{"medium":"Memory","sizeLimit":"20Gi"},"name":"shm"},{"emptyDir":{},"name":"torch-compile-cache"},{"emptyDir":{},"name":"triton-cache"},{"emptyDir":{},"name":"vllm-config"},{"name":"model-cache","persistentVolumeClaim":{"claimName":"llm-d-model-cache"}}]}}}}
+  labels:
+    llm-d.ai/accelerator-variant: gpu
+    llm-d.ai/accelerator-vendor: nvidia
+    llm-d.ai/guide: epd
+    llm-d.ai/model: Qwen3-VL-2B-Instruct
+    llm-d.ai/role: decode
+  name: epd-nvidia-gpu-vllm-decode
+  namespace: dpikus-epd-sglang-bench
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      llm-d.ai/accelerator-variant: gpu
+      llm-d.ai/accelerator-vendor: nvidia
+      llm-d.ai/guide: epd
+      llm-d.ai/model: Qwen3-VL-2B-Instruct
+      llm-d.ai/role: decode
+      llm-d.ai/variant: fast
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        k8s.v1.cni.cncf.io/networks: |
+          [
+            {
+              "name": "multi-nic-compute",
+              "namespace": "openshift-sriov-network-operator"
+            }
+          ]
+      labels:
+        llm-d.ai/accelerator-variant: gpu
+        llm-d.ai/accelerator-vendor: nvidia
+        llm-d.ai/guide: epd
+        llm-d.ai/model: Qwen3-VL-2B-Instruct
+        llm-d.ai/role: decode
+        llm-d.ai/variant: fast
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  llm-d.ai/guide: epd
+                  llm-d.ai/role: prefill
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - args:
+            - --model
+            - Qwen/Qwen3-VL-32B-Instruct
+            - --port
+            - "8000"
+            - --tensor-parallel-size
+            - "2"
+            - --block-size
+            - "128"
+            - --kv-transfer-config
+            - '{"kv_connector":"NixlConnector", "kv_role":"kv_both"}'
+            - --disable-access-log-for-endpoints=/health,/metrics,/v1/models
+            - --no-disable-hybrid-kv-cache-manager
+            - --load-format=runai_streamer
+            - --max-num-seqs
+            - "8"
+            - --max-num-batched-tokens
+            - "4096"
+          command:
+            - vllm
+            - serve
+          env:
+            - name: HF_HUB_OFFLINE
+              value: "1"
+            - name: TRANSFORMERS_OFFLINE
+              value: "1"
+            - name: VLLM_LOGGING_LEVEL
+              value: INFO
+            - name: VLLM_NIXL_SIDE_CHANNEL_HOST
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+            - name: DP_SIZE
+              value: "1"
+            - name: TP_SIZE
+              value: "2"
+            - name: DP_SIZE_LOCAL
+              value: "1"
+            - name: HF_HOME
+              value: /model-cache
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: HF_TOKEN
+                  name: llm-d-hf-token
+                  optional: true
+            - name: RUNAI_STREAMER_MEMORY_LIMIT
+              value: "17179869184"
+          image: ghcr.io/revit13/vllm-openai:nightly-b50646e5effd7cb5884cd96fdff4c53c18521198.omer4
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: modelserver
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          name: modelserver
+          ports:
+            - containerPort: 5600
+              name: nixl
+              protocol: TCP
+            - containerPort: 8000
+              name: modelserver
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /v1/models
+              port: modelserver
+              scheme: HTTP
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 2
+          resources:
+            limits:
+              cpu: "16"
+              memory: 256Gi
+              nvidia.com/gpu: "2"
+              rdma/ib: "1"
+            requests:
+              cpu: "16"
+              memory: 256Gi
+              nvidia.com/gpu: "2"
+              rdma/ib: "1"
+          startupProbe:
+            failureThreshold: 120
+            httpGet:
+              path: /v1/models
+              port: modelserver
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 5
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+            - mountPath: /dev/shm
+              name: shm
+            - mountPath: /.cache
+              name: torch-compile-cache
+            - mountPath: /.triton
+              name: triton-cache
+            - mountPath: /.config
+              name: vllm-config
+            - mountPath: /model-cache
+              name: model-cache
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: epd-nvidia-gpu-vllm-sa
+      serviceAccountName: epd-nvidia-gpu-vllm-sa
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 20Gi
+          name: shm
+        - emptyDir: {}
+          name: torch-compile-cache
+        - emptyDir: {}
+          name: triton-cache
+        - emptyDir: {}
+          name: vllm-config
+        - name: model-cache
+          persistentVolumeClaim:
+            claimName: llm-d-model-cache

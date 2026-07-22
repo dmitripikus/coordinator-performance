@@ -1,0 +1,75 @@
+Name:             sglang-bench-hclcv
+Namespace:        dpikus-pd-sglang-bench
+Priority:         0
+Service Account:  default
+Node:             g801c7a/10.202.212.51
+Start Time:       Wed, 22 Jul 2026 16:43:45 +0300
+Labels:           batch.kubernetes.io/controller-uid=011f61e3-fcc4-48c9-8a1a-3cc6f6c5dfe0
+                  batch.kubernetes.io/job-name=sglang-bench
+                  controller-uid=011f61e3-fcc4-48c9-8a1a-3cc6f6c5dfe0
+                  job-name=sglang-bench
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=185
+Annotations:      <none>
+Status:           Succeeded
+IP:               10.0.12.24
+IPs:
+  IP:           10.0.12.24
+Controlled By:  Job/sglang-bench
+Containers:
+  bench:
+    Container ID:  containerd://e6dc772ee1e05de65fc74ec8b73329b87078b3caa46f6c622edd15811925cb55
+    Image:         docker.io/lmsysorg/sglang:v0.5.14
+    Image ID:      docker.io/lmsysorg/sglang@sha256:5027e95bf6ec536856b1b52a91d1f35ff5c564ab83e8a94758a169ff09bb8df3
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/bash
+      /scripts/run_bench.sh
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Wed, 22 Jul 2026 16:43:46 +0300
+      Finished:     Wed, 22 Jul 2026 17:09:40 +0300
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     8
+      memory:  16Gi
+    Requests:
+      cpu:     4
+      memory:  8Gi
+    Environment:
+      GATEWAY_IP:  llm-d-inference-gateway-istio
+    Mounts:
+      /scripts from script (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-hq46n (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  script:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      sglang-bench-script
+    Optional:  false
+  kube-api-access-hq46n:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  27m   default-scheduler  Successfully assigned dpikus-pd-sglang-bench/sglang-bench-hclcv to g801c7a
+  Normal  Pulled     27m   kubelet            Container image "docker.io/lmsysorg/sglang:v0.5.14" already present on machine and can be accessed by the pod
+  Normal  Created    27m   kubelet            Container created
+  Normal  Started    27m   kubelet            Container started
