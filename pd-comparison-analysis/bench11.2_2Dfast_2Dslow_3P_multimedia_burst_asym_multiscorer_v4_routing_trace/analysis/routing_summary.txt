@@ -1,0 +1,31 @@
+
+====================================================================================
+Per-request routing decisions per burst per side
+====================================================================================
+side     burst  fast_A  fast_B  slow_A  slow_B  fast%  slow%  total
+coord        8       4       8       2       4  66.7%  33.3%     18
+coord       16       4       5       4       4  52.9%  47.1%     17
+coord       32      11      11       6       5  66.7%  33.3%     33
+coord       64      20      17      12      16  56.9%  43.1%     65
+coord      128      34      36      29      30  54.3%  45.7%    129
+coord      256      67      70      60      60  53.3%  46.7%    257
+sidecar      8       3       2       2       2  55.6%  44.4%      9
+sidecar     16       5       4       4       4  52.9%  47.1%     17
+sidecar     32       8       8       9       8  48.5%  51.5%     33
+sidecar     64      16      17      16      16  50.8%  49.2%     65
+sidecar    128      33      32      32      32  50.4%  49.6%    129
+sidecar    256      62      65      66      64  49.4%  50.6%    257
+
+Fleet capacity ratio (if load were proportional to max_num_seqs):
+  fast: 8 seqs * 2 pods = 16 slots (66.7% of 24)
+  slow: 4 seqs * 2 pods =  8 slots (33.3% of 24)
+A no-op scheduler routing purely uniform-by-pod-count -> 50% fast, 50% slow
+A capacity-proportional scheduler -> 66.7% fast, 33.3% slow
+
+Delta (coord fast% - sidecar fast%) by burst:
+  burst    8:  coord= 66.7%  sidecar= 55.6%  delta=+11.1pp
+  burst   16:  coord= 52.9%  sidecar= 52.9%  delta= +0.0pp
+  burst   32:  coord= 66.7%  sidecar= 48.5%  delta=+18.2pp
+  burst   64:  coord= 56.9%  sidecar= 50.8%  delta= +6.2pp
+  burst  128:  coord= 54.3%  sidecar= 50.4%  delta= +3.9pp
+  burst  256:  coord= 53.3%  sidecar= 49.4%  delta= +3.9pp
