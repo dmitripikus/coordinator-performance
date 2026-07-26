@@ -1,0 +1,79 @@
+Name:             pd-disaggregation-epp-5f8cd9d877-nnxsj
+Namespace:        dpikus-pd-sglang-bench
+Priority:         0
+Service Account:  pd-disaggregation-epp
+Node:             g801c7a/10.202.212.51
+Start Time:       Wed, 22 Jul 2026 15:43:32 +0300
+Labels:           llm-d-router-gateway=pd-disaggregation-epp
+                  llm-d.ai/igw-mode=llm-d-router-gateway
+                  pod-template-hash=5f8cd9d877
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=185
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-07-22T15:43:02+03:00
+Status:           Running
+IP:               10.0.12.91
+IPs:
+  IP:           10.0.12.91
+Controlled By:  ReplicaSet/pd-disaggregation-epp-5f8cd9d877
+Containers:
+  epp:
+    Container ID:  containerd://f92d90bf709fe62fafebfba7c78ef93db4cf870541df223a4e820922795b0998
+    Image:         ghcr.io/llm-d/llm-d-router-endpoint-picker-dev:main
+    Image ID:      ghcr.io/llm-d/llm-d-router-endpoint-picker-dev@sha256:8609a71c8a19c6a42a7ea6df73c7c486c8baee7a7803b78a104f45cc43722543
+    Ports:         9002/TCP (grpc), 9003/TCP (grpc-health), 9090/TCP (metrics)
+    Host Ports:    0/TCP (grpc), 0/TCP (grpc-health), 0/TCP (metrics)
+    Args:
+      --pool-name
+      pd-disaggregation
+      --pool-namespace
+      dpikus-pd-sglang-bench
+      --pool-group
+      inference.networking.k8s.io
+      --zap-encoder
+      json
+      --config-file
+      /config/pd-config.yaml
+      --grpc-health-port
+      9003
+      --v=2
+      --tracing=false
+    State:          Running
+      Started:      Wed, 22 Jul 2026 15:43:36 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  16Gi
+    Requests:
+      cpu:      4
+      memory:   8Gi
+    Liveness:   grpc <pod>:9003 inference-extension delay=5s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:9003 inference-extension delay=0s timeout=1s period=2s #success=1 #failure=3
+    Environment:
+      NAMESPACE:  dpikus-pd-sglang-bench (v1:metadata.namespace)
+      POD_NAME:   pd-disaggregation-epp-5f8cd9d877-nnxsj (v1:metadata.name)
+    Mounts:
+      /config from plugins-config-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-ng5np (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  plugins-config-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      pd-disaggregation-epp
+    Optional:  false
+  kube-api-access-ng5np:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

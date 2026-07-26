@@ -1,0 +1,23 @@
+Log Collection Summary
+======================
+Namespace: dpikus-pd-sglang-bench
+Time Period: Last 60 minutes
+Collection Time: Sun Jul 26 12:53:35 IDT 2026
+Total Pods: 10
+
+Collected Logs:
+---------------
+  pd-disaggregation-nvidia-gpu-vllm-decode-85bf598f64-v5xlx/modelserver.log: 382 lines,  64K
+  pd-disaggregation-nvidia-gpu-vllm-decode-85bf598f64-v5xlx/routing-proxy.log: 168 lines,  36K
+  pd-disaggregation-epp-5f8cd9d877-nnxsj/epp.log: 1671 lines, 356K
+  sglang-bench-ktqkq/bench.log: 425 lines,  72K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-lmc6w/modelserver.log: 365 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-slow-fb857c8f5-srdjk/modelserver.log: 423 lines,  76K
+  pd-disaggregation-nvidia-gpu-vllm-decode-slow-fb857c8f5-srdjk/routing-proxy.log: 172 lines,  36K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-752w9/modelserver.log: 358 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-85f6865487-txl66/modelserver.log: 363 lines,  56K
+  pd-disaggregation-nvidia-gpu-vllm-decode-slow-fb857c8f5-dl4cg/modelserver.log: 415 lines,  72K
+  pd-disaggregation-nvidia-gpu-vllm-decode-slow-fb857c8f5-dl4cg/routing-proxy.log: 170 lines,  36K
+  pd-disaggregation-nvidia-gpu-vllm-decode-85bf598f64-kqv2n/modelserver.log: 381 lines,  64K
+  pd-disaggregation-nvidia-gpu-vllm-decode-85bf598f64-kqv2n/routing-proxy.log: 169 lines,  36K
+  llm-d-inference-gateway-istio-dd67fd8cc-qs748/istio-proxy.log: 2 lines, 4.0K
