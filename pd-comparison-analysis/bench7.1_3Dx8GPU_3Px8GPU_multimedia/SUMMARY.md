@@ -111,24 +111,49 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
   growth (22.2s → 66.7s median as concurrency rises from 10 to 40) — the
   bottleneck is real, internal, and grows with load, not a fixed
   per-request tax.
-- **The likely mechanism is prefill-pool queueing under concurrent
-  vision-encoding load, not a single stuck node.** Request counts across
-  coord's 3 prefill pods (42/35/42 `POST /v1` lines) are reasonably
-  balanced — this isn't one pod hogging all the traffic while two sit
-  idle. With only 3 prefill replicas handling up to 24 concurrent
-  multimodal requests (each with ~4,700 vision tokens to encode), a
-  3-pod pool is a plausible capacity bottleneck regardless of which
-  specific pods are in it.
-- **What isn't confirmed**: exactly *why* sidecar's prefill pool handles
-  the same concurrent multimodal load without the same queueing blowup.
-  Sidecar's EPP logs don't carry the same per-request `parse`/`prefill`/
-  `decode` breakdown coord's coordinator does, so there's no equivalent
-  internal instrumentation to point at a specific mechanism (e.g.
-  smarter queue-depth-aware routing across the 3 prefill replicas,
-  different batching behavior for vision encoding, or something else).
-  This would need either instrumenting sidecar's prefill path directly
-  or a controlled single-prefill-pod test on both sides to isolate
-  scheduling behavior from raw per-pod capacity.
+- **Root cause found: coord's "prefill" pods are not deferring decode
+  work — they're generating close to the full response themselves,
+  separately from the actual decode leg.** vLLM's own periodic engine
+  logger (`Avg generation throughput`, `Running: N reqs`) reports real
+  token generation activity per engine. Integrating that throughput over
+  each pod's full log window and dividing by the number of requests each
+  pod handled (`POST /v1/chat/completions` count) gives an estimated
+  tokens-generated-per-request, per pod:
+
+  | | prefill pods (3) | decode pods (3) | client-reported avg output/request |
+  |---|---|---|---|
+  | **coord** | ~808-951 tok/req | ~858-1084 tok/req | 912.3 tok/req |
+  | **sidecar** | ~2.1-2.2 tok/req | ~1145-1221 tok/req | 912.3 tok/req |
+
+  Sidecar matches the textbook disaggregation pattern exactly: prefill
+  generates essentially nothing (~2 tokens/request — the single fused
+  first token that comes for free with vLLM's prefill step), decode does
+  all the real generation, and decode's average (~1,175 tok/req) is in
+  the right ballpark of the client-reported output length. **Coord does
+  not match this pattern at all** — its prefill pods are independently
+  generating close to a *full response's worth* of tokens per request
+  (~878 avg), and its decode pods are *also* generating close to a full
+  response's worth (~967 avg) — both numbers land near the client's
+  912.3 tok/req average, not "prefill does ~0, decode does ~912" the way
+  sidecar's do. This is consistent with the model generating the
+  response independently on both legs — near-duplicate work, not a
+  minor handoff delay — which would roughly double the GPU compute spent
+  per request and directly explains why a 3-pod prefill pool becomes a
+  severe bottleneck under concurrency for coord but not for sidecar.
+  Request counts across coord's 3 prefill pods (34/34/36) are reasonably
+  balanced, so this isn't one stuck pod — it's systemic across the pool.
+- **What isn't confirmed from these logs alone**: whether this is
+  literal 100% duplicate generation (full response computed twice, only
+  decode's copy is streamed to the client) or a large partial overlap
+  (e.g. a delayed/late KV handoff that lets prefill keep generating for
+  most of the response before decode takes over the tail). Confirming
+  which would need per-request generation-length tracing (not available
+  at vLLM's current INFO log level — `config.yaml`'s harness-level
+  `per_request` output is also off for this bench) or a request-level
+  trace through the coordinator's NIXL handoff path. Either way, the
+  aggregate evidence is unambiguous: coord's prefill pool is doing
+  decode-equivalent work it should not be doing for this workload, and
+  sidecar's isn't.
 - **Sidecar's decode cost is more sensitive to rising concurrency than
   coord's, even though it's lower in absolute terms throughout this
   range.** From concurrency 10 to 40, sidecar's median ITL grows 36.4ms
@@ -140,16 +165,20 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
   faster under load.
 
 **Bottom line**: at this multimodal, vision-heavy workload, coord's
-prefill stage is the clear bottleneck — TTFT and therefore end-to-end
-latency are dramatically worse than sidecar's, confirmed via coord's own
-internal pipeline timing, not just the external benchmark report.
-Coord's decode stage, in isolation, is faster than sidecar's per-token
-(TPOT/ITL) at every concurrency level, and sidecar's decode cost degrades
-faster under rising concurrency. Net effect: sidecar wins decisively on
-both end-to-end latency and throughput for this workload, but the
-underlying cause (prefill-pool queueing, not raw architecture-level
-decode inefficiency) is different from the `bench1-*` series' finding,
-where the gap lived in decode/ITL. Root-causing *why* coord's prefill
-pool queues up under concurrent multimodal load while sidecar's doesn't
-is the natural next step, and would need instrumenting sidecar's
-prefill path the way coord's coordinator already is.
+prefill pods are not deferring decode to the dedicated decode pool the
+way disaggregated P/D serving is supposed to work — they're
+independently generating close to a full response's worth of tokens per
+request (~878 tok/req, vs sidecar's ~2 tok/req for the same role). This
+is a functional defect in coord's disaggregation, not a capacity or
+node-placement issue, and it directly explains the TTFT/E2E latency gap:
+a 3-pod prefill pool doing decode-length work per request behaves like a
+severely undersized decode pool, and queues up hard under concurrency
+(confirmed separately via coordinator.log's own internal prefill-leg
+timing: median 40.0s, up to 104.7s). Coord's decode stage, in isolation,
+is still faster than sidecar's per-token (TPOT/ITL) at every concurrency
+level — the problem is entirely that the prefill leg is doing far more
+work than it should, not that decode itself is slow. This is a
+different, more specific finding than the `bench1-*` series' node-
+variance explanation, and looks like a bug worth reporting against
+coord's NIXL handoff path or request routing for multimodal requests,
+rather than an inherent architectural cost of the coordinator design.
