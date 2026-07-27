@@ -1,0 +1,78 @@
+/usr/local/lib/python3.12/dist-packages/torchao/quantization/quant_api.py:1731: SyntaxWarning: invalid escape sequence '\.'
+  """Configuration class for applying different quantization configs to modules or parameters based on their fully qualified names (FQNs).
+/sgl-workspace/sglang/python/sglang/srt/layers/attention/fla/utils.py:223: UserWarning: Triton is not supported on current platform, roll back to CPU.
+  warnings.warn(
+patch verified in loaded sglang.bench_serving module
+[2026-07-23T15:39:03.749Z] MARKER: bench start
+[2026-07-23T15:39:03.750Z] === burst_size 8 ===
+/sgl-workspace/sglang/python/sglang/srt/layers/attention/fla/utils.py:223: UserWarning: Triton is not supported on current platform, roll back to CPU.
+  warnings.warn(
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+benchmark_args=Namespace(backend='sglang-oai-chat', base_url=None, host='llm-d-inference-gateway-istio', port=80, ready_check_timeout_sec=0, dataset_name='image', dataset_path='', speed_bench_category=None, speed_bench_output_len=512, model='Qwen/Qwen3-VL-32B-Instruct', served_model_name=None, tokenizer=None, num_prompts=8, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=300, random_output_len=2000, random_range_ratio=1.0, image_count=5, image_resolution='1080p', random_image_count=True, image_format='jpeg', image_content='random', request_rate=1000.0, use_trace_timestamps=False, max_concurrency=None, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, top_logprobs_num=0, token_ids_logprob=None, logprob_start_len=-1, return_routed_experts=False, cache_report=False, seed=42, disable_ignore_eos=False, temperature=0.0, top_p=1.0, extra_request_body='{"ignore_eos": true, "skip_special_tokens": false, "stream_options": {"include_usage": true}}', apply_chat_template=False, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_start_step=None, profile_steps=None, profile_num_steps=None, profile_by_stage=False, profile_stages=None, profile_output_dir=None, profile_prefix=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix=' Respond in English only. Do not use any non-ASCII characters.', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_key=False, gsp_num_turns=1, gsp_ordered=False, gsp_group_distribution='uniform', gsp_zipf_alpha=None, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', fake_prefill=False, tag=None, header=None)
+Namespace(backend='sglang-oai-chat', base_url=None, host='llm-d-inference-gateway-istio', port=80, ready_check_timeout_sec=0, dataset_name='image', dataset_path='', speed_bench_category=None, speed_bench_output_len=512, model='Qwen/Qwen3-VL-32B-Instruct', served_model_name=None, tokenizer=None, num_prompts=8, sharegpt_output_len=None, sharegpt_context_len=None, random_input_len=300, random_output_len=2000, random_range_ratio=1.0, image_count=5, image_resolution='1080p', random_image_count=True, image_format='jpeg', image_content='random', request_rate=1000.0, use_trace_timestamps=False, max_concurrency=None, output_file=None, output_details=False, print_requests=False, disable_tqdm=False, disable_stream=False, return_logprob=False, top_logprobs_num=0, token_ids_logprob=None, logprob_start_len=-1, return_routed_experts=False, cache_report=False, seed=42, disable_ignore_eos=False, temperature=0.0, top_p=1.0, extra_request_body='{"ignore_eos": true, "skip_special_tokens": false, "stream_options": {"include_usage": true}}', apply_chat_template=True, profile=False, plot_throughput=False, profile_activities=['CPU', 'GPU'], profile_start_step=None, profile_steps=None, profile_num_steps=None, profile_by_stage=False, profile_stages=None, profile_output_dir=None, profile_prefix=None, lora_name=None, lora_request_distribution='uniform', lora_zipf_alpha=1.5, prompt_suffix=' Respond in English only. Do not use any non-ASCII characters.', pd_separated=False, profile_prefill_url=None, profile_decode_url=None, flush_cache=False, warmup_requests=1, tokenize_prompt=False, gsp_num_groups=64, gsp_prompts_per_group=16, gsp_system_prompt_len=2048, gsp_question_len=128, gsp_output_len=256, gsp_range_ratio=1.0, gsp_fast_prepare=False, gsp_send_routing_key=False, gsp_num_turns=1, gsp_ordered=False, gsp_group_distribution='uniform', gsp_zipf_alpha=None, mooncake_slowdown_factor=1.0, mooncake_num_rounds=1, mooncake_workload='conversation', fake_prefill=False, tag=None, header=None)
+
+#Input tokens: 63836
+#Output tokens: 16000
+#Total images: 30
+#Images per request: min=2, max=5, mean=3.75
+
+=== Token Breakdown (per request avg / total) ===
+  Raw text prompt tokens (without overhead): avg=300.0, total=2400
+  Text prompt tokens (with chat template): avg=322.0, total=2576
+  Text prompt overhead: avg=22.0, total=176
+  Vision tokens: avg=7657.5, total=61260
+
+Created 8 random jpeg images with average 7836756 bytes per request
+Starting warmup with 1 sequences...
+Warmup completed with 1 sequences. Starting main benchmark run...
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|█▎        | 1/8 [00:26<03:06, 26.66s/it] 25%|██▌       | 2/8 [00:28<01:11, 11.95s/it] 50%|█████     | 4/8 [00:28<00:17,  4.49s/it] 75%|███████▌  | 6/8 [00:29<00:05,  2.73s/it]100%|██████████| 8/8 [00:30<00:00,  1.67s/it]100%|██████████| 8/8 [00:30<00:00,  3.77s/it]
+
+============ Serving Benchmark Result ============
+Backend:                                 sglang-oai-chat
+Traffic request rate:                    1000.0    
+Max request concurrency:                 not set   
+Successful requests:                     8         
+Benchmark duration (s):                  30.14     
+Total input tokens:                      63836     
+Total input text tokens:                 2576      
+Total input vision tokens:               61260     
+Total generated tokens:                  16000     
+Total generated tokens (retokenized):    15998     
+Request throughput (req/s):              0.27      
+Input token throughput (tok/s):          2117.86   
+Output token throughput (tok/s):         530.83    
+Peak output token throughput (tok/s):    671.00    
+Peak concurrent requests:                8         
+Total token throughput (tok/s):          2648.69   
+Concurrency:                             7.64      
+----------------End-to-End Latency----------------
+Mean E2E Latency (ms):                   28782.87  
+Median E2E Latency (ms):                 28554.38  
+P90 E2E Latency (ms):                    30000.79  
+P95 E2E Latency (ms):                    30063.37  
+P99 E2E Latency (ms):                    30113.44  
+---------------Time to First Token----------------
+Mean TTFT (ms):                          4593.48   
+Median TTFT (ms):                        4896.36   
+P90 TTFT (ms):                           6088.43   
+P95 TTFT (ms):                           6106.83   
+P99 TTFT (ms):                           6121.54   
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          12.10     
+Median TPOT (ms):                        12.05     
+P90 TPOT (ms):                           12.39     
+P95 TPOT (ms):                           12.42     
+P99 TPOT (ms):                           12.45     
+---------------Inter-Token Latency----------------
+Mean ITL (ms):                           12.56     
+Median ITL (ms):                         11.92     
+P90 ITL (ms):                            12.64     
+P95 ITL (ms):                            14.83     
+P99 ITL (ms):                            24.01     
+Max ITL (ms):                            655.43    
+==================================================
+[2026-07-23T15:39:51.921Z] burst_size 8 done.
+[2026-07-23T15:39:51.922Z] All rates complete.
+[2026-07-23T15:39:51.924Z] MARKER: bench done, stop_capture written
+[2026-07-23T15:40:01.926Z] bench container exiting

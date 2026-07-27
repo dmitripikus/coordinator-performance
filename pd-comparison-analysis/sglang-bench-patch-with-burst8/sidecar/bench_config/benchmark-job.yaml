@@ -1,0 +1,165 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sglang-bench-script
+data:
+  run_bench.sh: |
+    #!/bin/bash
+    set -euo pipefail
+    MODEL="Qwen/Qwen3-VL-32B-Instruct"
+    BURST_RATE=1000            # ≈ instantaneous burst
+    BURST_SIZES=(8)            # single burst_size=8, matching bench12 for direct comparison
+    IMAGE_COUNT=5              # with --random-image-count: MAX; count in [1, IMAGE_COUNT]
+    IMAGE_RESOLUTION=1080p
+    RANDOM_INPUT_LEN=300
+    RANDOM_OUTPUT_LEN=2000
+    HOST="${GATEWAY_IP}"
+    PORT="80"
+
+    # --- Optionally apply patched bench_serving.py (Variant B: wire-arrival ITL) ---
+    # APPLY_PATCH controls whether we overlay the patched file. Default: true.
+    # For the "unpatched-only-request-body-fixes" comparison test, set APPLY_PATCH=false.
+    APPLY_PATCH="${APPLY_PATCH:-true}"
+    TARGET=/sgl-workspace/sglang/python/sglang/bench_serving.py
+    if [ ! -f "$TARGET" ]; then
+      echo "ERROR: $TARGET not found in image"
+      exit 1
+    fi
+    if [ "$APPLY_PATCH" = "true" ]; then
+      python3 -c "import ast; ast.parse(open('/patch/bench_serving.py').read())" \
+        || { echo "patched file failed to parse — aborting"; exit 1; }
+      cp /patch/bench_serving.py "$TARGET"
+      find /sgl-workspace/sglang/python/sglang/__pycache__ -name 'bench_serving*.pyc' -delete 2>/dev/null || true
+      python3 -c "import sglang.bench_serving as bs; import inspect; \
+        src = inspect.getsource(bs.async_request_openai_chat_completions); \
+        assert 'wire_ts' in src and '_bench_arrival_ctx' in src, 'patch not present in loaded module'; \
+        print('patch verified in loaded sglang.bench_serving module')"
+    else
+      echo "APPLY_PATCH=false: leaving upstream bench_serving.py in place"
+      python3 -c "import sglang.bench_serving as bs; import inspect; \
+        src = inspect.getsource(bs.async_request_openai_chat_completions); \
+        assert 'wire_ts' not in src and '_bench_arrival_ctx' not in src, 'patch UNEXPECTEDLY present'; \
+        print('confirmed upstream (unpatched) bench_serving.py is in use')"
+    fi
+
+    echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] MARKER: bench start" | tee /shared/bench_marker.log
+
+    for burst_size in "${BURST_SIZES[@]}"; do
+      echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] === burst_size ${burst_size} ==="
+      python -m sglang.bench_serving \
+        --model "${MODEL}" \
+        --num-prompts "${burst_size}" \
+        --dataset-name image \
+        --random-input-len ${RANDOM_INPUT_LEN} \
+        --random-output-len ${RANDOM_OUTPUT_LEN} \
+        --image-count ${IMAGE_COUNT} \
+        --random-image-count \
+        --image-resolution ${IMAGE_RESOLUTION} \
+        --host "${HOST}" \
+        --port "${PORT}" \
+        --backend sglang-oai-chat \
+        --request-rate "${BURST_RATE}" \
+        --ready-check-timeout-sec 0 \
+        --random-range-ratio 1.0 \
+        --extra-request-body '{"ignore_eos": true, "skip_special_tokens": false, "stream_options": {"include_usage": true}}' 2>&1 | tee /shared/sglang_bench.log
+      echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] burst_size ${burst_size} done."
+    done
+    echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] All rates complete."
+
+    touch /shared/stop_capture
+    echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] MARKER: bench done, stop_capture written"
+
+    sleep 10
+    echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] bench container exiting"
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sglang-bench
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node.kubernetes.io/instance-type
+                operator: In
+                values:
+                - turin-gp
+      containers:
+        - name: bench
+          image: docker.io/lmsysorg/sglang:v0.5.14
+          command: ["/bin/bash", "/scripts/run_bench.sh"]
+          env:
+            - name: GATEWAY_IP
+              value: "llm-d-inference-gateway-istio"
+            - name: APPLY_PATCH
+              value: "false"
+          resources:
+            requests:
+              cpu: "4"
+              memory: "8Gi"
+            limits:
+              cpu: "8"
+              memory: "16Gi"
+          volumeMounts:
+            - name: script
+              mountPath: /scripts
+            - name: shared
+              mountPath: /shared
+            - name: bench-patch
+              mountPath: /patch
+              readOnly: true
+
+        - name: tcpdump
+          image: nicolaka/netshoot:latest
+          securityContext:
+            capabilities:
+              add: ["NET_RAW", "NET_ADMIN"]
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              set -e
+              echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] tcpdump sidecar starting"
+              tcpdump -i any -s 0 -U -w /shared/capture.pcap 'port 80' &
+              TCPDUMP_PID=$!
+              echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] tcpdump pid=$TCPDUMP_PID"
+              for i in $(seq 1 300); do
+                if [ -f /shared/stop_capture ]; then
+                  echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] stop_capture detected"
+                  break
+                fi
+                sleep 1
+              done
+              kill -INT $TCPDUMP_PID 2>/dev/null || true
+              wait $TCPDUMP_PID 2>/dev/null || true
+              echo "[$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)] tcpdump stopped:"
+              ls -la /shared/capture.pcap || true
+              sleep 3600
+          resources:
+            requests:
+              cpu: "1"
+              memory: "2Gi"
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+          volumeMounts:
+            - name: shared
+              mountPath: /shared
+      volumes:
+        - name: script
+          configMap:
+            name: sglang-bench-script
+            defaultMode: 0755
+        - name: shared
+          emptyDir: {}
+        - name: bench-patch
+          configMap:
+            name: sglang-bench-patched

@@ -1,0 +1,107 @@
+--- /tmp/bench_serving.py	2026-07-22 19:01:13.509285406 +0300
++++ /tmp/bench_serving_patched.py	2026-07-23 13:25:11.356552890 +0300
+@@ -14,6 +14,7 @@
+ 
+ import argparse
+ import asyncio
++import collections
+ import copy
+ import importlib.util
+ import json
+@@ -67,6 +68,29 @@
+     return value.lower() in ("true", "1")
+ 
+ 
++async def _bench_on_response_chunk_received(session, trace_config_ctx, params):
++    """bench13 patch: record wire-arrival timestamp of each response chunk.
++
++    aiohttp fires this from the same context that feeds bytes to the StreamReader,
++    which runs directly from the event loop's protocol callback — much closer to
++    true wire-arrival than a time.perf_counter() call in the consumer coroutine
++    (which may be delayed under concurrent load).
++
++    Queue entry: (cumulative_byte_offset_after_this_chunk, timestamp).
++    """
++    ctx = getattr(trace_config_ctx, "trace_request_ctx", None)
++    if ctx is None or "q" not in ctx:
++        return
++    ctx["bytes"] += len(params.chunk)
++    ctx["q"].append((ctx["bytes"], time.perf_counter()))
++
++
++def _bench_make_trace_config():
++    tc = aiohttp.TraceConfig()
++    tc.on_response_chunk_received.append(_bench_on_response_chunk_received)
++    return tc
++
++
+ def _create_bench_client_session():
+     # When the pressure is big, the read buffer could be full before aio thread read
+     # the content. We increase the read_bufsize from 64K to 10M.
+@@ -76,7 +100,9 @@
+ 
+     aiohttp_timeout = aiohttp.ClientTimeout(total=BENCH_AIOHTTP_TIMEOUT_SECONDS)
+     return aiohttp.ClientSession(
+-        timeout=aiohttp_timeout, read_bufsize=BENCH_AIOHTTP_READ_BUFSIZE_BYTES
++        timeout=aiohttp_timeout,
++        read_bufsize=BENCH_AIOHTTP_READ_BUFSIZE_BYTES,
++        trace_configs=[_bench_make_trace_config()],
+     )
+ 
+ 
+@@ -455,9 +481,16 @@
+         st = time.perf_counter()
+         output.start_time = st
+         most_recent_timestamp = st
++        # bench13 patch: per-request arrival context populated by the trace hook.
++        # `q` accumulates (cumulative_byte_offset, wire_arrival_timestamp) tuples;
++        # the streaming loop consults it to attribute wire time to each SSE event.
++        _bench_arrival_ctx = {"q": collections.deque(), "bytes": 0}
+         try:
+             async with session.post(
+-                url=api_url, json=payload, headers=headers
++                url=api_url,
++                json=payload,
++                headers=headers,
++                trace_request_ctx=_bench_arrival_ctx,
+             ) as response:
+                 if response.status == 200:
+                     if args.disable_stream:
+@@ -477,13 +510,27 @@
+                             _extract_cache_from_sglext(response_json, output)
+                     else:
+                         # Streaming response
++                        _consumed_bytes = 0
++                        _q = _bench_arrival_ctx["q"]
+                         async for chunk_bytes in response.content:
++                            # Advance consumed-byte counter. The last byte we
++                            # consumed is at position (_consumed_bytes - 1) and
++                            # is in the aiohttp chunk whose end-offset is the
++                            # smallest one >= _consumed_bytes. Discard any queue
++                            # entries whose chunk ended entirely in the past
++                            # (offset < consumed) and PEEK — don't pop — the
++                            # remaining front entry: future line reads may still
++                            # fall within this same chunk.
++                            _consumed_bytes += len(chunk_bytes)
++                            while _q and _q[0][0] < _consumed_bytes:
++                                _q.popleft()
++                            wire_ts = _q[0][1] if _q else time.perf_counter()
+                             chunk_bytes = chunk_bytes.strip()
+                             if not chunk_bytes:
+                                 continue
+ 
+                             chunk = remove_prefix(chunk_bytes.decode("utf-8"), "data: ")
+-                            latency = time.perf_counter() - st
++                            latency = wire_ts - st
+                             if chunk == "[DONE]":
+                                 pass
+                             else:
+@@ -507,7 +554,7 @@
+                                 content = _combine_openai_chat_content(delta)
+ 
+                                 if content:
+-                                    timestamp = time.perf_counter()
++                                    timestamp = wire_ts
+                                     # First token
+                                     if ttft == 0.0:
+                                         ttft = timestamp - st
