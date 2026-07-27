@@ -39,7 +39,8 @@ Two harness families are used:
 
 - **`inference-perf`** (v0.5.2 image `ghcr.io/llm-d/llm-d-benchmark:v0.5.2`) —
   used for the earlier text-only benches (`bench1-*`,
-  `1D_1P_250IT_5000OT_decode_heavy`, `bench5`, `bench6`). Driven by
+  `1D_1P_250IT_5000OT_decode_heavy`, `2D_8P_5000IT_250OT_prefill_heavy`,
+  `bench6`). Driven by
   per-step YAML configs
   (`bench_config/config_*.yaml`). Model: `openai/gpt-oss-120b`.
 - **`sglang.bench_serving`** (`lmsysorg/sglang:v0.5.14` in a k8s Job) —
@@ -66,7 +67,7 @@ cluster).
 | [bench1-2_var_prompt_always_disaggr](bench1-2_var_prompt_always_disaggr/) | var IT, fixed OT=250 | gpt-oss-120b | 1D/1P | coord ~7-8% slower on ITL/latency (later attributed to node variance) |
 | [bench1-3_var_prompt_always_disaggr](bench1-3_var_prompt_always_disaggr/) | var IT, fixed OT=20, pods node-pinned | gpt-oss-120b | 1D/1P (pinned) | coord ≈ sidecar; ITL within 0.7% across sizes |
 | [1D_1P_250IT_5000OT_decode_heavy](1D_1P_250IT_5000OT_decode_heavy/) | 250 IT / 5000 OT, single-stream | gpt-oss-120b | 1D/1P | coord ~7% faster (decode-bound) |
-| [bench5_2D_8P_5000IT_250OT](bench5_2D_8P_5000IT_250OT/) | 5000 IT / 250 OT, 45 req/s (saturating) | gpt-oss-120b | 2D/8P | sidecar wins under load (TTFT tail) |
+| [2D_8P_5000IT_250OT_prefill_heavy](2D_8P_5000IT_250OT_prefill_heavy/) | 5000 IT / 250 OT, 45 req/s (saturating) | gpt-oss-120b | 2D/8P | sidecar wins under load (TTFT tail) |
 | [bench6_3D_8P_250IT_4000OT](bench6_3D_8P_250IT_4000OT/) | 250 IT / 4000 OT, 10 req/s | gpt-oss-120b | 3D/8P (3 coord replicas) | coord ≈ sidecar within ~0.5% |
 | [bench7_3Dx8GPU_3Px8GPU_multimedia](bench7_3Dx8GPU_3Px8GPU_multimedia/) | multimodal, image+text, concurrency 10-40 | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | sidecar ~2-2.3× faster (coord prefill pool bottleneck) |
 | [bench7.1_3Dx8GPU_3Px8GPU_multimedia](bench7.1_3Dx8GPU_3Px8GPU_multimedia/) | re-run of bench7 | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | coord TTFT 4-8× higher (prefill queue bottleneck) |
@@ -186,7 +187,7 @@ from lower TPOT (6.78 vs 7.28 ms/tok). TTFT is a tie. The mirror image
 of light bench1: workload is decode-bound so the coord's faster
 per-token streaming wins.
 
-### bench5_2D_8P_5000IT_250OT
+### 2D_8P_5000IT_250OT_prefill_heavy
 
 **Purpose.** Prefill-heavy shape at saturating rate. Same 5000/250 shape
 as an earlier bench2 (0.25 req/s tie) but at ~170× the load.

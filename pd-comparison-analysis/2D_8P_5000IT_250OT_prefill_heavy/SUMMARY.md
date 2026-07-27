@@ -1,4 +1,4 @@
-# bench5 — 5000 in / 250 out under load (2D/8P): Coordinator vs Sidecar
+# 2D_8P_5000IT_250OT_prefill_heavy — 5000 in / 250 out under load (2D/8P): Coordinator vs Sidecar
 
 Benchmark: `inference-perf`, model `openai/gpt-oss-120b`, P/D disaggregation.
 Prompt shape: **5000 input → 250 output tokens**, streaming completion.
@@ -8,7 +8,7 @@ Load: **constant 45 req/s for 120 s → 5400 requests** (`num_workers: 45`,
 `sidecar/` (ns `dpikus-pd`) — clean apples-to-apples.
 
 > **This is bench2's workload shape (5000/250) at ~170× the load.** bench2 ran
-> the same prompt shape at **0.25 req/s** (never queued → a tie). bench5 drives
+> the same prompt shape at **0.25 req/s** (never queued → a tie). This bench drives
 > **45 req/s**, deep into saturation — so this measures behavior **under
 > contention**, where queueing, not single-stream latency, decides the winner.
 
@@ -86,7 +86,7 @@ Combined with the earlier benchmarks, the picture is now load-aware:
 | bench1 short (1/15) | 1 req/s | TTFT | **sidecar** (~9%) | avoids pre-prefill orchestration hop |
 | bench2 long (5000/250) | 0.25 req/s | balanced, unloaded | **tie** | nothing queues; hop is noise |
 | 1D_1P_250IT_5000OT_decode_heavy (250/5000) | serial | decode/TPOT | **coordinator** (~7%) | faster per-token streaming dominates |
-| **bench5 long under load (5000/250)** | **45 req/s** | **TTFT tail / prefill queue** | **sidecar** (~16–22% p99) | prefill-leg hop queues under saturation |
+| **2D_8P_5000IT_250OT_prefill_heavy long under load (5000/250)** | **45 req/s** | **TTFT tail / prefill queue** | **sidecar** (~16–22% p99) | prefill-leg hop queues under saturation |
 
 **Rule of thumb:** the coordinator's extra prefill-leg hop is free when idle and
 under decode-bound workloads, but becomes a tail-latency liability once prefill
