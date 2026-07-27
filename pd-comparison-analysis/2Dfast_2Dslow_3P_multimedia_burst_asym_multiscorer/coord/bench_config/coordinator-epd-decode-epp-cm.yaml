@@ -22,6 +22,37 @@ data:
         weight: 2
       - pluginRef: prefix-cache-scorer
         weight: 3
+  epd-plugins.yaml: |
+    # 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer: multi-scorer profile — kv-cache-utilization + queue-scorer + active-request
+    # so the D-endpoint pick reflects live vLLM /metrics state, not just an EPP counter.
+    apiVersion: llm-d.ai/v1alpha1
+    kind: EndpointPickerConfig
+    plugins:
+    - type: vllmhttp-parser
+    - type: queue-scorer
+    - type: active-request-scorer
+    - type: kv-cache-utilization-scorer
+    - type: prefix-cache-scorer
+    # 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer: added — required as data source for kv-cache-utilization / queue scorers
+    - type: metrics-data-source
+      parameters:
+        scheme: "http"
+        path: "/metrics"
+        insecureSkipVerify: true
+    - type: core-metrics-extractor
+    schedulingProfiles:
+    - name: default
+      plugins:
+      - pluginRef: kv-cache-utilization-scorer
+        weight: 3
+      - pluginRef: queue-scorer
+        weight: 2
+      - pluginRef: active-request-scorer
+        weight: 1
+    requestHandler:
+      parsers:
+        - pluginRef: vllmhttp-parser
+        - pluginRef: openai-parser
   payload-agnostic.yaml: |
     # Request-format agnostic routing. Use this when the request format is
     # unknown or unsupported, so the EPP cannot rely on scorers that read the
@@ -46,54 +77,12 @@ data:
         weight: 1
       - pluginRef: session-affinity-scorer
         weight: 1
-  pd-config.yaml: |
-    apiVersion: llm-d.ai/v1alpha1
-    kind: EndpointPickerConfig
-    plugins:
-    - type: disagg-headers-handler
-    - type: always-disagg-pd-decider
-    - type: disagg-profile-handler
-      parameters:
-        deciderPluginName: always-disagg-pd-decider
-    - type: prefill-filter
-    - type: decode-filter
-    - type: prefix-cache-scorer
-    - type: queue-scorer
-    - type: kv-cache-utilization-scorer
-    - type: active-request-scorer
-    - type: max-score-picker
-    # bench11: added — required as data source for kv-cache-utilization / queue scorers
-    - type: metrics-data-source
-      parameters:
-        scheme: "http"
-        path: "/metrics"
-        insecureSkipVerify: true
-    - type: core-metrics-extractor
-    schedulingProfiles:
-    - name: prefill
-      plugins:
-      - pluginRef: prefill-filter
-      - pluginRef: active-request-scorer
-        weight: 1
-      - pluginRef: max-score-picker
-    # bench11: multi-scorer decode profile — kv-cache-utilization + queue-scorer + active-request
-    # so the D-endpoint pick reflects live vLLM /metrics state, not just an EPP counter.
-    - name: decode
-      plugins:
-      - pluginRef: decode-filter
-      - pluginRef: kv-cache-utilization-scorer
-        weight: 3
-      - pluginRef: queue-scorer
-        weight: 2
-      - pluginRef: active-request-scorer
-        weight: 1
-      - pluginRef: max-score-picker
 kind: ConfigMap
 metadata:
   annotations:
-    meta.helm.sh/release-name: pd-disaggregation
-    meta.helm.sh/release-namespace: dpikus-pd-sglang-bench
+    meta.helm.sh/release-name: coordinator-epd-decode
+    meta.helm.sh/release-namespace: dpikus-epd-sglang-bench
   labels:
     app.kubernetes.io/managed-by: Helm
-  name: pd-disaggregation-epp
-  namespace: dpikus-pd-sglang-bench
+  name: coordinator-epd-decode-epp
+  namespace: dpikus-epd-sglang-bench

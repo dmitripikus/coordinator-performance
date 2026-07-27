@@ -62,7 +62,7 @@ data:
     - type: kv-cache-utilization-scorer
     - type: active-request-scorer
     - type: max-score-picker
-    # bench11: added — required as data source for kv-cache-utilization / queue scorers
+    # 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer: added — required as data source for kv-cache-utilization / queue scorers
     - type: metrics-data-source
       parameters:
         scheme: "http"
@@ -76,7 +76,7 @@ data:
       - pluginRef: active-request-scorer
         weight: 1
       - pluginRef: max-score-picker
-    # bench11: multi-scorer decode profile — kv-cache-utilization + queue-scorer + active-request
+    # 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer: multi-scorer decode profile — kv-cache-utilization + queue-scorer + active-request
     # so the D-endpoint pick reflects live vLLM /metrics state, not just an EPP counter.
     - name: decode
       plugins:

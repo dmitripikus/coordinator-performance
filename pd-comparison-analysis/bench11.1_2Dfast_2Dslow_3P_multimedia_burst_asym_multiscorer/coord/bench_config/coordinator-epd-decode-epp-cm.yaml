@@ -23,7 +23,7 @@ data:
       - pluginRef: prefix-cache-scorer
         weight: 3
   epd-plugins.yaml: |
-    # bench11: multi-scorer profile — kv-cache-utilization + queue-scorer + active-request
+    # 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer: multi-scorer profile — kv-cache-utilization + queue-scorer + active-request
     # so the D-endpoint pick reflects live vLLM /metrics state, not just an EPP counter.
     apiVersion: llm-d.ai/v1alpha1
     kind: EndpointPickerConfig
@@ -33,7 +33,7 @@ data:
     - type: active-request-scorer
     - type: kv-cache-utilization-scorer
     - type: prefix-cache-scorer
-    # bench11: added — required as data source for kv-cache-utilization / queue scorers
+    # 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer: added — required as data source for kv-cache-utilization / queue scorers
     - type: metrics-data-source
       parameters:
         scheme: "http"

@@ -9,7 +9,7 @@ ARCHS = {"coord": "#2b6cb0", "sidecar": "#c05621"}
 # coord log:    coord/pod_logs_dpikus-epd-sglang-bench_20260726_120117/sglang_bench.log
 # sidecar log:  sidecar/pod_logs_dpikus-pd-sglang-bench_20260726_125241/sglang_bench.log
 # Fleet: 2 fast (--max-num-seqs=8) + 2 slow (--max-num-seqs=4) = 24 slots per side.
-# Same fleet + scoring profile as bench11; only difference is client-side --extra-request-body
+# Same fleet + scoring profile as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer; only difference is client-side --extra-request-body
 # (adds skip_special_tokens=false + stream_options.include_usage=true to make ITL trustworthy).
 DATA = {
     "coord": {

@@ -1,4 +1,4 @@
-# bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — PLAN
+# 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — PLAN
 
 Follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`, which
 was itself a follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`.
@@ -18,7 +18,7 @@ was itself a follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`.
 - **The premise "sidecar's arrival-time state is stale" was false** for
   this scorer. That's what killed the hypothesis in 4Dx2GPU_3Px2GPU_multimedia_burst_baseline and 4Dx2GPU_3Px2GPU_multimedia_burst_constrained.
 
-## bench11 fixes both root causes
+## 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer fixes both root causes
 
 ### Change 1 — multi-scorer profile (both sides, symmetric)
 
@@ -87,7 +87,7 @@ coord's deferred-bind needs.
 ## Files
 
 ```
-bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/
+2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/
 ├── PLAN.md                                             (this file)
 ├── coord/
 │   └── bench_config/
@@ -167,9 +167,9 @@ Expect exactly 2 with `variant=fast` and 2 with `variant=slow` per side.
 ### 4. Run the bench (both sides, back-to-back)
 
 ```
-/run-sglang-bench pd-comparison-analysis/bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/coord/bench_config
+/run-sglang-bench pd-comparison-analysis/2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/coord/bench_config
 # then (after coord scale-down):
-/run-sglang-bench pd-comparison-analysis/bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/sidecar/bench_config
+/run-sglang-bench pd-comparison-analysis/2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/sidecar/bench_config
 ```
 
 Skill's Step 3 will detect 0/0 on decode+prefill and prompt scaling to
@@ -221,7 +221,7 @@ Total fleet slots: 2×8 + 2×4 = **24** (vs 4Dx2GPU_3Px2GPU_multimedia_burst_con
 
 ## Rollback
 
-To undo bench11 and return to a 4Dx2GPU_3Px2GPU_multimedia_burst_constrained-like uniform 4×8 fleet:
+To undo 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer and return to a 4Dx2GPU_3Px2GPU_multimedia_burst_constrained-like uniform 4×8 fleet:
 
 ```bash
 # Delete the new decode Deployments (both sides)

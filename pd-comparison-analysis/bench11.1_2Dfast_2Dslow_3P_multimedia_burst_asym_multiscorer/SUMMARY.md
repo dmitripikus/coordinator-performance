@@ -9,15 +9,15 @@ text tokens per request, exactly 2,000 output tokens each
 (`ignore_eos=true`), `seed=42` on both sides so per-burst image counts
 and input tokens match to within one image between coord and sidecar.
 
-**This is a re-run of [bench11](../bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/SUMMARY.md) with the sglang request-body fixes validated in [bench13](../bench13_burst8_patched_itl/SUMMARY.md)**:
+**This is a re-run of [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](../2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/SUMMARY.md) with the sglang request-body fixes validated in [bench13](../bench13_burst8_patched_itl/SUMMARY.md)**:
 `skip_special_tokens: false` + `stream_options.include_usage: true` added to
 `--extra-request-body`. These eliminate the empty-content SSE events that
-made bench11's ITL numbers hard to interpret (44% empties → 96%+ content-bearing
+made 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's ITL numbers hard to interpret (44% empties → 96%+ content-bearing
 events) and let sglang's `Total generated tokens` field track the actual
 server-reported count instead of the assumed `random_output_len=2000`.
 
-Same fleet topology, same scoring profile, same burst sweep as bench11 —
-only the request body changed. Directly comparable to bench11.
+Same fleet topology, same scoring profile, same burst sweep as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer —
+only the request body changed. Directly comparable to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer.
 
 ## Headline
 
@@ -34,9 +34,9 @@ Medians and TPOT match to within ~2% everywhere — the coord edge is in
 the **tail** (p90) at the win-bursts, matching the theoretical prediction
 for deferred-decode.
 
-**Change vs bench11:** the coord edge extended into **burst 128**
-(bench11 was noise there); the burst 64 win magnitude is slightly smaller
-(−19.5% vs bench11's −24.8% on TTFT p90 — well within run-to-run
+**Change vs 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer:** the coord edge extended into **burst 128**
+(2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer was noise there); the burst 64 win magnitude is slightly smaller
+(−19.5% vs 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's −24.8% on TTFT p90 — well within run-to-run
 variance); the burst 256 edge is comparable. Direction is same on all
 win-bursts. Overall picture: **the deferred-decode advantage is real and
 reproducible** across the two runs.
@@ -55,15 +55,15 @@ reproducible** across the two runs.
 
 **Prefill:** 3 replicas per side, `--max-num-seqs` unset (no cap).
 
-Same InferencePool structure as bench11 — both variants share role/guide
+Same InferencePool structure as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — both variants share role/guide
 labels so a single pool sees all four pods and the EPP scorer must
 choose between them. Verified live-config match: bench11.1's fleet is
-byte-identical to bench11's (same Deployments, same labels, same args) —
+byte-identical to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's (same Deployments, same labels, same args) —
 see the coord-side config check that ran before this bench.
 
 ### Decode scoring profile (both EPPs)
 
-Same 3-scorer stack as bench11 (unchanged in the fix2 run):
+Same 3-scorer stack as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer (unchanged in the fix2 run):
 
 ```yaml
 plugins:
@@ -74,7 +74,7 @@ plugins:
 
 `metrics-data-source` and `core-metrics-extractor` are added to each
 config's `plugins:` block as required data sources. Both EPP ConfigMaps
-were verified byte-identical to bench11's `-cm.yaml` files (single
+were verified byte-identical to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's `-cm.yaml` files (single
 trailing-newline diff) before the run.
 
 ### Workload — burst sweep
@@ -83,10 +83,10 @@ Bursts of `(8 16 32 64 128 256)` requests, `--request-rate=1000`
 (effectively instantaneous), 60 s quiesce between bursts. Fresh
 `sglang.bench_serving` invocation per burst.
 
-**What changed vs bench11:** the client-side `--extra-request-body`:
+**What changed vs 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer:** the client-side `--extra-request-body`:
 
 ```
-# bench11:
+# 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer:
 --extra-request-body '{"ignore_eos": true}'
 
 # bench11.1 (this run):
@@ -101,7 +101,7 @@ report accurate token counts. Neither change touches server-side
 behavior — they only affect what the OpenAI-compat stream carries back.
 
 Both changes were validated in bench13 to bring Mean ITL and Mean TPOT
-into 3% agreement (bench11's Mean ITL was ~2× TPOT due to the empty
+into 3% agreement (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's Mean ITL was ~2× TPOT due to the empty
 deltas being filtered out by sglang's `if content:` check).
 
 | burst | vs cap (24 slots) | expected regime |
@@ -131,17 +131,17 @@ before sidecar started, no GPU contention.
   `llm-d.ai/variant=fast|slow` labels present at run time. Preserved
   in `pod_logs_.../pod.yaml` files.
 - **Multi-scorer profile active on both EPPs.** Same EPP pod hashes
-  as bench11's captured pod_logs (`coordinator-epd-decode-epp-7c5b7bccc8-2b7gt`,
+  as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's captured pod_logs (`coordinator-epd-decode-epp-7c5b7bccc8-2b7gt`,
   `pd-disaggregation-epp-5f8cd9d877-nnxsj`), confirming the ConfigMap
   configuration in place at run time. Captured ConfigMaps
-  (`pod_logs_*/epp-configs/`) match bench11's byte-for-byte.
+  (`pod_logs_*/epp-configs/`) match 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's byte-for-byte.
 - **Identical workload realized on both sides.** `seed=42` on both
   sglang runs — per-burst image counts and input-token totals match
   to within one image / a handful of tokens across sides at every
   burst.
 - **Request-body fixes verified live in output.** `Total generated tokens`
   and `Total generated tokens (retokenized)` now match within 1 (16000
-  vs ~15999) instead of the ~50% gap seen in bench11. ITL and TPOT means
+  vs ~15999) instead of the ~50% gap seen in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer. ITL and TPOT means
   now agree within 5% on every burst — see the numbers below.
 - **Coord run first, then sidecar** — coord vLLMs scaled to 0 before
   sidecar started, no GPU contention.
@@ -180,14 +180,14 @@ Latencies in ms. TPOT excludes first token; ITL is streamed inter-token latency.
 
 Three burst sizes show a real, direction-consistent coord edge:
 
-- **Burst 64**: TTFT p90 lower by 19.5%, E2E p90 lower by 14.1% on coord — the primary win-zone burst. Same direction and comparable magnitude to bench11's −24.8% / −19.6%.
-- **Burst 128**: coord duration 8.0% lower, throughput 8.7% higher, both p90s 11-14% lower — this is a **new** result vs bench11 (which was noise at burst 128), suggesting the win zone extended further under fix2. Could be run-to-run variance; a repeat would confirm.
+- **Burst 64**: TTFT p90 lower by 19.5%, E2E p90 lower by 14.1% on coord — the primary win-zone burst. Same direction and comparable magnitude to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's −24.8% / −19.6%.
+- **Burst 128**: coord duration 8.0% lower, throughput 8.7% higher, both p90s 11-14% lower — this is a **new** result vs 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer (which was noise at burst 128), suggesting the win zone extended further under fix2. Could be run-to-run variance; a repeat would confirm.
 - **Burst 256**: coord duration 5.4% lower, throughput 5.7% higher, small (~4%) p90 edges — smaller than the throughput/duration signal but same direction.
 
 Bursts 8/16/32 differences alternate sign and sit inside single digits.
 The TTFT p50 at burst 16 (+10.3% on coord) is at 4.2 s vs 3.8 s absolute
 gap 0.4 s — below any queueing threshold, dominated by scheduling
-jitter, same explanation as bench11's burst-16 blip.
+jitter, same explanation as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's burst-16 blip.
 
 ## Charts
 
@@ -204,13 +204,13 @@ to p90. X-axis is burst size (num_prompts), log-2 scaled from 8 to
 
 ## Reading it
 
-- **The bench11 finding replicates.** A real coord-over-sidecar tail-latency
-  advantage appears at burst 64 in both runs: TTFT p90 −19.5% (bench11
-  had −24.8%), E2E p90 −14.1% (bench11 had −19.6%). Medians and TPOT
+- **The 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer finding replicates.** A real coord-over-sidecar tail-latency
+  advantage appears at burst 64 in both runs: TTFT p90 −19.5% (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer
+  had −24.8%), E2E p90 −14.1% (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer had −19.6%). Medians and TPOT
   stay matched to within 2% at burst 64 in both runs. Two independent
   observations of the same mechanism at the same burst size — this is
   the fingerprint the PLAN predicted for deferred-decode.
-- **The win zone extended to burst 128 in this run.** bench11 was noise
+- **The win zone extended to burst 128 in this run.** 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer was noise
   at 128 (differences <2%); here the coord edge is real (duration −8%,
   throughput +9%, p90 tails −11 to −14%). Possible reasons: (a) the
   request-body fix changed something latency-relevant (unlikely —
@@ -219,25 +219,25 @@ to p90. X-axis is burst size (num_prompts), log-2 scaled from 8 to
   where the effect is marginal, or (c) minor differences in the
   underlying node's GPU state / other tenants at bench time. A repeat
   would tell which.
-- **The burst-256 edge shrunk.** bench11 had E2E p90 −7.2%, TTFT p90
+- **The burst-256 edge shrunk.** 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer had E2E p90 −7.2%, TTFT p90
   −7.7% here it's −3.4% / −4.0%. But duration (−5.4%) and throughput
-  (+5.7%) are within a percentage point of bench11's (−5.6% / +6%).
+  (+5.7%) are within a percentage point of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's (−5.6% / +6%).
   The end-to-end signal is roughly reproducible; the p90 detail moved.
 - **TPOT is nearly identical across every burst on both sides**
   (12.19 → 13.03 ms progression on coord, 11.99 → 12.92 ms on sidecar;
-  largest per-burst diff 0.3 ms). Same as bench11 — confirms decode
+  largest per-burst diff 0.3 ms). Same as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — confirms decode
   speed is unchanged.
 - **ITL is now trustworthy on both sides.** Thanks to the request-body
   fixes, sglang's ITL now agrees with TPOT within ~5% on every burst,
-  on both sides. bench11's misleading "sidecar ITL p50 spikes at low
+  on both sides. 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's misleading "sidecar ITL p50 spikes at low
   burst" streaming-coalescing artifact is gone — sidecar ITL p50 is
-  11.84 / 12.42 / 12.77 ms at burst 8 / 16 / 32 here (vs bench11's
+  11.84 / 12.42 / 12.77 ms at burst 8 / 16 / 32 here (vs 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's
   12.03 / 36.76 / 13.74 ms). The routing-proxy streaming behavior
   didn't change; only the client-side measurement did. See
   [bench13](../bench13_burst8_patched_itl/SUMMARY.md) for the full
   investigation.
 - **Output throughput plateaus at ~1,200 tok/s from burst 64 onward**
-  on both sides — same fleet-wide decode ceiling as bench11 (24 slots
+  on both sides — same fleet-wide decode ceiling as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer (24 slots
   × ~13 ms TPOT). At burst 128, coord recovers ~100 tok/s more
   aggregate throughput than sidecar (1215 vs 1118) — this is the
   measurable form of the burst-128 tail-latency win.
@@ -246,20 +246,20 @@ to p90. X-axis is burst size (num_prompts), log-2 scaled from 8 to
 
 ## Bottom line
 
-Same setup as [bench11](../bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/SUMMARY.md),
+Same setup as [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](../2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/SUMMARY.md),
 same conclusion: **the coordinator (deferred decode) beats the sidecar
 (early-bind decode) at the deep-queueing bursts** given (a) an
 asymmetric decode fleet with observable per-pod pressure and (b) a
-scoring profile that reads it. The bench11 finding at burst 64 replicates
+scoring profile that reads it. The 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer finding at burst 64 replicates
 here at nearly the same magnitude (TTFT p90 −19.5% here vs −24.8% in
-bench11 — a small run-to-run difference on a signal that's genuinely
+2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — a small run-to-run difference on a signal that's genuinely
 present). At burst 128 the coord edge shows up more clearly here than
-in bench11; at burst 256 it's roughly the same shape.
+in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer; at burst 256 it's roughly the same shape.
 
 The request-body fixes make the ITL numbers interpretable for the first
 time — they now agree with TPOT and both agree with wire cadence (see
 bench13). None of the coord vs sidecar wins depend on the fixes: the
-same TTFT and E2E numbers would have shown the same pattern in bench11's
+same TTFT and E2E numbers would have shown the same pattern in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's
 raw data too. The fixes just make the streaming-latency metrics
 usable alongside the latency ones.
 
@@ -268,7 +268,7 @@ usable alongside the latency ones.
 Ranked by scientific value given bench11.1's positive finding:
 
 1. **Repeat bench11.1 to nail down variance.** Two positive results
-   (bench11 + bench11.1) suggest the effect is real; a third would
+   (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer + bench11.1) suggest the effect is real; a third would
    confirm whether the burst-128 win is stable or noise. ~50 min per
    run.
 2. **Reproduce the mechanism.** Cross-check per-decode-pod request
@@ -277,7 +277,7 @@ Ranked by scientific value given bench11.1's positive finding:
    `coordinator.log` `pipeline step timings` per-D-endpoint. Hypothesis:
    sidecar routes uniformly (all pods have 0 active requests at burst
    arrival) while coord routes away from slow pods after KV pressure
-   appears post-prefill. Same as bench11's follow-up #2, now with
+   appears post-prefill. Same as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's follow-up #2, now with
    fresh data.
 3. **Isolate the two design elements.** Run with only the multi-scorer
    profile (uniform 4×8 fleet, no asymmetry). If burst 64/128 still
@@ -299,5 +299,5 @@ Ranked by scientific value given bench11.1's positive finding:
 - Sidecar pod logs: [sidecar/pod_logs_dpikus-pd-sglang-bench_20260726_125241/](sidecar/pod_logs_dpikus-pd-sglang-bench_20260726_125241/) (+ `.tar.gz`)
 - Modified benchmark-job.yaml files (with `skip_special_tokens: false` + `stream_options.include_usage: true`): [coord/bench_config/benchmark-job.yaml](coord/bench_config/benchmark-job.yaml), [sidecar/bench_config/benchmark-job.yaml](sidecar/bench_config/benchmark-job.yaml)
 - Chart source: [analysis/make_charts.py](analysis/make_charts.py) (edit numbers, rerun `python3 make_charts.py` to regenerate PNGs)
-- Decode Deployment manifests and EPP ConfigMaps: byte-identical to bench11's — see [bench11 SUMMARY](../bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/SUMMARY.md#artifacts) for those files
-- Per-decode-pod modelserver logs — same naming as bench11 (`epd-nvidia-gpu-vllm-decode-*` = fast, `epd-nvidia-gpu-vllm-decode-slow-*` = slow, same for sidecar). Cross-reference against `coordinator.log` and `routing-proxy.log` to reconstruct per-pod request distribution at each burst.
+- Decode Deployment manifests and EPP ConfigMaps: byte-identical to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's — see [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer SUMMARY](../2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/SUMMARY.md#artifacts) for those files
+- Per-decode-pod modelserver logs — same naming as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer (`epd-nvidia-gpu-vllm-decode-*` = fast, `epd-nvidia-gpu-vllm-decode-slow-*` = slow, same for sidecar). Cross-reference against `coordinator.log` and `routing-proxy.log` to reconstruct per-pod request distribution at each burst.

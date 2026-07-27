@@ -48,7 +48,9 @@ Two harness families are used:
   (`3Dx8GPU_3Px8GPU_multimedia_baseline`,
   `3Dx8GPU_3Px8GPU_multimedia_rerun`,
   `3Dx8GPU_3Px8GPU_multimedia_active_request_scorer`, `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`,
-  `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`, `bench11*`, `bench13`). Driven by a Job YAML
+  `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`,
+  `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer`, `bench11.1*`,
+  `bench11.2*`, `bench13`). Driven by a Job YAML
   (`bench_config/benchmark-job.yaml`). Model: `Qwen/Qwen3-VL-*-Instruct`.
 
 The vLLM image throughout the sglang-driven benches is
@@ -77,8 +79,8 @@ cluster).
 | [3Dx8GPU_3Px8GPU_multimedia_active_request_scorer](3Dx8GPU_3Px8GPU_multimedia_active_request_scorer/) | coord re-run w/ active-request-scorer | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | prefill bottleneck resolved; coord ≈ sidecar |
 | [4Dx2GPU_3Px2GPU_multimedia_burst_baseline](4Dx2GPU_3Px2GPU_multimedia_burst_baseline/) | multimodal burst 4-128, 3 images | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | coord ≈ sidecar within ±10% at every burst |
 | [4Dx2GPU_3Px2GPU_multimedia_burst_constrained](4Dx2GPU_3Px2GPU_multimedia_burst_constrained/) | multimodal burst 8-256, 1-5 images, decode cliff | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU (`--max-num-seqs=8`) | coord ≈ sidecar within ±3% at deep queueing |
-| [bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | asymmetric decode fleet + multi-scorer | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/256** |
-| [bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | re-run of bench11 with sglang request-body fixes | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/128/256** |
+| [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | asymmetric decode fleet + multi-scorer | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/256** |
+| [bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | re-run of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer with sglang request-body fixes | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/128/256** |
 | [bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace](bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace/) | re-run w/ EPP `--v=4` routing trace | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail; routing skew fast↑ observed** |
 | [sglang-bench-patch-with-burst8](sglang-bench-patch-with-burst8/) | ITL measurement fix, sidecar only | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | sglang ITL 3× inflation explained (request-body fix suffices) |
 
@@ -327,7 +329,7 @@ cliff plus real per-request prefill variance.
 between "at arrival" (sidecar) and "after prefill" (coord) never
 resolves into a load-placement difference.
 
-### bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer
+### 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer
 
 **Purpose.** Expose deferred-decode's advantage by making D-pool load
 state *observable* to a metrics-based scorer, on an *asymmetric* decode
@@ -369,24 +371,24 @@ reproduces a deferred-decode advantage.
 
 ### bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer
 
-**Purpose.** Re-run of `bench11` with sglang-bench request-body fixes
+**Purpose.** Re-run of `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer` with sglang-bench request-body fixes
 (validated in bench13/`sglang-bench-patch-with-burst8`):
 
 ```
 --extra-request-body '{"ignore_eos": true, "skip_special_tokens": false, "stream_options": {"include_usage": true}}'
 ```
 
-**Cluster stack.** Byte-identical to `bench11` (verified via
+**Cluster stack.** Byte-identical to `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer` (verified via
 `diff -r` on bench_config; same EPP ConfigMaps).
 
 **Finding.** Coord edge extends into burst 128 (E2E p90 −11.4%,
 TTFT p90 −13.6%), plus burst 64 (E2E p90 −14.1%) and burst 256
-(throughput +5.7%). Same direction as `bench11`; deferred-decode
+(throughput +5.7%). Same direction as `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer`; deferred-decode
 advantage confirmed reproducible.
 
 ### bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace
 
-**Purpose.** Third repeat of `bench11` with **all three EPPs patched to
+**Purpose.** Third repeat of `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer` with **all three EPPs patched to
 `--v=4`** so each request's picked decode-pod IP is logged
 (`"Request handled" endpoint=<pod-IP>:8000`). Adds direct routing
 observation to the deferred-decode analysis.

@@ -1,4 +1,4 @@
-# bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — coord vs sidecar, asymmetric fleet + metrics-based scoring
+# 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — coord vs sidecar, asymmetric fleet + metrics-based scoring
 
 Coordinator (namespace `dpikus-epd-sglang-bench`) vs sidecar (namespace
 `dpikus-pd-sglang-bench`), both serving `Qwen/Qwen3-VL-32B-Instruct`
@@ -269,9 +269,9 @@ matters, not-so-deep that queue-depth dominates entirely).
 
 ## Follow-up experiments worth running
 
-Ranked by scientific value given bench11's positive finding:
+Ranked by scientific value given 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's positive finding:
 
-1. **Repeat bench11 for run-to-run variance.** 24.8% is a large
+1. **Repeat 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer for run-to-run variance.** 24.8% is a large
    number but it's from a single burst-64 run of 64 requests. Two
    more runs would confirm this isn't a lucky placement. Cheap —
    same configuration, ~50 min total.
@@ -284,14 +284,14 @@ Ranked by scientific value given bench11's positive finding:
    coord routed away from the slow pods as KV pressure appeared
    post-prefill. If per-pod distributions actually look that way,
    the mechanism story is confirmed. No new bench run needed.
-3. **Isolate the two design elements.** Run bench11 with only the
+3. **Isolate the two design elements.** Run 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer with only the
    multi-scorer profile (uniform 4×8 fleet, no asymmetry). If burst
    64 still shows a coord win here, the asymmetric fleet wasn't
    necessary and scorer choice alone is enough. If it doesn't, both
    elements were required. This separates "the scorer sees a signal
    that becomes available during prefill" from "the fleet has visible
    heterogeneity from the start."
-4. **Sweep the asymmetry ratio.** bench11 uses 2×8 + 2×4 = 24 slots
+4. **Sweep the asymmetry ratio.** 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer uses 2×8 + 2×4 = 24 slots
    with 50% slow-pod capacity fraction. Try 3×8 + 1×4 (28 slots,
    14% slow) and 1×8 + 3×4 (20 slots, 60% slow) — where does the
    coord advantage peak, and does it disappear when asymmetry is

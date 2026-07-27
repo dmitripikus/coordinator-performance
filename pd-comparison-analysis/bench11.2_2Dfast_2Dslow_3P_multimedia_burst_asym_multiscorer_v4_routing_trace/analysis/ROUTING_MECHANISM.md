@@ -35,7 +35,7 @@ sglang headlines (this re-run):
 | 256   | duration (s)          |    382.92  |    435.49  |  **−12.1%** |
 | 64/128/256 | Mean TPOT (ms)   | 13.12–13.19 | 13.18–13.42 | tie      |
 
-The advantage magnitude matches bench11 → bench11.1 → bench11.2 (V4-fail) → bench11.2 (this run):
+The advantage magnitude matches 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer → bench11.1 → bench11.2 (V4-fail) → bench11.2 (this run):
 this is now a **four-run positive observation** on the p90 tail metrics,
 with the direction never flipping and the magnitude always in the 10–25% range.
 

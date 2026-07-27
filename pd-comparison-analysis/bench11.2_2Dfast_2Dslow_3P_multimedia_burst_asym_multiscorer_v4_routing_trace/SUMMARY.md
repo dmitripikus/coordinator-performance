@@ -59,7 +59,7 @@ on every win burst. Burst-64 TTFT p90 magnitude ranges −19.5% to
 consistent tail-latency wins (−11.4% to −12.9% E2E p90). Burst 256
 shows a stronger win here (−12.1% duration, −10.3% E2E p90) than in
 some earlier runs, suggesting the advantage grows at severe overload.
-Overall: **four positive runs (bench11, bench11.1, and two attempts
+Overall: **four positive runs (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, bench11.1, and two attempts
 of bench11.2) — the deferred-decode advantage is stable and
 reproducible.**
 
@@ -220,7 +220,7 @@ Three burst sizes show a real, direction-consistent coord edge:
 
 - **Burst 64**: TTFT p90 lower by 23.3%, E2E p90 lower by 18.5% on
   coord — the primary win-zone burst. Reproduces bench11.1's
-  −19.5% / −14.1% and bench11's −24.8% / −19.6%.
+  −19.5% / −14.1% and 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's −24.8% / −19.6%.
 - **Burst 128**: coord E2E p90 lower by 12.9%, TTFT p90 lower by 14.6%,
   duration 2.5% shorter. Same direction as bench11.1 (−11.4% E2E p90).
 - **Burst 256**: coord duration 12.1% lower, throughput 13.7% higher,
@@ -279,7 +279,7 @@ fleet drains earlier.
 ## Reading it
 
 - **Four-run positive observation.** The coord-over-sidecar tail-latency
-  advantage now appears in bench11, bench11.1, bench11.2 (v4-fail
+  advantage now appears in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, bench11.1, bench11.2 (v4-fail
   attempt), and this run. Direction is identical on every win-burst
   across all four runs; magnitude on b64 TTFT p90 ranges from −19.5%
   to −26.6% — well within run-to-run variance. This is no longer
@@ -311,7 +311,7 @@ fleet drains earlier.
   magnitude estimation could benefit from a repeat.
 - **TPOT is nearly identical across every burst on both sides**
   (12.17 → 13.33 ms progression on coord, 12.12 → 13.46 ms on
-  sidecar; largest per-burst diff 0.4 ms). Same as bench11 and
+  sidecar; largest per-burst diff 0.4 ms). Same as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer and
   bench11.1 — confirms decode speed is unchanged; the coord edge is
   purely in queueing / routing.
 - **Output throughput at burst 256** is 1337 tok/s on coord vs 1176
@@ -338,7 +338,7 @@ Ranked by scientific value given bench11.2's direct routing evidence:
 1. **Confirm the mechanism prediction on a scoring-only ablation.**
    Run coord with a *disabled* metrics scorer (e.g., only
    `active-request-scorer` or random selection). If the win zone
-   collapses to bench11-sidecar levels, deferred-decode via scoring
+   collapses to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer-sidecar levels, deferred-decode via scoring
    is *necessary* (not just sufficient). If the win persists, some
    architectural difference besides scoring is contributing.
 2. **Sweep the asymmetry ratio.** Try 3×8 + 1×4 (28 slots, 14% slow)
