@@ -62,6 +62,146 @@ and `--no-disable-hybrid-kv-cache-manager`. On the sglang side,
 `turin-gp` node type is used unless noted otherwise (`kermit_US-EAST-01A`
 cluster).
 
+## Harness invocation
+
+### `inference-perf` — driven from the workstation via `run_only.sh`
+
+Each `inference-perf` bench folder ships a `bench_config/run_only.sh`
+that runs on the workstation and orchestrates a harness pod inside the
+stack namespace. Kicked off per config file:
+
+```
+./bench_config/run_only.sh -c bench_config/config_<shape>.yaml
+```
+
+The config YAML has three top-level blocks the script consumes:
+
+- **`endpoint`** — `stack_name`, `model`, `namespace`, `base_url`
+  (gateway ClusterIP), `hf_token_secret`.
+- **`harness`** — `name: inference-perf`, results PVC (`workload-pvc`),
+  harness namespace (usually the stack namespace), launcher image
+  (`ghcr.io/llm-d/llm-d-benchmark:v0.5.2`), timeout.
+- **`workload`** — one or more keyed workload profiles (e.g.
+  `random_250_5000_isl_osl`) with `load` (constant `rate` + `duration`,
+  `num_workers`, `worker_max_concurrency`), `api`, `server`,
+  `tokenizer`, `data` (`input_distribution` / `output_distribution`
+  min/max/mean/std_dev), and `report`.
+
+What `run_only.sh` does, in order:
+1. Validates the config, the results PVC or cloud bucket, and the HF
+   token secret.
+2. Fires a smoke `curl` against `${base_url}/v1/completions` from a
+   throw-away pod to confirm the model is reachable.
+3. Materializes each workload block as a `${harness_name}-profiles`
+   ConfigMap.
+4. Creates a launcher pod `llmdbench-harness-launcher` (SA:
+   `llmdbench-harness-sa`) that mounts the results volume and the
+   workload-profiles ConfigMap.
+5. For each workload key in the YAML: `kubectl exec` into the launcher
+   pod and run
+   `llm-d-benchmark.sh --harness=inference-perf --workload=<key>`.
+   Stdout/stderr are teed back through `kubectl logs`. Each run gets
+   an experiment ID `<epoch>_<workload>` (per-run subdir on the PVC).
+6. Copies the results back with `kubectl cp` when `-o` is `local` /
+   cloud; otherwise leaves them on the PVC for later retrieval.
+
+Reproduce a single bench's exact runs by re-invoking `run_only.sh`
+once per `config_*.yaml` file in that bench's `bench_config/`. That
+gives the same output-directory shape the `inference-perf_.../`
+subdirectories in each bench folder were built from.
+
+### `sglang.bench_serving` — driven from a k8s Job
+
+Each sglang-driven bench folder ships a
+`bench_config/benchmark-job.yaml` that contains **both** a ConfigMap
+(`sglang-bench-script`) with the run script and a `Job`
+(`sglang-bench`). Applied against the stack namespace:
+
+```
+kubectl -n <stack-namespace> apply -f bench_config/benchmark-job.yaml
+kubectl -n <stack-namespace> logs -f job/sglang-bench   # stream output
+```
+
+The Job runs a `docker.io/lmsysorg/sglang:v0.5.14` container that
+executes the embedded `run_bench.sh`. Typical shape (from
+`4Dx2GPU_3Px2GPU_multimedia_burst_constrained`):
+
+```bash
+MODEL="Qwen/Qwen3-VL-32B-Instruct"
+BURST_RATE=1000
+BURST_SIZES=(8 16 32 64 128 256)
+for burst_size in "${BURST_SIZES[@]}"; do
+  python -m sglang.bench_serving \
+    --model "${MODEL}" \
+    --num-prompts "${burst_size}" \
+    --dataset-name image \
+    --random-input-len 300 --random-output-len 2000 \
+    --image-count 5 --random-image-count --image-resolution 1080p \
+    --host llm-d-inference-gateway-istio --port 80 \
+    --backend sglang-oai-chat \
+    --request-rate "${BURST_RATE}" \
+    --random-range-ratio 1.0 \
+    --extra-request-body '{"ignore_eos": true}'
+  sleep 60
+done
+```
+
+Details that vary bench to bench (all in the ConfigMap script):
+
+- `MODEL` — Qwen3-VL-32B for the 4D×2GPU benches;
+  Qwen3-VL-235B-A22B-Instruct for the 3D×8GPU benches.
+- Load pattern — either a burst sweep (`BURST_SIZES`,
+  `BURST_RATE=1000` for effectively instantaneous arrival) or a
+  concurrency sweep (`CONCURRENCY_LEVELS`, `--request-rate` equal to
+  the level, `--num-prompts` equal to the level).
+- `--extra-request-body` — `{"ignore_eos": true}` in the earliest
+  runs; extended to `{"ignore_eos": true, "skip_special_tokens":
+  false, "stream_options": {"include_usage": true}}` starting from
+  `..._request_body_fixed`.
+- Node/instance-type affinity on the Job pod (`turin-gp` on
+  `kermit_US-EAST-01A`) and per-run tweaks
+  (`--image-count`/`--random-image-count`, per-burst quiesce).
+
+Results collection is external: pod logs (Job pod plus every EPP /
+coordinator / vLLM pod) are captured with a companion `collect` tool
+into the `pod_logs_.../` subdirectories. The Job pod's stdout log
+(`sglang-bench-*.log`) contains per-burst summary tables written by
+`sglang.bench_serving`. Reproduce a bench by `kubectl apply -f
+bench_config/benchmark-job.yaml` against the corresponding stack
+namespace (coord: `dpikus-epd-sglang-bench`, sidecar:
+`dpikus-pd-sglang-bench`).
+
+### Warmup
+
+Every bench folder (both inference-perf-driven and sglang-driven)
+ships a `bench_config/config_warmup.yaml` that is used to prime the
+fleet before the timed run. Warmup always goes through
+`inference-perf`, regardless of the primary harness — it's a short
+inference-perf workload (low concurrency, short OSL) meant to force
+prefill + NIXL KV transfer + decode across every replica so the first
+timed request doesn't pay one-off compile / cache / connect costs.
+Invocation is identical to the main run:
+
+```
+./bench_config/run_only.sh -c bench_config/config_warmup.yaml
+```
+
+The sglang-driven benches use `inference-perf` here specifically
+because a low-concurrency prime is needed *before* applying
+`benchmark-job.yaml` — the sglang burst driver itself doesn't have a
+warmup mode, and at those benches' offered concurrency the primary
+run would time out on cold pods. See the leading comment in any
+sglang-side `config_warmup.yaml` for the exact rationale.
+
+### Scaling the vLLM fleet up/down between runs
+
+Sglang-driven bench folders also ship `scaleup_vllms.sh` and
+`scaledown_vllms.sh` — thin wrappers around
+`kubectl scale deploy/... --replicas=<N>` for the decode/prefill
+Deployments. Used to bring the fleet up before applying the Job and
+back down to 0 replicas after, so GPU capacity can be handed to the
+other side of the coord-vs-sidecar comparison.
+
 ---
 
 ## Benchmark index
