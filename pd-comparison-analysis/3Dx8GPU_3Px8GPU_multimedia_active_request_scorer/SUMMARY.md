@@ -1,4 +1,4 @@
-# bench7.2_3Dx8GPU_3Px8GPU_multimedia — coord (re-run) vs sidecar, multimodal serving
+# 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer — coord (re-run) vs sidecar, multimodal serving
 
 Coordinator (namespace `dpikus-epd-sglang-bench`) vs sidecar (namespace
 `dpikus-pd-sglang-bench`), both running 3 decode replicas and 3 prefill
@@ -12,12 +12,12 @@ This is a **coord-only re-run** of the workload from `3Dx8GPU_3Px8GPU_multimedia
 sidecar side is byte-identical to `3Dx8GPU_3Px8GPU_multimedia_rerun/sidecar/` (verified via
 `diff -r`, same `sglang-bench-6nd2g.log` and same
 `pod_logs_dpikus-pd-sglang-bench_20260719_154752/`), so the sidecar
-numbers below are the same baseline; bench7.2 replaces the coord run
+numbers below are the same baseline; 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer replaces the coord run
 with a fresh one recorded on 2026-07-20
 (`sglang-bench-t9zxz.log`,
 `pod_logs_dpikus-epd-sglang-bench_20260720_112117/`). The coord
 bench_config on disk is byte-identical to 3Dx8GPU_3Px8GPU_multimedia_rerun (verified via
-`diff -r`) — the git commit labels bench7.2 as
+`diff -r`) — the git commit labels 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer as
 "coordinator — with active-request-scorer", indicating the scorer was
 actually in effect at runtime for this run (a claim consistent with the
 prefill-pool timing collapse shown in "Reading it" below). Each side
@@ -112,9 +112,9 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
 ## Reading it
 
 - **The 3Dx8GPU_3Px8GPU_multimedia_rerun prefill-pool queueing bottleneck is essentially gone
-  in bench7.2.** In 3Dx8GPU_3Px8GPU_multimedia_rerun coord's coordinator-logged prefill leg
+  in 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer.** In 3Dx8GPU_3Px8GPU_multimedia_rerun coord's coordinator-logged prefill leg
   ran to a median of 40.0s, p90 87.5s, max 104.7s across 115 pooled
-  requests. In bench7.2, pooling all 225 `pipeline step timings`
+  requests. In 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer, pooling all 225 `pipeline step timings`
   entries in `coordinator.log` gives **prefill median 155ms, p90
   8.16s, max 12.74s, mean 2.75s** — a >250x reduction in the median
   prefill-leg duration. The client-side TTFT numbers move in the same
@@ -134,7 +134,7 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
 - **The 3Dx8GPU_3Px8GPU_multimedia_rerun crossover pattern (coord loses on TTFT, wins on
   TPOT/ITL) has flattened.** In 3Dx8GPU_3Px8GPU_multimedia_rerun coord's TPOT/ITL were
   40-57% *lower* than sidecar's, offset by TTFT being 4-8x *higher*.
-  In bench7.2 coord's TPOT is at parity with sidecar at concurrency 10
+  In 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer coord's TPOT is at parity with sidecar at concurrency 10
   (-13%) and effectively equal at 20/30/40 (+2 to +5%), and ITL is a
   few percent lower on coord throughout. The prefill-side improvement
   is what removed the coord TTFT disadvantage; the smaller decode-side
@@ -147,12 +147,12 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
   throughput gap seen in 3Dx8GPU_3Px8GPU_multimedia_rerun, and small enough that a repeat run
   would be needed to tell whether it is a real residual gap or
   run-to-run variance.
-- **Per the git commit that introduced these results, bench7.2
+- **Per the git commit that introduced these results, 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer
   differs from 3Dx8GPU_3Px8GPU_multimedia_rerun's coord run by "active-request-scorer" being
   in effect at runtime.** The on-disk EPP ConfigMaps
   (`coordinator-epd-prefill-epp` and `coordinator-epd-decode-epp`,
   loading `/config/epd-plugins.yaml`) already reference
-  `active-request-scorer` in both 3Dx8GPU_3Px8GPU_multimedia_rerun and bench7.2 (verified via
+  `active-request-scorer` in both 3Dx8GPU_3Px8GPU_multimedia_rerun and 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer (verified via
   file diff), so the runtime state change likely came from an EPP
   restart / rollout between the two runs rather than a config-file
   edit visible in this directory. That matches the observed effect:

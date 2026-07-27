@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
 
-BASE = "/Users/dpikus/PROJECTS/llm-d/repos/coordinator-performance/pd-comparison-analysis/bench7.2_3Dx8GPU_3Px8GPU_multimedia"
+BASE = "/Users/dpikus/PROJECTS/llm-d/repos/coordinator-performance/pd-comparison-analysis/3Dx8GPU_3Px8GPU_multimedia_active_request_scorer"
 
 CONCURRENCY = [10, 20, 30, 40]
 ARCHS = {"coord": "#2b6cb0", "sidecar": "#c05621"}
 
 # Parsed directly from each side's sglang bench_serving "Serving Benchmark Result" blocks.
-# bench7.2 coord = fresh coord run (sglang-bench-t9zxz.log).
-# sidecar values are identical to 3Dx8GPU_3Px8GPU_multimedia_rerun — the sidecar directory in bench7.2 is a
+# 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer coord = fresh coord run (sglang-bench-t9zxz.log).
+# sidecar values are identical to 3Dx8GPU_3Px8GPU_multimedia_rerun — the sidecar directory in 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer is a
 # byte-identical copy of 3Dx8GPU_3Px8GPU_multimedia_rerun/sidecar (verified via diff), so we compare
-# bench7.2's coord numbers against the same sidecar baseline.
+# 3Dx8GPU_3Px8GPU_multimedia_active_request_scorer's coord numbers against the same sidecar baseline.
 DATA = {
     "coord": {
         "e2e_median": [23173.61, 37200.34, 64228.99, 69565.38],
