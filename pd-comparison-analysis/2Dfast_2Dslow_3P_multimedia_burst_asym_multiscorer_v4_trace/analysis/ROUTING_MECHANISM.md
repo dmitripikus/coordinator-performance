@@ -4,7 +4,7 @@
 
 The V(4) EPP-trace approach, this time with per-request pod-attribution
 captured continuously via `kubectl logs -f` (rather than relying on
-`kubectl logs --since` after the run, which the earlier bench11.2
+`kubectl logs --since` after the run, which the earlier 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace
 attempt did and lost most of the log to container-log rotation),
 gives the direct answer we couldn't get from 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's mechanism
 analysis: **sidecar routes decode requests essentially uniformly across
@@ -35,7 +35,7 @@ sglang headlines (this re-run):
 | 256   | duration (s)          |    382.92  |    435.49  |  **−12.1%** |
 | 64/128/256 | Mean TPOT (ms)   | 13.12–13.19 | 13.18–13.42 | tie      |
 
-The advantage magnitude matches 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer → 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed → bench11.2 (V4-fail) → bench11.2 (this run):
+The advantage magnitude matches 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer → 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed → 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace (V4-fail) → 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace (this run):
 this is now a **four-run positive observation** on the p90 tail metrics,
 with the direction never flipping and the magnitude always in the 10–25% range.
 
@@ -119,9 +119,9 @@ At **burst 256** (24 slots, 257 requests), duration itself drops by
 finish earlier, matching the deferred-decode signature seen in
 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's per-pod concurrency analysis.
 
-## Why bench11.2's previous attempt didn't see this
+## Why 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace's previous attempt didn't see this
 
-The earlier run of bench11.2 patched all three EPPs to `--v=4` but
+The earlier run of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace patched all three EPPs to `--v=4` but
 never restarted the gateways after the rollout. That left Envoy's
 ExtProc filter attached to the response-side of the new EPP pod but
 not the request-side — so only 18 unique `x-request-id` values ever

@@ -1,4 +1,4 @@
-"""bench11.2 (re-run) — per-request routing analysis for the coord-vs-sidecar
+"""2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace (re-run) — per-request routing analysis for the coord-vs-sidecar
 deferred-decode mechanism question.
 
 Parses each side's decode-EPP `epp.log` for `"Request handled"` entries and
@@ -27,7 +27,7 @@ import numpy as np
 BASE = Path(
     "/Users/dpikus/PROJECTS/llm-d/repos/coordinator-performance/"
     "pd-comparison-analysis/"
-    "bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace"
+    "2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace"
 )
 
 

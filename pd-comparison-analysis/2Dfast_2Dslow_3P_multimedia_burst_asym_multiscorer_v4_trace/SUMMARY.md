@@ -1,4 +1,4 @@
-# bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace — coord vs sidecar, asymmetric fleet + V(4) EPP routing trace
+# 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace — coord vs sidecar, asymmetric fleet + V(4) EPP routing trace
 
 Coordinator (namespace `dpikus-epd-sglang-bench`) vs sidecar (namespace
 `dpikus-pd-sglang-bench`), both serving `Qwen/Qwen3-VL-32B-Instruct`
@@ -60,7 +60,7 @@ consistent tail-latency wins (−11.4% to −12.9% E2E p90). Burst 256
 shows a stronger win here (−12.1% duration, −10.3% E2E p90) than in
 some earlier runs, suggesting the advantage grows at severe overload.
 Overall: **four positive runs (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed, and two attempts
-of bench11.2) — the deferred-decode advantage is stable and
+of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace) — the deferred-decode advantage is stable and
 reproducible.**
 
 **New evidence in this run:** per-request routing decisions,
@@ -250,7 +250,7 @@ to p90. X-axis is burst size (num_prompts), log-2 scaled from 8 to
 256. Dashed vertical line at 24 marks the fleet-wide decode-slot cap
 (2 fast × 8 + 2 slow × 4). Data source: [analysis/make_charts.py](analysis/make_charts.py).
 
-### Routing decisions (unique to bench11.2)
+### Routing decisions (unique to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace)
 
 ![Fast vs slow decode assignments per burst](analysis/fast_vs_slow_by_burst.png)
 ![Per-pod decode assignments detail](analysis/per_pod_assignments.png)
@@ -279,7 +279,7 @@ fleet drains earlier.
 ## Reading it
 
 - **Four-run positive observation.** The coord-over-sidecar tail-latency
-  advantage now appears in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed, bench11.2 (v4-fail
+  advantage now appears in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed, 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace (v4-fail
   attempt), and this run. Direction is identical on every win-burst
   across all four runs; magnitude on b64 TTFT p90 ranges from −19.5%
   to −26.6% — well within run-to-run variance. This is no longer
@@ -333,7 +333,7 @@ extra fast-pod routing on coord.
 
 ## Follow-up experiments worth running
 
-Ranked by scientific value given bench11.2's direct routing evidence:
+Ranked by scientific value given 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace's direct routing evidence:
 
 1. **Confirm the mechanism prediction on a scoring-only ablation.**
    Run coord with a *disabled* metrics scorer (e.g., only
@@ -350,11 +350,11 @@ Ranked by scientific value given bench11.2's direct routing evidence:
    Uniform fleet where some requests are much slower to prefill than
    others (e.g., 5× larger prompts on 10% of requests). Same
    theoretical mechanism, real-workload analog.
-4. **Repeat bench11.2 without V(4) logging to check for observer
+4. **Repeat 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace without V(4) logging to check for observer
    effects.** V(4) EPP logging adds notable CPU + I/O overhead
    (226 MB of logs in 25 min for coord decode-EPP alone). Both sides
    pay it equally, so the comparison is fair, but absolute duration
-   numbers between 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed and bench11.2 aren't directly comparable
+   numbers between 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed and 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace aren't directly comparable
    for this reason.
 
 ## Artifacts
@@ -368,7 +368,7 @@ Ranked by scientific value given bench11.2's direct routing evidence:
 - Sidecar pod logs: [sidecar/pod_logs_dpikus-pd-sglang-bench_20260726_192629/](sidecar/pod_logs_dpikus-pd-sglang-bench_20260726_192629/) (+ `.tar.gz`)
 - Benchmark-job.yaml: [coord/bench_config/benchmark-job.yaml](coord/bench_config/benchmark-job.yaml), [sidecar/bench_config/benchmark-job.yaml](sidecar/bench_config/benchmark-job.yaml)
 - Headline chart source: [analysis/make_charts.py](analysis/make_charts.py)
-- **Routing analysis** (new for bench11.2): [analysis/routing_analysis.py](analysis/routing_analysis.py) — parses `"Request handled"` V(3) lines, maps IP → pod-name → variant, tallies per-burst
+- **Routing analysis** (new for 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace): [analysis/routing_analysis.py](analysis/routing_analysis.py) — parses `"Request handled"` V(3) lines, maps IP → pod-name → variant, tallies per-burst
 - **Routing verdict**: [analysis/ROUTING_MECHANISM.md](analysis/ROUTING_MECHANISM.md) — the direct evidence, with queue-depth math showing why the observed skew is enough to move p90
 - **Machine-readable routing summary**: [analysis/routing_summary.txt](analysis/routing_summary.txt)
 - Per-pod concurrency fallback: [analysis/mechanism_analysis.py](analysis/mechanism_analysis.py)

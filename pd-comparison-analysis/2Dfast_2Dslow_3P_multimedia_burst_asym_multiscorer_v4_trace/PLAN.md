@@ -1,4 +1,4 @@
-# bench11.2 — re-run of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed with EPP `--v=4` routing trace
+# 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace — re-run of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed with EPP `--v=4` routing trace
 
 ## Purpose
 
@@ -6,7 +6,7 @@ The [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed mecha
 concluded that the coord-vs-sidecar tail-latency win at bursts 64 and
 128 is *consistent* with deferred-decode as the mechanism, but the
 per-pod-load evidence alone was inconclusive because no log we had
-recorded which decode pod each request was routed to. bench11.2 patches
+recorded which decode pod each request was routed to. 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace patches
 all three EPPs (`coordinator-epd-decode-epp`, `coordinator-epd-prefill-epp`,
 `pd-disaggregation-epp`) from `--v=2` to `--v=4` and re-runs the same
 6-burst sweep (8/16/32/64/128/256) on both coord and sidecar sides,

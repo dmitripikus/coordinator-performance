@@ -51,7 +51,7 @@ Two harness families are used:
   `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`,
   `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer`,
   `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed`,
-  `bench11.2*`, `bench13`). Driven by a Job YAML
+  `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace`, `bench13`). Driven by a Job YAML
   (`bench_config/benchmark-job.yaml`). Model: `Qwen/Qwen3-VL-*-Instruct`.
 
 The vLLM image throughout the sglang-driven benches is
@@ -82,7 +82,7 @@ cluster).
 | [4Dx2GPU_3Px2GPU_multimedia_burst_constrained](4Dx2GPU_3Px2GPU_multimedia_burst_constrained/) | multimodal burst 8-256, 1-5 images, decode cliff | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU (`--max-num-seqs=8`) | coord ≈ sidecar within ±3% at deep queueing |
 | [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | asymmetric decode fleet + multi-scorer | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/256** |
 | [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed](2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed/) | re-run of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer with sglang request-body fixes | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/128/256** |
-| [bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace](bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace/) | re-run w/ EPP `--v=4` routing trace | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail; routing skew fast↑ observed** |
+| [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace](2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace/) | re-run w/ EPP `--v=4` routing trace | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail; routing skew fast↑ observed** |
 | [sglang-bench-patch-with-burst8](sglang-bench-patch-with-burst8/) | ITL measurement fix, sidecar only | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | sglang ITL 3× inflation explained (request-body fix suffices) |
 
 ---
@@ -387,7 +387,7 @@ TTFT p90 −13.6%), plus burst 64 (E2E p90 −14.1%) and burst 256
 (throughput +5.7%). Same direction as `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer`; deferred-decode
 advantage confirmed reproducible.
 
-### bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace
+### 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace
 
 **Purpose.** Third repeat of `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer` with **all three EPPs patched to
 `--v=4`** so each request's picked decode-pod IP is logged

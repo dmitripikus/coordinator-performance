@@ -1,5 +1,5 @@
-"""bench11.2: same per-pod concurrency mechanism analysis as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed,
-run against bench11.2's modelserver.logs to test reproducibility of the
+"""2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace: same per-pod concurrency mechanism analysis as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed,
+run against 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace's modelserver.logs to test reproducibility of the
 tail-drain signal.
 
 This is our fallback because the EPP V(4) approach didn't yield per-request
@@ -18,7 +18,7 @@ import numpy as np
 BASE = Path(
     "/Users/dpikus/PROJECTS/llm-d/repos/coordinator-performance/"
     "pd-comparison-analysis/"
-    "bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace"
+    "2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace"
 )
 
 
@@ -160,7 +160,7 @@ def plot_running(burst, fname):
         ax.set_title(f"{side} — burst {burst}")
         ax.grid(True, alpha=0.3)
         ax.legend(fontsize=7, loc="upper right")
-    fig.suptitle(f"bench11.2 — Per-decode-pod concurrent Running requests over burst {burst} window")
+    fig.suptitle(f"2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace — Per-decode-pod concurrent Running requests over burst {burst} window")
     fig.tight_layout()
     fig.savefig(BASE / "analysis" / fname, dpi=130)
     plt.close(fig)
@@ -184,7 +184,7 @@ def plot_saturation():
     ax.set_ylabel("mean saturation (Running / max_seqs)")
     ax.set_ylim(0, 1.05)
     ax.axhline(1.0, color="k", linewidth=0.5, alpha=0.3)
-    ax.set_title("bench11.2 — Per-pod mean saturation over the burst window")
+    ax.set_title("2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace — Per-pod mean saturation over the burst window")
     ax.grid(True, alpha=0.3, axis="y")
     ax.legend(fontsize=8)
     fig.tight_layout()
@@ -214,7 +214,7 @@ def plot_queue_depth():
         ax.set_title(f"burst {burst}")
         ax.grid(True, alpha=0.3)
         ax.legend()
-    fig.suptitle("bench11.2 — Fleet-wide queued-request depth")
+    fig.suptitle("2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_trace — Fleet-wide queued-request depth")
     fig.tight_layout()
     fig.savefig(BASE / "analysis" / "queue_depth.png", dpi=130)
     plt.close(fig)
