@@ -40,7 +40,7 @@ Two harness families are used:
 - **`inference-perf`** (v0.5.2 image `ghcr.io/llm-d/llm-d-benchmark:v0.5.2`) —
   used for the earlier text-only benches (`bench1-*`,
   `1D_1P_250IT_5000OT_decode_heavy`, `2D_8P_5000IT_250OT_prefill_heavy`,
-  `bench6`). Driven by
+  `3D_8P_250IT_4000OT_decode_heavy`). Driven by
   per-step YAML configs
   (`bench_config/config_*.yaml`). Model: `openai/gpt-oss-120b`.
 - **`sglang.bench_serving`** (`lmsysorg/sglang:v0.5.14` in a k8s Job) —
@@ -68,7 +68,7 @@ cluster).
 | [bench1-3_var_prompt_always_disaggr](bench1-3_var_prompt_always_disaggr/) | var IT, fixed OT=20, pods node-pinned | gpt-oss-120b | 1D/1P (pinned) | coord ≈ sidecar; ITL within 0.7% across sizes |
 | [1D_1P_250IT_5000OT_decode_heavy](1D_1P_250IT_5000OT_decode_heavy/) | 250 IT / 5000 OT, single-stream | gpt-oss-120b | 1D/1P | coord ~7% faster (decode-bound) |
 | [2D_8P_5000IT_250OT_prefill_heavy](2D_8P_5000IT_250OT_prefill_heavy/) | 5000 IT / 250 OT, 45 req/s (saturating) | gpt-oss-120b | 2D/8P | sidecar wins under load (TTFT tail) |
-| [bench6_3D_8P_250IT_4000OT](bench6_3D_8P_250IT_4000OT/) | 250 IT / 4000 OT, 10 req/s | gpt-oss-120b | 3D/8P (3 coord replicas) | coord ≈ sidecar within ~0.5% |
+| [3D_8P_250IT_4000OT_decode_heavy](3D_8P_250IT_4000OT_decode_heavy/) | 250 IT / 4000 OT, 10 req/s | gpt-oss-120b | 3D/8P (3 coord replicas) | coord ≈ sidecar within ~0.5% |
 | [bench7_3Dx8GPU_3Px8GPU_multimedia](bench7_3Dx8GPU_3Px8GPU_multimedia/) | multimodal, image+text, concurrency 10-40 | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | sidecar ~2-2.3× faster (coord prefill pool bottleneck) |
 | [bench7.1_3Dx8GPU_3Px8GPU_multimedia](bench7.1_3Dx8GPU_3Px8GPU_multimedia/) | re-run of bench7 | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | coord TTFT 4-8× higher (prefill queue bottleneck) |
 | [bench7.2_3Dx8GPU_3Px8GPU_multimedia](bench7.2_3Dx8GPU_3Px8GPU_multimedia/) | coord re-run w/ active-request-scorer | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | prefill bottleneck resolved; coord ≈ sidecar |
@@ -205,7 +205,7 @@ latency p99 16.3% lower; medians close (~1.5%). TPOT is a dead tie.
 Coord's serialized cross-pod prefill hop queues under contention
 (prefill-leg p99 ~9.1 s from coordinator.log).
 
-### bench6_3D_8P_250IT_4000OT
+### 3D_8P_250IT_4000OT_decode_heavy
 
 **Purpose.** Decode-heavy, high-concurrency shape below the saturation
 knee, with a horizontally-scaled coordinator.

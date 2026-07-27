@@ -1,4 +1,4 @@
-# bench6 — 250-in / 4000-out, 3D/8P: Coordinator vs Sidecar (tuned coordinator)
+# 3D_8P_250IT_4000OT_decode_heavy — 250-in / 4000-out, 3D/8P: Coordinator vs Sidecar (tuned coordinator)
 
 Benchmark: `inference-perf`, model `openai/gpt-oss-120b`, P/D disaggregation,
 **3 decode + 8 prefill** pods (3D/8P) in both arms.
