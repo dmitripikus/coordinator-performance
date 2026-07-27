@@ -1,4 +1,4 @@
-# bench7, 3D/3P x8GPU multimedia (image+text): Coordinator (EPD) vs Sidecar (PD)
+# 3Dx8GPU_3Px8GPU_multimedia_baseline, 3D/3P x8GPU multimedia (image+text): Coordinator (EPD) vs Sidecar (PD)
 
 Benchmark: `sglang-bench` (`sglang-oai-chat` backend), model `Qwen/Qwen3-VL-235B-A22B-Instruct`,
 multimodal requests (1-3 random JPEG images per request, ~300 text tokens in,

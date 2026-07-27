@@ -2,7 +2,7 @@ endpoint:
   stack_name: &stack_name epd-gpt-qwen3-VL   # user defined name for the stack (results prefix)
   model: &model Qwen/Qwen3-VL-235B-A22B-Instruct         # Exact HuggingFace model name. Must match stack deployed.
   namespace: &namespace dpikus-epd-sglang-bench        # Namespace where stack is deployed
-  base_url: &url http://10.16.1.178:80   # Base URL of inference endpoint
+  base_url: &url http://10.16.2.63:80   # Base URL of inference endpoint
   hf_token_secret: llm-d-hf-token           # The name of secret that contains the HF token of the stack
 
 control:
@@ -26,7 +26,7 @@ env:
     value: "4"
 
 # Warmup workload — priming, not stress.
-# Rationale (see bench7 investigation): the 235B backend delivers ~1250 tok/s per decode pod.
+# Rationale (see 3Dx8GPU_3Px8GPU_multimedia_baseline investigation): the 235B backend delivers ~1250 tok/s per decode pod.
 # With OSL=4000 and 400 concurrent, per-request throughput drops to ~9.5 tok/s → 7 min/request,
 # which exceeds the harness aiohttp streaming timeout (~5 min) → 100% client-side timeouts.
 # This warmup uses low concurrency and short OSL so every request completes end-to-end,
