@@ -48,7 +48,7 @@ Two harness families are used:
   (`3Dx8GPU_3Px8GPU_multimedia_baseline`,
   `3Dx8GPU_3Px8GPU_multimedia_rerun`,
   `3Dx8GPU_3Px8GPU_multimedia_active_request_scorer`, `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`,
-  `bench10`, `bench11*`, `bench13`). Driven by a Job YAML
+  `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`, `bench11*`, `bench13`). Driven by a Job YAML
   (`bench_config/benchmark-job.yaml`). Model: `Qwen/Qwen3-VL-*-Instruct`.
 
 The vLLM image throughout the sglang-driven benches is
@@ -76,7 +76,7 @@ cluster).
 | [3Dx8GPU_3Px8GPU_multimedia_rerun](3Dx8GPU_3Px8GPU_multimedia_rerun/) | re-run of `3Dx8GPU_3Px8GPU_multimedia_baseline` | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | coord TTFT 4-8× higher (prefill queue bottleneck) |
 | [3Dx8GPU_3Px8GPU_multimedia_active_request_scorer](3Dx8GPU_3Px8GPU_multimedia_active_request_scorer/) | coord re-run w/ active-request-scorer | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | prefill bottleneck resolved; coord ≈ sidecar |
 | [4Dx2GPU_3Px2GPU_multimedia_burst_baseline](4Dx2GPU_3Px2GPU_multimedia_burst_baseline/) | multimodal burst 4-128, 3 images | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | coord ≈ sidecar within ±10% at every burst |
-| [bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained](bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/) | multimodal burst 8-256, 1-5 images, decode cliff | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU (`--max-num-seqs=8`) | coord ≈ sidecar within ±3% at deep queueing |
+| [4Dx2GPU_3Px2GPU_multimedia_burst_constrained](4Dx2GPU_3Px2GPU_multimedia_burst_constrained/) | multimodal burst 8-256, 1-5 images, decode cliff | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU (`--max-num-seqs=8`) | coord ≈ sidecar within ±3% at deep queueing |
 | [bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | asymmetric decode fleet + multi-scorer | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/256** |
 | [bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | re-run of bench11 with sglang request-body fixes | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/128/256** |
 | [bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace](bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace/) | re-run w/ EPP `--v=4` routing trace | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail; routing skew fast↑ observed** |
@@ -302,7 +302,7 @@ request, 60 s quiesce between bursts.
 **Finding.** Coord ≈ sidecar within ±10% at every burst — the deferred
 -decode hypothesis is not supported by these numbers on this fleet.
 
-### bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained
+### 4Dx2GPU_3Px2GPU_multimedia_burst_constrained
 
 **Purpose.** Retry of 4Dx2GPU_3Px2GPU_multimedia_burst_baseline's deferred-decode hypothesis under
 conditions specifically constructed to expose it: hard decode capacity
@@ -333,7 +333,7 @@ resolves into a load-placement difference.
 state *observable* to a metrics-based scorer, on an *asymmetric* decode
 pool that the naive scorer can't reason about.
 
-**Harness.** Same burst sweep as `bench10`: `(8 16 32 64 128 256)`,
+**Harness.** Same burst sweep as `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`: `(8 16 32 64 128 256)`,
 `--num-prompts=<burst>`, `--request-rate=1000`, 1-5 images
 (`--random-image-count`), IT=300, OT=2000, `seed=42`. Only
 `--extra-request-body '{"ignore_eos": true}'` (sglang measurement bugs
@@ -427,7 +427,7 @@ out to be a request-body change, not the code — see Finding below.
 
 Only the **sidecar side** was run; this is a measurement-methodology
 bench, not a coord-vs-sidecar comparison. Fixed workload: burst=8, 2000
-output tokens, same model/fleet as 4Dx2GPU_3Px2GPU_multimedia_burst_baseline/bench10.
+output tokens, same model/fleet as 4Dx2GPU_3Px2GPU_multimedia_burst_baseline/4Dx2GPU_3Px2GPU_multimedia_burst_constrained.
 
 **Cluster stack.**
 - Model `Qwen/Qwen3-VL-32B-Instruct`, sidecar side only.

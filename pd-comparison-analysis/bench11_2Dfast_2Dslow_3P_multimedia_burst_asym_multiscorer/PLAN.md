@@ -1,9 +1,9 @@
 # bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — PLAN
 
-Follow-up to `bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained`, which
+Follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`, which
 was itself a follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`.
 
-## Recap: why 4Dx2GPU_3Px2GPU_multimedia_burst_baseline and bench10 both produced null results
+## Recap: why 4Dx2GPU_3Px2GPU_multimedia_burst_baseline and 4Dx2GPU_3Px2GPU_multimedia_burst_constrained both produced null results
 
 - **Sanity check confirmed**: both sides run identical scoring configuration
   — the schedulingProfile actually loaded by the EPP references ONLY
@@ -16,7 +16,7 @@ was itself a follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`.
   of prior burst-mates, coord's post-prefill bind sees the same correct
   spread — they compute the same output and land the same distribution.
 - **The premise "sidecar's arrival-time state is stale" was false** for
-  this scorer. That's what killed the hypothesis in 4Dx2GPU_3Px2GPU_multimedia_burst_baseline and bench10.
+  this scorer. That's what killed the hypothesis in 4Dx2GPU_3Px2GPU_multimedia_burst_baseline and 4Dx2GPU_3Px2GPU_multimedia_burst_constrained.
 
 ## bench11 fixes both root causes
 
@@ -66,7 +66,7 @@ Additional distinguishing label `llm-d.ai/variant=fast|slow` on both
 `.spec.selector.matchLabels` and `.spec.template.metadata.labels` so
 each Deployment only owns its own pods.
 
-Total decode capacity: 2 × 8 + 2 × 4 = 24 slots (vs bench10's 32).
+Total decode capacity: 2 × 8 + 2 × 4 = 24 slots (vs 4Dx2GPU_3Px2GPU_multimedia_burst_constrained's 32).
 Bursts still stress the fleet at the same relative points (see below).
 
 **Why this exposes deferred-decode's advantage**: `active-request-scorer`
@@ -91,14 +91,14 @@ bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/
 ├── PLAN.md                                             (this file)
 ├── coord/
 │   └── bench_config/
-│       ├── benchmark-job.yaml                           (unchanged from bench10)
+│       ├── benchmark-job.yaml                           (unchanged from 4Dx2GPU_3Px2GPU_multimedia_burst_constrained)
 │       ├── coordinator-epd-decode-epp-cm.yaml           (NEW — Change 1: patched EPP ConfigMap)
 │       ├── coordinator-epd-prefill-epp-cm.yaml          (fetched but NOT modified — prefill scoring unchanged)
 │       ├── decode-fast.yaml                             (was decode.yaml, now replicas=2 + variant=fast label)
 │       └── decode-slow.yaml                             (NEW — Change 2: max-num-seqs=4, replicas=2, variant=slow)
 └── sidecar/
     └── bench_config/
-        ├── benchmark-job.yaml                           (unchanged from bench10)
+        ├── benchmark-job.yaml                           (unchanged from 4Dx2GPU_3Px2GPU_multimedia_burst_constrained)
         ├── pd-disaggregation-epp-cm.yaml                (NEW — Change 1: patched EPP ConfigMap)
         ├── decode-fast.yaml                             (was decode.yaml, replicas=2 + variant=fast label)
         └── decode-slow.yaml                             (NEW — Change 2: max-num-seqs=4, replicas=2, variant=slow)
@@ -106,7 +106,7 @@ bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/
 
 ## Setup steps (in order)
 
-Both sides currently scaled to 0 replicas (bench10 tore them down).
+Both sides currently scaled to 0 replicas (4Dx2GPU_3Px2GPU_multimedia_burst_constrained tore them down).
 Nothing in production is affected by these Deployment/ConfigMap changes.
 
 ### 1. Apply Change 1 — EPP ConfigMaps + roll the EPP pods
@@ -181,11 +181,11 @@ and continue.
 
 ## Expected fingerprint
 
-Same burst sweep as bench10 (`BURST_SIZES=(8 16 32 64 128 256)`,
+Same burst sweep as 4Dx2GPU_3Px2GPU_multimedia_burst_constrained (`BURST_SIZES=(8 16 32 64 128 256)`,
 random-image-count 1–5, 300-in / 2000-out), so results are directly
-comparable to bench10's numbers.
+comparable to 4Dx2GPU_3Px2GPU_multimedia_burst_constrained's numbers.
 
-Total fleet slots: 2×8 + 2×4 = **24** (vs bench10's 32).
+Total fleet slots: 2×8 + 2×4 = **24** (vs 4Dx2GPU_3Px2GPU_multimedia_burst_constrained's 32).
 
 | burst | vs cliff (24) | expected regime | prediction |
 |---:|---|---|---|
@@ -221,26 +221,26 @@ Total fleet slots: 2×8 + 2×4 = **24** (vs bench10's 32).
 
 ## Rollback
 
-To undo bench11 and return to a bench10-like uniform 4×8 fleet:
+To undo bench11 and return to a 4Dx2GPU_3Px2GPU_multimedia_burst_constrained-like uniform 4×8 fleet:
 
 ```bash
 # Delete the new decode Deployments (both sides)
 kubectl delete deployment epd-nvidia-gpu-vllm-decode epd-nvidia-gpu-vllm-decode-slow -n dpikus-epd-sglang-bench
 kubectl delete deployment pd-disaggregation-nvidia-gpu-vllm-decode pd-disaggregation-nvidia-gpu-vllm-decode-slow -n dpikus-pd-sglang-bench
 
-# Re-apply the bench10 unified decode.yaml
-kubectl apply -f ../bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/coord/bench_config/decode.yaml
-kubectl apply -f ../bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/sidecar/bench_config/decode.yaml
+# Re-apply the 4Dx2GPU_3Px2GPU_multimedia_burst_constrained unified decode.yaml
+kubectl apply -f ../4Dx2GPU_3Px2GPU_multimedia_burst_constrained/coord/bench_config/decode.yaml
+kubectl apply -f ../4Dx2GPU_3Px2GPU_multimedia_burst_constrained/sidecar/bench_config/decode.yaml
 
-# Re-apply bench10 EPP ConfigMaps (they'll revert the profile change too)
-# — actually, easier: fetch fresh from a 4Dx2GPU_3Px2GPU_multimedia_burst_baseline or bench10 pod_logs archive if a rollback is needed.
+# Re-apply 4Dx2GPU_3Px2GPU_multimedia_burst_constrained EPP ConfigMaps (they'll revert the profile change too)
+# — actually, easier: fetch fresh from a 4Dx2GPU_3Px2GPU_multimedia_burst_baseline or 4Dx2GPU_3Px2GPU_multimedia_burst_constrained pod_logs archive if a rollback is needed.
 ```
 
-## Files changed vs bench10
+## Files changed vs 4Dx2GPU_3Px2GPU_multimedia_burst_constrained
 
 - Renamed: `decode.yaml` → `decode-fast.yaml` (both sides; replicas 4 → 2, added `variant=fast` label)
 - Added: `decode-slow.yaml` (both sides; replicas 2, max-num-seqs 4, `variant=slow`)
 - Added: `coordinator-epd-decode-epp-cm.yaml` (coord — patched EPP config)
 - Added: `pd-disaggregation-epp-cm.yaml` (sidecar — patched EPP config)
 - Added: `coordinator-epd-prefill-epp-cm.yaml` (coord — fetched for reference only, unchanged)
-- `benchmark-job.yaml` on both sides is byte-identical to bench10 — same workload for direct comparison.
+- `benchmark-job.yaml` on both sides is byte-identical to 4Dx2GPU_3Px2GPU_multimedia_burst_constrained — same workload for direct comparison.

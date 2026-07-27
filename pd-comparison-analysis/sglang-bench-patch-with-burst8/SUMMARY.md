@@ -276,7 +276,7 @@ minimum-viable fix is the **request-body change alone**:
 ```
 The patch is nice-to-have for robustness (workloads with byte-fragmented
 CJK/emoji output can still produce empty deltas even with
-`skip_special_tokens: false`), but not required for the standard bench10
+`skip_special_tokens: false`), but not required for the standard 4Dx2GPU_3Px2GPU_multimedia_burst_constrained
 workload.
 
 ### Recommended bench-config template

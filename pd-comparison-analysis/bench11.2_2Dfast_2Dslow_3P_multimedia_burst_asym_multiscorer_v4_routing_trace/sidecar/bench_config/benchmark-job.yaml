@@ -9,9 +9,9 @@ data:
     set -euo pipefail
     MODEL="Qwen/Qwen3-VL-32B-Instruct"
     BURST_RATE=1000            # ≈ instantaneous burst
-    # bench10: bursts straddle the vLLM decode cliff of 4 D pods × --max-num-seqs=8 = 32 slots
+    # 4Dx2GPU_3Px2GPU_multimedia_burst_constrained: bursts straddle the vLLM decode cliff of 4 D pods × --max-num-seqs=8 = 32 slots
     BURST_SIZES=(8 16 32 64 128 256)
-    IMAGE_COUNT=5              # bench10: with --random-image-count, this is the MAX; count randomized in [1, IMAGE_COUNT]
+    IMAGE_COUNT=5              # 4Dx2GPU_3Px2GPU_multimedia_burst_constrained: with --random-image-count, this is the MAX; count randomized in [1, IMAGE_COUNT]
     IMAGE_RESOLUTION=1080p
     RANDOM_INPUT_LEN=300
     RANDOM_OUTPUT_LEN=2000

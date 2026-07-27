@@ -1,4 +1,4 @@
-# bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained — coord vs sidecar, burst sweep with decode capacity cliff
+# 4Dx2GPU_3Px2GPU_multimedia_burst_constrained — coord vs sidecar, burst sweep with decode capacity cliff
 
 Tests the deferred-decode placement hypothesis under conditions
 specifically constructed to expose it: hard decode queueing plus
@@ -284,7 +284,7 @@ falsified for `active-request-scorer`:
 3. **Different scorer configuration on one side.** Switch the sidecar
    decode profile to `queue-scorer` or `kv-cache-utilization-scorer`
    (which read from vLLM's metrics endpoint rather than
-   in-EPP-tracked active requests) and re-run bench10. If this
+   in-EPP-tracked active requests) and re-run 4Dx2GPU_3Px2GPU_multimedia_burst_constrained. If this
    changes the fingerprint, we've confirmed that the load-bearing
    variable is which scorer sees which signal, not the bind timing.
 4. **Prefix-cache hot workload.** Repeat the workload but with heavy

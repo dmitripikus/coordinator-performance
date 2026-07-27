@@ -1,4 +1,4 @@
-# bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained — PLAN
+# 4Dx2GPU_3Px2GPU_multimedia_burst_constrained — PLAN
 
 Follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`, which produced
 a null result (coord ≈ sidecar within ±10% on every metric, no
@@ -23,7 +23,7 @@ batching. Additionally condition (1) was likely weak — 3 fixed-count
 1080p images per request produced a tight prefill-time distribution,
 so arrival order and completion order were nearly the same.
 
-## bench10 changes vs 4Dx2GPU_3Px2GPU_multimedia_burst_baseline
+## 4Dx2GPU_3Px2GPU_multimedia_burst_constrained changes vs 4Dx2GPU_3Px2GPU_multimedia_burst_baseline
 
 ### Decode capacity cliff (fixes condition 2)
 
@@ -103,7 +103,7 @@ even fail requests if the gateway timeout is exceeded.
 
 ## What "hypothesis dead" looks like
 
-If bench10 also produces a null result (coord ≈ sidecar at bursts
+If 4Dx2GPU_3Px2GPU_multimedia_burst_constrained also produces a null result (coord ≈ sidecar at bursts
 32/64/128/256), that's strong evidence the coord/sidecar EPP-scorer
 difference — not the deferred vs early bind timing — is the load-
 bearing variable. In that case:
@@ -116,7 +116,7 @@ bearing variable. In that case:
    pod) — that's the crispest way to force a difference that early
    bind *cannot* see.
 
-## Setup steps to run bench10
+## Setup steps to run 4Dx2GPU_3Px2GPU_multimedia_burst_constrained
 
 **Prereq check**: coord and sidecar vLLM deployments are currently at
 0 replicas (4Dx2GPU_3Px2GPU_multimedia_burst_baseline scaled them down). The new `decode.yaml` files need
@@ -161,7 +161,7 @@ kubectl get deployment pd-disaggregation-nvidia-gpu-vllm-decode -n dpikus-pd-sgl
 ### Run the coord side
 
 ```
-/run-sglang-bench pd-comparison-analysis/bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/coord/bench_config
+/run-sglang-bench pd-comparison-analysis/4Dx2GPU_3Px2GPU_multimedia_burst_constrained/coord/bench_config
 ```
 
 Skill will detect the 0/0 topology and prompt to scale to 4/3 —
@@ -178,7 +178,7 @@ back down — say yes to free GPUs for the sidecar side.
 ### Run the sidecar side
 
 ```
-/run-sglang-bench pd-comparison-analysis/bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/sidecar/bench_config
+/run-sglang-bench pd-comparison-analysis/4Dx2GPU_3Px2GPU_multimedia_burst_constrained/sidecar/bench_config
 ```
 
 Same flow. Both bench_config `benchmark-job.yaml` files are byte-
