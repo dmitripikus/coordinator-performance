@@ -1,4 +1,4 @@
-# bench3 — 250 in / 5000 out (decode-heavy): Coordinator vs Sidecar
+# 1D_1P_250IT_5000OT_decode_heavy — 250 in / 5000 out (decode-heavy): Coordinator vs Sidecar
 
 Benchmark: `inference-perf`, model `openai/gpt-oss-120b`, P/D disaggregation.
 Prompt shape: **250 input tokens → 5000 output tokens** (fixed), streaming
@@ -70,7 +70,7 @@ end-to-end, driven purely by lower per-token decode latency (TPOT 6.78 vs
 |----------|-----------|--------|-----|
 | bench1 short (1/15) | TTFT | **sidecar** (~10-15%) | avoids ~20 ms coordinator orchestration hop |
 | bench2 long (5000/250) | balanced | **tie** | prefill+decode both matter, effects cancel |
-| bench3 decode-heavy (250/5000) | decode/TPOT | **coordinator** (~7%) | faster per-token streaming |
+| 1D_1P_250IT_5000OT_decode_heavy (250/5000) | decode/TPOT | **coordinator** (~7%) | faster per-token streaming |
 
 The architecture choice is **workload-dependent**: sidecar for short/interactive
 (TTFT-bound) traffic, coordinator for long-generation (decode-bound) traffic.

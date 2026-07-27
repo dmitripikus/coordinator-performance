@@ -85,7 +85,7 @@ Combined with the earlier benchmarks, the picture is now load-aware:
 |----------|------|-----------|--------|-----|
 | bench1 short (1/15) | 1 req/s | TTFT | **sidecar** (~9%) | avoids pre-prefill orchestration hop |
 | bench2 long (5000/250) | 0.25 req/s | balanced, unloaded | **tie** | nothing queues; hop is noise |
-| bench3 decode-heavy (250/5000) | serial | decode/TPOT | **coordinator** (~7%) | faster per-token streaming dominates |
+| 1D_1P_250IT_5000OT_decode_heavy (250/5000) | serial | decode/TPOT | **coordinator** (~7%) | faster per-token streaming dominates |
 | **bench5 long under load (5000/250)** | **45 req/s** | **TTFT tail / prefill queue** | **sidecar** (~16–22% p99) | prefill-leg hop queues under saturation |
 
 **Rule of thumb:** the coordinator's extra prefill-leg hop is free when idle and
