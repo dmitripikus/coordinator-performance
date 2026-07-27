@@ -7,8 +7,8 @@ ARCHS = {"coord": "#2b6cb0", "sidecar": "#c05621"}
 
 # Parsed directly from each side's sglang bench_serving "Serving Benchmark Result" blocks.
 # bench7.2 coord = fresh coord run (sglang-bench-t9zxz.log).
-# sidecar values are identical to bench7.1 — the sidecar directory in bench7.2 is a
-# byte-identical copy of bench7.1/sidecar (verified via diff), so we compare
+# sidecar values are identical to 3Dx8GPU_3Px8GPU_multimedia_rerun — the sidecar directory in bench7.2 is a
+# byte-identical copy of 3Dx8GPU_3Px8GPU_multimedia_rerun/sidecar (verified via diff), so we compare
 # bench7.2's coord numbers against the same sidecar baseline.
 DATA = {
     "coord": {

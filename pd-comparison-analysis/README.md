@@ -45,7 +45,8 @@ Two harness families are used:
   (`bench_config/config_*.yaml`). Model: `openai/gpt-oss-120b`.
 - **`sglang.bench_serving`** (`lmsysorg/sglang:v0.5.14` in a k8s Job) —
   used for later multimedia/burst benches
-  (`3Dx8GPU_3Px8GPU_multimedia_baseline`, `bench7.1*`, `bench7.2*`, `bench9`,
+  (`3Dx8GPU_3Px8GPU_multimedia_baseline`,
+  `3Dx8GPU_3Px8GPU_multimedia_rerun`, `bench7.2*`, `bench9`,
   `bench10`, `bench11*`, `bench13`). Driven by a Job YAML
   (`bench_config/benchmark-job.yaml`). Model: `Qwen/Qwen3-VL-*-Instruct`.
 
@@ -71,7 +72,7 @@ cluster).
 | [2D_8P_5000IT_250OT_prefill_heavy](2D_8P_5000IT_250OT_prefill_heavy/) | 5000 IT / 250 OT, 45 req/s (saturating) | gpt-oss-120b | 2D/8P | sidecar wins under load (TTFT tail) |
 | [3D_8P_250IT_4000OT_decode_heavy](3D_8P_250IT_4000OT_decode_heavy/) | 250 IT / 4000 OT, 10 req/s | gpt-oss-120b | 3D/8P (3 coord replicas) | coord ≈ sidecar within ~0.5% |
 | [3Dx8GPU_3Px8GPU_multimedia_baseline](3Dx8GPU_3Px8GPU_multimedia_baseline/) | multimodal, image+text, concurrency 10-40 | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | sidecar ~2-2.3× faster (coord prefill pool bottleneck) |
-| [bench7.1_3Dx8GPU_3Px8GPU_multimedia](bench7.1_3Dx8GPU_3Px8GPU_multimedia/) | re-run of `3Dx8GPU_3Px8GPU_multimedia_baseline` | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | coord TTFT 4-8× higher (prefill queue bottleneck) |
+| [3Dx8GPU_3Px8GPU_multimedia_rerun](3Dx8GPU_3Px8GPU_multimedia_rerun/) | re-run of `3Dx8GPU_3Px8GPU_multimedia_baseline` | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | coord TTFT 4-8× higher (prefill queue bottleneck) |
 | [bench7.2_3Dx8GPU_3Px8GPU_multimedia](bench7.2_3Dx8GPU_3Px8GPU_multimedia/) | coord re-run w/ active-request-scorer | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | prefill bottleneck resolved; coord ≈ sidecar |
 | [bench9_4Dx2GPU_3Px2GPU_multimedia_burst](bench9_4Dx2GPU_3Px2GPU_multimedia_burst/) | multimodal burst 4-128, 3 images | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | coord ≈ sidecar within ±10% at every burst |
 | [bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained](bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/) | multimodal burst 8-256, 1-5 images, decode cliff | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU (`--max-num-seqs=8`) | coord ≈ sidecar within ±3% at deep queueing |
@@ -244,9 +245,9 @@ cluster. Concurrency sweep 10/20/30/40, `--num-prompts=<c>`,
 **Finding.** Sidecar ~2-2.3× faster end-to-end; TTFT 3-14× lower. The
 coordinator's dispatch logic itself is fast (sub-10 ms), but its
 prefill-pod selection funnels concurrent image-heavy requests onto one
-GPU. See bench7.1/7.2 for follow-ups.
+GPU. See `3Dx8GPU_3Px8GPU_multimedia_rerun` and `bench7.2` for follow-ups.
 
-### bench7.1_3Dx8GPU_3Px8GPU_multimedia
+### 3Dx8GPU_3Px8GPU_multimedia_rerun
 
 **Purpose.** Re-run of `3Dx8GPU_3Px8GPU_multimedia_baseline` with
 `analysis/` added, deeper instrumentation, cross-check of TTFT numbers
@@ -258,27 +259,27 @@ against coord's own logs.
 3P per side, TP=8 per pod.
 
 **Finding.** Confirms the baseline result: coord's prefill leg runs to median
-40s / p90 87.5s (bench7.1 numbers), meaning prefill pods are
+40s / p90 87.5s (3Dx8GPU_3Px8GPU_multimedia_rerun numbers), meaning prefill pods are
 independently generating a full response worth of tokens each request
 (~878 tok/req vs sidecar's ~2 tok/req) — a functional defect in coord's
 disaggregation on this workload/topology.
 
 ### bench7.2_3Dx8GPU_3Px8GPU_multimedia
 
-**Purpose.** Coord-only re-run of `bench7.1` with
+**Purpose.** Coord-only re-run of `3Dx8GPU_3Px8GPU_multimedia_rerun` with
 `active-request-scorer` enabled in coord's EPP scheduling profile.
-Sidecar side is byte-identical to `bench7.1/sidecar/` (baseline).
+Sidecar side is byte-identical to `3Dx8GPU_3Px8GPU_multimedia_rerun/sidecar/` (baseline).
 
-**Harness.** Same as `bench7.1`.
+**Harness.** Same as `3Dx8GPU_3Px8GPU_multimedia_rerun`.
 
-**Cluster stack.** Same as `bench7.1`, but with the coord's decode-EPP
+**Cluster stack.** Same as `3Dx8GPU_3Px8GPU_multimedia_rerun`, but with the coord's decode-EPP
 `schedulingProfile.default` using `active-request-scorer` (weight 1).
 
 **Finding.** With the scorer in effect, coord's prefill-pool queueing
 collapses (median ~sub-second across 225 pooled requests). TTFT, E2E,
 TPOT, ITL now all within single-digit-to-mid-teens % of sidecar at
 every concurrency level. The
-`3Dx8GPU_3Px8GPU_multimedia_baseline`/`bench7.1` prefill bottleneck was
+`3Dx8GPU_3Px8GPU_multimedia_baseline`/`3Dx8GPU_3Px8GPU_multimedia_rerun` prefill bottleneck was
 the scoring, not the topology.
 
 ### bench9_4Dx2GPU_3Px2GPU_multimedia_burst

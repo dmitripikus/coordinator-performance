@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-BASE = "/Users/alexey/projects/coordinator-performance/pd-comparison-analysis/bench7.1_3Dx8GPU_3Px8GPU_multimedia"
+BASE = "/Users/alexey/projects/coordinator-performance/pd-comparison-analysis/3Dx8GPU_3Px8GPU_multimedia_rerun"
 
 CONCURRENCY = [10, 20, 30, 40]
 ARCHS = {"coord": "#2b6cb0", "sidecar": "#c05621"}

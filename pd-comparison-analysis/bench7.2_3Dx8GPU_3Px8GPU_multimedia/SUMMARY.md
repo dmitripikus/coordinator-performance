@@ -8,15 +8,15 @@ multimodal requests: ~300 text tokens + 1-3 random 1080p JPEG images per
 request (avg ~4,700 vision tokens, ~2.1-2.3 images/request), up to 2,000
 output tokens, `ignore_eos` off (real generation, not padded).
 
-This is a **coord-only re-run** of the workload from `bench7.1`. The
-sidecar side is byte-identical to `bench7.1/sidecar/` (verified via
+This is a **coord-only re-run** of the workload from `3Dx8GPU_3Px8GPU_multimedia_rerun`. The
+sidecar side is byte-identical to `3Dx8GPU_3Px8GPU_multimedia_rerun/sidecar/` (verified via
 `diff -r`, same `sglang-bench-6nd2g.log` and same
 `pod_logs_dpikus-pd-sglang-bench_20260719_154752/`), so the sidecar
 numbers below are the same baseline; bench7.2 replaces the coord run
 with a fresh one recorded on 2026-07-20
 (`sglang-bench-t9zxz.log`,
 `pod_logs_dpikus-epd-sglang-bench_20260720_112117/`). The coord
-bench_config on disk is byte-identical to bench7.1 (verified via
+bench_config on disk is byte-identical to 3Dx8GPU_3Px8GPU_multimedia_rerun (verified via
 `diff -r`) — the git commit labels bench7.2 as
 "coordinator — with active-request-scorer", indicating the scorer was
 actually in effect at runtime for this run (a claim consistent with the
@@ -45,7 +45,7 @@ for coord and 6.2/10.4/16.2/24.1 for sidecar.
   "error" across the coord pod-logs directory is a benign vLLM startup
   line (`Triton is installed but 0 active driver(s) found (expected 1).
   Disabling Triton to prevent runtime errors.`) in `vllm-render.log`.
-  Sidecar error accounting is unchanged from bench7.1: 411 matches,
+  Sidecar error accounting is unchanged from 3Dx8GPU_3Px8GPU_multimedia_rerun: 411 matches,
   all benign — 410 are `routing-proxy.log` OpenTelemetry trace-exporter
   timeouts (`connection refused` to a local trace collector on port
   4317, an observability sidecar that isn't running, unrelated to
@@ -54,15 +54,15 @@ for coord and 6.2/10.4/16.2/24.1 for sidecar.
 - **Correct topology confirmed on both sides**: 3 decode + 3 prefill pods
   each, all `Running`, 0 restarts. Coord's prefill pods landed on
   `g11bab6`/`gc37cba`/`g1251ac`, decode on `gc37d06`/`g134dfa`/`gf27fec`.
-  Sidecar (unchanged from bench7.1) prefill landed on
+  Sidecar (unchanged from 3Dx8GPU_3Px8GPU_multimedia_rerun) prefill landed on
   `g124002`/`gf2ac9a`/`g1251ac`, decode on `g13bc90`/`gc37cba`/`gf2a19e`.
   Only `g1251ac` (prefill) is shared between coord and sidecar this
-  time; the rest of the coord placement is new relative to bench7.1's
+  time; the rest of the coord placement is new relative to 3Dx8GPU_3Px8GPU_multimedia_rerun's
   coord.
 - **Coord's prefill-leg timings were cross-checked against its own
   internal instrumentation**, not just taken from the client-side
   benchmark report — see "Reading it" below. This is the same
-  validation approach used throughout the `bench1-*` and `bench7.1`
+  validation approach used throughout the `bench1-*` and `3Dx8GPU_3Px8GPU_multimedia_rerun`
   series.
 - **Coord prefill load is reasonably balanced across the 3 pods**:
   request counts across coord's 3 prefill pods (76/64/85 `POST /v1`
@@ -94,7 +94,7 @@ for coord and 6.2/10.4/16.2/24.1 for sidecar.
 % diff is `(coord − sidecar) / sidecar`. Positive means coord is
 higher/slower. Coord and sidecar are now within a small single-digit-to-mid-teens
 percentage of each other across all four metrics — a dramatic change
-from bench7.1, where coord was +46-74% on E2E latency and +432-714%
+from 3Dx8GPU_3Px8GPU_multimedia_rerun, where coord was +46-74% on E2E latency and +432-714%
 on TTFT.
 
 ## Charts
@@ -111,8 +111,8 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
 
 ## Reading it
 
-- **The bench7.1 prefill-pool queueing bottleneck is essentially gone
-  in bench7.2.** In bench7.1 coord's coordinator-logged prefill leg
+- **The 3Dx8GPU_3Px8GPU_multimedia_rerun prefill-pool queueing bottleneck is essentially gone
+  in bench7.2.** In 3Dx8GPU_3Px8GPU_multimedia_rerun coord's coordinator-logged prefill leg
   ran to a median of 40.0s, p90 87.5s, max 104.7s across 115 pooled
   requests. In bench7.2, pooling all 225 `pipeline step timings`
   entries in `coordinator.log` gives **prefill median 155ms, p90
@@ -126,33 +126,33 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
   between -13% and +5%, ITL is consistently a few percent lower on
   coord, and output-token throughput ratios between the two sit
   between 0.95x and 1.13x. There is no longer a systematic
-  architecture-level gap of the kind bench7.1 showed — the
+  architecture-level gap of the kind 3Dx8GPU_3Px8GPU_multimedia_rerun showed — the
   differences are within the range one would expect from run-to-run
   variance and slight node-placement differences (coord's prefill/
-  decode landed on mostly different nodes vs bench7.1's coord, so a
+  decode landed on mostly different nodes vs 3Dx8GPU_3Px8GPU_multimedia_rerun's coord, so a
   small residual hardware component can't be ruled out).
-- **The bench7.1 crossover pattern (coord loses on TTFT, wins on
-  TPOT/ITL) has flattened.** In bench7.1 coord's TPOT/ITL were
+- **The 3Dx8GPU_3Px8GPU_multimedia_rerun crossover pattern (coord loses on TTFT, wins on
+  TPOT/ITL) has flattened.** In 3Dx8GPU_3Px8GPU_multimedia_rerun coord's TPOT/ITL were
   40-57% *lower* than sidecar's, offset by TTFT being 4-8x *higher*.
   In bench7.2 coord's TPOT is at parity with sidecar at concurrency 10
   (-13%) and effectively equal at 20/30/40 (+2 to +5%), and ITL is a
   few percent lower on coord throughout. The prefill-side improvement
   is what removed the coord TTFT disadvantage; the smaller decode-side
-  advantage from bench7.1 has also compressed toward parity, so the
+  advantage from 3Dx8GPU_3Px8GPU_multimedia_rerun has also compressed toward parity, so the
   net picture is a much tighter comparison in both directions.
 - **Sidecar retains a small edge in raw output-token throughput at
   concurrency 10/20/40**, coord edges ahead at concurrency 30 (311.2
   vs 294.9 out-tok/s). Peak throughput at concurrency 40 is 388.9 vs
   343.7 (sidecar +13%). This is a fraction of the 1.60-1.79x
-  throughput gap seen in bench7.1, and small enough that a repeat run
+  throughput gap seen in 3Dx8GPU_3Px8GPU_multimedia_rerun, and small enough that a repeat run
   would be needed to tell whether it is a real residual gap or
   run-to-run variance.
 - **Per the git commit that introduced these results, bench7.2
-  differs from bench7.1's coord run by "active-request-scorer" being
+  differs from 3Dx8GPU_3Px8GPU_multimedia_rerun's coord run by "active-request-scorer" being
   in effect at runtime.** The on-disk EPP ConfigMaps
   (`coordinator-epd-prefill-epp` and `coordinator-epd-decode-epp`,
   loading `/config/epd-plugins.yaml`) already reference
-  `active-request-scorer` in both bench7.1 and bench7.2 (verified via
+  `active-request-scorer` in both 3Dx8GPU_3Px8GPU_multimedia_rerun and bench7.2 (verified via
   file diff), so the runtime state change likely came from an EPP
   restart / rollout between the two runs rather than a config-file
   edit visible in this directory. That matches the observed effect:
@@ -163,7 +163,7 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
 - **What isn't confirmed here** is whether this improvement is purely
   from the active-request-scorer landing, or whether some fraction is
   from the coord pods happening to land on different nodes (only
-  `g1251ac` is shared with bench7.1's coord prefill placement).
+  `g1251ac` is shared with 3Dx8GPU_3Px8GPU_multimedia_rerun's coord prefill placement).
   Cross-checking against a second coord run on yet-different node
   placement would isolate this cleanly. The magnitude of the change
   (prefill leg median 40.0s → 155ms) is large enough that node
@@ -171,13 +171,13 @@ p90. X-axis is concurrency level, linear (not log — only 4 points,
   component from placement is possible.
 
 **Bottom line**: at the same multimodal, vision-heavy workload from
-bench7.1, coord's prefill bottleneck has been eliminated in this
+3Dx8GPU_3Px8GPU_multimedia_rerun, coord's prefill bottleneck has been eliminated in this
 re-run. TTFT, E2E latency, TPOT, and ITL are now all within a small
 single-digit-to-mid-teens percentage of sidecar across every
 concurrency level tested (10-40), sidecar retains a modest ~13%
 edge in peak output-token throughput at concurrency 40, and coord's
 own coordinator-logged prefill-leg timings confirm that the median
-prefill duration has dropped >250x from bench7.1's numbers. The
+prefill duration has dropped >250x from 3Dx8GPU_3Px8GPU_multimedia_rerun's numbers. The
 active-request-scorer being actually in effect on the coord EPPs
 (per the git commit context, and consistent with the observed
 prefill-pool load-balancing behavior) is the most likely mechanism;

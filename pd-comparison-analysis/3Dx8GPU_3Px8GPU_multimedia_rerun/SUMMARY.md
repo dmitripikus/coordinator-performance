@@ -1,4 +1,4 @@
-# bench7.1_3Dx8GPU_3Px8GPU_multimedia — coord vs sidecar, multimodal serving
+# 3Dx8GPU_3Px8GPU_multimedia_rerun — coord vs sidecar, multimodal serving
 
 Coordinator (namespace `dpikus-epd-sglang-bench`) vs sidecar (namespace
 `dpikus-pd-sglang-bench`), both running 3 decode replicas and 3 prefill
