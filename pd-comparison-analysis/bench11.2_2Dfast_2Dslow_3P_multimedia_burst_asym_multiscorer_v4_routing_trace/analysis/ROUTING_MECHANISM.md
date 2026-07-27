@@ -141,18 +141,12 @@ This re-run fixes both:
   519 / 510 `Request handled` entries — one for every real request
   (504) plus warmups (6).
 
-## What we can now say vs bench11.1's MECHANISM.md
+## What this run adds
 
-bench11.1's mechanism analysis was **inconclusive-by-outcome**: it
-looked at per-pod concurrency time series and reasoned backward about
-whether the observed drain-earlier signature *implied* deferred-decode.
-It could not distinguish deferred-decode from alternative mechanisms
-(coordinator-internal prefill scheduling, warmup-bias, etc.).
-
-bench11.2 (this run) is **conclusive-by-direct-observation**: we now
-see, per request, where each side chose to decode. Sidecar's
-per-pod distribution is uniform (fast/slow indistinguishable),
-coord's is fast-skewed. This is the routing decision, not an inferred
+This analysis is **conclusive-by-direct-observation**: we see, per
+request, where each side chose to decode. Sidecar's per-pod
+distribution is uniform (fast/slow indistinguishable), coord's is
+fast-skewed. This is the routing decision, not an inferred
 consequence.
 
 The remaining question is only "how much of the tail-latency win comes
@@ -167,10 +161,10 @@ time), which is out of scope here.
 
 | run | fleet | scoring | b64 TTFT p90 | b128 E2E p90 | b256 duration | routing evidence |
 |---|---|---|---:|---:|---:|---|
-| bench11 | 2f + 2s | multi-scorer | −24.8% | (tie) | tie | none |
-| bench11.1 | same | + request-body fixes | −19.5% | −11.4% | (tie) | per-pod concurrency (inferred) |
-| bench11.2 (v4-fail) | same | + V(4) | −26.6% | −12.6% | tie | per-pod concurrency only (V(4) unusable) |
-| **bench11.2 (this)** | same | + V(4) + gateway restart + streamed logs | **−23.3%** | **−12.9%** | **−12.1%** | **per-request routing (direct)** |
+| Run 1 | 2f + 2s | multi-scorer | −24.8% | (tie) | tie | none |
+| Run 2 | same | + request-body fixes | −19.5% | −11.4% | (tie) | per-pod concurrency (inferred) |
+| Run 3 | same | + V(4) | −26.6% | −12.6% | tie | per-pod concurrency only (V(4) unusable) |
+| **Run 4 (this)** | same | + V(4) + gateway restart + streamed logs | **−23.3%** | **−12.9%** | **−12.1%** | **per-request routing (direct)** |
 
 Four positive runs. The tail-latency win is real, the mechanism is
 observed, and the pattern is stable.
