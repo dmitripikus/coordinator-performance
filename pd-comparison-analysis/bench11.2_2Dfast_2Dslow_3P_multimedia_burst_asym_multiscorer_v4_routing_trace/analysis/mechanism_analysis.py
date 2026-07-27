@@ -1,4 +1,4 @@
-"""bench11.2: same per-pod concurrency mechanism analysis as bench11.1,
+"""bench11.2: same per-pod concurrency mechanism analysis as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed,
 run against bench11.2's modelserver.logs to test reproducibility of the
 tail-drain signal.
 
@@ -6,7 +6,7 @@ This is our fallback because the EPP V(4) approach didn't yield per-request
 target-pod attribution (dev-fork EPP images don't emit the picker trace
 lines, and sidecar EPP log was truncated by container log rotation).
 
-Outputs the same 4 PNGs as bench11.1's mechanism_analysis.py.
+Outputs the same 4 PNGs as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's mechanism_analysis.py.
 """
 import re
 from datetime import datetime, timezone

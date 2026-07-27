@@ -1,4 +1,4 @@
-"""bench11.1: test whether deferred-decode is the mechanism behind coord's
+"""2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed: test whether deferred-decode is the mechanism behind coord's
 tail-latency win at bursts 64 and 128.
 
 Parses each decode pod's vLLM modelserver.log for `loggers.py:271`
@@ -24,7 +24,7 @@ import numpy as np
 BASE = Path(
     "/Users/dpikus/PROJECTS/llm-d/repos/coordinator-performance/"
     "pd-comparison-analysis/"
-    "bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer"
+    "2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed"
 )
 
 # All timestamps in the pod logs are UTC (naked "07-26 HH:MM:SS"); the

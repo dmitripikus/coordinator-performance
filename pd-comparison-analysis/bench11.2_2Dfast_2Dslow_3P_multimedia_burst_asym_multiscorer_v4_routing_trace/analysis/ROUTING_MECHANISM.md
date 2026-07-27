@@ -6,7 +6,7 @@ The V(4) EPP-trace approach, this time with per-request pod-attribution
 captured continuously via `kubectl logs -f` (rather than relying on
 `kubectl logs --since` after the run, which the earlier bench11.2
 attempt did and lost most of the log to container-log rotation),
-gives the direct answer we couldn't get from bench11.1's mechanism
+gives the direct answer we couldn't get from 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's mechanism
 analysis: **sidecar routes decode requests essentially uniformly across
 all 4 decode pods (~25% each), while coord skews toward the two fast
 pods (~53–67% fast vs sidecar's ~50%)**. The skew is largest and most
@@ -35,7 +35,7 @@ sglang headlines (this re-run):
 | 256   | duration (s)          |    382.92  |    435.49  |  **−12.1%** |
 | 64/128/256 | Mean TPOT (ms)   | 13.12–13.19 | 13.18–13.42 | tie      |
 
-The advantage magnitude matches 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer → bench11.1 → bench11.2 (V4-fail) → bench11.2 (this run):
+The advantage magnitude matches 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer → 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed → bench11.2 (V4-fail) → bench11.2 (this run):
 this is now a **four-run positive observation** on the p90 tail metrics,
 with the direction never flipping and the magnitude always in the 10–25% range.
 
@@ -117,7 +117,7 @@ match.
 At **burst 256** (24 slots, 257 requests), duration itself drops by
 12.1% on coord — the whole fleet finishes faster because slow pods
 finish earlier, matching the deferred-decode signature seen in
-bench11.1's per-pod concurrency analysis.
+2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's per-pod concurrency analysis.
 
 ## Why bench11.2's previous attempt didn't see this
 
@@ -181,7 +181,7 @@ observed, and the pattern is stable.
   - EPP log is the streamed 226 MB version; `epp.log.truncated_by_kubectl_logs` is the
     (much smaller) file collect_pod_logs.sh would have produced without the streamer.
 - Sidecar raw logs: `../sidecar/pod_logs_dpikus-pd-sglang-bench_20260726_192629/` + `.tar.gz`
-- Prior bench11.1 mechanism analysis: [../../bench11.1_.../analysis/MECHANISM.md](../../bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/analysis/MECHANISM.md)
+- Prior 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed mechanism analysis: [../../2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed/analysis/MECHANISM.md](../../2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed/analysis/MECHANISM.md)
 - Earlier failed V(4) attempt: superseded by this analysis; the original
   conclusion was wrong on both cause (dev-fork images are fine) and on
   evidence availability.

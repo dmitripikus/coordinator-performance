@@ -112,7 +112,7 @@ argument.
 
 ## Verdict
 
-The bench11.1_fix2 tail-latency win at bursts 64 and 128 is
+The 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed tail-latency win at bursts 64 and 128 is
 **consistent with deferred-decode as the mechanism**. The observable
 signature — coord's slow pods draining ~60 s earlier at burst 128, ~10 s
 earlier at burst 64 — is exactly what deferred-decode should produce

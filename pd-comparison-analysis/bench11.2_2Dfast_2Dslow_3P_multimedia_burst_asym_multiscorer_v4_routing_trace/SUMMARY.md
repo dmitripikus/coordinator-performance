@@ -59,7 +59,7 @@ on every win burst. Burst-64 TTFT p90 magnitude ranges −19.5% to
 consistent tail-latency wins (−11.4% to −12.9% E2E p90). Burst 256
 shows a stronger win here (−12.1% duration, −10.3% E2E p90) than in
 some earlier runs, suggesting the advantage grows at severe overload.
-Overall: **four positive runs (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, bench11.1, and two attempts
+Overall: **four positive runs (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed, and two attempts
 of bench11.2) — the deferred-decode advantage is stable and
 reproducible.**
 
@@ -219,12 +219,12 @@ Latencies in ms. TPOT excludes first token; ITL is streamed inter-token latency.
 Three burst sizes show a real, direction-consistent coord edge:
 
 - **Burst 64**: TTFT p90 lower by 23.3%, E2E p90 lower by 18.5% on
-  coord — the primary win-zone burst. Reproduces bench11.1's
+  coord — the primary win-zone burst. Reproduces 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's
   −19.5% / −14.1% and 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's −24.8% / −19.6%.
 - **Burst 128**: coord E2E p90 lower by 12.9%, TTFT p90 lower by 14.6%,
-  duration 2.5% shorter. Same direction as bench11.1 (−11.4% E2E p90).
+  duration 2.5% shorter. Same direction as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed (−11.4% E2E p90).
 - **Burst 256**: coord duration 12.1% lower, throughput 13.7% higher,
-  p90 tails −10.3% / −11.1%. **Stronger signal than bench11.1's
+  p90 tails −10.3% / −11.1%. **Stronger signal than 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's
   burst 256** (which was −5.4% / +5.7% on duration/throughput and only
   −3.4% on E2E p90). Suggests the coord advantage grows as the fleet
   saturates further under this workload.
@@ -232,7 +232,7 @@ Three burst sizes show a real, direction-consistent coord edge:
 Bursts 8/16/32 differences alternate sign and sit inside the noise
 band. The TTFT p50 jumps at bursts 8/16 (+22% / +26% on coord) are on
 absolute values of 3–5 seconds — well below any queueing threshold,
-dominated by scheduling jitter; same explanation as bench11.1's
+dominated by scheduling jitter; same explanation as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's
 burst-16 TTFT p50 blip.
 
 ## Charts
@@ -279,7 +279,7 @@ fleet drains earlier.
 ## Reading it
 
 - **Four-run positive observation.** The coord-over-sidecar tail-latency
-  advantage now appears in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, bench11.1, bench11.2 (v4-fail
+  advantage now appears in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer, 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed, bench11.2 (v4-fail
   attempt), and this run. Direction is identical on every win-burst
   across all four runs; magnitude on b64 TTFT p90 ranges from −19.5%
   to −26.6% — well within run-to-run variance. This is no longer
@@ -300,11 +300,11 @@ fleet drains earlier.
   observed is 18 s — right order of magnitude, with the shortfall
   attributable to prefill spreading arrivals and the fast pods also
   being queued.
-- **The burst-256 edge is larger here than in bench11.1.** Duration
-  −12.1% (vs bench11.1's −5.4%), throughput +13.7% (vs +5.7%),
+- **The burst-256 edge is larger here than in 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed.** Duration
+  −12.1% (vs 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's −5.4%), throughput +13.7% (vs +5.7%),
   E2E p90 −10.3% (vs −3.4%). Same fleet, same workload. Possible
   explanations: (a) different cluster/node state between the two
-  runs (bench11.1 ran 12 pm UTC, this ran 3 pm UTC same day), (b)
+  runs (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed ran 12 pm UTC, this ran 3 pm UTC same day), (b)
   the V(4) EPP logging added some CPU overhead — same on both sides
   though, so shouldn't skew the comparison, (c) genuine run-to-run
   variance at the deepest-overload burst. Direction is unchanged;
@@ -312,7 +312,7 @@ fleet drains earlier.
 - **TPOT is nearly identical across every burst on both sides**
   (12.17 → 13.33 ms progression on coord, 12.12 → 13.46 ms on
   sidecar; largest per-burst diff 0.4 ms). Same as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer and
-  bench11.1 — confirms decode speed is unchanged; the coord edge is
+  2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed — confirms decode speed is unchanged; the coord edge is
   purely in queueing / routing.
 - **Output throughput at burst 256** is 1337 tok/s on coord vs 1176
   tok/s on sidecar — the largest throughput gap seen in any burst on
@@ -354,7 +354,7 @@ Ranked by scientific value given bench11.2's direct routing evidence:
    effects.** V(4) EPP logging adds notable CPU + I/O overhead
    (226 MB of logs in 25 min for coord decode-EPP alone). Both sides
    pay it equally, so the comparison is fair, but absolute duration
-   numbers between bench11.1 and bench11.2 aren't directly comparable
+   numbers between 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed and bench11.2 aren't directly comparable
    for this reason.
 
 ## Artifacts

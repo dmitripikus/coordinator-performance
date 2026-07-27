@@ -1,4 +1,4 @@
-# bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_fix2 — coord vs sidecar, asymmetric fleet + metrics-based scoring (request-body fixes applied)
+# 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed_fix2 — coord vs sidecar, asymmetric fleet + metrics-based scoring (request-body fixes applied)
 
 Coordinator (namespace `dpikus-epd-sglang-bench`) vs sidecar (namespace
 `dpikus-pd-sglang-bench`), both serving `Qwen/Qwen3-VL-32B-Instruct`
@@ -57,7 +57,7 @@ reproducible** across the two runs.
 
 Same InferencePool structure as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — both variants share role/guide
 labels so a single pool sees all four pods and the EPP scorer must
-choose between them. Verified live-config match: bench11.1's fleet is
+choose between them. Verified live-config match: 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's fleet is
 byte-identical to 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer's (same Deployments, same labels, same args) —
 see the coord-side config check that ran before this bench.
 
@@ -89,7 +89,7 @@ Bursts of `(8 16 32 64 128 256)` requests, `--request-rate=1000`
 # 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer:
 --extra-request-body '{"ignore_eos": true}'
 
-# bench11.1 (this run):
+# 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed (this run):
 --extra-request-body '{"ignore_eos": true, "skip_special_tokens": false, "stream_options": {"include_usage": true}}'
 ```
 
@@ -265,10 +265,10 @@ usable alongside the latency ones.
 
 ## Follow-up experiments worth running
 
-Ranked by scientific value given bench11.1's positive finding:
+Ranked by scientific value given 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed's positive finding:
 
-1. **Repeat bench11.1 to nail down variance.** Two positive results
-   (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer + bench11.1) suggest the effect is real; a third would
+1. **Repeat 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed to nail down variance.** Two positive results
+   (2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer + 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed) suggest the effect is real; a third would
    confirm whether the burst-128 win is stable or noise. ~50 min per
    run.
 2. **Reproduce the mechanism.** Cross-check per-decode-pod request

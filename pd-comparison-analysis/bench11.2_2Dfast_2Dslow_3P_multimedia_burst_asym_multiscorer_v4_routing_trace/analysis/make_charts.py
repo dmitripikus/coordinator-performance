@@ -9,7 +9,7 @@ ARCHS = {"coord": "#2b6cb0", "sidecar": "#c05621"}
 # coord log:    coord/pod_logs_dpikus-epd-sglang-bench_20260726_183841/sglang_bench.log
 # sidecar log:  sidecar/pod_logs_dpikus-pd-sglang-bench_20260726_192629/sglang_bench.log
 # Fleet: 2 fast (--max-num-seqs=8) + 2 slow (--max-num-seqs=4) = 24 slots per side.
-# Same fleet + scoring profile as bench11.1; this run patches all 3 EPPs to --v=4 and captures
+# Same fleet + scoring profile as 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed; this run patches all 3 EPPs to --v=4 and captures
 # per-request "Request handled" routing traces (see analysis/ROUTING_MECHANISM.md).
 DATA = {
     "coord": {

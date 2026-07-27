@@ -49,7 +49,8 @@ Two harness families are used:
   `3Dx8GPU_3Px8GPU_multimedia_rerun`,
   `3Dx8GPU_3Px8GPU_multimedia_active_request_scorer`, `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`,
   `4Dx2GPU_3Px2GPU_multimedia_burst_constrained`,
-  `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer`, `bench11.1*`,
+  `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer`,
+  `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed`,
   `bench11.2*`, `bench13`). Driven by a Job YAML
   (`bench_config/benchmark-job.yaml`). Model: `Qwen/Qwen3-VL-*-Instruct`.
 
@@ -80,7 +81,7 @@ cluster).
 | [4Dx2GPU_3Px2GPU_multimedia_burst_baseline](4Dx2GPU_3Px2GPU_multimedia_burst_baseline/) | multimodal burst 4-128, 3 images | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | coord ≈ sidecar within ±10% at every burst |
 | [4Dx2GPU_3Px2GPU_multimedia_burst_constrained](4Dx2GPU_3Px2GPU_multimedia_burst_constrained/) | multimodal burst 8-256, 1-5 images, decode cliff | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU (`--max-num-seqs=8`) | coord ≈ sidecar within ±3% at deep queueing |
 | [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | asymmetric decode fleet + multi-scorer | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/256** |
-| [bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | re-run of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer with sglang request-body fixes | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/128/256** |
+| [2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed](2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed/) | re-run of 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer with sglang request-body fixes | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/128/256** |
 | [bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace](bench11.2_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_v4_routing_trace/) | re-run w/ EPP `--v=4` routing trace | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail; routing skew fast↑ observed** |
 | [sglang-bench-patch-with-burst8](sglang-bench-patch-with-burst8/) | ITL measurement fix, sidecar only | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | sglang ITL 3× inflation explained (request-body fix suffices) |
 
@@ -369,7 +370,7 @@ burst 64 and 256** on TTFT p90 / E2E p90 (−24.8% / −19.6% at 64;
 −7.7% / −7.2% at 256). Medians and TPOT tied. First bench that
 reproduces a deferred-decode advantage.
 
-### bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer
+### 2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed
 
 **Purpose.** Re-run of `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer` with sglang-bench request-body fixes
 (validated in bench13/`sglang-bench-patch-with-burst8`):
@@ -393,7 +394,7 @@ advantage confirmed reproducible.
 (`"Request handled" endpoint=<pod-IP>:8000`). Adds direct routing
 observation to the deferred-decode analysis.
 
-**Cluster stack.** Same fleet as `bench11.1`. EPPs
+**Cluster stack.** Same fleet as `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed`. EPPs
 (`coordinator-epd-decode-epp`, `coordinator-epd-prefill-epp`,
 `pd-disaggregation-epp`) patched to `--v=4` for this run only;
 gateway rollout-restarted after the patch so Envoy's ExtProc filter
@@ -401,7 +402,7 @@ re-attaches to the new EPP pod. Logs streamed live via `kubectl logs -f`
 into local files (default container-log rotation would have truncated
 the log at V(4)).
 
-**Finding.** Same tail-latency wins as `bench11.1`
+**Finding.** Same tail-latency wins as `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed`
 (TTFT p90 −23.3% at 64, −14.6% at 128, −11.1% at 256). Routing analysis
 in `analysis/ROUTING_MECHANISM.md`: **sidecar routes 50/50 fast:slow;
 coord skews 53-67% toward fast pods** — direction-consistent with the
@@ -444,7 +445,7 @@ to <1%, which drives Mean ITL from ~25 ms to ~12 ms via sglang's
 arithmetic (`(E2E-TTFT)/(N-1)`). The `bench_serving.py` patch is only
 load-bearing when empty-content deltas can't be avoided or when ITL
 *shape* (p50, tail) matters. This finding is the basis for the
-request-body change adopted in `bench11.1`.
+request-body change adopted in `2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer_request_body_fixed`.
 
 ---
 
