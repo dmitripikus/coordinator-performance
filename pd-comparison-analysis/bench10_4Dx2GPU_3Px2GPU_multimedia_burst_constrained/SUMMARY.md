@@ -111,7 +111,7 @@ runs.
   vLLM non-default-args line at startup.
 - **Same served model on both sides**: `Qwen/Qwen3-VL-32B-Instruct`,
   confirmed via `--model` on both vLLM containers. (Same stale
-  `llm-d.ai/model` labels as bench9 — not blocking.)
+  `llm-d.ai/model` labels as 4Dx2GPU_3Px2GPU_multimedia_burst_baseline — not blocking.)
 - **Identical workload realized on both sides**. `seed=42` on both
   sglang runs — the per-burst image count and input-token totals
   match to within one image / a handful of tokens across sides at

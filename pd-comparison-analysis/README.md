@@ -47,7 +47,7 @@ Two harness families are used:
   used for later multimedia/burst benches
   (`3Dx8GPU_3Px8GPU_multimedia_baseline`,
   `3Dx8GPU_3Px8GPU_multimedia_rerun`,
-  `3Dx8GPU_3Px8GPU_multimedia_active_request_scorer`, `bench9`,
+  `3Dx8GPU_3Px8GPU_multimedia_active_request_scorer`, `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`,
   `bench10`, `bench11*`, `bench13`). Driven by a Job YAML
   (`bench_config/benchmark-job.yaml`). Model: `Qwen/Qwen3-VL-*-Instruct`.
 
@@ -75,7 +75,7 @@ cluster).
 | [3Dx8GPU_3Px8GPU_multimedia_baseline](3Dx8GPU_3Px8GPU_multimedia_baseline/) | multimodal, image+text, concurrency 10-40 | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | sidecar ~2-2.3× faster (coord prefill pool bottleneck) |
 | [3Dx8GPU_3Px8GPU_multimedia_rerun](3Dx8GPU_3Px8GPU_multimedia_rerun/) | re-run of `3Dx8GPU_3Px8GPU_multimedia_baseline` | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | coord TTFT 4-8× higher (prefill queue bottleneck) |
 | [3Dx8GPU_3Px8GPU_multimedia_active_request_scorer](3Dx8GPU_3Px8GPU_multimedia_active_request_scorer/) | coord re-run w/ active-request-scorer | Qwen3-VL-235B-A22B | 3D×8GPU / 3P×8GPU | prefill bottleneck resolved; coord ≈ sidecar |
-| [bench9_4Dx2GPU_3Px2GPU_multimedia_burst](bench9_4Dx2GPU_3Px2GPU_multimedia_burst/) | multimodal burst 4-128, 3 images | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | coord ≈ sidecar within ±10% at every burst |
+| [4Dx2GPU_3Px2GPU_multimedia_burst_baseline](4Dx2GPU_3Px2GPU_multimedia_burst_baseline/) | multimodal burst 4-128, 3 images | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU | coord ≈ sidecar within ±10% at every burst |
 | [bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained](bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/) | multimodal burst 8-256, 1-5 images, decode cliff | Qwen3-VL-32B | 4D×2GPU / 3P×2GPU (`--max-num-seqs=8`) | coord ≈ sidecar within ±3% at deep queueing |
 | [bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | asymmetric decode fleet + multi-scorer | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/256** |
 | [bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer](bench11.1_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer/) | re-run of bench11 with sglang request-body fixes | Qwen3-VL-32B | 2 fast+2 slow D / 3P | **coord wins tail at burst 64/128/256** |
@@ -283,7 +283,7 @@ every concurrency level. The
 `3Dx8GPU_3Px8GPU_multimedia_baseline`/`3Dx8GPU_3Px8GPU_multimedia_rerun` prefill bottleneck was
 the scoring, not the topology.
 
-### bench9_4Dx2GPU_3Px2GPU_multimedia_burst
+### 4Dx2GPU_3Px2GPU_multimedia_burst_baseline
 
 **Purpose.** First burst-sweep stress test of coord's "deferred decode"
 placement. Small-model, high burst, variable prefill duration.
@@ -304,7 +304,7 @@ request, 60 s quiesce between bursts.
 
 ### bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained
 
-**Purpose.** Retry of bench9's deferred-decode hypothesis under
+**Purpose.** Retry of 4Dx2GPU_3Px2GPU_multimedia_burst_baseline's deferred-decode hypothesis under
 conditions specifically constructed to expose it: hard decode capacity
 cliff plus real per-request prefill variance.
 
@@ -427,7 +427,7 @@ out to be a request-body change, not the code — see Finding below.
 
 Only the **sidecar side** was run; this is a measurement-methodology
 bench, not a coord-vs-sidecar comparison. Fixed workload: burst=8, 2000
-output tokens, same model/fleet as bench9/bench10.
+output tokens, same model/fleet as 4Dx2GPU_3Px2GPU_multimedia_burst_baseline/bench10.
 
 **Cluster stack.**
 - Model `Qwen/Qwen3-VL-32B-Instruct`, sidecar side only.

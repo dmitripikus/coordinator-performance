@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-BASE = "/Users/dpikus/PROJECTS/llm-d/repos/coordinator-performance/pd-comparison-analysis/bench9_4Dx2GPU_3Px2GPU_multimedia_burst"
+BASE = "/Users/dpikus/PROJECTS/llm-d/repos/coordinator-performance/pd-comparison-analysis/4Dx2GPU_3Px2GPU_multimedia_burst_baseline"
 
 BURST = [4, 8, 16, 32, 64, 128]
 ARCHS = {"coord": "#2b6cb0", "sidecar": "#c05621"}

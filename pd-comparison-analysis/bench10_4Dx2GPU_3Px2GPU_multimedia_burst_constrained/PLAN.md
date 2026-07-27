@@ -1,11 +1,11 @@
 # bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained — PLAN
 
-Follow-up to `bench9_4Dx2GPU_3Px2GPU_multimedia_burst`, which produced
+Follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`, which produced
 a null result (coord ≈ sidecar within ±10% on every metric, no
 monotonic winner across the burst sweep). See
-[../bench9_4Dx2GPU_3Px2GPU_multimedia_burst/SUMMARY.md](../bench9_4Dx2GPU_3Px2GPU_multimedia_burst/SUMMARY.md).
+[../4Dx2GPU_3Px2GPU_multimedia_burst_baseline/SUMMARY.md](../4Dx2GPU_3Px2GPU_multimedia_burst_baseline/SUMMARY.md).
 
-## Root-cause diagnosis of bench9's null result
+## Root-cause diagnosis of 4Dx2GPU_3Px2GPU_multimedia_burst_baseline's null result
 
 Deferred-decode's theoretical win requires all three of these to hold:
 
@@ -14,7 +14,7 @@ Deferred-decode's theoretical win requires all three of these to hold:
    a batch on the wrong pod).
 3. Deferred bind must have enough live info to pick better.
 
-In bench9, condition (2) failed. With no `--max-num-seqs` set on the
+In 4Dx2GPU_3Px2GPU_multimedia_burst_baseline, condition (2) failed. With no `--max-num-seqs` set on the
 decode vLLM containers, each pod's batch grows elastically — the 128
 concurrent requests at burst 128 spread as ~32 per pod, well below
 any hard cap, so extra requests joined existing batches instead of
@@ -23,7 +23,7 @@ batching. Additionally condition (1) was likely weak — 3 fixed-count
 1080p images per request produced a tight prefill-time distribution,
 so arrival order and completion order were nearly the same.
 
-## bench10 changes vs bench9
+## bench10 changes vs 4Dx2GPU_3Px2GPU_multimedia_burst_baseline
 
 ### Decode capacity cliff (fixes condition 2)
 
@@ -108,7 +108,7 @@ If bench10 also produces a null result (coord ≈ sidecar at bursts
 difference — not the deferred vs early bind timing — is the load-
 bearing variable. In that case:
 
-1. Read `bench9/sidecar/pod_logs_.../epp-configs/pd-disaggregation-epp.yaml`
+1. Read `4Dx2GPU_3Px2GPU_multimedia_burst_baseline/sidecar/pod_logs_.../epp-configs/pd-disaggregation-epp.yaml`
    to see what scorer sidecar is configured with.
 2. If sidecar already uses `active-request-scorer` or a live
    queue-depth scorer, the "stale arrival state" premise is wrong.
@@ -119,7 +119,7 @@ bearing variable. In that case:
 ## Setup steps to run bench10
 
 **Prereq check**: coord and sidecar vLLM deployments are currently at
-0 replicas (bench9 scaled them down). The new `decode.yaml` files need
+0 replicas (4Dx2GPU_3Px2GPU_multimedia_burst_baseline scaled them down). The new `decode.yaml` files need
 to be applied *before* scaling up, otherwise scaling up will bring up
 pods without the `--max-num-seqs` cap and you'd have to roll them.
 
@@ -169,8 +169,8 @@ answer yes. The scaled-up pods will honor the new `--max-num-seqs=8`
 because the Deployment spec was updated in the previous step.
 
 Sweep is 6 bursts × ~30–120 s each + 60 s quiesce between = roughly
-15–20 min. Burst 256 will take longer than any bench9 burst because
-it *will* actually queue at decode (unlike bench9).
+15–20 min. Burst 256 will take longer than any 4Dx2GPU_3Px2GPU_multimedia_burst_baseline burst because
+it *will* actually queue at decode (unlike 4Dx2GPU_3Px2GPU_multimedia_burst_baseline).
 
 At completion, the skill's Step 10 will offer to scale coord D/P
 back down — say yes to free GPUs for the sidecar side.
@@ -187,7 +187,7 @@ identical, so the workload is guaranteed to match.
 ### Analysis after both runs
 
 - Extract per-burst summary metrics from each `sglang-bench-*.log`
-  (same awk as used in bench9 SUMMARY).
+  (same awk as used in 4Dx2GPU_3Px2GPU_multimedia_burst_baseline SUMMARY).
 - Cross-check coord `coordinator.log` `pipeline step timings` for
   per-P-pod balance (should still be roughly even, since prefill
   is not the bottleneck).
@@ -198,7 +198,7 @@ identical, so the workload is guaranteed to match.
   at bursts 64/128/256), write the SUMMARY and celebrate.
 - If not, follow the "hypothesis dead" path above.
 
-## Files changed vs bench9
+## Files changed vs 4Dx2GPU_3Px2GPU_multimedia_burst_baseline
 
 - `coord/bench_config/benchmark-job.yaml` — BURST_SIZES, IMAGE_COUNT,
   `--random-image-count` flag added.

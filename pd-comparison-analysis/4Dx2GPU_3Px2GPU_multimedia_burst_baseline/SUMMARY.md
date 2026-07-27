@@ -1,4 +1,4 @@
-# bench9_4Dx2GPU_3Px2GPU_multimedia_burst — coord vs sidecar, burst sweep
+# 4Dx2GPU_3Px2GPU_multimedia_burst_baseline — coord vs sidecar, burst sweep
 
 Coordinator (namespace `dpikus-epd-sglang-bench`) vs sidecar (namespace
 `dpikus-pd-sglang-bench`), both serving `Qwen/Qwen3-VL-32B-Instruct`

@@ -1,9 +1,9 @@
 # bench11_2Dfast_2Dslow_3P_multimedia_burst_asym_multiscorer — PLAN
 
 Follow-up to `bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained`, which
-was itself a follow-up to `bench9_4Dx2GPU_3Px2GPU_multimedia_burst`.
+was itself a follow-up to `4Dx2GPU_3Px2GPU_multimedia_burst_baseline`.
 
-## Recap: why bench9 and bench10 both produced null results
+## Recap: why 4Dx2GPU_3Px2GPU_multimedia_burst_baseline and bench10 both produced null results
 
 - **Sanity check confirmed**: both sides run identical scoring configuration
   — the schedulingProfile actually loaded by the EPP references ONLY
@@ -16,7 +16,7 @@ was itself a follow-up to `bench9_4Dx2GPU_3Px2GPU_multimedia_burst`.
   of prior burst-mates, coord's post-prefill bind sees the same correct
   spread — they compute the same output and land the same distribution.
 - **The premise "sidecar's arrival-time state is stale" was false** for
-  this scorer. That's what killed the hypothesis in bench9 and bench10.
+  this scorer. That's what killed the hypothesis in 4Dx2GPU_3Px2GPU_multimedia_burst_baseline and bench10.
 
 ## bench11 fixes both root causes
 
@@ -233,7 +233,7 @@ kubectl apply -f ../bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/coord/b
 kubectl apply -f ../bench10_4Dx2GPU_3Px2GPU_multimedia_burst_constrained/sidecar/bench_config/decode.yaml
 
 # Re-apply bench10 EPP ConfigMaps (they'll revert the profile change too)
-# — actually, easier: fetch fresh from a bench9 or bench10 pod_logs archive if a rollback is needed.
+# — actually, easier: fetch fresh from a 4Dx2GPU_3Px2GPU_multimedia_burst_baseline or bench10 pod_logs archive if a rollback is needed.
 ```
 
 ## Files changed vs bench10
