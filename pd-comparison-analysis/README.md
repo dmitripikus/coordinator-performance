@@ -12,7 +12,7 @@ the same cluster:
   `dpikus-epd-sglang-bench`.
 - **Sidecar ("pd-disaggregation" guide)** — a `routing-proxy` sidecar
   container runs next to each decode pod; the sidecar EPP picks a
-  decode pod *at request arrival* ("early-bind"). Namespaces:
+  decode pod *together with prefill pod* ("early-bind"). Namespaces:
   `dpikus-pd`, `dpikus-pd-sglang-bench`.
 
 Every benchmark folder has this shape:
@@ -38,7 +38,7 @@ methodology and results; this README is an index and cross-reference.
 Two harness families are used:
 
 - **`inference-perf`** (v0.5.2 image `ghcr.io/llm-d/llm-d-benchmark:v0.5.2`) —
-  used for the earlier text-only benches (`bench1-*`,
+  used for the earlier text-only benches (`inconcurrent_*`,
   `1D_1P_250IT_5000OT_decode_heavy`, `2D_8P_5000IT_250OT_prefill_heavy`,
   `3D_8P_250IT_4000OT_decode_heavy`). Driven by
   per-step YAML configs
@@ -208,10 +208,8 @@ other side of the coord-vs-sidecar comparison.
 
 | Bench | Workload | Model | Fleet | Result |
 |---|---|---|---|---|
-| [bench1-2_var_output_always_disaggr](bench1-2_var_output_always_disaggr/) | var OT, fixed IT=250 | gpt-oss-120b | 1D/1P | node-hardware artifact; coord ~7-8% slower on decode |
-| [bench1-2_var_output_always_disaggr_pinned](bench1-2_var_output_always_disaggr_pinned/) | var OT, fixed IT=250, pods node-pinned | gpt-oss-120b | 1D/1P (pinned) | coord ≈ sidecar within ~1% once nodes match |
-| [bench1-2_var_prompt_always_disaggr](bench1-2_var_prompt_always_disaggr/) | var IT, fixed OT=250 | gpt-oss-120b | 1D/1P | coord ~7-8% slower on ITL/latency (later attributed to node variance) |
-| [bench1-3_var_prompt_always_disaggr](bench1-3_var_prompt_always_disaggr/) | var IT, fixed OT=20, pods node-pinned | gpt-oss-120b | 1D/1P (pinned) | coord ≈ sidecar; ITL within 0.7% across sizes |
+| [inconcurrent_var_output_always_disaggr_pinned](inconcurrent_var_output_always_disaggr_pinned/) | var output, fixed input=250 | gpt-oss-120b | 1D/1P (pinned) | coord ≈ sidecar within ~1% once nodes match |
+| [inconcurrent_var_prompt_always_disaggr_pinned](inconcurrent_var_prompt_always_disaggr_pinned/) | var input, fixed output=20 | gpt-oss-120b | 1D/1P (pinned) | coord ≈ sidecar; ITL within 0.7% across sizes |
 | [1D_1P_250IT_5000OT_decode_heavy](1D_1P_250IT_5000OT_decode_heavy/) | 250 IT / 5000 OT, single-stream | gpt-oss-120b | 1D/1P | coord ~7% faster (decode-bound) |
 | [2D_8P_5000IT_250OT_prefill_heavy](2D_8P_5000IT_250OT_prefill_heavy/) | 5000 IT / 250 OT, 45 req/s (saturating) | gpt-oss-120b | 2D/8P | sidecar wins under load (TTFT tail) |
 | [3D_8P_250IT_4000OT_decode_heavy](3D_8P_250IT_4000OT_decode_heavy/) | 250 IT / 4000 OT, 10 req/s | gpt-oss-120b | 3D/8P (3 coord replicas) | coord ≈ sidecar within ~0.5% |
@@ -229,79 +227,57 @@ other side of the coord-vs-sidecar comparison.
 
 ## Per-benchmark details
 
-### bench1-2_var_output_always_disaggr
+### inconcurrent_* benchmarks
+
+The `inconcurrent_var_output_always_disaggr_pinned` and
+`inconcurrent_var_prompt_always_disaggr_pinned` benches both target the
+simplest possible deployment shape: a single prefill node and a single
+decode node (1D/1P), with coord and sidecar deployed on the *same*
+Kubernetes nodes (identical `nodeSelector` pinning on both sides) so
+hardware variance can't hide the comparison. Requests are sent in
+isolation, one at a time with no concurrent load (`worker_max_concurrency: 1`),
+hence the `inconcurrent_*` name. One bench sweeps input prompt length
+(output fixed), the other sweeps output token length (input fixed). The
+goal is to isolate TTFT and TTOT/ITL and check
+whether coordinator's extra network and EPP hops costs
+anything in this minimal topology. Across both sweeps it doesn't — coord
+tracks sidecar within ~1% (output-length sweep) and within 0.7% ITL
+(input-length sweep), so for a
+simple single-P/single-D deployment the coordinator is **not worse** than
+the sidecar despite the additional hops.
+
+### inconcurrent_var_output_always_disaggr_pinned
 
 **Purpose.** Coord vs sidecar with input fixed at 250 tokens and output
-length varying (100 / 500 / 1000 / 2500 / 5000). Isolates decode cost
-by holding prefill constant.
+length varying (100 / 500 / 1000 / 2500 / 5000), with all components
+(gateway, EPP, coord, decode, prefill) explicitly pinned to the same
+physical nodes on both coord and sidecar sides, to eliminate
+node-hardware variance.
 
 **Harness.** `inference-perf` v0.5.2, per-step configs
 `config_250_{100,500,1000,2500,5000}.yaml`. Each step: 120 requests,
 `num_workers: 1`, `worker_max_concurrency: 1`, streaming, `ignore_eos: true`.
-Rate/duration: 100→1 req/s / 120s, 500→0.5 / 240s, 1000→0.25 / 480s
-(2500/5000 steps corrupted or truncated — excluded).
+Rate/duration: 100→1 req/s / 120s, 500→0.5 / 240s, 1000→0.25 / 480s,
+2500→0.1 req/s / 1200s.
 
 **Cluster stack.**
-- Model `openai/gpt-oss-120b`, streaming completion API.
-- Coord namespace `dpikus-epd`, gateway `http://10.16.2.183:80`.
-- Sidecar namespace `dpikus-pd`.
-- Topology: 1 decode pod, 1 prefill pod on each side (no explicit
-  node pinning — decode/prefill pod placement was free, which turned
-  out to matter — see next bench).
-
-**Finding.** Coord ~7-8% slower on decode-per-token. Later shown in
-`bench1-2_pinned` and `bench1-3` that this gap is a
-node-hardware-variance artifact, not a real architectural difference.
-
-### bench1-2_var_output_always_disaggr_pinned
-
-**Purpose.** Rerun of `bench1-2_var_output_always_disaggr` with all
-components (gateway, EPP, coord, decode, prefill) explicitly pinned to
-the same physical nodes on both coord and sidecar sides, to eliminate
-node-hardware variance.
-
-**Harness.** Same as `bench1-2_var_output_always_disaggr`, plus a fourth
-step at 2500 tokens (0.1 req/s / 1200s).
-
-**Cluster stack.**
-- Same as `bench1-2`, plus `nodeSelector` pinning: gateway `g49fc0a`,
-  EPP `g49fc0a`, coordinator (coord only) `g801c7a`, decode `gf2a19e`,
-  prefill `gc37d06` — identical physical nodes for coord and sidecar.
+- `nodeSelector` pinning: gateway `g49fc0a`, EPP `g49fc0a`, coordinator
+  (coord only) `g801c7a`, decode `gf2a19e`, prefill `gc37d06` —
+  identical physical nodes for coord and sidecar.
 
 **Finding.** With node placement matched, all four output-length steps
 show coord and sidecar within ~1% on latency, TTFT, ITL, and throughput
-(120/120 success). The `bench1-2` gap was node variance.
+(120/120 success).
 
-### bench1-2_var_prompt_always_disaggr
+### inconcurrent_var_prompt_always_disaggr_pinned
 
-**Purpose.** Coord vs sidecar with output fixed at 250 tokens and input
-length varying (1 / 10 / 100 / 1000 / 10000). Sidecar's EPP
+**Purpose.** Coord vs sidecar with input length varying (1 / 10 / 100 /
+1000), output fixed at 20 tokens (avoids the `worker_max_concurrency: 1`
+rate cap that a 250-token output hits at the smallest input sizes), and
+prefill/decode pinned to the same node pair on both architectures
+(prefill `gc37d06`, decode `gf2a19e`). Sidecar's EPP
 `nonCachedTokens: 0` forces always-disaggregation (matches coord's
 default behavior).
-
-**Harness.** `inference-perf` v0.5.2, per-step configs
-`config_{1,10,100,1000,10000}_250.yaml`. 120 requests / step, streaming.
-Rate/duration: 1-10→1 req/s / 120s, 100→0.5 / 240s, 1000→0.25 / 480s,
-10000→0.1 / 1200s. Also a `config_10000_250_TP-4.yaml` variant for the
-matched-TP experiment (both prefill and decode TP=4).
-
-**Cluster stack.**
-- Model `openai/gpt-oss-120b`, streaming.
-- Coord namespace `dpikus-epd`; sidecar namespace `dpikus-pd`.
-- 1D / 1P per side. Sidecar EPP configured `nonCachedTokens: 0` so
-  every request disaggregates (matching coord's structural behavior).
-
-**Finding.** Coord ~7-8% slower on latency/ITL at 1-1000 tokens,
-converging at 10000. The gap is later attributed to node variance in
-`bench1-3`. Also documents a NIXL/UCX connector cache bug encountered
-during earlier attempts.
-
-### bench1-3_var_prompt_always_disaggr
-
-**Purpose.** Repeat of the input-length sweep from `bench1-2` with two
-changes: output cut to 20 tokens (avoids the `worker_max_concurrency: 1`
-rate cap), and prefill/decode pinned to the same node pair on both
-architectures (prefill `gc37d06`, decode `gf2a19e`).
 
 **Harness.** `inference-perf`, configs `config_{1,10,100,1000}_20.yaml`.
 
@@ -309,10 +285,10 @@ architectures (prefill `gc37d06`, decode `gf2a19e`).
 - Model `openai/gpt-oss-120b`, streaming, `ignore_eos: true`, OT=20.
 - 1D / 1P per side, pinned nodes identical for coord and sidecar.
 
-**Finding.** Once nodes are pinned, coord ≈ sidecar on ITL (within 0.7%
+**Finding.** With nodes pinned, coord ≈ sidecar on ITL (within 0.7%
 at every size). The only surviving gap is a small consistent TTFT
 difference (coord ~2-5% higher) and wider coord ITL spread (p90-p10
-~2-3× sidecar's). The `bench1-2` decode gap was a node artifact.
+~2-3× sidecar's).
 
 ### 1D_1P_250IT_5000OT_decode_heavy
 

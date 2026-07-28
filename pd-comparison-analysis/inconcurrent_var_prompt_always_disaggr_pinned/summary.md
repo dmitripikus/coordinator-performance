@@ -1,8 +1,9 @@
-# bench1-3_var_prompt_always_disaggr — coord vs sidecar, node-controlled repeat of the input-length sweep
+# inconcurrent_var_prompt_always_disaggr_pinned — coord vs sidecar, node-controlled repeat of the input-length sweep
 
-This bench repeats `bench1-2_var_prompt_always_disaggr`'s input-length
-sweep (output fixed, input varies), but with two deliberate changes aimed
-at removing confounds found in earlier benches:
+This bench repeats `bench1-2_var_prompt_always_disaggr`'s (now archived
+at `../archive/bench1-2_var_prompt_always_disaggr/`) input-length sweep
+(output fixed, input varies), but with two deliberate changes aimed at
+removing confounds found in earlier benches:
 
 1. **Output length cut from 250 to 20 tokens** — avoids the
    `worker_max_concurrency: 1` rate-cap issue found in `bench1-2` (at 250

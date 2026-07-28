@@ -1,4 +1,4 @@
-# bench1-2_var_output_always_disaggr_pinned — coord vs sidecar, node-pinned
+# inconcurrent_var_output_always_disaggr_pinned — coord vs sidecar, node-pinned
 
 Coordinator (namespace `dpikus-epd`) vs sidecar (namespace `dpikus-pd`),
 same request stream shape against both architectures: input fixed at 250

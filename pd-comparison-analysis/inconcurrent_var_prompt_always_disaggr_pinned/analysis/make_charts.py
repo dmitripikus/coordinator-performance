@@ -1,12 +1,13 @@
 import glob
 import json
+import os
 import re
 
 import matplotlib.pyplot as plt
 
 SIZES = [1, 10, 100, 1000]
 ARCHS = {"coord": "#2b6cb0", "sidecar": "#c05621"}
-BASE = "/Users/alexey/projects/coordinator-performance/pd-comparison-analysis/bench1-3_var_prompt_always_disaggr"
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def load(arch):
