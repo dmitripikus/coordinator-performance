@@ -1,0 +1,28 @@
+Log Collection Summary
+======================
+Namespace: alexey-sidecar-sglang
+Time Period: Last 120 minutes
+Collection Time: יום א׳ אוג׳ 16 2026 01:04:37 IDT
+Total Pods: 13
+
+Collected Logs:
+---------------
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-rsn6q/modelserver.log: 431 lines,  52K
+  llm-d-inference-gateway-istio-599597854c-rvvwl/istio-proxy.log: 3577 lines, 984K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-ldchl/modelserver.log: 439 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-ldchl/routing-proxy.log: 0 lines,   0B
+  sglang-bench-k2jmm/bench.log: 1054 lines, 140K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-dghs4/modelserver.log: 432 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-6f4gp/modelserver.log: 443 lines,  56K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-6f4gp/routing-proxy.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-rhwp5/modelserver.log: 429 lines,  52K
+  model-cache-access/shell.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-r2ghd/modelserver.log: 437 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-r2ghd/routing-proxy.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-sj6np/modelserver.log: 437 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-sj6np/routing-proxy.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-sdn6s/modelserver.log: 425 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-tzvfn/modelserver.log: 437 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-tzvfn/routing-proxy.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-bv5p7/modelserver.log: 441 lines,  52K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-bv5p7/routing-proxy.log: 0 lines,   0B

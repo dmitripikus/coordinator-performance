@@ -1,0 +1,81 @@
+Name:             sglang-bench-x9hrz
+Namespace:        alexey-epd-sglang-bench
+Priority:         0
+Service Account:  default
+Node:             gd86486/10.202.220.223
+Start Time:       Sun, 16 Aug 2026 19:18:12 +0300
+Labels:           batch.kubernetes.io/controller-uid=52831783-1475-4ff4-80d1-98f1e481bb11
+                  batch.kubernetes.io/job-name=sglang-bench
+                  controller-uid=52831783-1475-4ff4-80d1-98f1e481bb11
+                  job-name=sglang-bench
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=199
+Annotations:      <none>
+Status:           Succeeded
+IP:               10.0.15.174
+IPs:
+  IP:           10.0.15.174
+Controlled By:  Job/sglang-bench
+Containers:
+  bench:
+    Container ID:  containerd://15b2e531be2dfe1b8fbd7b1a4e730228d2014bfef8adceccf785bc013bd74186
+    Image:         docker.io/lmsysorg/sglang:v0.5.14
+    Image ID:      docker.io/lmsysorg/sglang@sha256:5027e95bf6ec536856b1b52a91d1f35ff5c564ab83e8a94758a169ff09bb8df3
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/bash
+      /scripts/run_bench.sh
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sun, 16 Aug 2026 19:18:17 +0300
+      Finished:     Sun, 16 Aug 2026 19:47:23 +0300
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     8
+      memory:  32Gi
+    Requests:
+      cpu:     8
+      memory:  32Gi
+    Environment:
+      GATEWAY_IP:  llm-d-inference-gateway-istio
+    Mounts:
+      /results from results (rw)
+      /scripts from script (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rnm6n (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  script:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      sglang-bench-script
+    Optional:  false
+  results:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  llm-d-model-cache
+    ReadOnly:   false
+  kube-api-access-rnm6n:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Guaranteed
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason                  Age   From                     Message
+  ----    ------                  ----  ----                     -------
+  Normal  Scheduled               44m   default-scheduler        Successfully assigned alexey-epd-sglang-bench/sglang-bench-x9hrz to gd86486
+  Normal  SuccessfulAttachVolume  44m   attachdetach-controller  AttachVolume.Attach succeeded for volume "pvc-f5c475a2-95ce-4aab-a40e-8a186e4a6897"
+  Normal  Pulled                  44m   kubelet                  spec.containers{bench}: Container image "docker.io/lmsysorg/sglang:v0.5.14" already present on machine and can be accessed by the pod
+  Normal  Created                 44m   kubelet                  spec.containers{bench}: Container created
+  Normal  Started                 44m   kubelet                  spec.containers{bench}: Container started

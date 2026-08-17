@@ -1,0 +1,31 @@
+Log Collection Summary
+======================
+Namespace: alexey-epd-sglang-bench
+Time Period: Last 120 minutes
+Collection Time: יום א׳ אוג׳ 16 2026 20:03:07 IDT
+Total Pods: 18
+
+Collected Logs:
+---------------
+  llm-d-inference-gateway-istio-687cbbb66b-5l4f2/istio-proxy.log: 4 lines, 4.0K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-8nw29/modelserver.log: 1370 lines, 156K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-8nw29/modelserver_previous.log: 0 lines,   0B
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-b7p64/modelserver.log: 1386 lines, 160K
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-zvqnq/modelserver.log: 1958 lines, 184K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-z6bkb/modelserver.log: 1393 lines, 160K
+  sglang-bench-x9hrz/bench.log: 1054 lines, 140K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-49q6b/modelserver.log: 1389 lines, 160K
+  model-cache-access/shell.log: 0 lines,   0B
+  coord-disaggregation-epp-74c9c56568-c4lwl/epp.log: 14391 lines, 3.1M
+  llmdbench-harness-launcher/harness.log: 0 lines,   0B
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-s6q22/modelserver.log: 1386 lines, 160K
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-9b8tw/modelserver.log: 1835 lines, 172K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-dn6b2/modelserver.log: 1391 lines, 160K
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-sxtvh/modelserver.log: 1762 lines, 168K
+  llm-d-coordinator-7d795b97db-j978z/vllm-render.log: 2169 lines, 132K
+  llm-d-coordinator-7d795b97db-j978z/coordinator.log: 17381 lines, 3.6M
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-6r75w/modelserver.log: 1758 lines, 164K
+  llm-d-coordinator-7d795b97db-gj4cb/vllm-render.log: 2163 lines, 136K
+  llm-d-coordinator-7d795b97db-gj4cb/coordinator.log: 17411 lines, 3.6M
+  prom-debug-7d55c99c85-qdtjw/prometheus_previous.log: 22 lines, 4.0K
+  prom-debug-7d55c99c85-qdtjw/prometheus.log: 29 lines, 8.0K

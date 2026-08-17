@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: vllm-decode
+  namespace: alexey-epd-sglang-bench
+spec:
+  selector:
+    matchLabels:
+      llm-d.ai/guide: coord-disaggregation
+      llm-d.ai/role: decode
+  podMetricsEndpoints:
+  - port: modelserver
+    path: /metrics
+    interval: 5s
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: vllm-prefill
+  namespace: alexey-epd-sglang-bench
+spec:
+  selector:
+    matchLabels:
+      llm-d.ai/guide: coord-disaggregation
+      llm-d.ai/role: prefill
+  podMetricsEndpoints:
+  - port: modelserver
+    path: /metrics
+    interval: 5s

@@ -1,0 +1,29 @@
+ts=2026-08-16T15:57:18.778Z caller=main.go:633 level=info msg="Starting Prometheus Server" mode=server version="(version=2.53.0, branch=HEAD, revision=4c35b9250afefede41c5f5acd76191f90f625898)"
+ts=2026-08-16T15:57:18.778Z caller=main.go:638 level=info build_context="(go=go1.22.4, platform=linux/amd64, user=root@7f8d89cbbd64, date=20240619-07:39:12, tags=netgo,builtinassets,stringlabels)"
+ts=2026-08-16T15:57:18.778Z caller=main.go:639 level=info host_details="(Linux 6.8.12-680-6063-coreweave-amd64-f81899c8 #1 SMP PREEMPT_DYNAMIC Fri Apr 25 14:33:53 UTC 2025 x86_64 prom-debug-7d55c99c85-qdtjw (none))"
+ts=2026-08-16T15:57:18.778Z caller=main.go:640 level=info fd_limits="(soft=1048576, hard=1048576)"
+ts=2026-08-16T15:57:18.778Z caller=main.go:641 level=info vm_limits="(soft=unlimited, hard=unlimited)"
+ts=2026-08-16T15:57:18.788Z caller=web.go:568 level=info component=web msg="Start listening for connections" address=0.0.0.0:9090
+ts=2026-08-16T15:57:18.788Z caller=main.go:1148 level=info msg="Starting TSDB ..."
+ts=2026-08-16T15:57:18.789Z caller=tls_config.go:313 level=info component=web msg="Listening on" address=[::]:9090
+ts=2026-08-16T15:57:18.789Z caller=tls_config.go:316 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+ts=2026-08-16T15:57:18.801Z caller=head.go:626 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+ts=2026-08-16T15:57:18.812Z caller=head.go:713 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=11.351924ms
+ts=2026-08-16T15:57:18.812Z caller=head.go:721 level=info component=tsdb msg="Replaying WAL, this may take a while"
+ts=2026-08-16T15:57:35.001Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=0 maxSegment=5
+ts=2026-08-16T15:57:45.999Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=1 maxSegment=5
+ts=2026-08-16T15:57:58.249Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=2 maxSegment=5
+ts=2026-08-16T15:58:09.405Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=3 maxSegment=5
+ts=2026-08-16T15:58:21.406Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=4 maxSegment=5
+ts=2026-08-16T15:58:21.407Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=5 maxSegment=5
+ts=2026-08-16T15:58:21.407Z caller=head.go:830 level=info component=tsdb msg="WAL replay completed" checkpoint_replay_duration=1.497663ms wal_replay_duration=1m2.593788962s wbl_replay_duration=160ns chunk_snapshot_load_duration=0s mmap_chunk_replay_duration=11.351924ms total_replay_duration=1m2.606706968s
+ts=2026-08-16T15:58:21.608Z caller=main.go:1167 level=warn fs_type=NFS_SUPER_MAGIC msg="This filesystem is not supported and may lead to data corruption and data loss. Please carefully read https://prometheus.io/docs/prometheus/latest/storage/ to learn more about supported filesystems."
+ts=2026-08-16T15:58:21.608Z caller=main.go:1172 level=info msg="TSDB started"
+ts=2026-08-16T15:58:21.608Z caller=main.go:1354 level=info msg="Loading configuration file" filename=/etc/prometheus/prometheus.yml
+ts=2026-08-16T15:58:21.609Z caller=kubernetes.go:331 level=info component="discovery manager scrape" discovery=kubernetes config=epp msg="Using pod service account via in-cluster config"
+ts=2026-08-16T15:58:21.609Z caller=kubernetes.go:331 level=info component="discovery manager scrape" discovery=kubernetes config=cadvisor msg="Using pod service account via in-cluster config"
+ts=2026-08-16T15:58:21.609Z caller=kubernetes.go:331 level=info component="discovery manager scrape" discovery=kubernetes config=node-exporter msg="Using pod service account via in-cluster config"
+ts=2026-08-16T15:58:21.609Z caller=main.go:1391 level=info msg="updated GOGC" old=100 new=75
+ts=2026-08-16T15:58:21.609Z caller=main.go:1402 level=info msg="Completed loading of configuration file" filename=/etc/prometheus/prometheus.yml totalDuration=1.247308ms db_storage=1.77µs remote_storage=1.67µs web_handler=710ns query_engine=1.6µs scrape=185.407µs scrape_sd=537.03µs notify=740ns notify_sd=1.02µs rules=1.51µs tracing=2.51µs
+ts=2026-08-16T15:58:21.609Z caller=main.go:1133 level=info msg="Server is ready to receive web requests."
+ts=2026-08-16T15:58:21.609Z caller=manager.go:164 level=info component="rule manager" msg="Starting rule manager..."

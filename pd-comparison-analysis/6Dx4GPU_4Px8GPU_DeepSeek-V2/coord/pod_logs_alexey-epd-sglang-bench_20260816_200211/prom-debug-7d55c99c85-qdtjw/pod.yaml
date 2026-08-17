@@ -1,0 +1,190 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/restartedAt: "2026-08-16T18:57:17+03:00"
+  creationTimestamp: "2026-08-16T15:57:17Z"
+  generateName: prom-debug-7d55c99c85-
+  generation: 1
+  labels:
+    app: prom-debug
+    pod-template-hash: 7d55c99c85
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "184"
+  name: prom-debug-7d55c99c85-qdtjw
+  namespace: alexey-epd-sglang-bench
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: prom-debug-7d55c99c85
+    uid: c2c29775-5454-4653-b118-d184a12ec163
+  resourceVersion: "61887988"
+  uid: 6f1912dd-e565-4f4b-962e-119bb5da8912
+spec:
+  containers:
+  - args:
+    - --config.file=/etc/prometheus/prometheus.yml
+    - --storage.tsdb.path=/prometheus
+    - --storage.tsdb.retention.time=6h
+    image: prom/prometheus:v2.53.0
+    imagePullPolicy: IfNotPresent
+    name: prometheus
+    ports:
+    - containerPort: 9090
+      name: http
+      protocol: TCP
+    resources:
+      limits:
+        cpu: "1"
+        memory: 3Gi
+      requests:
+        cpu: 200m
+        memory: 512Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/prometheus
+      name: config
+    - mountPath: /prometheus
+      name: storage
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-rgc8z
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: g104218
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: prom-debug
+  serviceAccountName: prom-debug
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: prom-debug-config
+    name: config
+  - name: storage
+    persistentVolumeClaim:
+      claimName: prom-debug-storage
+  - name: kube-api-access-rgc8z
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  allocatedResources:
+    cpu: 200m
+    memory: 512Mi
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-16T15:57:18Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-16T15:57:17Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-16T15:57:18Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-16T15:57:18Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-16T15:57:17Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - allocatedResources:
+      cpu: 200m
+      memory: 512Mi
+    containerID: containerd://5b25257c174807100d3be79dc0e8c1121e3eb79e6b614165cee7fec9ca176ee4
+    image: docker.io/prom/prometheus:v2.53.0
+    imageID: docker.io/prom/prometheus@sha256:075b1ba2c4ebb04bc3a6ab86c06ec8d8099f8fda1c96ef6d104d9bb1def1d8bc
+    lastState:
+      terminated:
+        containerID: containerd://364cee4c580b7373baaff7a39b453ff6849337c31758b530acbc88c3ac66c4a9
+        exitCode: 1
+        finishedAt: "2026-08-16T15:57:18Z"
+        reason: Error
+        startedAt: "2026-08-16T15:57:18Z"
+    name: prometheus
+    ready: true
+    resources:
+      limits:
+        cpu: "1"
+        memory: 3Gi
+      requests:
+        cpu: 200m
+        memory: 512Mi
+    restartCount: 1
+    started: true
+    state:
+      running:
+        startedAt: "2026-08-16T15:57:18Z"
+    user:
+      linux:
+        gid: 65534
+        supplementalGroups:
+        - 65534
+        uid: 65534
+    volumeMounts:
+    - mountPath: /etc/prometheus
+      name: config
+    - mountPath: /prometheus
+      name: storage
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-rgc8z
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 10.202.212.9
+  hostIPs:
+  - ip: 10.202.212.9
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.16.122
+  podIPs:
+  - ip: 10.0.16.122
+  qosClass: Burstable
+  resources:
+    limits:
+      cpu: "1"
+      memory: 3Gi
+    requests:
+      cpu: 181m
+      memory: 512Mi
+  startTime: "2026-08-16T15:57:17Z"

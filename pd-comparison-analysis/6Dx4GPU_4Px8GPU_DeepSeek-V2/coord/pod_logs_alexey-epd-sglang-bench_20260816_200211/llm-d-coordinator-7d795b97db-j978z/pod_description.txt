@@ -1,0 +1,107 @@
+Name:             llm-d-coordinator-7d795b97db-j978z
+Namespace:        alexey-epd-sglang-bench
+Priority:         0
+Service Account:  default
+Node:             g104218/10.202.212.9
+Start Time:       Sun, 16 Aug 2026 18:04:05 +0300
+Labels:           app=llm-d-coordinator
+                  pod-template-hash=7d795b97db
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=184
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-08-16T18:04:04+03:00
+Status:           Running
+IP:               10.0.16.52
+IPs:
+  IP:           10.0.16.52
+Controlled By:  ReplicaSet/llm-d-coordinator-7d795b97db
+Containers:
+  coordinator:
+    Container ID:  containerd://4d457b6b53e17eeb9436dc28e2f10521999836fd45d8e06b34521ebe3312c05b
+    Image:         ghcr.io/roytman/coordinator:07657e922
+    Image ID:      ghcr.io/roytman/coordinator@sha256:6f545693358543e917546087f7979118b0fa6bf79e9371b7cdb8ac5c786de63b
+    Port:          8080/TCP (http)
+    Host Port:     0/TCP (http)
+    Args:
+      --config
+      /etc/coordinator/coordinator.yaml
+    State:          Running
+      Started:      Sun, 16 Aug 2026 18:04:05 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     16
+      memory:  32Gi
+    Requests:
+      cpu:      16
+      memory:   32Gi
+    Liveness:   http-get http://:8080/healthz delay=5s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:8080/readyz delay=5s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      GOMAXPROCS:  16
+      GOMEMLIMIT:  29491MiB
+    Mounts:
+      /etc/coordinator from config (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-fk27h (ro)
+  vllm-render:
+    Container ID:  containerd://62965edd8322b43ad585a4f3fc5c9fa3d1580f40c9038b18306d77102f314cca
+    Image:         vllm/vllm-openai-cpu:v0.21.0
+    Image ID:      docker.io/vllm/vllm-openai-cpu@sha256:fc78b363009faa519a0adb5f1a287a533a922970f4463e73c00053a4aa2136e8
+    Port:          8000/TCP (render-http)
+    Host Port:     0/TCP (render-http)
+    Command:
+      vllm
+      launch
+      render
+    Args:
+      deepseek-ai/DeepSeek-V2
+      --port=8000
+    State:          Running
+      Started:      Sun, 16 Aug 2026 18:04:05 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     4
+      memory:  16Gi
+    Requests:
+      cpu:      2
+      memory:   8Gi
+    Liveness:   http-get http://:8000/health delay=0s timeout=1s period=10s #success=1 #failure=5
+    Readiness:  http-get http://:8000/health delay=0s timeout=1s period=5s #success=1 #failure=1
+    Startup:    http-get http://:8000/health delay=2s timeout=1s period=1s #success=1 #failure=600
+    Environment:
+      HF_TOKEN:  <set to the key 'HF_TOKEN' in secret 'llm-d-hf-token'>  Optional: true
+    Mounts:
+      /.cache from torch-compile-cache (rw)
+      /.config from vllm-config (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-fk27h (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      llm-d-coordinator-config
+    Optional:  false
+  torch-compile-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  vllm-config:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-fk27h:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

@@ -1,0 +1,74 @@
+Name:             sglang-bench-k2jmm
+Namespace:        alexey-sidecar-sglang
+Priority:         0
+Service Account:  default
+Node:             gd86486/10.202.220.223
+Start Time:       Sat, 15 Aug 2026 23:06:27 +0300
+Labels:           batch.kubernetes.io/controller-uid=4080ae17-a166-40d2-ab17-bfac5c9ed1ec
+                  batch.kubernetes.io/job-name=sglang-bench
+                  controller-uid=4080ae17-a166-40d2-ab17-bfac5c9ed1ec
+                  job-name=sglang-bench
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=199
+Annotations:      <none>
+Status:           Succeeded
+IP:               10.0.15.174
+IPs:
+  IP:           10.0.15.174
+Controlled By:  Job/sglang-bench
+Containers:
+  bench:
+    Container ID:  containerd://d1e9e12b326fee5fe99a710a7fe362100be18b99dd86888827c5dc4f85a7db4b
+    Image:         docker.io/lmsysorg/sglang:v0.5.14
+    Image ID:      docker.io/lmsysorg/sglang@sha256:5027e95bf6ec536856b1b52a91d1f35ff5c564ab83e8a94758a169ff09bb8df3
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/bash
+      /scripts/run_bench.sh
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Sat, 15 Aug 2026 23:06:33 +0300
+      Finished:     Sat, 15 Aug 2026 23:34:23 +0300
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     8
+      memory:  32Gi
+    Requests:
+      cpu:     8
+      memory:  32Gi
+    Environment:
+      GATEWAY_IP:  llm-d-inference-gateway-istio
+    Mounts:
+      /results from results (rw)
+      /scripts from script (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-h88rl (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False 
+  Initialized                 True 
+  Ready                       False 
+  ContainersReady             False 
+  PodScheduled                True 
+Volumes:
+  script:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      sglang-bench-script
+    Optional:  false
+  results:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  llm-d-model-cache
+    ReadOnly:   false
+  kube-api-access-h88rl:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Guaranteed
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
