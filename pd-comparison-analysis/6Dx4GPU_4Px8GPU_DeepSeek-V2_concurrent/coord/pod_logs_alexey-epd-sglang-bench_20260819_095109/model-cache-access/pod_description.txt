@@ -1,0 +1,60 @@
+Name:             model-cache-access
+Namespace:        alexey-epd-sglang-bench
+Priority:         0
+Service Account:  default
+Node:             g49fc0a/10.202.221.55
+Start Time:       Tue, 04 Aug 2026 12:23:55 +0300
+Labels:           topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=214
+Annotations:      <none>
+Status:           Running
+IP:               10.0.12.233
+IPs:
+  IP:  10.0.12.233
+Containers:
+  shell:
+    Container ID:  containerd://437c7ca0b53533f6e94722aec7381838d9fd0a59e33287e59d49113f166338a2
+    Image:         busybox:1.36
+    Image ID:      docker.io/library/busybox@sha256:73aaf090f3d85aa34ee199857f03fa3a95c8ede2ffd4cc2cdb5b94e566b11662
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      sleep
+      infinity
+    State:          Running
+      Started:      Tue, 04 Aug 2026 12:24:00 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  256Mi
+    Requests:
+      cpu:        100m
+      memory:     128Mi
+    Environment:  <none>
+    Mounts:
+      /model-cache from model-cache (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-z972h (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  model-cache:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  llm-d-model-cache
+    ReadOnly:   false
+  kube-api-access-z972h:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

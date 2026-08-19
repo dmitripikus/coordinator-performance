@@ -1,0 +1,29 @@
+Log Collection Summary
+======================
+Namespace: alexey-sidecar-sglang
+Time Period: Last 120 minutes
+Collection Time: יום ד׳ אוג׳ 19 2026 10:47:29 IDT
+Total Pods: 14
+
+Collected Logs:
+---------------
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-wj92x/modelserver.log: 1165 lines, 132K
+  llm-d-inference-gateway-istio-599597854c-rvvwl/istio-proxy.log: 4 lines, 4.0K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-z7zf9/modelserver.log: 933 lines, 128K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-z7zf9/routing-proxy.log: 4 lines, 4.0K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-6k2r7/modelserver.log: 846 lines, 116K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-6k2r7/routing-proxy.log: 4 lines, 4.0K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-8kx4h/modelserver.log: 932 lines, 128K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-8kx4h/routing-proxy.log: 4 lines, 4.0K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-7ht8n/modelserver.log: 1159 lines, 132K
+  model-cache-access/shell.log: 0 lines,   0B
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-jd69l/modelserver.log: 1136 lines, 128K
+  llmdbench-harness-launcher/harness.log: 390 lines,  56K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-l4vbd/modelserver.log: 941 lines, 128K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-l4vbd/routing-proxy.log: 4 lines, 4.0K
+  pd-disaggregation-epp-74f897d847-2rclp/epp.log: 9059 lines, 2.3M
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-dtrzf/modelserver.log: 939 lines, 128K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-dtrzf/routing-proxy.log: 4 lines, 4.0K
+  pd-disaggregation-nvidia-gpu-vllm-prefill-7455868cf-wsgsw/modelserver.log: 1165 lines, 132K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-kh2jx/modelserver.log: 945 lines, 128K
+  pd-disaggregation-nvidia-gpu-vllm-decode-749c74d544-kh2jx/routing-proxy.log: 4 lines, 4.0K

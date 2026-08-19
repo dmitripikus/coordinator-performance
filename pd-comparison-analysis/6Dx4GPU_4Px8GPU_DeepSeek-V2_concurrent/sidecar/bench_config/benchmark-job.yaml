@@ -1,0 +1,122 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sglang-bench-script
+data:
+  run_bench.sh: |
+    #!/bin/bash
+    set -euo pipefail
+    mkdir -p /results
+    exec > >(tee -a "/results/sglang-bench-$(date -u +%Y%m%d_%H%M%S).log") 2>&1
+    MODEL="deepseek-ai/DeepSeek-V2"
+    HOST="${GATEWAY_IP}"
+    PORT="80"
+    # rate duration_seconds -- num_prompts is derived as rate*duration so the
+    # rate is actually sustained for the full duration, instead of firing
+    # `rate` requests in ~1s and then just draining them.
+    SUSTAINED_PHASES=(
+      "10 5"
+    )
+    # burst test: num_prompts == rate, so every request in a level arrives
+    # within ~1s (old one-shot style) instead of being spread out. Used to
+    # compare decode-pod distribution/tail-latency under a sudden spike
+    # between the coordinator and sidecar architectures -- run this same
+    # list, unmodified, on both sides for a fair comparison.
+    BURST_LEVELS=(10 25 50 75 100 125 150 175 200 225 250 275 300 325 350 375 400)
+    # gap between burst levels so tail requests from one burst drain before
+    # the next starts, keeping each level's measurement isolated
+    BURST_COOLDOWN_SEC=60
+
+    # wide range-ratio spreads input length ~0-2x the mean, so requests in the
+    # same burst finish prefill at staggered times instead of all together --
+    # this is what lets coordinator's post-prefill decode pick see a
+    # different load snapshot than sidecar's frozen-at-admission pick.
+    RANDOM_INPUT_LEN=1500
+    RANDOM_OUTPUT_LEN=1000
+    RANDOM_RANGE_RATIO=1.0
+
+    # echo "[$(date)] Waiting for http://${HOST}:${PORT}/v1/models ..."
+    # for i in $(seq 1 40); do
+    #   if curl -sf "http://${HOST}:${PORT}/v1/models" -o /dev/null; then
+    #     echo "  Endpoint up."; break
+    #   fi
+    #   echo "  Attempt ${i}/40 failed, retrying in 15s..."
+    #   sleep 15
+    #   [[ ${i} -eq 40 ]] && { echo "ERROR: endpoint timeout" >&2; exit 1; }
+    # done
+
+    run_bench() {
+      local rate="$1" num_prompts="$2" tag="$3"
+      python -m sglang.bench_serving \
+        --model "${MODEL}" \
+        --num-prompts "${num_prompts}" \
+        --dataset-name random \
+        --random-input-len ${RANDOM_INPUT_LEN} \
+        --random-output-len ${RANDOM_OUTPUT_LEN} \
+        --random-range-ratio ${RANDOM_RANGE_RATIO} \
+        --host "${HOST}" \
+        --port "${PORT}" \
+        --backend sglang-oai \
+        --request-rate "${rate}" \
+        --ready-check-timeout-sec 0 \
+        --output-details \
+        --output-file "/results/sglang-bench-details-$(date -u +%Y%m%d_%H%M%S)-${tag}.jsonl"
+    }
+
+    for phase in "${SUSTAINED_PHASES[@]+"${SUSTAINED_PHASES[@]}"}"; do
+      read -r rate duration <<< "${phase}"
+      num_prompts=$(( rate * duration ))
+      echo ""
+      echo "[$(date)] === sustained rate=${rate} for ${duration}s (num_prompts=${num_prompts}) ==="
+      run_bench "${rate}" "${num_prompts}" "sustained-r${rate}-d${duration}"
+      echo "[$(date)] sustained rate=${rate} done."
+    done
+
+    for burst in "${BURST_LEVELS[@]}"; do
+      echo ""
+      echo "[$(date)] === burst rate=${burst} num_prompts=${burst} ==="
+      run_bench "${burst}" "${burst}" "burst-${burst}"
+      echo "[$(date)] burst=${burst} done. Cooling down for ${BURST_COOLDOWN_SEC}s..."
+      sleep "${BURST_COOLDOWN_SEC}"
+    done
+    echo "[$(date)] All rates complete."
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sglang-bench
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: bench
+          image: docker.io/lmsysorg/sglang:v0.5.14
+          command: ["/bin/bash", "/scripts/run_bench.sh"]
+          env:
+            - name: GATEWAY_IP
+              value: "llm-d-inference-gateway-istio"
+          resources:
+            requests:
+              cpu: "8"
+              memory: "32Gi"
+            limits:
+              cpu: "8"
+              memory: "32Gi"
+          volumeMounts:
+            - name: script
+              mountPath: /scripts
+            - name: results
+              mountPath: /results
+      volumes:
+        - name: script
+          configMap:
+            name: sglang-bench-script
+            defaultMode: 0755
+        - name: results
+          persistentVolumeClaim:
+            claimName: llm-d-model-cache

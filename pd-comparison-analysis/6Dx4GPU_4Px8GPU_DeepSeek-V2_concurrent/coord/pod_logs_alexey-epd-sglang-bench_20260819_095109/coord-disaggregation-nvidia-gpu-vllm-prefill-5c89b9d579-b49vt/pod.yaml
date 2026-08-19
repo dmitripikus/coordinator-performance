@@ -1,0 +1,303 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2026-08-19T06:04:16Z"
+  generateName: coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-
+  generation: 1
+  labels:
+    llm-d.ai/accelerator-variant: gpu
+    llm-d.ai/accelerator-vendor: nvidia
+    llm-d.ai/engine-type: vllm
+    llm-d.ai/guide: coord-disaggregation
+    llm-d.ai/model: DeepSeek-V2
+    llm-d.ai/role: prefill
+    pod-template-hash: 5c89b9d579
+    topology.kubernetes.io/region: US-EAST-01
+    topology.kubernetes.io/zone: "142"
+  name: coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-b49vt
+  namespace: alexey-epd-sglang-bench
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579
+    uid: e64c8ac2-308c-45c1-ab5a-a48bc5f5744b
+  resourceVersion: "64481065"
+  uid: 2c5ee1ec-53da-4f2f-a4fb-2f97deee9d42
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: NotIn
+            values:
+            - g1251ac
+    podAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - podAffinityTerm:
+          labelSelector:
+            matchLabels:
+              llm-d.ai/accelerator-variant: gpu
+              llm-d.ai/accelerator-vendor: nvidia
+              llm-d.ai/engine-type: vllm
+              llm-d.ai/guide: coord-disaggregation
+              llm-d.ai/model: DeepSeek-V2
+              llm-d.ai/role: prefill
+          topologyKey: kubernetes.io/hostname
+        weight: 100
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchLabels:
+            llm-d.ai/accelerator-variant: gpu
+            llm-d.ai/accelerator-vendor: nvidia
+            llm-d.ai/engine-type: vllm
+            llm-d.ai/guide: coord-disaggregation
+            llm-d.ai/model: DeepSeek-V2
+            llm-d.ai/role: decode
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - args:
+    - deepseek-ai/DeepSeek-V2
+    - --disable-access-log-for-endpoints=/health,/metrics,/v1/models
+    - --tensor-parallel-size=8
+    - --block-size=128
+    - --max-model-len=32000
+    - --max-num-batched-tokens=16384
+    - --kv-transfer-config
+    - '{"kv_connector":"NixlConnector", "kv_role":"kv_both"}'
+    - --load-format=runai_streamer
+    - --model-loader-extra-config
+    - '{"distributed":true,"concurrency":16,"memory_limit":17179869184}'
+    - --no-disable-hybrid-kv-cache-manager
+    command:
+    - vllm
+    - serve
+    env:
+    - name: HF_HOME
+      value: /model-cache
+    - name: VLLM_NIXL_SIDE_CHANNEL_HOST
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    - name: HF_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: HF_TOKEN
+          name: llm-d-hf-token
+          optional: true
+    - name: USER
+      value: llm-d
+    - name: UCX_MODULE_DIR
+      value: /usr/local/lib/python3.12/dist-packages/nixl_cu13.libs/ucx
+    image: vllm/vllm-openai:v0.23.0
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /health
+        port: modelserver
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    name: modelserver
+    ports:
+    - containerPort: 8000
+      name: modelserver
+      protocol: TCP
+    - containerPort: 5600
+      name: nixl
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /v1/models
+        port: modelserver
+        scheme: HTTP
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 2
+    resources:
+      limits:
+        cpu: "16"
+        memory: 400Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+      requests:
+        cpu: "16"
+        memory: 400Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+    startupProbe:
+      failureThreshold: 120
+      httpGet:
+        path: /v1/models
+        port: modelserver
+        scheme: HTTP
+      initialDelaySeconds: 15
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 5
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /model-cache
+      name: model-cache
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.config
+      name: config-cache
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: gf27fec
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: coord-disaggregation-nvidia-gpu-vllm-sa
+  serviceAccountName: coord-disaggregation-nvidia-gpu-vllm-sa
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: model-cache
+    persistentVolumeClaim:
+      claimName: llm-d-model-cache
+  - emptyDir:
+      medium: Memory
+      sizeLimit: 8Gi
+    name: shm
+  - emptyDir: {}
+    name: torch-compile-cache
+  - emptyDir: {}
+    name: config-cache
+status:
+  allocatedResources:
+    cpu: "16"
+    memory: 400Gi
+    nvidia.com/gpu: "8"
+    rdma/ib: "1"
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-19T06:04:36Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-19T06:04:28Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-19T06:09:06Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-19T06:09:06Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2026-08-19T06:04:28Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - allocatedResources:
+      cpu: "16"
+      memory: 400Gi
+      nvidia.com/gpu: "8"
+      rdma/ib: "1"
+    allocatedResourcesStatus:
+    - name: nvidia.com/gpu
+      resources:
+      - health: Healthy
+        resourceID: GPU-41a0047d-88d4-dbdd-1434-f1ed125b6d35
+      - health: Healthy
+        resourceID: GPU-fc13b4f4-8ca7-b2d0-032f-f49d2117daaf
+      - health: Healthy
+        resourceID: GPU-be96c282-6912-5299-3713-2fc24dc41af2
+      - health: Healthy
+        resourceID: GPU-e25d65ea-d9f1-5fb6-4889-b35c5b6afdf9
+      - health: Healthy
+        resourceID: GPU-8f43aa68-c653-e8d7-ca8a-16c9291b52bc
+      - health: Healthy
+        resourceID: GPU-6952d3c3-1536-8b89-c858-b0a83fae5f34
+      - health: Healthy
+        resourceID: GPU-38ec4316-95cd-d1df-0b3c-c777a363dcdd
+      - health: Healthy
+        resourceID: GPU-eff23622-83cf-c441-02af-0ff9a240f5cb
+    - name: rdma/ib
+      resources:
+      - health: Healthy
+        resourceID: "42"
+    containerID: containerd://0b8d613483515b2263c23a6e6152dc7bc3f74301c610dca98078103aa188ed33
+    image: docker.io/vllm/vllm-openai:v0.23.0
+    imageID: docker.io/vllm/vllm-openai@sha256:6d8429e38e3747723ca07ee1b17972e09bb9c51c4032b266f24fb1cc3b22ed8f
+    lastState: {}
+    name: modelserver
+    ready: true
+    resources:
+      limits:
+        cpu: "16"
+        memory: 400Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+      requests:
+        cpu: "16"
+        memory: 400Gi
+        nvidia.com/gpu: "8"
+        rdma/ib: "1"
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2026-08-19T06:04:37Z"
+    user:
+      linux:
+        gid: 0
+        supplementalGroups:
+        - 0
+        uid: 0
+    volumeMounts:
+    - mountPath: /model-cache
+      name: model-cache
+    - mountPath: /dev/shm
+      name: shm
+    - mountPath: /.cache
+      name: torch-compile-cache
+    - mountPath: /.config
+      name: config-cache
+  hostIP: 10.202.207.193
+  hostIPs:
+  - ip: 10.202.207.193
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.0.15.62
+  podIPs:
+  - ip: 10.0.15.62
+  qosClass: Guaranteed
+  resources:
+    limits:
+      cpu: "16"
+      memory: 400Gi
+    requests:
+      cpu: 15978m
+      memory: 400Gi
+  startTime: "2026-08-19T06:04:28Z"

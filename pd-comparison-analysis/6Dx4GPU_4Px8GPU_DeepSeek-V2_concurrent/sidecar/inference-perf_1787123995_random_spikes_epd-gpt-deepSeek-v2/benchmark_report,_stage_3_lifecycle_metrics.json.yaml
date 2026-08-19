@@ -1,0 +1,251 @@
+metrics:
+  latency:
+    inter_token_latency:
+      max: 0.23892568983137608
+      mean: 0.024750331852105963
+      min: 3.2100360840559006e-06
+      p0p1: 0.009365667461883276
+      p1: 0.018964344509877266
+      p10: 0.023901168000884356
+      p25: 0.024380484013818204
+      p5: 0.023110499430913478
+      p50: 0.024833940900862217
+      p75: 0.025317727006040514
+      p90: 0.02578126497101039
+      p95: 0.02612465554848313
+      p99: 0.027822515256702908
+      p99p9: 0.03037330549140469
+      units: s/token
+    normalized_time_per_output_token:
+      max: 0.025809919712121918
+      mean: 0.02508390774173001
+      min: 0.014554049450694984
+      p0p1: 0.01596307606287704
+      p1: 0.02418190727483321
+      p10: 0.024636280735109286
+      p25: 0.024906780873533887
+      p5: 0.02457725940835444
+      p50: 0.025167226836396897
+      p75: 0.025410503000701943
+      p90: 0.025648958195059208
+      p95: 0.02570195221101715
+      p99: 0.025758233382889344
+      p99p9: 0.025803641279279067
+      units: s/token
+    request_latency:
+      max: 38.740689487895
+      mean: 37.74693403837116
+      min: 36.03991644619964
+      p0p1: 36.11810385359847
+      p1: 36.57298093307298
+      p10: 36.982266786438416
+      p25: 37.37900095421355
+      p5: 36.903139560995626
+      p50: 37.76893571554683
+      p75: 38.133783434925135
+      p90: 38.499086250783876
+      p95: 38.578630268736745
+      p99: 38.663108307716904
+      p99p9: 38.731265560197876
+      units: s
+    time_per_output_token:
+      max: 0.025355122893427808
+      mean: 0.024750331852105963
+      min: 0.02389701581466943
+      p0p1: 0.023932880015330234
+      p1: 0.024142420765332254
+      p10: 0.02431216610027477
+      p25: 0.024592732252009832
+      p5: 0.024267215179031094
+      p50: 0.024743280838010834
+      p75: 0.024970056578943814
+      p90: 0.025276785047445446
+      p95: 0.02530762564491791
+      p99: 0.025354945992273278
+      p99p9: 0.025355096962951743
+      units: s/token
+    time_to_first_token:
+      max: 1.5153663870878518
+      mean: 0.6166019926189135
+      min: 0.16992851695977151
+      p0p1: 0.17199210423533803
+      p1: 0.18665754866786302
+      p10: 0.3673259829636663
+      p25: 0.4766148486523889
+      p5: 0.3317444506683387
+      p50: 0.5760507880477235
+      p75: 0.6830681626452133
+      p90: 0.9780032356269656
+      p95: 1.098512650979682
+      p99: 1.3116594914882442
+      p99p9: 1.4864224000005104
+      units: s
+  requests:
+    failures: 0
+    input_length:
+      max: 1065.0
+      mean: 1038.7466666666667
+      min: 1017.0
+      p0p1: 1017.596
+      p1: 1021.49
+      p10: 1028.0
+      p25: 1034.0
+      p5: 1024.45
+      p50: 1038.0
+      p75: 1043.0
+      p90: 1049.0
+      p95: 1054.55
+      p99: 1060.51
+      p99p9: 1064.404
+      units: count
+    output_length:
+      max: 2556.0
+      mean: 1507.78
+      min: 1493.0
+      p0p1: 1493.298
+      p1: 1495.98
+      p10: 1500.0
+      p25: 1501.0
+      p5: 1500.0
+      p50: 1501.0
+      p75: 1501.0
+      p90: 1501.0
+      p95: 1501.0
+      p99: 1501.0
+      p99p9: 2398.805000000029
+      units: count
+    total: 150
+  throughput:
+    output_tokens_per_sec: 5731.519015446866
+    requests_per_sec: 3.8012966185032737
+    total_tokens_per_sec: 9680.103206928414
+  time:
+    duration: 0.9941193431150168
+scenario:
+  load:
+    args:
+      api:
+        headers: null
+        streaming: true
+        type: completion
+      circuit_breakers: null
+      data:
+        input_distribution:
+          max: 1000
+          mean: 1000.0
+          min: 1000
+          std_dev: 0.0
+          total_count: 501
+        output_distribution:
+          max: 1500
+          mean: 1500.0
+          min: 1500
+          std_dev: 0.0
+          total_count: 501
+        path: null
+        shared_prefix: null
+        trace: null
+        type: random
+      load:
+        circuit_breakers: []
+        interval: 60.0
+        lora_traffic_split: null
+        num_workers: 4
+        request_timeout: null
+        stages:
+        - concurrency_level: 50
+          duration: 1
+          num_requests: 50
+          rate: 50.0
+        - concurrency_level: 50
+          duration: 1
+          num_requests: 50
+          rate: 50.0
+        - concurrency_level: 100
+          duration: 1
+          num_requests: 100
+          rate: 100.0
+        - concurrency_level: 150
+          duration: 1
+          num_requests: 150
+          rate: 150.0
+        - concurrency_level: 200
+          duration: 1
+          num_requests: 200
+          rate: 200.0
+        - concurrency_level: 250
+          duration: 1
+          num_requests: 250
+          rate: 250.0
+        - concurrency_level: 300
+          duration: 1
+          num_requests: 300
+          rate: 300.0
+        - concurrency_level: 350
+          duration: 1
+          num_requests: 350
+          rate: 350.0
+        - concurrency_level: 400
+          duration: 1
+          num_requests: 400
+          rate: 400.0
+        - concurrency_level: 450
+          duration: 1
+          num_requests: 450
+          rate: 450.0
+        - concurrency_level: 500
+          duration: 1
+          num_requests: 500
+          rate: 500.0
+        sweep: null
+        trace: null
+        type: concurrent
+        worker_max_concurrency: 0
+        worker_max_tcp_connections: 2500
+      metrics: null
+      report:
+        prometheus:
+          per_stage: false
+          summary: true
+        request_lifecycle:
+          per_adapter: true
+          per_adapter_stage: false
+          per_request: false
+          per_stage: true
+          percentiles:
+          - 0.1
+          - 1.0
+          - 5.0
+          - 10.0
+          - 25.0
+          - 50.0
+          - 75.0
+          - 90.0
+          - 95.0
+          - 99.0
+          - 99.9
+          summary: true
+      server:
+        api_key: null
+        base_url: http://10.16.2.60:80
+        cert_path: null
+        ignore_eos: true
+        key_path: null
+        model_name: deepseek-ai/DeepSeek-V2
+        type: vllm
+      storage:
+        google_cloud_storage: null
+        local_storage:
+          path: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+          report_file_prefix: null
+        simple_storage_service: null
+      tokenizer:
+        pretrained_model_name_or_path: deepseek-ai/DeepSeek-V2
+        token: null
+        trust_remote_code: null
+    metadata:
+      stage: 3
+    name: inference-perf
+  model:
+    name: unknown
+version: '0.1'

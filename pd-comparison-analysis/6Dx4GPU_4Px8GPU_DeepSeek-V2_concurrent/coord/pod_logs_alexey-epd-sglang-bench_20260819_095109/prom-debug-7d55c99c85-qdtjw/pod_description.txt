@@ -1,0 +1,74 @@
+Name:             prom-debug-7d55c99c85-qdtjw
+Namespace:        alexey-epd-sglang-bench
+Priority:         0
+Service Account:  prom-debug
+Node:             g104218/10.202.212.9
+Start Time:       Sun, 16 Aug 2026 18:57:17 +0300
+Labels:           app=prom-debug
+                  pod-template-hash=7d55c99c85
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=184
+Annotations:      kubectl.kubernetes.io/restartedAt: 2026-08-16T18:57:17+03:00
+Status:           Running
+IP:               10.0.16.122
+IPs:
+  IP:           10.0.16.122
+Controlled By:  ReplicaSet/prom-debug-7d55c99c85
+Containers:
+  prometheus:
+    Container ID:  containerd://5b25257c174807100d3be79dc0e8c1121e3eb79e6b614165cee7fec9ca176ee4
+    Image:         prom/prometheus:v2.53.0
+    Image ID:      docker.io/prom/prometheus@sha256:075b1ba2c4ebb04bc3a6ab86c06ec8d8099f8fda1c96ef6d104d9bb1def1d8bc
+    Port:          9090/TCP (http)
+    Host Port:     0/TCP (http)
+    Args:
+      --config.file=/etc/prometheus/prometheus.yml
+      --storage.tsdb.path=/prometheus
+      --storage.tsdb.retention.time=6h
+    State:          Running
+      Started:      Sun, 16 Aug 2026 18:57:18 +0300
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Sun, 16 Aug 2026 18:57:18 +0300
+      Finished:     Sun, 16 Aug 2026 18:57:18 +0300
+    Ready:          True
+    Restart Count:  1
+    Limits:
+      cpu:     1
+      memory:  3Gi
+    Requests:
+      cpu:        200m
+      memory:     512Mi
+    Environment:  <none>
+    Mounts:
+      /etc/prometheus from config (rw)
+      /prometheus from storage (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rgc8z (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      prom-debug-config
+    Optional:  false
+  storage:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  prom-debug-storage
+    ReadOnly:   false
+  kube-api-access-rgc8z:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

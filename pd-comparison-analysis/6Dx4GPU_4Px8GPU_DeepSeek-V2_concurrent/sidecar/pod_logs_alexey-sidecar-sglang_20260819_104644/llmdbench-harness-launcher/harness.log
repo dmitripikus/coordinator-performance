@@ -1,0 +1,390 @@
+LLMDBENCH_CONTROL_WORK_DIR=/requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+LLMDBENCH_DESCRIPTION_KEYWORDS=
+LLMDBENCH_DESCRIPTION_TEXT=
+LLMDBENCH_HARNESS_GIT_BRANCH=main
+LLMDBENCH_HARNESS_GIT_REPO=https://github.com/kubernetes-sigs/inference-perf.git
+LLMDBENCH_HARNESS_NAME=inference-perf
+LLMDBENCH_HARNESS_STACK_NAME=epd-gpt-deepSeek-v2
+LLMDBENCH_MAGIC_ENVAR=harness_pod
+LLMDBENCH_RUN_DATASET_DIR=/workspace
+LLMDBENCH_RUN_EXPERIMENT_ANALYZER=inference-perf-analyze_results.sh
+LLMDBENCH_RUN_EXPERIMENT_HARNESS=inference-perf-llm-d-benchmark.sh
+LLMDBENCH_RUN_EXPERIMENT_HARNESS_DIR=inference-perf
+LLMDBENCH_RUN_EXPERIMENT_HARNESS_LOADGEN_EC=1
+LLMDBENCH_RUN_EXPERIMENT_HARNESS_MAX_TRIES=3
+LLMDBENCH_RUN_EXPERIMENT_HARNESS_NAME_AUTO=0
+LLMDBENCH_RUN_EXPERIMENT_HARNESS_REPORT_EC=1
+LLMDBENCH_RUN_EXPERIMENT_HARNESS_WORKLOAD_AUTO=0
+LLMDBENCH_RUN_EXPERIMENT_HARNESS_WORKLOAD_NAME=random_spikes.yaml
+LLMDBENCH_RUN_EXPERIMENT_ID=1787123995_random_spikes
+LLMDBENCH_RUN_EXPERIMENT_RESULTS_DIR=/requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+LLMDBENCH_RUN_EXPERIMENT_RESULTS_DIR_PREFIX=/requests
+LLMDBENCH_RUN_EXPERIMENT_RESULTS_DIR_SUFFIX=inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+LLMDBENCH_RUN_WORKSPACE_DIR=/workspace
+Running harness: /usr/local/bin/inference-perf-llm-d-benchmark.sh
+Using experiment result dir: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+2026-08-19 07:20:54,056 - inference_perf.config - INFO - Using configuration from: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/random_spikes.yaml
+2026-08-19 07:20:54,063 - inference_perf.config - INFO - Benchmarking with the following config:
+
+api:
+  type: completion
+  streaming: true
+  headers: null
+data:
+  type: random
+  path: null
+  input_distribution:
+    min: 1000
+    max: 1000
+    mean: 1000
+    std_dev: 0
+  output_distribution:
+    min: 1500
+    max: 1500
+    mean: 1500
+    std_dev: 0
+  shared_prefix: null
+  trace: null
+load:
+  type: concurrent
+  interval: 60
+  stages:
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 50
+      concurrency_level: 50
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 50
+      concurrency_level: 50
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 100
+      concurrency_level: 100
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 150
+      concurrency_level: 150
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 200
+      concurrency_level: 200
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 250
+      concurrency_level: 250
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 300
+      concurrency_level: 300
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 350
+      concurrency_level: 350
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 400
+      concurrency_level: 400
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 450
+      concurrency_level: 450
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 500
+      concurrency_level: 500
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  sweep: null
+  num_workers: 4
+  worker_max_concurrency: 500
+  worker_max_tcp_connections: 2500
+  trace: null
+  circuit_breakers: []
+  request_timeout: null
+  lora_traffic_split: null
+metrics: null
+report:
+  request_lifecycle:
+    summary: true
+    per_stage: true
+    per_request: false
+    per_adapter: true
+    per_adapter_stage: false
+    percentiles:
+    - 0.1
+    - 1.0
+    - 5.0
+    - 10.0
+    - 25.0
+    - 50.0
+    - 75.0
+    - 90.0
+    - 95.0
+    - 99.0
+    - 99.9
+  prometheus:
+    summary: true
+    per_stage: false
+storage:
+  local_storage:
+    path: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+    report_file_prefix: null
+  google_cloud_storage: null
+  simple_storage_service: null
+server:
+  type: vllm
+  model_name: deepseek-ai/DeepSeek-V2
+  base_url: http://10.16.2.60:80
+  ignore_eos: true
+tokenizer:
+  pretrained_model_name_or_path: deepseek-ai/DeepSeek-V2
+circuit_breakers: null
+
+
+2026-08-19 07:20:54,063 - inference_perf.client.filestorage.local - INFO - Report files will be stored at: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+2026-08-19 07:20:54,870 - inference_perf.loadgen.load_generator - INFO - Stage 0 - run started
+Stage 0 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 0 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 0 progress:   2%|▏         | 0.02/1.0 [00:29<00:49, 50.07s/it]Stage 0 progress:  46%|████▌     | 0.46/1.0 [00:30<00:02,  3.75s/it]Stage 0 progress: 100%|██████████| 1.0/1.0 [00:31<00:00,  2.55s/it] Stage 0 progress: 100%|██████████| 1.0/1.0 [00:31<00:00, 31.03s/it]
+2026-08-19 07:21:25,908 - inference_perf.loadgen.load_generator - INFO - Stage 0 - run completed
+2026-08-19 07:22:25,909 - inference_perf.loadgen.load_generator - INFO - Stage 1 - run started
+Stage 1 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 1 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 1 progress:   2%|▏         | 0.02/1.0 [00:28<00:49, 50.07s/it]Stage 1 progress:  28%|██▊       | 0.28/1.0 [00:29<00:04,  6.21s/it]Stage 1 progress:  84%|████████▍ | 0.84/1.0 [00:30<00:00,  2.92s/it]Stage 1 progress: 100%|██████████| 1.0/1.0 [00:31<00:00,  3.70s/it] Stage 1 progress: 100%|██████████| 1.0/1.0 [00:31<00:00, 31.03s/it]
+2026-08-19 07:22:56,941 - inference_perf.loadgen.load_generator - INFO - Stage 1 - run completed
+2026-08-19 07:23:56,942 - inference_perf.loadgen.load_generator - INFO - Stage 2 - run started
+Stage 2 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 2 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 2 progress:   3%|▎         | 0.03/1.0 [00:35<00:32, 33.35s/it]Stage 2 progress:  18%|█▊        | 0.18/1.0 [00:36<00:08,  9.95s/it]Stage 2 progress:  52%|█████▏    | 0.52/1.0 [00:37<00:02,  4.77s/it]Stage 2 progress:  79%|███████▉  | 0.79/1.0 [00:38<00:00,  4.28s/it]Stage 2 progress: 100%|██████████| 1.0/1.0 [00:39<00:00,  4.45s/it] Stage 2 progress: 100%|██████████| 1.0/1.0 [00:39<00:00, 39.05s/it]
+2026-08-19 07:24:35,989 - inference_perf.loadgen.load_generator - INFO - Stage 2 - run completed
+2026-08-19 07:25:35,990 - inference_perf.loadgen.load_generator - INFO - Stage 3 - run started
+Stage 3 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 3 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 3 progress:   1%|          | 0.006666666666666667/1.0 [00:37<02:29, 150.27s/it]Stage 3 progress:   5%|▌         | 0.05333333333333334/1.0 [00:38<00:31, 33.16s/it]  Stage 3 progress:  34%|███▍      | 0.34/1.0 [00:39<00:04,  6.80s/it]               Stage 3 progress:  90%|█████████ | 0.9000000000000001/1.0 [00:40<00:00,  3.23s/it]Stage 3 progress: 100%|██████████| 1.0/1.0 [00:41<00:00,  4.27s/it]               Stage 3 progress: 100%|██████████| 1.0/1.0 [00:41<00:00, 41.06s/it]
+2026-08-19 07:26:17,049 - inference_perf.loadgen.load_generator - INFO - Stage 3 - run completed
+2026-08-19 07:27:17,050 - inference_perf.loadgen.load_generator - INFO - Stage 4 - run started
+Stage 4 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:37<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:38<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:39<?, ?it/s]Stage 4 progress:   0%|          | 0/1.0 [00:40<?, ?it/s]Stage 4 progress:   1%|          | 0.01/1.0 [00:41<01:39, 100.04s/it]Stage 4 progress:   8%|▊         | 0.085/1.0 [00:42<00:18, 20.76s/it]Stage 4 progress:  32%|███▏      | 0.315/1.0 [00:43<00:05,  7.63s/it]Stage 4 progress:  58%|█████▊    | 0.58/1.0 [00:44<00:02,  5.44s/it] Stage 4 progress:  90%|█████████ | 0.9/1.0 [00:45<00:00,  4.29s/it] Stage 4 progress: 100%|██████████| 1.0/1.0 [00:46<00:00,  5.33s/it]Stage 4 progress: 100%|██████████| 1.0/1.0 [00:46<00:00, 46.05s/it]
+2026-08-19 07:28:03,105 - inference_perf.loadgen.load_generator - INFO - Stage 4 - run completed
+2026-08-19 07:29:03,106 - inference_perf.loadgen.load_generator - INFO - Stage 5 - run started
+Stage 5 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:37<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:38<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:39<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:40<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:41<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:42<?, ?it/s]Stage 5 progress:   0%|          | 0/1.0 [00:43<?, ?it/s]Stage 5 progress:   0%|          | 0.004/1.0 [00:44<04:09, 250.25s/it]Stage 5 progress:   6%|▌         | 0.05600000000000001/1.0 [00:45<00:29, 31.04s/it]Stage 5 progress:  26%|██▌       | 0.256/1.0 [00:46<00:06,  9.19s/it]              Stage 5 progress:  66%|██████▌   | 0.656/1.0 [00:47<00:01,  4.47s/it]Stage 5 progress:  99%|█████████▉| 0.988/1.0 [00:48<00:00,  3.81s/it]Stage 5 progress: 100%|██████████| 1.0/1.0 [00:49<00:00, 49.05s/it]  
+2026-08-19 07:29:52,164 - inference_perf.loadgen.load_generator - INFO - Stage 5 - run completed
+2026-08-19 07:30:52,165 - inference_perf.loadgen.load_generator - INFO - Stage 6 - run started
+Stage 6 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:37<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:38<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:39<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:40<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:41<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:42<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:43<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:44<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:45<?, ?it/s]Stage 6 progress:   0%|          | 0/1.0 [00:46<?, ?it/s]Stage 6 progress:   0%|          | 0.0033333333333333335/1.0 [00:47<04:59, 300.16s/it]Stage 6 progress:   3%|▎         | 0.02666666666666667/1.0 [00:48<01:04, 66.27s/it]   Stage 6 progress:  18%|█▊        | 0.17666666666666667/1.0 [00:49<00:10, 13.05s/it]Stage 6 progress:  49%|████▉     | 0.4933333333333333/1.0 [00:50<00:02,  5.84s/it] Stage 6 progress:  98%|█████████▊| 0.98/1.0 [00:51<00:00,  3.51s/it]              Stage 6 progress: 100%|██████████| 1.0/1.0 [00:52<00:00, 52.06s/it] 
+2026-08-19 07:31:44,226 - inference_perf.loadgen.load_generator - INFO - Stage 6 - run completed
+2026-08-19 07:32:44,227 - inference_perf.loadgen.load_generator - INFO - Stage 7 - run started
+Stage 7 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:37<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:38<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:39<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:40<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:41<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:42<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:43<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:44<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:45<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:46<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:47<?, ?it/s]Stage 7 progress:   0%|          | 0/1.0 [00:48<?, ?it/s]Stage 7 progress:   1%|▏         | 0.014285714285714285/1.0 [00:49<01:09, 70.04s/it]Stage 7 progress:  11%|█         | 0.11142857142857143/1.0 [00:50<00:14, 15.88s/it] Stage 7 progress:  33%|███▎      | 0.32857142857142857/1.0 [00:51<00:05,  7.50s/it]Stage 7 progress:  72%|███████▏  | 0.7228571428571429/1.0 [00:52<00:01,  4.23s/it] Stage 7 progress: 100%|██████████| 1.0/1.0 [00:53<00:00,  3.99s/it]               Stage 7 progress: 100%|██████████| 1.0/1.0 [00:53<00:00, 53.06s/it]
+2026-08-19 07:33:37,291 - inference_perf.loadgen.load_generator - INFO - Stage 7 - run completed
+2026-08-19 07:34:37,293 - inference_perf.loadgen.load_generator - INFO - Stage 8 - run started
+Stage 8 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:37<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:38<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:39<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:40<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:41<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:42<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:43<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:44<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:45<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:46<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:47<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:48<?, ?it/s]Stage 8 progress:   0%|          | 0/1.0 [00:49<?, ?it/s]Stage 8 progress:   0%|          | 0.0025/1.0 [00:50<06:39, 400.28s/it]Stage 8 progress:   2%|▏         | 0.0175/1.0 [00:51<01:39, 101.56s/it]Stage 8 progress:   5%|▌         | 0.0525/1.0 [00:52<00:44, 46.90s/it] Stage 8 progress:  13%|█▎        | 0.13/1.0 [00:53<00:20, 23.00s/it]  Stage 8 progress:  29%|██▉       | 0.2925/1.0 [00:54<00:08, 11.58s/it]Stage 8 progress:  46%|████▋     | 0.4625/1.0 [00:55<00:04,  8.72s/it]Stage 8 progress:  63%|██████▎   | 0.63/1.0 [00:56<00:02,  7.58s/it]  Stage 8 progress:  89%|████████▉ | 0.8925/1.0 [00:57<00:00,  5.77s/it]Stage 8 progress: 100%|██████████| 1.0/1.0 [00:58<00:00,  6.54s/it]   Stage 8 progress: 100%|██████████| 1.0/1.0 [00:58<00:00, 58.06s/it]
+2026-08-19 07:35:35,364 - inference_perf.loadgen.load_generator - INFO - Stage 8 - run completed
+2026-08-19 07:36:35,365 - inference_perf.loadgen.load_generator - INFO - Stage 9 - run started
+Stage 9 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:37<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:38<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:39<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:40<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:41<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:42<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:43<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:44<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:45<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:46<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:47<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:48<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:49<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:50<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:51<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:52<?, ?it/s]Stage 9 progress:   0%|          | 0/1.0 [00:53<?, ?it/s]Stage 9 progress:   1%|          | 0.006666666666666667/1.0 [00:54<02:29, 150.14s/it]Stage 9 progress:   2%|▏         | 0.024444444444444446/1.0 [00:55<01:13, 75.80s/it] Stage 9 progress:   8%|▊         | 0.07555555555555556/1.0 [00:56<00:30, 32.79s/it] Stage 9 progress:  19%|█▉        | 0.19111111111111112/1.0 [00:57<00:12, 15.62s/it]Stage 9 progress:  41%|████▏     | 0.41333333333333333/1.0 [00:58<00:04,  8.26s/it]Stage 9 progress:  74%|███████▍  | 0.7444444444444445/1.0 [00:59<00:01,  5.20s/it] Stage 9 progress:  96%|█████████▌| 0.9555555555555556/1.0 [01:00<00:00,  5.04s/it]Stage 9 progress: 100%|█████████▉| 0.9977777777777778/1.0 [01:01<00:00,  6.72s/it]Stage 9 progress: 100%|██████████| 1.0/1.0 [01:02<00:00, 62.07s/it]               
+2026-08-19 07:37:37,432 - inference_perf.loadgen.load_generator - INFO - Stage 9 - run completed
+2026-08-19 07:38:37,433 - inference_perf.loadgen.load_generator - INFO - Stage 10 - run started
+Stage 10 progress:   0%|          | 0/1.0 [00:00<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:01<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:02<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:03<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:04<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:05<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:06<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:07<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:08<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:09<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:10<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:11<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:12<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:13<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:14<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:15<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:16<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:17<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:18<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:19<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:20<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:21<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:22<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:23<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:24<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:25<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:26<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:27<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:28<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:29<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:30<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:31<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:32<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:33<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:34<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:35<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:36<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:37<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:38<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:39<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:40<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:41<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:42<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:43<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:44<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:45<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:46<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:47<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:48<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:49<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:50<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:51<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:52<?, ?it/s]Stage 10 progress:   0%|          | 0/1.0 [00:53<?, ?it/s]Stage 10 progress:   0%|          | 0.002/1.0 [00:54<08:19, 500.24s/it]Stage 10 progress:   1%|          | 0.006/1.0 [00:55<05:13, 315.00s/it]Stage 10 progress:   4%|▍         | 0.038/1.0 [00:56<00:58, 61.25s/it] Stage 10 progress:  10%|█         | 0.1/1.0 [00:57<00:26, 29.12s/it]  Stage 10 progress:  17%|█▋        | 0.168/1.0 [00:58<00:17, 21.53s/it]Stage 10 progress:  31%|███▏      | 0.314/1.0 [00:59<00:08, 12.46s/it]Stage 10 progress:  57%|█████▋    | 0.572/1.0 [01:00<00:03,  7.23s/it]Stage 10 progress:  79%|███████▉  | 0.794/1.0 [01:01<00:01,  6.06s/it]Stage 10 progress:  86%|████████▌ | 0.856/1.0 [01:02<00:01,  7.53s/it]Stage 10 progress:  90%|█████████ | 0.9/1.0 [01:03<00:00,  9.49s/it]  Stage 10 progress:  92%|█████████▏| 0.918/1.0 [01:04<00:01, 12.72s/it]Stage 10 progress:  94%|█████████▍| 0.938/1.0 [01:05<00:01, 16.46s/it]Stage 10 progress:  97%|█████████▋| 0.972/1.0 [01:06<00:00, 19.00s/it]Stage 10 progress:  99%|█████████▉| 0.99/1.0 [01:07<00:00, 23.71s/it] Stage 10 progress: 100%|█████████▉| 0.996/1.0 [01:08<00:00, 31.98s/it]Stage 10 progress: 100%|██████████| 1.0/1.0 [01:09<00:00, 43.38s/it]  Stage 10 progress: 100%|██████████| 1.0/1.0 [01:09<00:00, 69.07s/it]
+2026-08-19 07:39:46,507 - inference_perf.loadgen.load_generator - INFO - Stage 10 - run completed
+2026-08-19 07:40:46,510 - inference_perf.reportgen.base - INFO - Generating Reports...
+2026-08-19 07:40:49,929 - inference_perf.reportgen.base - WARNING - Prometheus Metrics Client is not configured or not of type PrometheusMetricsClient
+2026-08-19 07:40:49,934 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/summary_lifecycle_metrics.json
+2026-08-19 07:40:49,938 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_0_lifecycle_metrics.json
+2026-08-19 07:40:49,943 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_1_lifecycle_metrics.json
+2026-08-19 07:40:49,947 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_2_lifecycle_metrics.json
+2026-08-19 07:40:49,951 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_3_lifecycle_metrics.json
+2026-08-19 07:40:49,955 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_4_lifecycle_metrics.json
+2026-08-19 07:40:49,958 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_5_lifecycle_metrics.json
+2026-08-19 07:40:49,961 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_6_lifecycle_metrics.json
+2026-08-19 07:40:49,966 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_7_lifecycle_metrics.json
+2026-08-19 07:40:49,969 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_8_lifecycle_metrics.json
+2026-08-19 07:40:49,973 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_9_lifecycle_metrics.json
+2026-08-19 07:40:49,977 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_10_lifecycle_metrics.json
+2026-08-19 07:40:49,982 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/config.yaml
+Harness completed successfully.
+Harness completed: /usr/local/bin/inference-perf-llm-d-benchmark.sh
+Running analysis: /usr/local/bin/inference-perf-analyze_results.sh
+Converting stage_0_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_0_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_10_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_10_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_1_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_1_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_2_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_2_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_3_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_3_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_4_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_4_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_5_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_5_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_6_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_6_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_7_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_7_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_8_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_8_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Converting stage_9_lifecycle_metrics.json to Benchmark Report v0.1
+
+Converting stage_9_lifecycle_metrics.json to Benchmark Report v0.2
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method.Environment variable empty: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Failed to get Kubernetes context from environment variable: LLMDBENCH_BASE64_CONTEXT_CONTENTS
+Empty context dictionary provided
+Failed to retrieve /standup/ev.yaml: [Errno 2] No such file or directory: '/standup/ev.yaml'
+Warning: LLMDBENCH_DEPLOY_METHODS undefined, cannot determine deployment method
+Results data conversion completed successfully.
+2026-08-19 07:41:58,390 - inference_perf.analysis.analyze - INFO - Analyzing reports in /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+2026-08-19 07:41:58,480 - matplotlib.font_manager - INFO - generated new fontManager
+2026-08-19 07:41:58,769 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/latency_vs_concurrency.png
+2026-08-19 07:41:59,103 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/throughput_vs_concurrency.png
+2026-08-19 07:41:59,103 - inference_perf.analysis.analyze - WARNING - No data available to generate chart: latency_vs_qps.png
+2026-08-19 07:41:59,103 - inference_perf.analysis.analyze - WARNING - No data available to generate chart: throughput_vs_qps.png
+2026-08-19 07:41:59,269 - inference_perf.analysis.analyze - INFO - Chart saved to /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/throughput_vs_latency.png
+Done. Data is available at "/requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2"

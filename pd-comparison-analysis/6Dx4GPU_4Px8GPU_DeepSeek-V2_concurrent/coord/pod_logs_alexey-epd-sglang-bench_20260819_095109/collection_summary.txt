@@ -1,0 +1,29 @@
+Log Collection Summary
+======================
+Namespace: alexey-epd-sglang-bench
+Time Period: Last 120 minutes
+Collection Time: יום ד׳ אוג׳ 19 2026 09:51:59 IDT
+Total Pods: 17
+
+Collected Logs:
+---------------
+  llm-d-inference-gateway-istio-687cbbb66b-5l4f2/istio-proxy.log: 3 lines, 4.0K
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-sjmtx/modelserver.log: 1170 lines, 132K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-6bpll/modelserver.log: 922 lines, 128K
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-479sm/modelserver.log: 1142 lines, 132K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-vt96j/modelserver.log: 919 lines, 128K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-qs97q/modelserver.log: 929 lines, 132K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-lshkh/modelserver.log: 923 lines, 128K
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-lxp48/modelserver.log: 918 lines, 128K
+  model-cache-access/shell.log: 0 lines,   0B
+  coord-disaggregation-epp-74c9c56568-c4lwl/epp.log: 12521 lines, 3.0M
+  llmdbench-harness-launcher/harness.log: 390 lines,  56K
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-xx8fn/modelserver.log: 1150 lines, 132K
+  coord-disaggregation-nvidia-gpu-vllm-prefill-5c89b9d579-b49vt/modelserver.log: 1159 lines, 132K
+  llm-d-coordinator-7d795b97db-j978z/vllm-render.log: 2160 lines, 132K
+  llm-d-coordinator-7d795b97db-j978z/coordinator.log: 7325 lines, 1.5M
+  llm-d-coordinator-7d795b97db-gj4cb/vllm-render.log: 2160 lines, 136K
+  llm-d-coordinator-7d795b97db-gj4cb/coordinator.log: 7285 lines, 1.5M
+  coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-lfjrq/modelserver.log: 924 lines, 132K
+  prom-debug-7d55c99c85-qdtjw/prometheus_previous.log: 0 lines,   0B
+  prom-debug-7d55c99c85-qdtjw/prometheus.log: 5 lines, 4.0K

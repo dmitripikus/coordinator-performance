@@ -1,0 +1,254 @@
+2026-08-19 07:20:54,056 - inference_perf.config - INFO - Using configuration from: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/random_spikes.yaml
+2026-08-19 07:20:54,063 - inference_perf.config - INFO - Benchmarking with the following config:
+
+api:
+  type: completion
+  streaming: true
+  headers: null
+data:
+  type: random
+  path: null
+  input_distribution:
+    min: 1000
+    max: 1000
+    mean: 1000
+    std_dev: 0
+  output_distribution:
+    min: 1500
+    max: 1500
+    mean: 1500
+    std_dev: 0
+  shared_prefix: null
+  trace: null
+load:
+  type: concurrent
+  interval: 60
+  stages:
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 50
+      concurrency_level: 50
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 50
+      concurrency_level: 50
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 100
+      concurrency_level: 100
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 150
+      concurrency_level: 150
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 200
+      concurrency_level: 200
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 250
+      concurrency_level: 250
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 300
+      concurrency_level: 300
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 350
+      concurrency_level: 350
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 400
+      concurrency_level: 400
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 450
+      concurrency_level: 450
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  - !!python/object:inference_perf.config.ConcurrentLoadStage
+    __dict__:
+      num_requests: 500
+      concurrency_level: 500
+      rate: null
+      duration: null
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      rate: null
+      num_requests: null
+      concurrency_level: null
+      duration: null
+    __pydantic_private__: null
+  sweep: null
+  num_workers: 4
+  worker_max_concurrency: 500
+  worker_max_tcp_connections: 2500
+  trace: null
+  circuit_breakers: []
+  request_timeout: null
+  lora_traffic_split: null
+metrics: null
+report:
+  request_lifecycle:
+    summary: true
+    per_stage: true
+    per_request: false
+    per_adapter: true
+    per_adapter_stage: false
+    percentiles:
+    - 0.1
+    - 1.0
+    - 5.0
+    - 10.0
+    - 25.0
+    - 50.0
+    - 75.0
+    - 90.0
+    - 95.0
+    - 99.0
+    - 99.9
+  prometheus:
+    summary: true
+    per_stage: false
+storage:
+  local_storage:
+    path: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+    report_file_prefix: null
+  google_cloud_storage: null
+  simple_storage_service: null
+server:
+  type: vllm
+  model_name: deepseek-ai/DeepSeek-V2
+  base_url: http://10.16.2.60:80
+  ignore_eos: true
+tokenizer:
+  pretrained_model_name_or_path: deepseek-ai/DeepSeek-V2
+circuit_breakers: null
+
+
+2026-08-19 07:20:54,063 - inference_perf.client.filestorage.local - INFO - Report files will be stored at: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+2026-08-19 07:20:54,870 - inference_perf.loadgen.load_generator - INFO - Stage 0 - run started
+2026-08-19 07:21:25,908 - inference_perf.loadgen.load_generator - INFO - Stage 0 - run completed
+2026-08-19 07:22:25,909 - inference_perf.loadgen.load_generator - INFO - Stage 1 - run started
+2026-08-19 07:22:56,941 - inference_perf.loadgen.load_generator - INFO - Stage 1 - run completed
+2026-08-19 07:23:56,942 - inference_perf.loadgen.load_generator - INFO - Stage 2 - run started
+2026-08-19 07:24:35,989 - inference_perf.loadgen.load_generator - INFO - Stage 2 - run completed
+2026-08-19 07:25:35,990 - inference_perf.loadgen.load_generator - INFO - Stage 3 - run started
+2026-08-19 07:26:17,049 - inference_perf.loadgen.load_generator - INFO - Stage 3 - run completed
+2026-08-19 07:27:17,050 - inference_perf.loadgen.load_generator - INFO - Stage 4 - run started
+2026-08-19 07:28:03,105 - inference_perf.loadgen.load_generator - INFO - Stage 4 - run completed
+2026-08-19 07:29:03,106 - inference_perf.loadgen.load_generator - INFO - Stage 5 - run started
+2026-08-19 07:29:52,164 - inference_perf.loadgen.load_generator - INFO - Stage 5 - run completed
+2026-08-19 07:30:52,165 - inference_perf.loadgen.load_generator - INFO - Stage 6 - run started
+2026-08-19 07:31:44,226 - inference_perf.loadgen.load_generator - INFO - Stage 6 - run completed
+2026-08-19 07:32:44,227 - inference_perf.loadgen.load_generator - INFO - Stage 7 - run started
+2026-08-19 07:33:37,291 - inference_perf.loadgen.load_generator - INFO - Stage 7 - run completed
+2026-08-19 07:34:37,293 - inference_perf.loadgen.load_generator - INFO - Stage 8 - run started
+2026-08-19 07:35:35,364 - inference_perf.loadgen.load_generator - INFO - Stage 8 - run completed
+2026-08-19 07:36:35,365 - inference_perf.loadgen.load_generator - INFO - Stage 9 - run started
+2026-08-19 07:37:37,432 - inference_perf.loadgen.load_generator - INFO - Stage 9 - run completed
+2026-08-19 07:38:37,433 - inference_perf.loadgen.load_generator - INFO - Stage 10 - run started
+2026-08-19 07:39:46,507 - inference_perf.loadgen.load_generator - INFO - Stage 10 - run completed
+2026-08-19 07:40:46,510 - inference_perf.reportgen.base - INFO - Generating Reports...
+2026-08-19 07:40:49,929 - inference_perf.reportgen.base - WARNING - Prometheus Metrics Client is not configured or not of type PrometheusMetricsClient
+2026-08-19 07:40:49,934 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/summary_lifecycle_metrics.json
+2026-08-19 07:40:49,938 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_0_lifecycle_metrics.json
+2026-08-19 07:40:49,943 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_1_lifecycle_metrics.json
+2026-08-19 07:40:49,947 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_2_lifecycle_metrics.json
+2026-08-19 07:40:49,951 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_3_lifecycle_metrics.json
+2026-08-19 07:40:49,955 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_4_lifecycle_metrics.json
+2026-08-19 07:40:49,958 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_5_lifecycle_metrics.json
+2026-08-19 07:40:49,961 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_6_lifecycle_metrics.json
+2026-08-19 07:40:49,966 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_7_lifecycle_metrics.json
+2026-08-19 07:40:49,969 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_8_lifecycle_metrics.json
+2026-08-19 07:40:49,973 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_9_lifecycle_metrics.json
+2026-08-19 07:40:49,977 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/stage_10_lifecycle_metrics.json
+2026-08-19 07:40:49,982 - inference_perf.client.filestorage.local - INFO - Report saved to: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2/config.yaml

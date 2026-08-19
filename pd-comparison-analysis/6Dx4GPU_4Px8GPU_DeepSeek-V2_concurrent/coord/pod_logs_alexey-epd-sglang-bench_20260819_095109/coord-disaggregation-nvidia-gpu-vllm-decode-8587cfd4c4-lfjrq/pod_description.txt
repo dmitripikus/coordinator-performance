@@ -1,0 +1,110 @@
+Name:             coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-lfjrq
+Namespace:        alexey-epd-sglang-bench
+Priority:         0
+Service Account:  coord-disaggregation-nvidia-gpu-vllm-sa
+Node:             gf2ac9a/10.202.207.81
+Start Time:       Wed, 19 Aug 2026 09:04:32 +0300
+Labels:           llm-d.ai/accelerator-variant=gpu
+                  llm-d.ai/accelerator-vendor=nvidia
+                  llm-d.ai/engine-type=vllm
+                  llm-d.ai/guide=coord-disaggregation
+                  llm-d.ai/model=DeepSeek-V2
+                  llm-d.ai/role=decode
+                  pod-template-hash=8587cfd4c4
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=106
+Annotations:      <none>
+Status:           Running
+IP:               10.0.8.126
+IPs:
+  IP:           10.0.8.126
+Controlled By:  ReplicaSet/coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4
+Containers:
+  modelserver:
+    Container ID:  containerd://acf67ba54506b15fd116ef038c57d34d2affa4aca5483d62239b26cd765493f4
+    Image:         vllm/vllm-openai:v0.23.0
+    Image ID:      docker.io/vllm/vllm-openai@sha256:6d8429e38e3747723ca07ee1b17972e09bb9c51c4032b266f24fb1cc3b22ed8f
+    Ports:         5600/TCP (nixl), 8000/TCP (modelserver)
+    Host Ports:    0/TCP (nixl), 0/TCP (modelserver)
+    Command:
+      vllm
+      serve
+    Args:
+      deepseek-ai/DeepSeek-V2
+      --disable-access-log-for-endpoints=/health,/metrics,/v1/models
+      --tensor-parallel-size=4
+      --block-size=128
+      --max-model-len=32000
+      --kv-transfer-config
+      {"kv_connector":"NixlConnector", "kv_role":"kv_both"}
+      --load-format=runai_streamer
+      --model-loader-extra-config
+      {"distributed":true,"concurrency":16,"memory_limit":17179869184}
+      --no-disable-hybrid-kv-cache-manager
+    State:          Running
+      Started:      Wed, 19 Aug 2026 09:04:40 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:             16
+      memory:          400Gi
+      nvidia.com/gpu:  4
+      rdma/ib:         1
+    Requests:
+      cpu:             16
+      memory:          400Gi
+      nvidia.com/gpu:  4
+      rdma/ib:         1
+    Liveness:          http-get http://:modelserver/health delay=0s timeout=5s period=10s #success=1 #failure=3
+    Readiness:         http-get http://:modelserver/v1/models delay=0s timeout=2s period=5s #success=1 #failure=3
+    Startup:           http-get http://:modelserver/v1/models delay=15s timeout=5s period=30s #success=1 #failure=120
+    Environment:
+      HF_HOME:                      /model-cache
+      VLLM_NIXL_SIDE_CHANNEL_HOST:   (v1:status.podIP)
+      HF_TOKEN:                     <set to the key 'HF_TOKEN' in secret 'llm-d-hf-token'>  Optional: true
+      USER:                         llm-d
+      UCX_MODULE_DIR:               /usr/local/lib/python3.12/dist-packages/nixl_cu13.libs/ucx
+    Mounts:
+      /.cache from torch-compile-cache (rw)
+      /.config from config-cache (rw)
+      /dev/shm from shm (rw)
+      /model-cache from model-cache (rw)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  model-cache:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  llm-d-model-cache
+    ReadOnly:   false
+  shm:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     Memory
+    SizeLimit:  8Gi
+  torch-compile-cache:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config-cache:
+    Type:        EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:      
+    SizeLimit:   <unset>
+QoS Class:       Guaranteed
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason                  Age                From                     Message
+  ----     ------                  ----               ----                     -------
+  Warning  FailedScheduling        46m                default-scheduler        0/21 nodes are available: 1 node(s) didn't match Pod's node affinity/selector, 20 Insufficient nvidia.com/gpu, 4 Insufficient memory, 4 Insufficient rdma/ib.
+  Warning  FailedScheduling        46m (x4 over 46m)  default-scheduler        0/21 nodes are available: 1 node(s) didn't match Pod's node affinity/selector, 20 Insufficient nvidia.com/gpu, 4 Insufficient memory, 4 Insufficient rdma/ib. no new claims to deallocate, preemption: not eligible due to a terminating pod on the nominated node.
+  Normal   Scheduled               46m                default-scheduler        Successfully assigned alexey-epd-sglang-bench/coord-disaggregation-nvidia-gpu-vllm-decode-8587cfd4c4-lfjrq to gf2ac9a
+  Normal   SuccessfulAttachVolume  46m                attachdetach-controller  AttachVolume.Attach succeeded for volume "pvc-f5c475a2-95ce-4aab-a40e-8a186e4a6897"
+  Normal   Pulled                  46m                kubelet                  spec.containers{modelserver}: Container image "vllm/vllm-openai:v0.23.0" already present on machine and can be accessed by the pod
+  Normal   Created                 46m                kubelet                  spec.containers{modelserver}: Container created
+  Normal   Started                 46m                kubelet                  spec.containers{modelserver}: Container started
+  Warning  Unhealthy               43m (x7 over 46m)  kubelet                  spec.containers{modelserver}: Startup probe failed: Get "http://10.0.8.126:8000/v1/models": dial tcp 10.0.8.126:8000: connect: connection refused

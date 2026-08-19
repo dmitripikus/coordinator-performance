@@ -1,0 +1,119 @@
+api:
+  type: completion
+  streaming: true
+  headers: null
+data:
+  type: random
+  path: null
+  input_distribution:
+    min: 1000
+    max: 1000
+    mean: 1000.0
+    std_dev: 0.0
+    total_count: 501
+  output_distribution:
+    min: 1500
+    max: 1500
+    mean: 1500.0
+    std_dev: 0.0
+    total_count: 501
+  shared_prefix: null
+  trace: null
+load:
+  type: concurrent
+  interval: 60.0
+  stages:
+  - num_requests: 50
+    concurrency_level: 50
+    rate: 50.0
+    duration: 1
+  - num_requests: 50
+    concurrency_level: 50
+    rate: 50.0
+    duration: 1
+  - num_requests: 100
+    concurrency_level: 100
+    rate: 100.0
+    duration: 1
+  - num_requests: 150
+    concurrency_level: 150
+    rate: 150.0
+    duration: 1
+  - num_requests: 200
+    concurrency_level: 200
+    rate: 200.0
+    duration: 1
+  - num_requests: 250
+    concurrency_level: 250
+    rate: 250.0
+    duration: 1
+  - num_requests: 300
+    concurrency_level: 300
+    rate: 300.0
+    duration: 1
+  - num_requests: 350
+    concurrency_level: 350
+    rate: 350.0
+    duration: 1
+  - num_requests: 400
+    concurrency_level: 400
+    rate: 400.0
+    duration: 1
+  - num_requests: 450
+    concurrency_level: 450
+    rate: 450.0
+    duration: 1
+  - num_requests: 500
+    concurrency_level: 500
+    rate: 500.0
+    duration: 1
+  sweep: null
+  num_workers: 4
+  worker_max_concurrency: 0
+  worker_max_tcp_connections: 2500
+  trace: null
+  circuit_breakers: []
+  request_timeout: null
+  lora_traffic_split: null
+metrics: null
+report:
+  request_lifecycle:
+    summary: true
+    per_stage: true
+    per_request: false
+    per_adapter: true
+    per_adapter_stage: false
+    percentiles:
+    - 0.1
+    - 1.0
+    - 5.0
+    - 10.0
+    - 25.0
+    - 50.0
+    - 75.0
+    - 90.0
+    - 95.0
+    - 99.0
+    - 99.9
+  prometheus:
+    summary: true
+    per_stage: false
+storage:
+  local_storage:
+    path: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2
+    report_file_prefix: null
+  google_cloud_storage: null
+  simple_storage_service: null
+server:
+  type: vllm
+  model_name: deepseek-ai/DeepSeek-V2
+  base_url: http://10.16.2.60:80
+  ignore_eos: true
+  api_key: null
+  cert_path: null
+  key_path: null
+tokenizer:
+  pretrained_model_name_or_path: deepseek-ai/DeepSeek-V2
+  trust_remote_code: null
+  token: null
+circuit_breakers: null

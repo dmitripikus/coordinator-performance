@@ -1,0 +1,80 @@
+load:
+  type: concurrent
+  interval: 60
+  stages:
+    - rate: null
+      duration: null
+      num_requests: 50
+      concurrency_level: 50
+    - rate: null
+      duration: null
+      num_requests: 50
+      concurrency_level: 50
+    - rate: null
+      duration: null
+      num_requests: 100
+      concurrency_level: 100
+    - rate: null
+      duration: null
+      num_requests: 150
+      concurrency_level: 150
+    - rate: null
+      duration: null
+      num_requests: 200
+      concurrency_level: 200
+    - rate: null
+      duration: null
+      num_requests: 250
+      concurrency_level: 250
+    - rate: null
+      duration: null
+      num_requests: 300
+      concurrency_level: 300
+    - rate: null
+      duration: null
+      num_requests: 350
+      concurrency_level: 350
+    - rate: null
+      duration: null
+      num_requests: 400
+      concurrency_level: 400
+    - rate: null
+      duration: null
+      num_requests: 450
+      concurrency_level: 450
+    - rate: null
+      duration: null
+      num_requests: 500
+      concurrency_level: 500
+  sweep: null
+  num_workers: 4
+  worker_max_concurrency: 500
+  worker_max_tcp_connections: 2500
+api:
+  type: completion
+  streaming: true
+server:
+  type: vllm
+  model_name: deepseek-ai/DeepSeek-V2
+  base_url: http://10.16.2.60:80
+  ignore_eos: true
+tokenizer:
+  pretrained_model_name_or_path: deepseek-ai/DeepSeek-V2
+data:
+  type: random
+  input_distribution:
+    min: 1000
+    max: 1000
+    mean: 1000
+    std_dev: 0
+  output_distribution:
+    min: 1500
+    max: 1500
+    mean: 1500
+    std_dev: 0
+report:
+  request_lifecycle:
+    summary: true
+storage:
+  local_storage:
+    path: /requests/inference-perf_1787123995_random_spikes_epd-gpt-deepSeek-v2

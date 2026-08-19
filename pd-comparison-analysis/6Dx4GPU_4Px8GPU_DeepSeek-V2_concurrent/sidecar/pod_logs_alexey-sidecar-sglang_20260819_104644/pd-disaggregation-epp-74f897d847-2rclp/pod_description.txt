@@ -1,0 +1,79 @@
+Name:             pd-disaggregation-epp-74f897d847-2rclp
+Namespace:        alexey-sidecar-sglang
+Priority:         0
+Service Account:  pd-disaggregation-epp
+Node:             g801c7a/10.202.212.51
+Start Time:       Tue, 18 Aug 2026 14:50:13 +0300
+Labels:           llm-d-router-gateway=pd-disaggregation-epp
+                  llm-d.ai/igw-mode=llm-d-router-gateway
+                  pod-template-hash=74f897d847
+                  topology.kubernetes.io/region=US-EAST-01
+                  topology.kubernetes.io/zone=185
+Annotations:      <none>
+Status:           Running
+IP:               10.0.12.86
+IPs:
+  IP:           10.0.12.86
+Controlled By:  ReplicaSet/pd-disaggregation-epp-74f897d847
+Containers:
+  epp:
+    Container ID:  containerd://823b31508702db5d4b70de4275cfc687c1210acddc89f9474e85a61208778db1
+    Image:         ghcr.io/llm-d/llm-d-router-endpoint-picker:main
+    Image ID:      ghcr.io/llm-d/llm-d-router-endpoint-picker@sha256:d469a7afeefd4dd2339d5cf1e19dac20c3f2fbb04eb740cc6a134ea032cc308c
+    Ports:         9002/TCP (grpc), 9003/TCP (grpc-health), 9090/TCP (metrics)
+    Host Ports:    0/TCP (grpc), 0/TCP (grpc-health), 0/TCP (metrics)
+    Args:
+      --pool-name
+      pd-disaggregation
+      --pool-namespace
+      alexey-sidecar-sglang
+      --pool-group
+      inference.networking.k8s.io
+      --zap-encoder
+      json
+      --config-file
+      /config/pd-config.yaml
+      --grpc-health-port
+      9003
+      --v=2
+      --tracing=false
+    State:          Running
+      Started:      Tue, 18 Aug 2026 14:50:15 +0300
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      memory:  64Gi
+    Requests:
+      cpu:      4
+      memory:   64Gi
+    Liveness:   grpc <pod>:9003 inference-extension delay=5s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  grpc <pod>:9003 inference-extension delay=0s timeout=1s period=2s #success=1 #failure=3
+    Environment:
+      NAMESPACE:  alexey-sidecar-sglang (v1:metadata.namespace)
+      POD_NAME:   pd-disaggregation-epp-74f897d847-2rclp (v1:metadata.name)
+    Mounts:
+      /config from plugins-config-volume (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-kvfr6 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  plugins-config-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      pd-disaggregation-epp
+    Optional:  false
+  kube-api-access-kvfr6:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

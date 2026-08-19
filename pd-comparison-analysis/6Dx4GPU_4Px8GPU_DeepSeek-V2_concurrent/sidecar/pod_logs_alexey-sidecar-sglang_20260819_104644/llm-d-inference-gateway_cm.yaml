@@ -1,0 +1,42 @@
+apiVersion: v1
+data:
+  deployment: |
+    spec:
+      template:
+        spec:
+          containers:
+          - name: istio-proxy
+            args:
+              - proxy
+              - router
+              - --domain
+              - $(POD_NAMESPACE).svc.cluster.local
+              - --proxyLogLevel
+              - warn
+              - --proxyComponentLogLevel
+              - misc:warn
+              - --log_output_level
+              - default:warn
+            resources:
+              limits:
+                cpu: "8"
+                memory: 16Gi
+              requests:
+                cpu: 2
+                memory: 4Gi
+  service: |
+    spec:
+      type: ClusterIP
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"deployment":"spec:\n  template:\n    spec:\n      containers:\n      - name: istio-proxy\n        args:\n          - proxy\n          - router\n          - --domain\n          - $(POD_NAMESPACE).svc.cluster.local\n          - --proxyLogLevel\n          - warn\n          - --proxyComponentLogLevel\n          - misc:warn\n          - --log_output_level\n          - default:warn\n        resources:\n          limits:\n            cpu: \"8\"\n            memory: 16Gi\n          requests:\n            cpu: 2\n            memory: 4Gi\n","service":"spec:\n  type: ClusterIP\n"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"inference-gateway","app.kubernetes.io/gateway":"llm-d-inference-gateway"},"name":"llm-d-inference-gateway","namespace":"alexey-sidecar-sglang"}}
+  creationTimestamp: "2026-08-04T15:00:04Z"
+  labels:
+    app.kubernetes.io/component: inference-gateway
+    app.kubernetes.io/gateway: llm-d-inference-gateway
+  name: llm-d-inference-gateway
+  namespace: alexey-sidecar-sglang
+  resourceVersion: "49356099"
+  uid: 996adb2b-feae-4c36-89b7-8196532c1dc7

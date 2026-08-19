@@ -1,0 +1,5 @@
+ts=2026-08-19T05:00:11.293Z caller=compact.go:576 level=info component=tsdb msg="write block" mint=1787104800000 maxt=1787112000000 ulid=01M0C682HNMBVPGSNBZEC1HHG5 duration=6.760760525s ooo=false
+ts=2026-08-19T05:00:11.332Z caller=db.go:1712 level=info component=tsdb msg="Deleting obsolete block" block=01M0BHMSG9YQQ59D8H216KNANB
+ts=2026-08-19T05:00:11.570Z caller=head.go:1355 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=238.686725ms
+ts=2026-08-19T05:00:11.704Z caller=checkpoint.go:101 level=info component=tsdb msg="Creating checkpoint" from_segment=325 to_segment=335 mint=1787112000000
+ts=2026-08-19T05:00:16.323Z caller=head.go:1317 level=info component=tsdb msg="WAL checkpoint complete" first=325 last=335 duration=4.621275747s
