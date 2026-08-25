@@ -1,8 +1,23 @@
 # coordinator vs sidecar — random_spikes, DeepSeek-V2
 
+## Deployment
+
+Identical topology on both sides (confirmed from
+`decode_deployment.yaml` / `prefill_deployment.yaml` for each
+architecture):
+
 | | |
 |---|---|
 | Model | `deepseek-ai/DeepSeek-V2` |
+| GPU type | H200 |
+| Decode | 6 replicas &times; TP4 (4 GPUs/replica) = 24 GPUs |
+| Prefill | 4 replicas &times; TP8 (8 GPUs/replica) = 32 GPUs |
+| Total GPUs | 56 (both sides) |
+
+## Benchmark
+
+| | |
+|---|---|
 | Tool | `inference-perf` (`random_spikes` scenario) |
 | Input / output length | exactly 1000 / 1500 tokens (fixed, `std_dev: 0`) |
 | Stages used | concurrency 50, 100, 150, 200, 250, 300, 350, 400, 450, 500 |

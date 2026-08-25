@@ -41,7 +41,7 @@ if [ -z "$1" ]; then
 fi
 
 NAMESPACE=$1
-DURATION_MINUTES=${2:-30}  # Default to 30 minutes if not specified
+DURATION_MINUTES=${2:-120}  # Default to 30 minutes if not specified
 
 # Check if kubectl is installed
 if ! command -v kubectl &> /dev/null; then
