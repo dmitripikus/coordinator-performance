@@ -29,6 +29,22 @@ removing confounds found in earlier benches:
 | 100 | 0.5 req/s | 240s |
 | 1,000 | 0.25 req/s | 480s |
 
+## Deployment
+
+Identical topology on both sides (confirmed from the `pod.yaml`
+snapshots' actual `--model`/`--tensor-parallel-size` args and GPU
+resource requests, not just labels — the `llm-d.ai/model` label on
+these pods reads `Qwen3-VL-2B-Instruct`, stale from an earlier model
+swap; the container's actual `--model` arg is `openai/gpt-oss-120b`):
+
+| | |
+|---|---|
+| Model | `openai/gpt-oss-120b` |
+| GPU type | H200 |
+| Decode | 1 replica &times; TP4 (4 GPUs) |
+| Prefill | 1 replica &times; TP1 (1 GPU) |
+| Total GPUs | 5 (both sides) |
+
 ## Data validation
 
 - **Node placement confirmed matched**: `grep nodeName`/`Node:` on every

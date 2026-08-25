@@ -15,6 +15,19 @@ constant rate, `openai/gpt-oss-120b`, streaming, `ignore_eos: true`:
 
 Data source: each step's own `summary_lifecycle_metrics.json`.
 
+## Deployment
+
+Identical topology on both sides (confirmed from `decode.yaml` /
+`prefill.yaml` for each architecture):
+
+| | |
+|---|---|
+| Model | `openai/gpt-oss-120b` |
+| GPU type | H200 |
+| Decode | 1 replica &times; TP4 (4 GPUs) |
+| Prefill | 1 replica &times; TP1 (1 GPU) |
+| Total GPUs | 5 (both sides) |
+
 ## Data validation
 
 All 8 runs (4 sizes x 2 architectures) are clean:
